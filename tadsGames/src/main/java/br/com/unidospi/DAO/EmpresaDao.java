@@ -7,9 +7,11 @@ package br.com.unidospi.DAO;
 
 import br.com.unidospi.model.Empresa;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 /**
  *
@@ -26,9 +28,19 @@ public class EmpresaDao {
     public static void salvar(Empresa empr) {
 
         try {
-            String sql= "";
+            String sql= "insert into Empresa (nome, cnpj, dataCriacao, pais, idEstado, matriz, ativo) values(?,?,?,?,?,?,?)";
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-            PreparedStatement ps = conexao.prepareStatement(URL);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            Date dt =Date.valueOf(LocalDate.now());
+            ps.setString(1, "xpto");
+            ps.setString(2, "123456789");
+            ps.setDate(3, dt);
+            ps.setString(4, "BR");
+            ps.setInt(5, 1);
+            ps.setBoolean(6, true);
+            ps.setBoolean(7, true);
+            
+            System.out.println(ps.execute());
             
             
         } catch (SQLException e) {
