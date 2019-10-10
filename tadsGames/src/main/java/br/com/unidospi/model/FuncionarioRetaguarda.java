@@ -15,14 +15,14 @@ public class FuncionarioRetaguarda extends Funcionario {
 
     public FuncionarioRetaguarda(double salario, String departamento, 
             String cargo, String login, String senha, 
-            int id, String nome, String cpf, Date dataNasc, boolean ativo) {
-        super(salario, departamento, cargo, login, senha, id, nome, cpf, dataNasc, ativo);
+            int id, String nome,String sobrenome, String cpf, Date dataNasc, boolean ativo) {
+        super(salario, departamento, cargo, login, senha, id, nome,sobrenome,cpf, dataNasc, ativo);
     }
 
     public FuncionarioRetaguarda(double salario, String departamento, 
-            String cargo, String login, String senha, String nome, String cpf, 
+            String cargo, String login, String senha, String nome,String sobrenome, String cpf, 
             Date dataNasc, boolean ativo) {
-        super(salario, departamento, cargo, login, senha, nome, cpf, dataNasc, ativo);
+        super(salario, departamento, cargo, login, senha, nome,sobrenome,cpf, dataNasc, ativo);
     }
     
     public void mostrarFaturamento() {}

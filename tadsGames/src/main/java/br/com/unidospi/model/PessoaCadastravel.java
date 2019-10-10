@@ -14,20 +14,23 @@ import java.sql.Date;
 public abstract class PessoaCadastravel {
     private int id;
     private String nome;
+    private String sobrenome;
     private String cpf;
     private Date dataNasc;
     private boolean ativo;
 
-    public PessoaCadastravel(int id, String nome, String cpf, Date dataNasc, boolean ativo) {
+    public PessoaCadastravel(int id, String nome,String sobrenome, String cpf, Date dataNasc, boolean ativo) {
         this.id = id;
         this.nome = nome;
+        this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
         this.ativo = ativo;
     }
 
-    public PessoaCadastravel(String nome, String cpf, Date dataNasc, boolean ativo) {
+    public PessoaCadastravel(String nome,String sobrenome, String cpf, Date dataNasc, boolean ativo) {
         this.nome = nome;
+        this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
         this.ativo = ativo;
@@ -52,6 +55,16 @@ public abstract class PessoaCadastravel {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+    
+    
 
     public String getCpf() {
         return cpf;
