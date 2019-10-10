@@ -17,18 +17,18 @@ public abstract class Funcionario extends Usuario {
     private String cargo;
 
     public Funcionario(double salario, String departamento, String cargo, 
-            String login, String senha, int id, String nome, String cpf, 
+            String login, String senha, int id, String nome,String sobrenome, String cpf, 
             Date dataNasc, boolean ativo) {
-        super(login, senha, id, nome, cpf, dataNasc, ativo);
+        super(login, senha, id, nome,sobrenome, cpf, dataNasc, ativo);
         this.salario = salario;
         this.departamento = departamento;
         this.cargo = cargo;
     }
 
     public Funcionario(double salario, String departamento, String cargo, 
-            String login, String senha, String nome, String cpf, 
+            String login, String senha, String nome,String sobrenome, String cpf, 
             Date dataNasc, boolean ativo) {
-        super(login, senha, nome, cpf, dataNasc, ativo);
+        super(login, senha, nome,sobrenome, cpf, dataNasc, ativo);
         this.salario = salario;
         this.departamento = departamento;
         this.cargo = cargo;
