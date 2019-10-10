@@ -1,0 +1,25 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: url("../img/fundo-controles.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+.box{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate(-50%,-50%);
+	background: #fff;
+	padding: 40px;
+	box-sizing: border-box;
+	border: 1px solid rgba(0,0,0,.1);
+	box-shadow: 5px 10px rgba(0,0,0,.2);
+
+}
+.box h2{
+	margin: 0;
+	
+}

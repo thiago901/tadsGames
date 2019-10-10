@@ -34,7 +34,6 @@ public class Empresa {
         this.matriz = matriz;
     }
         public Empresa( String nome, String cnpj, Date dataCriacao, String pais, String estado, boolean status, boolean matriz) {
-        this.cod = cod;
         this.nome = nome;
         this.cnpj = cnpj;
         this.dataCriacao = dataCriacao;
