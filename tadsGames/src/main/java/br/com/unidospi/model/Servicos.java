@@ -10,24 +10,9 @@ package br.com.unidospi.model;
  * @author lucas
  */
 public abstract class Servicos extends ProdutosServicos {
-    
-    private boolean ativo;
 
-    public Servicos(boolean ativo, int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao) {
-        super(codProdServ, categoria, nome, valorCompra, descricao, regiao);
-        this.ativo = ativo;
+    public Servicos(int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao, boolean status) {
+        super(codProdServ, categoria, nome, valorCompra, descricao, regiao, status);
     }
 
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
-    
-    @Override
-    public abstract boolean disponivel ();
-    
-    
 }

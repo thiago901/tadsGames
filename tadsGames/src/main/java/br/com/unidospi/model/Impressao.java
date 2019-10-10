@@ -10,14 +10,21 @@ package br.com.unidospi.model;
  * @author lucas
  */
 public class Impressao extends Servicos {
+    private String tipoDeImpressao;
 
-    public Impressao(boolean ativo, int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao) {
-        super(ativo, codProdServ, categoria, nome, valorCompra, descricao, regiao);
+    public Impressao(String tipoDeImpressao, int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao, boolean status) {
+        super(codProdServ, categoria, nome, valorCompra, descricao, regiao, status);
+        this.tipoDeImpressao = tipoDeImpressao;
     }
 
-    @Override
-    public boolean disponivel() {
-        throw new UnsupportedOperationException("Not supported yet."); ///IMPLEMENTAR
+    public String getTipoDeImpressao() {
+        return tipoDeImpressao;
     }
+
+    public void setTipoDeImpressao(String tipoDeImpressao) {
+        this.tipoDeImpressao = tipoDeImpressao;
+    }
+    
+    
     
 }
