@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.model;
 
+import br.com.unidospi.DAO.EmpresaDao;
 import java.util.Date;
 
 /**
@@ -20,8 +21,9 @@ public class Empresa {
     String pais;
     String estado;
     boolean status;
+    boolean matriz;
 
-    public Empresa(int cod, String nome, String cnpj, Date dataCriacao, String pais, String estado, boolean status) {
+    public Empresa(int cod, String nome, String cnpj, Date dataCriacao, String pais, String estado, boolean status, boolean matriz) {
         this.cod = cod;
         this.nome = nome;
         this.cnpj = cnpj;
@@ -29,17 +31,27 @@ public class Empresa {
         this.pais = pais;
         this.estado = estado;
         this.status = status;
+        this.matriz = matriz;
     }
-
-    public Empresa(String nome, String cnpj, Date dataCriacao, String pais, String estado, boolean status) {
-        this.cod = cod;
+        public Empresa( String nome, String cnpj, Date dataCriacao, String pais, String estado, boolean status, boolean matriz) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.dataCriacao = dataCriacao;
         this.pais = pais;
         this.estado = estado;
         this.status = status;
+        this.matriz = matriz;
     }
+
+    public boolean getMatriz() {
+        return matriz;
+    }
+
+    public void setMatriz(boolean matriz) {
+        this.matriz = matriz;
+    }
+
+  
 
     public int getCod() {
         return cod;
@@ -107,6 +119,12 @@ public class Empresa {
 
     public void desbloquearCadastro() {
 
+    }
+    public void salvar(){
+        
+        EmpresaDao.salvar(this);
+        
+        
     }
 
 }

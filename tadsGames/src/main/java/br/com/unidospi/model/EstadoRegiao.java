@@ -22,7 +22,6 @@ public class EstadoRegiao {
     }
 
     public EstadoRegiao(String uf, String regiao) {
-        this.id = id;
         this.uf = uf;
         this.regiao = regiao;
     }
