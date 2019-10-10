@@ -12,19 +12,18 @@ import java.sql.Date;
  * @author gabri
  */
 public abstract class Usuario extends PessoaCadastravel {
+
     private String login;
     private String senha;
 
-    public Usuario(String login, String senha, int id, String nome,String sobrenome, 
-            String cpf, Date dataNasc, boolean ativo) {
-        super(id, nome,sobrenome, cpf, dataNasc, ativo);
+    public Usuario(String login, String senha, int id, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(id, nome, sobrenome, sexo, cpf, dataNasc, ativo);
         this.login = login;
         this.senha = senha;
     }
 
-    public Usuario(String login, String senha, String nome,String sobrenome, String cpf, 
-            Date dataNasc, boolean ativo) {
-        super(nome,sobrenome, cpf, dataNasc, ativo);
+    public Usuario(String login, String senha, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(nome, sobrenome, sexo, cpf, dataNasc, ativo);
         this.login = login;
         this.senha = senha;
     }
@@ -43,5 +42,5 @@ public abstract class Usuario extends PessoaCadastravel {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }        
+    }
 }

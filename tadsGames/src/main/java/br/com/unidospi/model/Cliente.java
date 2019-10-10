@@ -13,9 +13,8 @@ import java.sql.Date;
  */
 public class Cliente extends PessoaCadastravel {
 
-    public Cliente(String tel, int id, String nome, String sobrenome, String cpf, Date dataNasc, boolean ativo) {
-        super(id, nome, sobrenome, cpf, dataNasc, ativo);
-
+    public Cliente(String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 
 }

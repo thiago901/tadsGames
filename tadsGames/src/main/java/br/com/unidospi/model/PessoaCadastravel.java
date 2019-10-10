@@ -12,33 +12,40 @@ import java.sql.Date;
  * @author gabri
  */
 public abstract class PessoaCadastravel {
+
     private int id;
     private String nome;
     private String sobrenome;
+    private String sexo;
     private String cpf;
     private Date dataNasc;
     private boolean ativo;
 
-    public PessoaCadastravel(int id, String nome,String sobrenome, String cpf, Date dataNasc, boolean ativo) {
+    public PessoaCadastravel(int id, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.sexo = sexo;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
         this.ativo = ativo;
     }
 
-    public PessoaCadastravel(String nome,String sobrenome, String cpf, Date dataNasc, boolean ativo) {
+    public PessoaCadastravel(String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.sexo = sexo;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
         this.ativo = ativo;
     }
-    
-    public void bloquearCadastro() {}
-    
-    public void desbloquearCadastro() {}
+
+    public void bloquearCadastro() {
+    }
+
+    public void desbloquearCadastro() {
+    }
 
     public int getId() {
         return id;
@@ -62,6 +69,14 @@ public abstract class PessoaCadastravel {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
     
     
@@ -89,6 +104,5 @@ public abstract class PessoaCadastravel {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
-    
-    
+
 }

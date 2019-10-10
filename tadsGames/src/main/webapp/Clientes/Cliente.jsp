@@ -3,13 +3,13 @@
     Created on : 10/10/2019, 20:04:59
     Author     : henrique.abastos
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Formulário</title>
+        <title>Cadastro de Cliente</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <style>
@@ -36,7 +36,7 @@
                 <section style="width: 70%; margin: 0 auto">
                     <h1>Formulário</h1>
                     <form method="post" action="">
- 
+
                         <input type="hidden" name="id" value="123">
 
                         <div>
@@ -54,88 +54,19 @@
                         </div>
 
                         <div>
-                            <label for="txtDescricao">
-                                Descrição
+                            <label for="txtNome">
+                                Sobrenom
                             </label>
                             <div>
-                                <textarea name="descricao" id="txtDescricao" placeholder="Descrição">
-                                </textarea>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="txtEmail">
-                                E-mail
-                            </label>
-                            <div>
-                                <input type="email" name="email" id="txtEmail" 
-                                       placeholder="E-mail"
-                                       required />
+                                <input type="text" name="nome" id="txtNome" 
+                                       placeholder="Nome" 
+                                       required maxlength="100" />
                                 <div class="erro-input">
-                                    Digite um e-mail.
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="txtSenha">
-                                Senha
-                            </label>
-                            <div>
-                                <input type="password" name="senha" id="txtSenha" 
-                                       placeholder="Senha">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="txtRepetirSenha">
-                                Repetir senha
-                            </label>
-                            <div>
-                                <input type="password" name="repetirSenha" id="txtRepetirSenha" 
-                                      placeholder="Repetir senha">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="txtNumero">
-                                Número da sorte
-                            </label>
-                            <div>
-                                <input type="number" name="numeroSorte" id="txtNumero" 
-                                       placeholder="Número de 1 a 99" 
-                                       min="1" max="99" >
-                                <div class="erro-input">
-                                    Digite um número válido.
+                                    Sobrenome.
                                 </div>
                             </div>
                         </div>
 
-                        <div>
-                            <label for="txtAltura">
-                                Altura
-                            </label>
-                            <div>
-                                <input type="number" name="altura" id="txtAltura" 
-                                       placeholder="Altura em metros com no máximo 2 casa decimais" 
-                                       min="0" max="9.99" step="0.01">
-                                <div class="erro-input">
-                                    Digite uma altura válida.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="txtPeso">
-                                Peso
-                            </label>
-                            <div>
-                                <input type="number" name="peso" id="txtPeso" 
-                                       placeholder="Peso em Kg com no máximo 1 casa decimal" 
-                                       min="0" max="999.9" step="0.1">
-                                <div class="erro-input">
-                                    Digite um peso válido.
-                                </div>
-                            </div>
-                        </div>
 
                         <div>
                             <label for="txtDtNascimento">
