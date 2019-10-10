@@ -14,12 +14,14 @@ public class AssistenciaTecnica extends Servicos{
     private String dataFinalizacao;
     private String statusReparo;
 
-    public AssistenciaTecnica(String equipamento, String dataFinalizacao, String statusReparo, boolean ativo, int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao) {
-        super(ativo, codProdServ, categoria, nome, valorCompra, descricao, regiao);
+    public AssistenciaTecnica(String equipamento, String dataFinalizacao, String statusReparo, int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao, boolean status) {
+        super(codProdServ, categoria, nome, valorCompra, descricao, regiao, status);
         this.equipamento = equipamento;
         this.dataFinalizacao = dataFinalizacao;
         this.statusReparo = statusReparo;
     }
+
+
 
     public String getEquipamento() {
         return equipamento;
@@ -45,10 +47,6 @@ public class AssistenciaTecnica extends Servicos{
         this.statusReparo = statusReparo;
     }
 
-    @Override
-    public boolean disponivel() {
-        throw new UnsupportedOperationException("Not supported yet."); ////IMPLEMENTAR
-    }
     
     
     

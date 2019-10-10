@@ -11,19 +11,21 @@ package br.com.unidospi.model;
  */
 public abstract class ProdutosServicos {
     private final int codProdServ;
-    private final String categoria;
+    private final String categoria; //DEFINE SE É PRODUTO OU SERVIÇO
     private String nome;
     private double valorCompra;
     private String descricao;
     private String regiao;
+    private boolean status;
 
-    public ProdutosServicos(int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao) {
+    public ProdutosServicos(int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao, boolean status) {
         this.codProdServ = codProdServ;
         this.categoria = categoria;
         this.nome = nome;
         this.valorCompra = valorCompra;
         this.descricao = descricao;
         this.regiao = regiao;
+        this.status = status;
     }
 
     public int getCodProdServ() {
@@ -65,8 +67,17 @@ public abstract class ProdutosServicos {
     public void setRegiao(String regiao) {
         this.regiao = regiao;
     }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
     
-    public abstract boolean disponivel();
+    
+    
     
     
     
