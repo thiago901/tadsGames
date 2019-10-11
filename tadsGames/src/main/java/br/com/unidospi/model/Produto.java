@@ -9,18 +9,16 @@ package br.com.unidospi.model;
  *
  * @author lucas
  */
-public abstract class ProdutosServicos {
+public class Produto {
     private final int codProdServ;
-    private final String categoria; //DEFINE SE É PRODUTO OU SERVIÇO
     private String nome;
     private double valorCompra;
     private String descricao;
     private String regiao;
-    private boolean status;
+    private boolean status; //define status, se é ativo ou não
 
-    public ProdutosServicos(int codProdServ, String categoria, String nome, double valorCompra, String descricao, String regiao, boolean status) {
+    public Produto(int codProdServ, String nome, double valorCompra, String descricao, String regiao, boolean status) {
         this.codProdServ = codProdServ;
-        this.categoria = categoria;
         this.nome = nome;
         this.valorCompra = valorCompra;
         this.descricao = descricao;
@@ -28,12 +26,9 @@ public abstract class ProdutosServicos {
         this.status = status;
     }
 
+    
     public int getCodProdServ() {
         return codProdServ;
-    }
-
-    public String getCategoria() {
-        return categoria;
     }
 
     public String getNome() {
