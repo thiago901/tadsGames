@@ -16,17 +16,19 @@ public abstract class Usuario extends PessoaCadastravel {
     private String login;
     private String senha;
 
-    public Usuario(String login, String senha, int id, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(id, nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public Usuario(String login, String senha, int id, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(id, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
         this.login = login;
         this.senha = senha;
     }
 
-    public Usuario(String login, String senha, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public Usuario(String login, String senha, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
         this.login = login;
         this.senha = senha;
     }
+
+   
 
     public String getLogin() {
         return login;

@@ -14,6 +14,7 @@ import java.sql.Date;
 public abstract class PessoaCadastravel {
 
     private int id;
+    private int idEmpresa;
     private String nome;
     private String sobrenome;
     private String sexo;
@@ -21,8 +22,9 @@ public abstract class PessoaCadastravel {
     private Date dataNasc;
     private boolean ativo;
 
-    public PessoaCadastravel(int id, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+    public PessoaCadastravel(int id, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
         this.id = id;
+        this.idEmpresa = idEmpresa;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.sexo = sexo;
@@ -31,8 +33,8 @@ public abstract class PessoaCadastravel {
         this.ativo = ativo;
     }
 
-    public PessoaCadastravel(String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-
+    public PessoaCadastravel(int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        this.idEmpresa = idEmpresa;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.sexo = sexo;
@@ -40,6 +42,16 @@ public abstract class PessoaCadastravel {
         this.dataNasc = dataNasc;
         this.ativo = ativo;
     }
+
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+   
 
     public void bloquearCadastro() {
     }
