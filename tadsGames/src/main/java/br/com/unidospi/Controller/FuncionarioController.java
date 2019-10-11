@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.DAO.FuncionarioDAO;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author henrique.abastos
  */
-@WebServlet(name = "FuncionarioController", urlPatterns = {"/cadastroFuncionario"})
+@WebServlet(name = "FuncionarioController", urlPatterns = {"/formulario/funcionario"})
 public class FuncionarioController extends HttpServlet {
     
     @Override
@@ -33,6 +34,12 @@ public class FuncionarioController extends HttpServlet {
         String deptoStr = request.getParameter("depto");
         String ativoStr = request.getParameter("ativo");
         String tpFuncStr = request.getParameter("tpFuncionario");
+        
+//        switch (tpFuncStr) {
+//            case ""
+//                    
+//                    
+//        
         
         RequestDispatcher dispatcher = 
                 request.getRequestDispatcher("Funcionario/resultado.jsp");

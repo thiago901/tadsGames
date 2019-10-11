@@ -34,7 +34,7 @@ public class FuncionarioDAO {
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
             
-//            ps.setInt(1, funcionario.getIdEmpresa());
+            ps.setInt(1, funcionario.getIdEmpresa());
             ps.setString(2, funcionario.getNome());
             ps.setString(3, funcionario.getCpf());
             ps.setDate(4, funcionario.getDataNasc());
@@ -44,8 +44,7 @@ public class FuncionarioDAO {
             ps.setString(8, funcionario.getDepartamento());
             
             int linhasAfetadas = ps.executeUpdate();
-            
-            
+                        
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

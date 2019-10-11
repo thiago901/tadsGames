@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gabri
  */
-@WebServlet(name = "FormularioServlet", urlPatterns = {"/formulario/funcionario"})//COMMIT COMENTÁRIO
+@WebServlet(name = "FormularioServlet", urlPatterns = {"/formulario/func"})//COMMIT COMENTÁRIO
 public class FormularioServlet extends HttpServlet {
 
 

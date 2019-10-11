@@ -16,20 +16,26 @@ public abstract class Funcionario extends Usuario {
     private String departamento;
     private String cargo;
 
-    public Funcionario(double salario, String departamento, String cargo, String login, String senha, int id, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(login, senha, id, nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public Funcionario(double salario, String departamento, String cargo, String login, String senha, int id, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(login, senha, id, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
         this.salario = salario;
         this.departamento = departamento;
         this.cargo = cargo;
     }
 
-    public Funcionario(double salario, String departamento, String cargo, String login, String senha, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(login, senha, nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public Funcionario(double salario, String departamento, String cargo, String login, String senha, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(login, senha, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
         this.salario = salario;
         this.departamento = departamento;
         this.cargo = cargo;
-    }     
-       
+    }
+
+    
+
+    
+
+    
+
     public double getSalario() {
         return salario;
     }
