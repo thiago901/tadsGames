@@ -25,10 +25,11 @@ public class EmpresaDao {
     static final String SENHA = "adminadmin";
     static Connection conexao;
 
-    public static void salvar(Empresa empr) {
+    public static void salvar(Empresa empr)  {
 
         try {
             String sql= "insert into Empresa (nome, cnpj, dataCriacao, pais, idEstado, matriz, ativo) values(?,?,?,?,?,?,?)";
+            Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
             Date dt =Date.valueOf(LocalDate.now());
@@ -43,7 +44,7 @@ public class EmpresaDao {
             System.out.println(ps.execute());
             
             
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.getMessage();
         } finally {
             try {

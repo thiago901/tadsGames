@@ -4,7 +4,12 @@
     Author     : thiago.srocha4
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="br.com.unidospi.model.EstadoRegiao"%>
+<%@page import="br.com.unidospi.Controller.EstadoRegiaoController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,20 +22,39 @@
 			<h2>Cadastre a Empresa</h2>
 			<form action="\TadsGames\cadastroEmpresa" method="post">
 				<div>
-					<input type="text" name="nome" required>
+					<input type="text" name="" required>
 					<label>Nome Empresa</label>
 				</div>
 				<div>
-					<input type="text" name="cnpj" required>
+					<input type="text" name="" required>
 					<label>CNPJ</label>
 				</div>
 				<div>
-					<input type="text" name="endereco" required>
-					<label>Endereço</label>
+					<input type="date" name="data" required>
+					<label>Data de Criação</label>
 				</div>
-		
-					<button>Enviar</button>
+				<div>
+                                    
+					<select name="estado" required="">
+						<option disabled selected="">Escolha a UF</option>
+                                                <c:forEach var="uf" items="${ufs}">
+                                                    <option value="${uf.getId()}"><c:out value="${uf.getUf()}"/></option>
+                                                </c:forEach>
+					</select>
+					
 				</div>
+				<div>
+					<select name="estado" required="">
+						<option disabled selected="">Status</option>
+						<option>Ativo</option>
+					</select>
+				</div>
+					<div>
+					<select name="matiz" required="">
+						<option disabled selected="">Matriz</option>
+						<option>Sim</option>
+						<option>Não</option>
+					</select>
 			</form>
 		</div>
 	</body>

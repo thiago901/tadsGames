@@ -24,6 +24,7 @@ public class EmpresaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String nome=request.getParameter("nome");
         String cnpj=request.getParameter("cnpj");
         String endereco=request.getParameter("endereco");

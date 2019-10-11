@@ -5,6 +5,8 @@
  */
 package br.com.unidospi.model;
 
+import java.util.List;
+
 /**
  *
  * @author thiago.srocha4
@@ -13,19 +15,30 @@ public class EstadoRegiao {
 
     int id;
     String uf;
+    String estado;
+    String capital;
     String regiao;
+    String pais;
 
-    public EstadoRegiao(int id, String uf, String regiao) {
+    public EstadoRegiao(int id, String uf, String estado, String capital, String regiao, String pais) {
         this.id = id;
         this.uf = uf;
+        this.estado = estado;
+        this.capital = capital;
         this.regiao = regiao;
+        this.pais = pais;
     }
 
-    public EstadoRegiao(String uf, String regiao) {
+    public EstadoRegiao(String uf, String estado, String capital, String regiao, String pais) {
         this.uf = uf;
+        this.estado = estado;
+        this.capital = capital;
         this.regiao = regiao;
+        this.pais = pais;
     }
 
+    
+    
     public int getId() {
         return id;
     }
@@ -38,6 +51,22 @@ public class EstadoRegiao {
         this.uf = uf;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
+    }
+
     public String getRegiao() {
         return regiao;
     }
@@ -46,4 +75,18 @@ public class EstadoRegiao {
         this.regiao = regiao;
     }
 
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+    
+    public List<EstadoRegiao> listarEstadosRegioes(){
+        return null;
+        
+    }
+
+    
 }
