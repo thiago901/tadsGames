@@ -23,7 +23,7 @@
             input[type='text'],
             input[type='email'],
             input[type='number'],
-            input[type='password'],
+            /*input[type='password'],*/
             input[type='date'],
             textarea {
                 width: 100%;
@@ -34,7 +34,7 @@
         <main>
             <div>
                 <section style="width: 70%; margin: 0 auto">
-                    <h1>Formulário</h1>
+                    <h1>Cadastro de Clientes</h1>
                     <form method="post" action="">
 
                         <input type="hidden" name="id" value="123">
@@ -55,31 +55,32 @@
 
                         <div>
                             <label for="txtNome">
-                                Sobrenom
+                                Sobrenome
                             </label>
                             <div>
-                                <input type="text" name="nome" id="txtNome" 
-                                       placeholder="Nome" 
+                                <input type="text" name="sobrenome" id="txtNome" 
+                                       placeholder="Sobrenome" 
                                        required maxlength="100" />
                                 <div class="erro-input">
                                     Sobrenome.
                                 </div>
                             </div>
                         </div>
-
-
+                        
                         <div>
-                            <label for="txtDtNascimento">
-                                Data de nascimento
+                            <label for="txtNome">
+                                CPF
                             </label>
                             <div>
-                                <input type="date" name="dtNascimento" id="txtDtNascimento" />
+                                <input type="text" name="cpf" id="txtNome" 
+                                       placeholder="Cpf" 
+                                       required maxlength="100" />
                                 <div class="erro-input">
-                                    Digite uma data válida.
+                                    CPF.
                                 </div>
                             </div>
                         </div>
-
+                        
                         <fieldset>
                             <legend>Sexo</legend>
                             <div>
@@ -100,40 +101,39 @@
                             </div>
                         </fieldset>
 
+                        <div>
+                            <label for="txtDtNascimento">
+                                Data de nascimento
+                            </label>
+                            <div>
+                                <input type="date" name="dtNascimento" id="txtDtNascimento" />
+                                <div class="erro-input">
+                                    Digite uma data válida.
+                                </div>
+                            </div>
+                        </div>
+                        
                         <fieldset>
-                            <legend>Interesses</legend>
+                            <legend>Status</legend>
                             <div>
                                 <div>
-                                    <input type="checkbox" name="interesses" 
-                                           id="interessesTecnologia" value="Tecnologia" />
-                                    <label for="interessesTecnologia">
-                                        Tecnologia
+                                    <input type="radio" name="status" 
+                                           id="optSexoF" value="0" checked />
+                                    <label for="optAtivo">
+                                        Ativo
                                     </label>
                                 </div>
                                 <div>
-                                    <input type="checkbox" name="interesses" 
-                                           id="interessesGastronomia" value="Gastronomia" />
-                                    <label for="interessesGastronomia">
-                                        Gastronomia
+                                    <input type="radio" name="status"
+                                           id="optSexoM" value="1" />
+                                    <label for="optInativo">
+                                        Inativo
                                     </label>
                                 </div>
-                                <div>
-                                    <input type="checkbox" name="interesses" 
-                                           id="interessesViagens" value="Viagens" />
-                                    <label for="interessesViagens">
-                                        Viagens
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" name="interesses" 
-                                           id="interessesInvestimentos" value="Investimentos" />
-                                    <label for="interessesInvestimentos">
-                                        Investimentos
-                                    </label>
-                                </div>
-                                <div class="erro-input">Selecione pelo menos uma opção</div>
                             </div>
                         </fieldset>
+
+                        
                         <div>
                             <button type="submit">Enviar</button>
                             <button type="reset">Resetar dados</button>
