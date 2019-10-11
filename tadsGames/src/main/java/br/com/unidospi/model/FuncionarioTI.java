@@ -13,17 +13,15 @@ import java.sql.Date;
  */
 public class FuncionarioTI extends Funcionario {
 
-    public FuncionarioTI(double salario, String departamento, String cargo, 
-            String login, String senha, int id, String nome,String sobrenome, String cpf, 
-            Date dataNasc, boolean ativo) {
-        super(salario, departamento, cargo, login, senha, id, nome, sobrenome,cpf, dataNasc, ativo);
+    public FuncionarioTI(double salario, String departamento, String cargo, String login, String senha, int id, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(salario, departamento, cargo, login, senha, id, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 
-    public FuncionarioTI(double salario, String departamento, String cargo, 
-            String login, String senha, String nome,String sobrenome, String cpf, Date dataNasc, 
-            boolean ativo) {
-        super(salario, departamento, cargo, login, senha, nome, sobrenome,cpf, dataNasc, ativo);
+    public FuncionarioTI(double salario, String departamento, String cargo, String login, String senha, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(salario, departamento, cargo, login, senha, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
+
+    
     
     public void mostrarFaturamento() {}
     public void criarCadastroFuncionario() {}
