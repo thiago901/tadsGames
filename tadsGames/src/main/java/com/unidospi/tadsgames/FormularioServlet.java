@@ -7,6 +7,7 @@ package com.unidospi.tadsgames;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gabri
  */
-@WebServlet(name = "FormularioServlet", urlPatterns = {"/FormularioServlet"})//COMMIT COMENTÁRIO
+@WebServlet(name = "FormularioServlet", urlPatterns = {"/formulario/funcionario"})//COMMIT COMENTÁRIO
 public class FormularioServlet extends HttpServlet {
 
 
@@ -29,6 +30,18 @@ public class FormularioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+            
+        String nome = request.getParameter("nome");
+        String cpfStr = request.getParameter("cpf");
+        String dtNascStr = request.getParameter("dtNasc");
+        String salarioStr = request.getParameter("salario");
+        String cargoStr = request.getParameter("cargo");
+        String deptoStr = request.getParameter("depto");
+        String ativoStr = request.getParameter("ativo");
+        String tpFuncStr = request.getParameter("tpFuncionario");
+        
+        RequestDispatcher dispatcher = 
+                request.getRequestDispatcher("Funcionario/resultado.jsp");
+        dispatcher.forward(request, response);
     }
 }
