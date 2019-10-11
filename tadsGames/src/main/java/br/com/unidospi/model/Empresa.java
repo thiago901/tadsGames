@@ -18,44 +18,34 @@ public class Empresa {
     String nome;
     String cnpj;
     Date dataCriacao;
-    String pais;
-    String estado;
+    int estado;
     boolean status;
     boolean matriz;
 
-    public Empresa(int cod, String nome, String cnpj, Date dataCriacao, String pais, String estado, boolean status, boolean matriz) {
+    public Empresa(int cod, String nome, String cnpj, Date dataCriacao, int estado, boolean status, boolean matriz) {
         this.cod = cod;
         this.nome = nome;
         this.cnpj = cnpj;
         this.dataCriacao = dataCriacao;
-        this.pais = pais;
         this.estado = estado;
         this.status = status;
         this.matriz = matriz;
     }
-        public Empresa( String nome, String cnpj, Date dataCriacao, String pais, String estado, boolean status, boolean matriz) {
+
+    public Empresa(String nome, String cnpj, Date dataCriacao, int estado, boolean status, boolean matriz) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.dataCriacao = dataCriacao;
-        this.pais = pais;
         this.estado = estado;
         this.status = status;
         this.matriz = matriz;
     }
 
-    public boolean getMatriz() {
-        return matriz;
-    }
-
-    public void setMatriz(boolean matriz) {
-        this.matriz = matriz;
-    }
-
-  
-
+    
     public int getCod() {
         return cod;
     }
+
 
     public String getNome() {
         return nome;
@@ -81,19 +71,11 @@ public class Empresa {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 
@@ -104,6 +86,16 @@ public class Empresa {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public boolean getMatriz() {
+        return matriz;
+    }
+
+    public void setMatriz(boolean matriz) {
+        this.matriz = matriz;
+    }
+
+  
 
     public void listarProdutos() {
 

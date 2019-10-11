@@ -14,8 +14,7 @@ import br.com.unidospi.model.Empresa;
 public class teste {
     
     public static void main(String[] args) {
-        Empresa e = new Empresa("", "", null, "br", "sp", true,true);
-        e.salvar();
+        
     }
     
 }

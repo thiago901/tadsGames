@@ -22,15 +22,15 @@
 			<h2>Cadastre a Empresa</h2>
 			<form action="\TadsGames\cadastroEmpresa" method="post">
 				<div>
-					<input type="text" name="" required>
+					<input type="text" name="nome" required>
 					<label>Nome Empresa</label>
 				</div>
 				<div>
-					<input type="text" name="" required>
+					<input type="text" name="cnpj" required>
 					<label>CNPJ</label>
 				</div>
 				<div>
-					<input type="date" name="data" required>
+					<input type="date" name="dataCriacao" required>
 					<label>Data de Criação</label>
 				</div>
 				<div>
@@ -44,17 +44,21 @@
 					
 				</div>
 				<div>
-					<select name="estado" required="">
-						<option disabled selected="">Status</option>
-						<option>Ativo</option>
-					</select>
+                                    <p> Status da Empresa</p>
+                                    <input type="radio" name="status" value="true" checked="">
+                                    <label>Ativa</label>
+                                    <input type="radio" name="status" value="false">
+                                    <label>Inativa</label>
+			
 				</div>
-					<div>
-					<select name="matiz" required="">
-						<option disabled selected="">Matriz</option>
-						<option>Sim</option>
-						<option>Não</option>
-					</select>
+                                <div>
+                                    <p> Empresa Matiz</p>
+                                    <input type="radio" name="matriz" value="true" id="matrizSim">
+                                    <label for="matrizSim">Sim</label>
+                                    <input type="radio" name="matriz" value="false" id="matrizNao" checked="">
+                                    <label for="matrizNao">Não</label>
+                                </div>
+                            <button>Cadastrar</button>
 			</form>
 		</div>
 	</body>
