@@ -29,17 +29,18 @@ public class ClienteDAO {
     public static void salvar(Cliente cliente)  {
 
         try {
-            String sql= "insert into Cliente (nome, sobrenome, sexo, cpf, dataNasc, ativo) values(?,?,?,?,?,?,?)";
+            String sql= "insert into Cliente (idEmpresa,nome, sobrenome, sexo, cpf, dataNasc, ativo) values(?,?,?,?,?,?,?)";
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
             Date dt =Date.valueOf(LocalDate.now());
-            ps.setString(1, "xpto");
-            ps.setString(2, "123456789");
-            ps.setDate(3, dt);
-            ps.setString(4, "BR");
-            ps.setInt(5, 1);
-            ps.setBoolean(6, true);
+            ps.setString(1, "1");
+            ps.setString(2, "Nome");
+            ps.setString(3, "Sobrenome");
+            ps.setString(4, "Sexo");
+            ps.setString(5, "123456");
+            ps.setDate(6, dt);
+            ps.setBoolean(7, true);
                         
             System.out.println(ps.execute());
             
