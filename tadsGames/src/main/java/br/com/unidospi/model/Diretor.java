@@ -13,13 +13,15 @@ import java.sql.Date;
  */
 public class Diretor extends Funcionario {
 
-    public Diretor(double salario, String departamento, String cargo, String login, String senha, int id, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(salario, departamento, cargo, login, senha, id, nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public Diretor(double salario, String departamento, String cargo, String login, String senha, int id, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(salario, departamento, cargo, login, senha, id, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 
-    public Diretor(double salario, String departamento, String cargo, String login, String senha, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(salario, departamento, cargo, login, senha, nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public Diretor(double salario, String departamento, String cargo, String login, String senha, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(salario, departamento, cargo, login, senha, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
+
+   
 
     public void mostrarFaturamentoTotal() {
     }
