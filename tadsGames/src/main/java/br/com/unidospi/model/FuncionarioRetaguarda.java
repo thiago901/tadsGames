@@ -17,7 +17,7 @@ public class FuncionarioRetaguarda extends Funcionario {
         super(salario, departamento, cargo, login, senha, id, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 
-    public FuncionarioRetaguarda(double salario, String departamento, String cargo, String login, String senha, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+    public FuncionarioRetaguarda(int idEmpresa, double salario, String departamento, String cargo, String login, String senha, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
         super(salario, departamento, cargo, login, senha, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 

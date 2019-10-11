@@ -28,12 +28,8 @@ public abstract class Funcionario extends Usuario {
         this.salario = salario;
         this.departamento = departamento;
         this.cargo = cargo;
-    }
-
-    
-
-    
-
+    }     
+       
     public double getSalario() {
         return salario;
     }
