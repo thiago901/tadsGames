@@ -7,7 +7,10 @@ use dbGames;
 CREATE TABLE EstadoRegiao (
     idEstado INTEGER AUTO_INCREMENT PRIMARY KEY,
     uf VARCHAR(2) UNIQUE,
-    regiao VARCHAR(15)
+    estado VARCHAR(50),
+    capital VARCHAR(50),
+    regiao VARCHAR(15),
+    pais VARCHAR(2)
 );
 
 CREATE TABLE Empresa (
@@ -15,8 +18,7 @@ CREATE TABLE Empresa (
     nome VARCHAR(50),
     cnpj VARCHAR(14) UNIQUE,
     dataCriacao DATE,
-    pais VARCHAR(20),
-    idEstado INTEGER NOT NULL,
+	idEstado INTEGER NOT NULL,
     matriz BOOLEAN,
     ativo BOOLEAN,
     FOREIGN KEY (idEstado) REFERENCES EstadoRegiao (idEstado)
