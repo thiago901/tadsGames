@@ -46,12 +46,8 @@ public class EmpresaController extends HttpServlet {
         String cnpj=request.getParameter("cnpj");
         String strDataCriacao =request.getParameter("dataCriacao");
         int idEstado =Integer.parseInt(request.getParameter("estado"));
-        String StrStatus = request.getParameter("status");
-        String StrMatriz =request.getParameter("matriz");
-        
-        
-        boolean status = Boolean.getBoolean(StrStatus);
-        boolean matriz = Boolean.getBoolean(StrMatriz);
+        boolean status = Boolean.valueOf(request.getParameter("status"));
+        boolean matriz = Boolean.valueOf(request.getParameter("matriz"));
         
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

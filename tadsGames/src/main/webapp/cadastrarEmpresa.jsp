@@ -18,20 +18,23 @@
 		<link rel="stylesheet" type="text/css" href="css/cadastroEmpresa.css">
 	</head>
 	<body>
-		<div class="box">
+		<div class="container">
 			<h2>Cadastre a Empresa</h2>
 			<form action="\TadsGames\cadastroEmpresa" method="post">
 				<div>
+                                        <label>Nome Empresa</label>
 					<input type="text" name="nome" required>
-					<label>Nome Empresa</label>
+					
 				</div>
 				<div>
+                                        <label>CNPJ</label>
 					<input type="text" name="cnpj" required>
-					<label>CNPJ</label>
+					
 				</div>
 				<div>
+                                        <label>Data de Criação</label>
 					<input type="date" name="dataCriacao" required>
-					<label>Data de Criação</label>
+					
 				</div>
 				<div>
                                     
@@ -58,7 +61,7 @@
                                     <input type="radio" name="matriz" value="false" id="matrizNao" checked="">
                                     <label for="matrizNao">Não</label>
                                 </div>
-                            <button>Cadastrar</button>
+                            <button type="submit">Cadastrar</button>
 			</form>
 		</div>
 	</body>
