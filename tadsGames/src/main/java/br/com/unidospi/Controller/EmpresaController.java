@@ -5,16 +5,13 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.DAO.EmpresaDao;
 import br.com.unidospi.model.Empresa;
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,12 +26,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "EmpresaController", urlPatterns = {"/cadastroEmpresa"})
 public class EmpresaController extends HttpServlet {
 
+    public static ArrayList listarEmpresas() {
+        return EmpresaDao.listarEmpresas();
+    }
+
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("/listaEstadoRegiao");
         rd.forward(request, response);
+        
        
     }
    
@@ -46,6 +48,7 @@ public class EmpresaController extends HttpServlet {
         String cnpj=request.getParameter("cnpj");
         String strDataCriacao =request.getParameter("dataCriacao");
         int idEstado =Integer.parseInt(request.getParameter("estado"));
+        int idCidade =Integer.parseInt(request.getParameter("cidade"));
         boolean status = Boolean.valueOf(request.getParameter("status"));
         boolean matriz = Boolean.valueOf(request.getParameter("matriz"));
         
@@ -62,7 +65,7 @@ public class EmpresaController extends HttpServlet {
         
     
         
-        Empresa empr = new Empresa(nome, cnpj, dataCriacao, idEstado, status, matriz);
+        Empresa empr = new Empresa(nome, cnpj, dataCriacao, idEstado,idCidade, status, matriz);
         empr.salvar();
         
        

@@ -5,7 +5,9 @@
  */
 package br.com.unidospi.model;
 
+import br.com.unidospi.Controller.EmpresaController;
 import br.com.unidospi.DAO.EmpresaDao;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,33 +21,36 @@ public class Empresa {
     String cnpj;
     Date dataCriacao;
     int estado;
+    int cidade;
     boolean status;
     boolean matriz;
 
-    public Empresa(int cod, String nome, String cnpj, Date dataCriacao, int estado, boolean status, boolean matriz) {
+    public Empresa(int cod, String nome, String cnpj, Date dataCriacao, int estado, int cidade, boolean status, boolean matriz) {
         this.cod = cod;
         this.nome = nome;
         this.cnpj = cnpj;
         this.dataCriacao = dataCriacao;
         this.estado = estado;
+        this.cidade = cidade;
         this.status = status;
         this.matriz = matriz;
     }
 
-    public Empresa(String nome, String cnpj, Date dataCriacao, int estado, boolean status, boolean matriz) {
+    public Empresa(String nome, String cnpj, Date dataCriacao, int estado, int cidade, boolean status, boolean matriz) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.dataCriacao = dataCriacao;
         this.estado = estado;
+        this.cidade = cidade;
         this.status = status;
         this.matriz = matriz;
     }
 
     
+    
     public int getCod() {
         return cod;
     }
-
 
     public String getNome() {
         return nome;
@@ -79,6 +84,14 @@ public class Empresa {
         this.estado = estado;
     }
 
+    public int getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(int cidade) {
+        this.cidade = cidade;
+    }
+
     public boolean getStatus() {
         return status;
     }
@@ -94,8 +107,6 @@ public class Empresa {
     public void setMatriz(boolean matriz) {
         this.matriz = matriz;
     }
-
-  
 
     public void listarProdutos() {
 
@@ -113,10 +124,10 @@ public class Empresa {
 
     }
     public void salvar(){
-        
         EmpresaDao.salvar(this);
-        
-        
     }
 
+    public ArrayList listarEmpresas(){
+        return EmpresaController.listarEmpresas();
+    }
 }

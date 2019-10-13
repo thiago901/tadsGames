@@ -20,7 +20,7 @@ input[type=text], select, textarea {
   resize: vertical;
 }
 
-input[type=submit],button[type=submit] {
+input[type=submit],button {
   background-color: #4CAF50;
   color: white;
   padding: 12px 20px;
@@ -43,4 +43,14 @@ input[type=submit],button[type=submit]:hover {
   border: 2px solid gray;
   border-radius: 5px;
   padding: 20px;
+}
+
+table{
+  border: 1px solid black;
+}
+table td,th{
+  border: 1px solid black;
+}
+.invisivel{
+  display: none;
 }

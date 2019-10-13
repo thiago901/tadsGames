@@ -6,12 +6,15 @@
 package br.com.unidospi.DAO;
 
 import br.com.unidospi.model.Empresa;
+import br.com.unidospi.model.ListaEmpresa;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -28,7 +31,7 @@ public class EmpresaDao {
     public static void salvar(Empresa empr)  {
 
         try {
-            String sql= "insert into Empresa (nome, cnpj, dataCriacao, idEstado, matriz, ativo) values(?,?,?,?,?,?)";
+            String sql= "insert into Empresa (nome, cnpj, dataCriacao, idEstado,idCidade, matriz, ativo) values(?,?,?,?,?,?,?)";
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -37,8 +40,9 @@ public class EmpresaDao {
             ps.setString(2, empr.getCnpj());
             ps.setDate(3, dataSql);
             ps.setInt(4, empr.getEstado());
-            ps.setBoolean(5, empr.getMatriz());
-            ps.setBoolean(6, empr.getStatus());
+            ps.setInt(5, empr.getCidade());
+            ps.setBoolean(6, empr.getMatriz());
+            ps.setBoolean(7, empr.getStatus());
             
             System.out.println(ps.execute());
             
@@ -54,5 +58,60 @@ public class EmpresaDao {
 
         }
 
+    }
+
+    public static ArrayList listarEmpresas() {
+        try{
+            String sql = "select a.idEmpresa,\n" +
+                        "        a.nome,\n" +
+                        "        a.cnpj,\n" +
+                        "        a.dataCriacao,\n" +
+                        "        a.idEstado,\n" +
+                        "        b.uf,\n" +
+                        "        b.regiao,\n" +
+                        "        a.idCidade,\n" +
+                        "        c.nomeCidade,\n" +
+                        "        a.ativo,\n" +
+                        "        a.matriz\n" +
+                        " from empresa a\n" +
+                        "left join estadoregiao b on \n" +
+                        "a.idEstado = b.idEstado\n" +
+                        "left join cidade c on\n" +
+                        "c.idCidade = a.idCidade;";
+            ArrayList <ListaEmpresa> le = new ArrayList<>();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int idEmpresa= rs.getInt("idEmpresa");
+                String nome= rs.getString("nome");
+                String cnpj= rs.getString("cnpj");
+                Date dataCriacao= rs.getDate("dataCriacao");
+                int idEstado= rs.getInt("idEstado");
+                String uf= rs.getString("uf");
+                String regiao= rs.getString("regiao");
+                int idCidade= rs.getInt("idCidade");
+                String nomeCidade= rs.getString("nomeCidade");
+                Boolean ativo= rs.getBoolean("ativo");
+                Boolean matriz= rs.getBoolean("matriz");
+                ListaEmpresa listaEmpresa = new ListaEmpresa
+                                        (idEmpresa, nome, cnpj, dataCriacao, idEstado, uf, regiao, idCidade, nomeCidade, ativo,matriz);
+                
+                le.add(listaEmpresa);
+                
+            }
+            return le;
+        }catch(SQLException | ClassNotFoundException e ){
+            e.getMessage();
+        }finally{
+            try{
+                conexao.close();
+            }catch(SQLException e){
+                e.getMessage();
+            }
+        }
+        return null;
     }
 }

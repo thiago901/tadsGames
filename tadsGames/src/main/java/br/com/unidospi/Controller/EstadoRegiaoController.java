@@ -6,6 +6,7 @@
 package br.com.unidospi.Controller;
 
 import br.com.unidospi.DAO.EstadoRegiaoDao;
+import br.com.unidospi.model.Cidade;
 import br.com.unidospi.model.EstadoRegiao;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,7 +32,11 @@ public class EstadoRegiaoController  extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         ArrayList<EstadoRegiao> ufs  = EstadoRegiaoController.listaEstadoRegiao();
+        ArrayList<Cidade> cid = CidadeController.listarCidade();
+        
         req.setAttribute("ufs", ufs);
+        req.setAttribute("cids", cid);
+        
         
         
         RequestDispatcher rd = req.getRequestDispatcher("/cadastrarEmpresa.jsp");
