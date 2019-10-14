@@ -12,7 +12,7 @@ package br.com.unidospi.model;
 public class Produto {
     private final int codProdServ;
     private String nome;
-    private double valorCompra;
+    private double valorCompra; //DESNECESSARIO
     private String descricao;
     private String regiao;
     private boolean status; //define status, se é ativo ou não
