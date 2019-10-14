@@ -63,10 +63,10 @@
                 text-align: center;
 
             }
-            
+
             form{
-                
-                
+
+
             }
         </style>
     </head>
@@ -100,6 +100,13 @@
                         <label for="optSexoM"> Masculino </label>
                     </fieldset>
 
+                    <label for="tpEmpresa" >Empresa</label>
+                    <select id="empresa" name="tpEmpresa" >
+                        <c:forEach items="${empresasAttr}" var="empresa">
+                            <option><c:out value="${empresa.nome}"/></option>
+                        </c:forEach>
+                    </select>
+
                     <fieldset>
                         <legend>Status</legend>
 
@@ -108,7 +115,32 @@
 
                         <input type="radio" name="status" id="optSexoM" value="1" />
                         <label for="optInativo"> Inativo</label>
-
+                    </fieldset>
+                    <fieldset>
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Sobrenome</th>
+                                    <th>CPF</th>
+                                    <th>Data Nasc.</th>
+                                    <th>Sexo</th>
+                                    <th>Empresa</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="${clientesAttr}" var="funcionario">
+                                    <tr>
+                                        <td>${cliente.nome}</td>
+                                        <td>${cliente.sobrenome}</td>
+                                        <td>${cliente.cpf}</td>
+                                        <td>${cliente.dt}</td>
+                                        <td>${cliente.sexo}</td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
                     </fieldset>
                     <div class="teste">
                         <button type="submit">Enviar</button>
