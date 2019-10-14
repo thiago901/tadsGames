@@ -5,7 +5,10 @@
  */
 package br.com.unidospi.model;
 
-import java.sql.Date;
+import java.util.Date;
+
+
+
 
 /**
  *
@@ -107,7 +110,7 @@ public abstract class PessoaCadastravel {
 
     public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
-    }
+    }   
 
     public boolean isAtivo() {
         return ativo;

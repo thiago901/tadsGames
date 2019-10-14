@@ -5,7 +5,8 @@
  */
 package br.com.unidospi.model;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  *
@@ -13,11 +14,15 @@ import java.sql.Date;
  */
 public class FuncionarioVenda extends Funcionario {
 
-    public FuncionarioVenda(double salario, String departamento, String cargo, String login, String senha, int id, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+    public FuncionarioVenda(double salario, String departamento, String cargo, 
+            String login, String senha, int id, int idEmpresa, String nome,
+            String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
         super(salario, departamento, cargo, login, senha, id, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 
-    public FuncionarioVenda(double salario, String departamento, String cargo, String login, String senha, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+    public FuncionarioVenda(double salario, String departamento, String cargo, 
+            String login, String senha, int idEmpresa, String nome, String sobrenome, 
+            String sexo, String cpf, Date dataNasc, boolean ativo) {
         super(salario, departamento, cargo, login, senha, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 

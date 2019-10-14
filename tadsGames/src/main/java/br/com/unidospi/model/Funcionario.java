@@ -5,13 +5,14 @@
  */
 package br.com.unidospi.model;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  *
  * @author gabri
  */
-public abstract class Funcionario extends Usuario {
+public class Funcionario extends Usuario {
     private double salario;
     private String departamento;
     private String cargo;
@@ -23,18 +24,14 @@ public abstract class Funcionario extends Usuario {
         this.cargo = cargo;
     }
 
-    public Funcionario(double salario, String departamento, String cargo, String login, String senha, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+    public Funcionario(double salario, String departamento, String cargo, 
+            String login, String senha, int idEmpresa, String nome, 
+            String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
         super(login, senha, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
         this.salario = salario;
         this.departamento = departamento;
         this.cargo = cargo;
-    }
-
-    
-
-    
-
-    
+    }          
 
     public double getSalario() {
         return salario;
