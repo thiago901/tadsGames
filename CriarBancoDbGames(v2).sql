@@ -1,7 +1,7 @@
 /* MER_-_Loja_Games(v2): */
 create database dbGames;
 use dbGames;
-/*drop database dbgames;*/
+/*drop database dbgames;*//
 /* MER_-_Loja_Games(v3): */
 
 CREATE TABLE EstadoRegiao (
