@@ -10,34 +10,30 @@ package br.com.unidospi.model;
  * @author lucas
  */
 public class Produto {
-    private final int codProdServ;
+    private final int idProduto;
     private String nome;
-    private double valorCompra; //DESNECESSARIO
+    //private double valorCompra; //DESNECESSARIO
     private String descricao;
     private String regiao;
     private boolean status; //define status, se é ativo ou não
 
-    public Produto(int codProdServ, String nome, double valorCompra, String descricao, String regiao, boolean status) {
-        this.codProdServ = codProdServ;
+    public Produto(int idProduto, String nome, String descricao, String regiao, boolean status) {
+        this.idProduto = idProduto;
         this.nome = nome;
-        this.valorCompra = valorCompra;
         this.descricao = descricao;
         this.regiao = regiao;
         this.status = status;
     }
 
     
-    public int getCodProdServ() {
-        return codProdServ;
+    public int getIdProd() {
+        return idProduto;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public double getValorCompra() {
-        return valorCompra;
-    }
 
     public String getDescricao() {
         return descricao;
@@ -51,9 +47,6 @@ public class Produto {
         this.nome = nome;
     }
 
-    public void setValorCompra(double valorCompra) {
-        this.valorCompra = valorCompra;
-    }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
