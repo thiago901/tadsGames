@@ -11,6 +11,14 @@ CREATE TABLE EstadoRegiao (
     capital VARCHAR(50),
     regiao VARCHAR(15),
     pais VARCHAR(2)
+    
+    
+);
+CREATE TABLE cidade (
+	idCidade INTEGER AUTO_INCREMENT PRIMARY KEY,
+    nomeCidade VARCHAR(50),
+    idEstado Integer,
+    FOREIGN KEY (idEstado) REFERENCES EstadoRegiao (idEstado)
 );
 
 CREATE TABLE Empresa (
@@ -19,6 +27,7 @@ CREATE TABLE Empresa (
     cnpj VARCHAR(14) UNIQUE,
     dataCriacao DATE,
 	idEstado INTEGER NOT NULL,
+    idCidade INTEGER NOT NULL,
     matriz BOOLEAN,
     ativo BOOLEAN,
     FOREIGN KEY (idEstado) REFERENCES EstadoRegiao (idEstado)
