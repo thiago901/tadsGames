@@ -6,13 +6,14 @@
 package br.com.unidospi.DAO;
 
 import br.com.unidospi.model.Empresa;
-import br.com.unidospi.model.ListaEmpresa;
+import br.com.unidospi.model.EmpresaLista;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -28,8 +29,8 @@ public class EmpresaDao {
     static final String SENHA = "adminadmin";
     static Connection conexao;
 
-    public static void salvar(Empresa empr)  {
-
+    public static boolean salvar(Empresa empr)  {
+        
         try {
             String sql= "insert into Empresa (nome, cnpj, dataCriacao, idEstado,idCidade, matriz, ativo) values(?,?,?,?,?,?,?)";
             Class.forName(DRIVER);
@@ -44,8 +45,8 @@ public class EmpresaDao {
             ps.setBoolean(6, empr.getMatriz());
             ps.setBoolean(7, empr.getStatus());
             
-            System.out.println(ps.execute());
-            
+            ps.execute();
+            return true;
             
         } catch (SQLException | ClassNotFoundException e) {
             e.getMessage();
@@ -55,9 +56,52 @@ public class EmpresaDao {
             } catch (SQLException e) {
                 e.getMessage();
             }
-
+            
         }
+        return false;
+    }
+    public static void alterar(Empresa empr){
+        try{
+            Class.forName(DRIVER);
+            String sql = "UPDATE empresa "
+                        + "SET nome=?, "
+                        + "cnpj=?, "
+                        + "dataCriacao=?, "
+                        + "idEstado=?, "
+                        + "idCidade=?, "
+                        + "matriz=?, "
+                        + "ativo=? "
+                        + "where idEmpresa =?";
+            
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            
+            
+            java.sql.Date dataSql = new java.sql.Date(empr.getDataCriacao().getTime());
+            
+            ps.setString(1, empr.getNome());
+            ps.setString(2, empr.getCnpj());
+            ps.setDate(3, dataSql);
+            ps.setInt(4, empr.getEstado());
+            ps.setInt(5, empr.getCidade());
+            ps.setBoolean(6, empr.getStatus());
+            ps.setBoolean(7, empr.getMatriz());
+            ps.setInt(8, empr.getCod());
+            
+            ps.execute();
+            
+            
+            
+        }catch(ClassNotFoundException | SQLException e){
+            
+        }finally{
+            try{
+                conexao.close();
+            
+            }catch(SQLException e){
 
+            }
+        }
     }
 
     public static ArrayList listarEmpresas() {
@@ -78,7 +122,7 @@ public class EmpresaDao {
                         "a.idEstado = b.idEstado\n" +
                         "left join cidade c on\n" +
                         "c.idCidade = a.idCidade;";
-            ArrayList <ListaEmpresa> le = new ArrayList<>();
+            ArrayList <EmpresaLista> le = new ArrayList<>();
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -96,7 +140,7 @@ public class EmpresaDao {
                 String nomeCidade= rs.getString("nomeCidade");
                 Boolean ativo= rs.getBoolean("ativo");
                 Boolean matriz= rs.getBoolean("matriz");
-                ListaEmpresa listaEmpresa = new ListaEmpresa
+                EmpresaLista listaEmpresa = new EmpresaLista
                                         (idEmpresa, nome, cnpj, dataCriacao, idEstado, uf, regiao, idCidade, nomeCidade, ativo,matriz);
                 
                 le.add(listaEmpresa);
@@ -114,4 +158,64 @@ public class EmpresaDao {
         }
         return null;
     }
+    
+    public static EmpresaLista listarEmpresas(int id) {
+        try{
+            String sql = "select a.idEmpresa,\n" +
+                        "        a.nome,\n" +
+                        "        a.cnpj,\n" +
+                        "        a.dataCriacao,\n" +
+                        "        a.idEstado,\n" +
+                        "        b.uf,\n" +
+                        "        b.regiao,\n" +
+                        "        a.idCidade,\n" +
+                        "        c.nomeCidade,\n" +
+                        "        a.ativo,\n" +
+                        "        a.matriz\n" +
+                        " from empresa a\n" +
+                        "left join estadoregiao b on \n" +
+                        "a.idEstado = b.idEstado\n" +
+                        "left join cidade c on\n" +
+                        "c.idCidade = a.idCidade \n"
+                      + " where a.idEmpresa = ?;";
+            
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int idEmpresa= rs.getInt("idEmpresa");
+                String nome= rs.getString("nome");
+                String cnpj= rs.getString("cnpj");
+                Date dataCriacao= rs.getDate("dataCriacao");
+                int idEstado= rs.getInt("idEstado");
+                String uf= rs.getString("uf");
+                String regiao= rs.getString("regiao");
+                int idCidade= rs.getInt("idCidade");
+                String nomeCidade= rs.getString("nomeCidade");
+                Boolean ativo= rs.getBoolean("ativo");
+                Boolean matriz= rs.getBoolean("matriz");
+                EmpresaLista emp = new EmpresaLista
+                                        (idEmpresa, nome, cnpj, dataCriacao, idEstado, uf, regiao, idCidade, nomeCidade, ativo,matriz);
+                
+                return emp;
+                
+                
+            }
+            
+        }catch(SQLException | ClassNotFoundException e ){
+            e.getMessage();
+        }finally{
+            try{
+                conexao.close();
+            }catch(SQLException e){
+                e.getMessage();
+            }
+        }
+        return null;
+    }
+
+    
 }

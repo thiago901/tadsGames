@@ -29,6 +29,7 @@
                                         <th>Região</th>
                                         <th>Status</th>
                                         <th>Matiz</th>
+                                        <th>Editar</th>
                                 </tr>
                         </thead>
                         <tbody>
@@ -45,6 +46,7 @@
                                     <td class="regiao"><c:out value="${e.getRegiao()}"/></td>
                                     <td class="status"><c:out value="${e.getAtivo()}"/></td>
                                     <td class="matiz"><c:out value="${e.getMatriz()}"/></td>
+                                    <td class="idEmpresa" value="${e.getIdEmpresa()}"><a href="alterarEmpresa?id=${e.getIdEmpresa()}">Alterar</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

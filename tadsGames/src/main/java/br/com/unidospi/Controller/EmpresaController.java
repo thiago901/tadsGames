@@ -7,6 +7,7 @@ package br.com.unidospi.Controller;
 
 import br.com.unidospi.DAO.EmpresaDao;
 import br.com.unidospi.model.Empresa;
+import br.com.unidospi.model.EmpresaLista;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,6 +31,16 @@ public class EmpresaController extends HttpServlet {
         return EmpresaDao.listarEmpresas();
     }
 
+    public static EmpresaLista listarEmpresas(int id) {
+        return EmpresaDao.listarEmpresas(id);
+    }
+
+    public static void alterar(Empresa e) {
+        EmpresaDao.alterar(e);
+    }
+
+    
+
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,7 +54,7 @@ public class EmpresaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        boolean retorno = false;
         String nome=request.getParameter("nome");
         String cnpj=request.getParameter("cnpj");
         String strDataCriacao =request.getParameter("dataCriacao");
@@ -66,7 +77,10 @@ public class EmpresaController extends HttpServlet {
     
         
         Empresa empr = new Empresa(nome, cnpj, dataCriacao, idEstado,idCidade, status, matriz);
-        empr.salvar();
+        retorno =empr.salvar();
+        if(retorno){
+            response.sendRedirect("sucesso.html");
+        }
         
        
     }

@@ -5,13 +5,14 @@
  */
 package br.com.unidospi.model;
 
+import br.com.unidospi.Controller.EmpresaController;
 import java.sql.Date;
 
 /**
  *
  * @author Thiago
  */
-public class ListaEmpresa {
+public class EmpresaLista {
     private final int idEmpresa;
     private final String nome;
     private final String cnpj;
@@ -24,7 +25,7 @@ public class ListaEmpresa {
     private final Boolean ativo;
     private final Boolean matriz;
 
-    public ListaEmpresa(int idEmpresa, String nome, String cnpj, Date dataCriacao, int idEstado, String uf, String regiao, int idCidade, String nomeCidade, Boolean ativo,Boolean matiz) {
+    public EmpresaLista(int idEmpresa, String nome, String cnpj, Date dataCriacao, int idEstado, String uf, String regiao, int idCidade, String nomeCidade, Boolean ativo,Boolean matiz) {
         this.idEmpresa = idEmpresa;
         this.nome = nome;
         this.cnpj = cnpj;

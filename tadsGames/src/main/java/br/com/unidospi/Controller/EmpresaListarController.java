@@ -5,9 +5,8 @@
  */
 package br.com.unidospi.Controller;
 
-import br.com.unidospi.model.ListaEmpresa;
+import br.com.unidospi.model.EmpresaLista;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,14 +20,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author Thiago
  */
 @WebServlet(name = "listarEmpresa", urlPatterns = {"/listarEmpresa"})
-public class listarEmpresa extends HttpServlet {
+public class EmpresaListarController extends HttpServlet {
 
    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ArrayList<ListaEmpresa> le = EmpresaController.listarEmpresas();
+        ArrayList<EmpresaLista> le = EmpresaController.listarEmpresas();
         RequestDispatcher rd = request.getRequestDispatcher("/listarEmpresa.jsp");
         request.setAttribute("lista", le);
         rd.forward(request, response);

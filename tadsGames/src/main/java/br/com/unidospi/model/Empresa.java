@@ -123,11 +123,16 @@ public class Empresa {
     public void desbloquearCadastro() {
 
     }
-    public void salvar(){
-        EmpresaDao.salvar(this);
+    public boolean salvar(){
+        return EmpresaDao.salvar(this);
     }
 
     public ArrayList listarEmpresas(){
         return EmpresaController.listarEmpresas();
     }
+
+    public void alterar() {
+        EmpresaController.alterar(this);
+    }
+    
 }

@@ -9,7 +9,7 @@ import br.com.unidospi.Controller.CidadeController;
 import br.com.unidospi.Controller.EmpresaController;
 import br.com.unidospi.model.Cidade;
 import br.com.unidospi.model.Empresa;
-import br.com.unidospi.model.ListaEmpresa;
+import br.com.unidospi.model.EmpresaLista;
 import java.util.List;
 
 /**
@@ -19,9 +19,9 @@ import java.util.List;
 public class teste {
     
     public static void main(String[] args) {
-        List <ListaEmpresa> le =EmpresaController.listarEmpresas();
+        List <EmpresaLista> le =EmpresaController.listarEmpresas();
         
-        for(ListaEmpresa e : le){
+        for(EmpresaLista e : le){
             System.out.println(e.toString());
             
         }

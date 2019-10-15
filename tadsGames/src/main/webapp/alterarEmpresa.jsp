@@ -17,26 +17,27 @@
 	<body>
 		<div class="container">
 			<h2>Alterar Dados da Empresa</h2>
-			<form action="\TadsGames\cadastroEmpresa" method="post">
+			<form action="\TadsGames\alterarEmpresa" method="post">
 				<div>
+                                    <input type="hidden" name="idEmpresa" value="${e.getIdEmpresa()}">
                                         <label>Nome Empresa</label>
-					<input type="text" name="nome" required>
+                                        <input type="text" name="nome" required value="${e.getNome()}">
 					
 				</div>
 				<div>
                                         <label>CNPJ</label>
-					<input type="text" name="cnpj" required>
+					<input type="text" name="cnpj" required value="${e.getCnpj()}">
 					
 				</div>
 				<div>
                                         <label>Data de Criação</label>
-					<input type="date" name="dataCriacao" required>
+					<input type="date" name="dataCriacao" required value="${e.getDataCriacao()}">
 					
 				</div>
                                <div>
                                     
 					<select name="estado" required="">
-						<option disabled selected="">Escolha a UF</option>
+                                            <option selected="" value="${e.getIdEstado()}"><c:out value="${e.getUf()}"/></option>
                                                 <c:forEach var="uf" items="${ufs}">
                                                     <option value="${uf.getId()}"><c:out value="${uf.getUf()}"/></option>
                                                 </c:forEach>
@@ -45,7 +46,7 @@
 				</div>
                                 <div>
                                     <select name="cidade" required="">
-                                            <option disabled selected="">Escolha a Cidade</option>
+                                        <option selected="" value="${e.getIdCidade()}"><c:out value="${e.getNomeCidade()}"/></option>
                                             <c:forEach var="cid" items="${cids}">
                                                 <option value="${cid.getIdCidade()}"><c:out value="${cid.getNomeCidade()}"/></option>
                                             </c:forEach>
@@ -58,7 +59,7 @@
                                     <label>Ativa</label>
                                     <input type="radio" name="status" value="false">
                                     <label>Inativa</label>
-			
+                                   
 				</div>
                                 <div>
                                     <p> Empresa Matiz</p>
