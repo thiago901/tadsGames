@@ -10,24 +10,44 @@ package br.com.unidospi.model;
  * @author lucas
  */
 public class Produto {
-    private final int idProduto;
+    private int idProduto;
     private String nome;
+    private String tipo;
     //private double valorCompra; //DESNECESSARIO
     private String descricao;
-    private String regiao;
-    private boolean status; //define status, se é ativo ou não
+    private boolean ativo; //define status, se é ativo ou não
 
-    public Produto(int idProduto, String nome, String descricao, String regiao, boolean status) {
+    public Produto(int idProduto, String nome, String descricao, String tipo, boolean ativo) {
         this.idProduto = idProduto;
         this.nome = nome;
+        this.tipo = tipo;
         this.descricao = descricao;
-        this.regiao = regiao;
-        this.status = status;
+        this.ativo = ativo;
+    }
+
+    public Produto(String nome, String descricao, String tipo, boolean ativo) {
+        this.nome = nome;
+        this.tipo = tipo;
+        this.descricao = descricao;
+        this.ativo = ativo;
+    }
+
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     
-    public int getIdProd() {
-        return idProduto;
+    
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getNome() {
@@ -39,10 +59,7 @@ public class Produto {
         return descricao;
     }
 
-    public String getRegiao() {
-        return regiao;
-    }
-
+ 
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -52,16 +69,13 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public void setRegiao(String regiao) {
-        this.regiao = regiao;
+ 
+    public boolean getAtivo() {
+        return ativo;
     }
 
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
     
     

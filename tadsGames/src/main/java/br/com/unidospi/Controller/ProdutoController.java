@@ -7,12 +7,58 @@ package br.com.unidospi.Controller;
 
 import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author marco.assilva8
+ * @author marco.assilva8 
+ * @author lucas.sfaria5
  */
-public class ProdutoController {
-    
+@WebServlet(name = "ProdutoController", urlPatterns = {"/formularioProduto"})
 
+public class ProdutoController extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        ArrayList<Produto> p = ProdutoDAO.listar();
+        RequestDispatcher rd = request.getRequestDispatcher("/listarProduto.jsp");
+        request.setAttribute("lista", p);
+        rd.forward(request, response);
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int retorno;
+        String nome = request.getParameter("nome");
+        String descricao = request.getParameter("descricao");
+        String tipo = request.getParameter("tipo");
+        boolean ativo = Boolean.valueOf(request.getParameter("ativo"));
+        
+
+
+        Produto p = new Produto (nome, descricao, tipo, ativo);
+        try {
+            retorno = ProdutoDAO.salvar(p);
+            if (retorno > 0) {
+            response.sendRedirect("sucesso.html");
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }
 }

@@ -31,7 +31,6 @@ public class EmpresaListarController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/listarEmpresa.jsp");
         request.setAttribute("lista", le);
         rd.forward(request, response);
-        
     }
 
    

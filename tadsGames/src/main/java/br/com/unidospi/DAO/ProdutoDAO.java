@@ -9,8 +9,10 @@ import br.com.unidospi.model.Produto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +30,7 @@ public class ProdutoDAO {
     
     public static int salvar(Produto produto) throws SQLException {
         int retorno = 0;
-        String sql = "INSERT INTO Produto (idProduto, nome, descricao, regiao, status)"
+        String sql = "INSERT INTO Produto (idProduto, nome, descricao, tipo, ativo)"
                                          + " VALUES (?, ?, ?, ?, ?);";
         
         try {
@@ -36,14 +38,13 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
-            ps.setInt(1, produto.getIdProd());
+            ps.setInt(1, produto.getIdProduto());
             ps.setString(2, produto.getNome());
             ps.setString(3, produto.getDescricao());
-            ps.setString(4, produto.getRegiao());
-            ps.setBoolean(5, produto.getStatus());
+            ps.setString(4, produto.getTipo());
+            ps.setBoolean(5, produto.getAtivo());
             
             int linhasAfetadas = ps.executeUpdate();
-            
             if (linhasAfetadas > 0)
                 retorno = linhasAfetadas;
                         
@@ -68,9 +69,34 @@ public class ProdutoDAO {
         return true;
     }
 
-    public static boolean incluir(Produto produto) {
+    public static ArrayList<Produto> listar() {
+        ArrayList<Produto> lista = new ArrayList<>();
+        String query = "SELECT * FROM Produto";
         
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                Produto p = new Produto(
+                    rs.getInt("idProduto"),
+                    rs.getString("nome"),
+                    rs.getString("descricao"),
+                    rs.getString("tipo"),
+                    rs.getBoolean("ativo")                                                                               
+                );
+                
+                lista.add(p);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        return true;
+        return lista;
     }
 }

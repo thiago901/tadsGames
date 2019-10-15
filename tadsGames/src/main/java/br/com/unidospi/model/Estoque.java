@@ -10,15 +10,33 @@ package br.com.unidospi.model;
  * @author lucas
  */
 public class Estoque {
+    private int idEstoque;
     private int qtdEstoque;
-    private double vlrVendaUnitario;
-    private Produto p;
+    private float vlrVendaUnitario;
+    private int idP;
 
-    public Estoque(int qtdEstoque, double vlrVendaUnitario, Produto p) {
+    public Estoque(int idEstoque, int qtdEstoque, float vlrVendaUnitario, int idP) {
+        this.idEstoque = idEstoque;
         this.qtdEstoque = qtdEstoque;
         this.vlrVendaUnitario = vlrVendaUnitario;
-        this.p = p;
+        this.idP = idP;
     }
+    
+    public Estoque(int qtdEstoque, float vlrVendaUnitario, int idP) {
+        this.qtdEstoque = qtdEstoque;
+        this.vlrVendaUnitario = vlrVendaUnitario;
+        this.idP = idP;
+    }
+
+    public int getIdEstoque() {
+        return idEstoque;
+    }
+
+    public void setIdEstoque(int idEstoque) {
+        this.idEstoque = idEstoque;
+    }
+
+    
 
     public int getQtdEstoque() {
         return qtdEstoque;
@@ -32,16 +50,18 @@ public class Estoque {
         return vlrVendaUnitario;
     }
 
-    public void setVlrVendaUnitario(double vlrVendaUnitario) {
+    public void setVlrVendaUnitario(float vlrVendaUnitario) {
         this.vlrVendaUnitario = vlrVendaUnitario;
     }
 
-    public Produto getP() {
-        return p;
+    public int getIdP() {
+        return idP;
     }
 
-    public void setP(Produto p) {
-        this.p = p;
+    public void setIdP(int idP) {
+        this.idP = idP;
     }
+
     
+
 }
