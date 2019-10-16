@@ -3,42 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.unidospi.Controller;
+package br.com.unidospi.Acoes;
 
 import br.com.unidospi.model.Empresa;
-import br.com.unidospi.model.EmpresaLista;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 /**
  *
- * @author Thiago
+ * @author thiago.srocha4
  */
-@WebServlet(name = "EmpresaAlterarController", urlPatterns = {"/alterarEmpresa"})
-public class EmpresaAlterarController extends HttpServlet {
+public class EditarEmpresa {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         
-        int id =Integer.parseInt(req.getParameter("id"));
-        EmpresaLista e = EmpresaController.listarEmpresas(id);
-        req.setAttribute("e", e);
-        RequestDispatcher rd = req.getRequestDispatcher("/alterarEmpresa.jsp");
-        rd.forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        boolean retorno;
         int idEmpresa=Integer.parseInt(req.getParameter("idEmpresa"));
         String nome=req.getParameter("nome");
         String cnpj=req.getParameter("cnpj");
@@ -61,12 +45,12 @@ public class EmpresaAlterarController extends HttpServlet {
     
         
         Empresa empr = new Empresa(idEmpresa,nome, cnpj, dataCriacao, idEstado,idCidade, status, matriz);
-        empr.alterar();
+        retorno=empr.alterar();
+        
+        if(retorno){
+            resp.sendRedirect("sucesso.html");
+        }
+    
     }
     
-    
-    
-
-   
-
 }

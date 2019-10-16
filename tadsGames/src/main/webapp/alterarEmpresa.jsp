@@ -11,13 +11,13 @@
 <html>
 	<head>
 		<meta charset = "utf-8">
-		<title>Cadastro de Empresa</title>
+		<title>Alterar de Empresa</title>
 		<link rel="stylesheet" type="text/css" href="css/cadastroEmpresa.css">
 	</head>
 	<body>
 		<div class="container">
 			<h2>Alterar Dados da Empresa</h2>
-			<form action="\TadsGames\alterarEmpresa" method="post">
+			<form action="\TadsGames\input?action=EditarEmpresa" method="post">
 				<div>
                                     <input type="hidden" name="idEmpresa" value="${e.getIdEmpresa()}">
                                         <label>Nome Empresa</label>

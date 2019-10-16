@@ -5,7 +5,7 @@
  */
 package br.com.unidospi.model;
 
-import br.com.unidospi.Controller.EmpresaController;
+
 import java.sql.Date;
 
 /**

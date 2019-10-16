@@ -6,7 +6,7 @@
 package br.com.unidospi.Acoes;
 
 import br.com.unidospi.Controller.CidadeController;
-import br.com.unidospi.Controller.EstadoRegiaoController;
+import br.com.unidospi.Controller.EmpresaController;
 import br.com.unidospi.model.Cidade;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.EstadoRegiao;
@@ -28,7 +28,7 @@ public class FormCadastrarEmpresa {
 
     
     public void executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-               ArrayList<EstadoRegiao> ufs  = EstadoRegiaoController.listaEstadoRegiao();
+               ArrayList<EstadoRegiao> ufs  = EmpresaController.listaEstadoRegiao();
         
                ArrayList<Cidade> cid = CidadeController.listarCidade();
         

@@ -6,7 +6,6 @@
 
 <%@page import="java.util.List"%>
 <%@page import="br.com.unidospi.model.EstadoRegiao"%>
-<%@page import="br.com.unidospi.Controller.EstadoRegiaoController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -20,7 +19,7 @@
     <body>
         <div class="container">
             <h2>Cadastre a Empresa</h2>
-            <form action="\TadsGames\cadastroEmpresa" method="post">
+            <form action="\TadsGames\input?action=CadastrarEmpresa" method="post">
                 <div>
                     <label>Nome Empresa</label>
                     <input type="text" name="nome" required>

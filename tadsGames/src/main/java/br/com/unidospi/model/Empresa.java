@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.model;
 
+
 import br.com.unidospi.Controller.EmpresaController;
 import br.com.unidospi.DAO.EmpresaDao;
 import java.util.ArrayList;
@@ -131,8 +132,8 @@ public class Empresa {
         return EmpresaController.listarEmpresas();
     }
 
-    public void alterar() {
-        EmpresaController.alterar(this);
+    public boolean alterar() {
+        return EmpresaController.alterar(this);
     }
     
 }

@@ -60,7 +60,7 @@ public class EmpresaDao {
         }
         return false;
     }
-    public static void alterar(Empresa empr){
+    public static boolean alterar(Empresa empr){
         try{
             Class.forName(DRIVER);
             String sql = "UPDATE empresa "
@@ -89,7 +89,7 @@ public class EmpresaDao {
             ps.setInt(8, empr.getCod());
             
             ps.execute();
-            
+            return true;
             
             
         }catch(ClassNotFoundException | SQLException e){
@@ -102,6 +102,7 @@ public class EmpresaDao {
 
             }
         }
+        return false;
     }
 
     public static ArrayList listarEmpresas() {
@@ -121,7 +122,8 @@ public class EmpresaDao {
                         "left join estadoregiao b on \n" +
                         "a.idEstado = b.idEstado\n" +
                         "left join cidade c on\n" +
-                        "c.idCidade = a.idCidade;";
+                        "c.idCidade = a.idCidade "
+                    + "order by a.nome;";
             ArrayList <EmpresaLista> le = new ArrayList<>();
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);

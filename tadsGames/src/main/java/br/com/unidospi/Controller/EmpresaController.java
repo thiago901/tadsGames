@@ -5,15 +5,19 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.Acoes.CadastrarEmpresa;
+import br.com.unidospi.Acoes.EditarEmpresa;
+import br.com.unidospi.Acoes.FormCadastrarEmpresa;
+import br.com.unidospi.Acoes.FormEditarEmpresa;
+import br.com.unidospi.Acoes.ListarEmpresas;
 import br.com.unidospi.DAO.EmpresaDao;
+import br.com.unidospi.DAO.EstadoRegiaoDao;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.EmpresaLista;
+import br.com.unidospi.model.EstadoRegiao;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +28,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-@WebServlet(name = "EmpresaController", urlPatterns = {"/cadastroEmpresa"})
+@WebServlet(name = "EmpresaServelet", urlPatterns = {"/input"})
 public class EmpresaController extends HttpServlet {
+    
+    public static ArrayList<EstadoRegiao> listaEstadoRegiao(){
+        return EstadoRegiaoDao.listarEstadosRegioes();
+    }
+
+    public static boolean alterar(Empresa e) {
+        return EmpresaDao.alterar(e);
+    }
 
     public static ArrayList listarEmpresas() {
         return EmpresaDao.listarEmpresas();
@@ -35,54 +47,33 @@ public class EmpresaController extends HttpServlet {
         return EmpresaDao.listarEmpresas(id);
     }
 
-    public static void alterar(Empresa e) {
-        EmpresaDao.alterar(e);
-    }
-
-    
-
-    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/listaEstadoRegiao");
-        rd.forward(request, response);
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String paramAction = req.getParameter("action");
         
-       
-    }
-   
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        boolean retorno = false;
-        String nome=request.getParameter("nome");
-        String cnpj=request.getParameter("cnpj");
-        String strDataCriacao =request.getParameter("dataCriacao");
-        int idEstado =Integer.parseInt(request.getParameter("estado"));
-        int idCidade =Integer.parseInt(request.getParameter("cidade"));
-        boolean status = Boolean.valueOf(request.getParameter("status"));
-        boolean matriz = Boolean.valueOf(request.getParameter("matriz"));
-        
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
-        
-        Date dataCriacao = null;
-        try {
-            dataCriacao = sdf.parse(strDataCriacao);
-        } catch (ParseException ex) {
-            ex.getMessage();
+        if(paramAction.equals("ListarEmpresas")){
+            ListarEmpresas action = new ListarEmpresas();
+            action.executa(req,resp);
+            
+        }else if(paramAction.equals("FormEditarEmpresa")){
+            FormEditarEmpresa action = new FormEditarEmpresa();
+            action.executa(req,resp);
+            
+            
+        }else if(paramAction.equals("EditarEmpresa")){
+        EditarEmpresa action =new EditarEmpresa();
+            action.executa(req,resp);
+            
+        }else if(paramAction.equals("FormCadastrarEmpresa")){
+        FormCadastrarEmpresa action =new FormCadastrarEmpresa();
+            action.executa(req,resp);
+        }
+        else if(paramAction.equals("CadastrarEmpresa")){
+            CadastrarEmpresa action = new CadastrarEmpresa();
+            action.executa(req,resp);
         }
         
-    
         
-        Empresa empr = new Empresa(nome, cnpj, dataCriacao, idEstado,idCidade, status, matriz);
-        retorno =empr.salvar();
-        if(retorno){
-            response.sendRedirect("sucesso.html");
-        }
-        
-       
     }
 
     

@@ -46,7 +46,7 @@
                                     <td class="regiao"><c:out value="${e.getRegiao()}"/></td>
                                     <td class="status"><c:out value="${e.getAtivo()}"/></td>
                                     <td class="matiz"><c:out value="${e.getMatriz()}"/></td>
-                                    <td class="idEmpresa" value="${e.getIdEmpresa()}"><a href="alterarEmpresa?id=${e.getIdEmpresa()}">Alterar</a></td>
+                                    <td class="idEmpresa" value="${e.getIdEmpresa()}"><a href="input?action=FormEditarEmpresa&id=${e.getIdEmpresa()}">Alterar</a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>
