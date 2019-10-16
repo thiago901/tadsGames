@@ -75,12 +75,12 @@
         <h3 class="teste">Cadastro de Clientes</h3>
 
         <div class="container">
-            <form method="post" action="${pageContext.request.contextPath}/formulario/funcionario" novalidate >
+            <form method="post" action="${pageContext.request.contextPath}/TadsGames/CadastroCliente" novalidate >
                 <fieldset>
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" placeholder="Digite seu nome...">
 
-                    <label for="nome">Sobrenome</label>
+                    <label for="sobrenome">Sobrenome</label>
                     <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu Sobrenome...">
 
                     <label for="cpf">CPF</label>
