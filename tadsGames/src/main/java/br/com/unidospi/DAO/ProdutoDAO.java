@@ -80,17 +80,20 @@ public class ProdutoDAO {
             ResultSet rs = ps.executeQuery(query);
             
             while (rs.next()) {
-                Produto p = new Produto(
-                    rs.getInt("idProduto"),
-                    rs.getString("nome"),
-                    rs.getString("descricao"),
-                    rs.getString("tipo"),
-                    rs.getBoolean("ativo")                                                                               
-                );
+                int idProduto = rs.getInt("idProduto");
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                String tipo = rs.getString("tipo");
+                Boolean ativo = rs.getBoolean("ativo");
                 
+                Produto p = new Produto(idProduto, nome, descricao, tipo, ativo);
                 lista.add(p);
+                
             }
-            
+            for (int i = 0; i > lista.size(); i++) {
+                System.out.println(lista.get(i));
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

@@ -31,9 +31,9 @@ public class ProdutoController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Produto> p = ProdutoDAO.listar();
+        ArrayList<Produto> lista = ProdutoDAO.listar();
+        request.setAttribute("lista", lista);
         RequestDispatcher rd = request.getRequestDispatcher("/listarProduto.jsp");
-        request.setAttribute("lista", p);
         rd.forward(request, response);
 
     }
