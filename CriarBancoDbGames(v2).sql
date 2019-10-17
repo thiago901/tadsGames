@@ -52,6 +52,7 @@ CREATE TABLE EmpresaProduto (
 CREATE TABLE Cliente (
 	idCliente INTEGER AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50),
+    idEmpresa INTEGER,
     cpf VARCHAR(11),
     dtNasc VARCHAR (8),
     ativo boolean
