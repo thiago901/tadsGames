@@ -1,14 +1,14 @@
 <%-- 
-    Document   : Produto
-    Created on : Oct 11, 2019, 7:46:21 PM
-    Author     : marcoaureli - loc-b
+    Document   : alterarProduto
+    Created on : 17/10/2019, 18:10:26
+    Author     : lucas.sfaria5
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
             body {font-family: Arial, Helvetica, sans-serif;}
             * {box-sizing: border-box;}
@@ -55,16 +55,16 @@
         </style>
     </head>
     <body>
-
-        <h3>Cadastro de Produtos</h3>
+        <h3>Alterar Produtos</h3>
 
         <div class="container">
             <form method="post" action="${pageContext.request.contextPath}/formularioProduto">
+                <c:for var="p" items="${produto}">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto...">
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto..." required value = "${p.getNome()}">
 
                 <label for="tipo">Tipo</label>
-                <select id="tipo" name="tipo">
+                <select id="tipo" name="tipo" required value="${p.getTipo()}">
                     <option selected disabled> Selecione o tipo de produto</option>
                     <option value="Componente">Componente</option>
                     <option value="Console">Console</option>
@@ -73,21 +73,21 @@
 
                 <br><br>
                 <label for="descricao">Descricao</label><br>
-                <textarea cols="30" rows="5" name="descricao" placeholder = "Escreva a descricao do produto aqui..."></textarea>
+                <textarea cols="30" rows="5" name="descricao" placeholder = "Escreva a descricao do produto aqui..." required value="${p.getDescricao()}"></textarea>
                 
 
                  
                 <label for="ativo">Ativo</label>
-                <input type="radio" id="status" name="ativo" value="true" </input>
+                <input type="radio" id="status" name="ativo" value="true"</input>
                 <label for="inativo">Inativo</label>
-                <input type="radio" id="status" name="ativo" value="false" </input><br><br>
+                <input type="radio" id="status" name="ativo" value="false"</input><br><br>
                 
                 <button type="submit">Salvar</button>
                 <button type="reset">Reset</button>
                 <button type="button">Cancelar</button> <br><br>
                 
 
-                
+                </for>
             </form>
         </div>
 

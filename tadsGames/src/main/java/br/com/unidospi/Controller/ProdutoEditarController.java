@@ -8,7 +8,6 @@ package br.com.unidospi.Controller;
 import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,20 +17,18 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author lucas
+ * @author lucas.sfaria5
  */
-@WebServlet(name = "ListarProdutoController", urlPatterns = {"/lista"})
+@WebServlet(name = "ProdutoEditarController", urlPatterns = {"/editarProduto"})
 
-public class ListarProdutoController extends HttpServlet {
+public class ProdutoEditarController extends HttpServlet{
         @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("fez doget tambem");
-        ArrayList<Produto> lista = ProdutoDAO.listar();
-        request.setAttribute("lista", lista);
-        RequestDispatcher rd = request.getRequestDispatcher("/listarProduto.jsp");
+        int id = Integer.parseInt(request.getParameter("idProduto"));
+        Produto p = ProdutoDAO.listarProduto(id);
+        request.setAttribute("produto", p);
+        RequestDispatcher rd = request.getRequestDispatcher("alterarProduto.jsp");
         rd.forward(request, response);
-        
-
     }
 }
