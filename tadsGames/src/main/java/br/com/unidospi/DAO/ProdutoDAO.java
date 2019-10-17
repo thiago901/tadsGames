@@ -49,7 +49,7 @@ public class ProdutoDAO {
                 retorno = linhasAfetadas;
                         
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             ex.getMessage();
         }
@@ -95,9 +95,9 @@ public class ProdutoDAO {
             }
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return lista;

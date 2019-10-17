@@ -57,7 +57,7 @@
     </head>
 
     <body>
-        <form method="post" action="${pageContext.request.contextPath}/formularioProduto" novalidate>
+        <form method="post" action="${pageContext.request.contextPath}/listar" novalidate>
 
             <div class="container">
                 <label for="pesquisa">Pesquisa</label>

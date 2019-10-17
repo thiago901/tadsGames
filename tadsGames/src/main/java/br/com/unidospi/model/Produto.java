@@ -13,7 +13,6 @@ public class Produto {
     private int idProduto;
     private String nome;
     private String tipo;
-    //private double valorCompra; //DESNECESSARIO
     private String descricao;
     private boolean ativo; //define status, se é ativo ou não
 
