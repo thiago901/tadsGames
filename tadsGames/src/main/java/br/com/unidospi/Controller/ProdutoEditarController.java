@@ -8,6 +8,9 @@ package br.com.unidospi.Controller;
 import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +30,28 @@ public class ProdutoEditarController extends HttpServlet{
             throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idProduto"));
         Produto p = ProdutoDAO.listarProduto(id);
-        request.setAttribute("produto", p);
-        RequestDispatcher rd = request.getRequestDispatcher("alterarProduto.jsp");
+        request.setAttribute("p", p);
+        RequestDispatcher rd = request.getRequestDispatcher("/alterarProduto.jsp");
         rd.forward(request, response);
+    }
+    
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        boolean retorno;
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nome = request.getParameter("nome");
+        String descricao = request.getParameter("descricao");
+        String tipo = request.getParameter("tipo");
+        boolean ativo = Boolean.valueOf(request.getParameter("ativo"));
+
+        Produto p = new Produto (id, nome, descricao, tipo, ativo);
+        retorno = ProdutoDAO.editar(p);
+        if (retorno) {
+            response.sendRedirect("sucesso.html");
+        }
+
+
     }
 }

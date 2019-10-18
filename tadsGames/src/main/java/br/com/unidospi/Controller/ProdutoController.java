@@ -46,8 +46,6 @@ public class ProdutoController extends HttpServlet {
         String descricao = request.getParameter("descricao");
         String tipo = request.getParameter("tipo");
         boolean ativo = Boolean.valueOf(request.getParameter("ativo"));
-        
-
 
         Produto p = new Produto (nome, descricao, tipo, ativo);
         try {
