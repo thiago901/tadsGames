@@ -10,12 +10,13 @@ import br.com.unidospi.model.Diretor;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.Funcionario;
 import br.com.unidospi.model.FuncionarioAdministrativo;
+import br.com.unidospi.model.FuncionarioEmpresa;
 import br.com.unidospi.model.FuncionarioRetaguarda;
 import br.com.unidospi.model.FuncionarioTI;
 import br.com.unidospi.model.FuncionarioVenda;
 import br.com.unidospi.model.GerenteGlobal;
 import java.io.IOException;
-import java.text.DateFormat;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,10 +34,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author henrique.abastos
+ * @author gabri
  */
-@WebServlet(name = "FuncionarioController", urlPatterns = {"/novoFuncionario"})
-public class FuncionarioController extends HttpServlet {
+@WebServlet(name = "AlterarFuncionarioController", urlPatterns = {"/alterarFuncionario"})
+public class AlterarFuncionarioController extends HttpServlet {
     
     HashMap<String, Integer> mapaEmpresas = new HashMap<>();
     
@@ -44,45 +45,51 @@ public class FuncionarioController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+//        Funcionario funcionario = FuncionarioDAO.obterFuncionarioPorId(id);
         ArrayList<Empresa> listaEmpresas = FuncionarioDAO.obterEmpresas();
-        ArrayList<Funcionario> listaFuncionarios = FuncionarioDAO.obterFuncionario();
-                        
+        
+        
+        FuncionarioEmpresa funcionarioEmpresa = FuncionarioDAO.obterFuncionarioEmpresaPorId(id);
+        
         for (Empresa empresa : listaEmpresas) 
             mapaEmpresas.put(empresa.getNome(), empresa.getCod());
-          
+        
+//        request.setAttribute("funcionarioAttr", funcionario);
         request.setAttribute("empresasAttr", listaEmpresas);
-        request.setAttribute("funcionariosAttr", listaFuncionarios);
+        
+        request.setAttribute("fe", funcionarioEmpresa);
         
         RequestDispatcher dispatcher = 
-                request.getRequestDispatcher("/Funcionario/Funcionario.jsp");
+                request.getRequestDispatcher("Funcionario/AlterarFuncionario.jsp");
         dispatcher.forward(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {                                                
-            
-            int idEmpresaSelecionada = 0;
-            String idEmpresa = request.getParameter("idEmpresa");
+            throws ServletException, IOException {
+        
+        int id = Integer.parseInt(request.getParameter("idFuncionario"));
             String nome = request.getParameter("nome");
             String sobrenome = request.getParameter("sobrenome");
             String cpfStr = request.getParameter("cpf");
             String dtNascStr = request.getParameter("dtNasc");
             String salarioStr = request.getParameter("salario");
-            String deptoStr = request.getParameter("depto");
             boolean status = Boolean.parseBoolean(request.getParameter("status"));
-            String empresaSelecionada = request.getParameter("tpEmpresa");            
-            String cargo = request.getParameter("tpFuncionario");
+            String deptoStr = request.getParameter("depto");
+            int empresaSelecionada = Integer.parseInt(request.getParameter("tpEmpresa"));
+            String tpFuncStr = request.getParameter("tpFuncionario");
             String login = request.getParameter("login");
             String senha = request.getParameter("senha");
             String sexo = request.getParameter("sexo");
                                     
-            Set<String> chavesMapaEmpresas = mapaEmpresas.keySet();
+            Set<String> chavesMapaEmpresas = mapaEmpresas.keySet();;
             
-            for (String chave : chavesMapaEmpresas) {
-                if (chave.equals(empresaSelecionada))
-                    idEmpresaSelecionada = mapaEmpresas.get(chave);
-            }
+//            for (String chave : chavesMapaEmpresas) {
+//                if (chave.equals(empresaSelecionada))
+//                    idEmpresaSelecionada = mapaEmpresas.get(chave);
+//            }
             
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             Date dtNasc = null;
@@ -93,55 +100,54 @@ public class FuncionarioController extends HttpServlet {
             Logger.getLogger(FuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
         }
             
-            switch (cargo) {
+            switch (tpFuncStr) {
                 case "Funcionario Venda" :
                     FuncionarioVenda funcionarioVenda = new FuncionarioVenda(
                             Double.parseDouble(salarioStr), deptoStr, "Funcionario Venda", login,
-                            senha, idEmpresaSelecionada, nome, sobrenome, sexo, cpfStr, 
+                            senha, id, empresaSelecionada, nome, sobrenome, sexo, cpfStr, 
                             dtNasc, status);
 
-                    FuncionarioDAO.salvar(funcionarioVenda);
+                    FuncionarioDAO.alterar(funcionarioVenda);
                     break;
                 case "Funcionario Administrativo" :
                     FuncionarioAdministrativo funcionarioAdm = new FuncionarioAdministrativo(
                             Double.parseDouble(salarioStr), deptoStr, "Funcionario Administrativo", login,
-                            senha, idEmpresaSelecionada, nome, sobrenome, 
+                            senha, id, empresaSelecionada, nome, sobrenome, 
                             sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(funcionarioAdm);
+                    FuncionarioDAO.alterar(funcionarioAdm);
                     break;
                 case "Diretor" :
                     Diretor diretor = new Diretor(
                             Double.parseDouble(salarioStr), deptoStr, "Diretor", login,
-                            senha, idEmpresaSelecionada, nome, sobrenome, 
+                            senha, id, empresaSelecionada, nome, sobrenome, 
                             sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(diretor);
+                    FuncionarioDAO.alterar(diretor);
                     break;
                 case "Funcionario TI" :
                     FuncionarioTI funcionarioTI = new FuncionarioTI(
                             Double.parseDouble(salarioStr), deptoStr, "Funcionario TI", login,
-                            senha, idEmpresaSelecionada, nome, sobrenome, 
+                            senha, id, empresaSelecionada, nome, sobrenome, 
                             sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(funcionarioTI);
+                    FuncionarioDAO.alterar(funcionarioTI);
                     break;
                 case "Gerente Global" :
                     GerenteGlobal gerenteGlobal = new GerenteGlobal(
                             Double.parseDouble(salarioStr), deptoStr, "Gerente Global", login,
-                            senha, idEmpresaSelecionada, nome, sobrenome, 
+                            senha, id, empresaSelecionada, nome, sobrenome, 
                             sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(gerenteGlobal);
+                    FuncionarioDAO.alterar(gerenteGlobal);
                     break;
                 case "Funcionario Retaguarda" :
                     FuncionarioRetaguarda funcionarioRetaguarda = new FuncionarioRetaguarda(
                             Double.parseDouble(salarioStr), deptoStr, "Funcionario Retaguarda", login,
-                            senha, idEmpresaSelecionada, nome, sobrenome, sexo, 
+                            senha, id, empresaSelecionada, nome, sobrenome, sexo, 
                             cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(funcionarioRetaguarda);
+                    FuncionarioDAO.alterar(funcionarioRetaguarda);
                     break;
             }
                                     
             RequestDispatcher dispatcher =
                     request.getRequestDispatcher("Funcionario/resultado.jsp");
             dispatcher.forward(request, response);
-
     }
 }
