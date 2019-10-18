@@ -40,13 +40,12 @@ public class ProdutoEditarController extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         boolean retorno;
-        int id = Integer.parseInt(request.getParameter("id"));
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
         String tipo = request.getParameter("tipo");
         boolean ativo = Boolean.valueOf(request.getParameter("ativo"));
 
-        Produto p = new Produto (id, nome, descricao, tipo, ativo);
+        Produto p = new Produto (Integer.parseInt(request.getParameter("id")), nome, descricao, tipo, ativo);
         retorno = ProdutoDAO.editar(p);
         if (retorno) {
             response.sendRedirect("sucesso.html");
