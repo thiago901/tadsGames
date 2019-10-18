@@ -105,7 +105,7 @@ CREATE TABLE DetalheProduto (
 CREATE TABLE Funcionario (
     idFuncionario INTEGER AUTO_INCREMENT PRIMARY KEY,
     idEmpresa INTEGER,
-    nome VARCHAR(50),
+    nomeFuncionario VARCHAR(50),
     sobrenome VARCHAR(30),
     sexo VARCHAR(12),
     cpf VARCHAR(11) UNIQUE,
