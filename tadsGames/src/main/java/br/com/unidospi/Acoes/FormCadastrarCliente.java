@@ -5,9 +5,6 @@
  */
 package br.com.unidospi.Acoes;
 
-
-import br.com.unidospi.Controller.EmpresaController;
-import br.com.unidospi.model.EmpresaLista;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,14 +15,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class FormEditarEmpresa {
+public class FormCadastrarCliente {
 
     public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id =Integer.parseInt(req.getParameter("id"));
-        EmpresaLista e = EmpresaController.listarEmpresas(id);
-        req.setAttribute("e", e);
-        RequestDispatcher rd = req.getRequestDispatcher("/alterarCliente.jsp");
-        rd.forward(req, resp);
+        RequestDispatcher dispatcher = 
+                req.getRequestDispatcher("/Cliente/Cliente.jsp");
+        dispatcher.forward(req, resp);
     }
     
 }

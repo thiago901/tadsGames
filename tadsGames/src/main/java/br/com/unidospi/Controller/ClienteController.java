@@ -5,8 +5,14 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.Acoes.CadastrarCliente;
+import br.com.unidospi.Acoes.EditarCliente;
+import br.com.unidospi.Acoes.FormCadastrarCliente;
+import br.com.unidospi.Acoes.FormEditarCliente;
+
 import br.com.unidospi.DAO.ClienteDAO;
 import br.com.unidospi.model.Cliente;
+import br.com.unidospi.model.ClienteLista;
 import br.com.unidospi.model.Empresa;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,47 +34,53 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author henrique.abastos
  */
-@WebServlet(name = "ClienteController", urlPatterns = {"/CadastroCliente"})
+
+
+@WebServlet(name = "ClienteController", urlPatterns = {"/inputCliente"})
 public class ClienteController extends HttpServlet{
+    
+    
+    public static ArrayList<ClienteLista> listarClientes(){
+        return ClienteDAO.listarClientes();
+    }
+    public static ClienteLista listarClientes(int id){
+        return ClienteDAO.listarClientes(id);
+    }
+
     
     
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = 
-                request.getRequestDispatcher("/Cliente/Cliente.jsp");
-        dispatcher.forward(request, response);
-    }
-    
-    
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int retorno;
-        int idEmpresa = 0;
-        String nome = request.getParameter("nome");
-        String sobrenome = request.getParameter("sobrenome");
-        String cpf = request.getParameter("cpf");
-        String dtNascm = request.getParameter("dtNasc");
-        String sexo = request.getParameter("sexo");
-        boolean ativo = Boolean.valueOf(request.getParameter("ativo"));
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String paramAction = req.getParameter("action");
         
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date dtNasc = null;
+        if(paramAction.equals("FormCadastrarCliente")){
+            ArrayList<ClienteLista> listaClientes= ClienteController.listarClientes();
+            ArrayList<ClienteLista> listaEmpresa= EmpresaController.listarEmpresas();
+            req.setAttribute("listaEmpresa", listaEmpresa);
+            req.setAttribute("listaCliente", listaClientes);
+            FormCadastrarCliente action = new FormCadastrarCliente();
+            action.executa(req,resp);
             
-        try {
-            dtNasc = formatter.parse(dtNascm);
-        } catch (ParseException ex) {
-            Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }else if(paramAction.equals("CadastrarCliente")){
+            CadastrarCliente action = new CadastrarCliente();
+            action.executa(req,resp);
+            
+        }else if(paramAction.equals("EditarCliente")){
+            EditarCliente action = new EditarCliente();
+            action.executa(req,resp);
+            
+        }else if(paramAction.equals("FormEditarCliente")){
+            ArrayList<ClienteLista> listaClientes= ClienteController.listarClientes();
+            ArrayList<ClienteLista> listaEmpresa= EmpresaController.listarEmpresas();
+            req.setAttribute("listaEmpresa", listaEmpresa);
+            req.setAttribute("listaCliente", listaClientes);
+            FormEditarCliente action = new FormEditarCliente();
+            action.executa(req,resp);
+            
         }
-
-        Cliente p = new Cliente(idEmpresa, nome, sobrenome, sexo, cpf, dtNasc, ativo) ;
-        retorno = ClienteDAO.salvar(p);
-            if (retorno > 0){
-            response.sendRedirect("sucesso.html");
-        }
-
-
     }
+
+    
     
 }

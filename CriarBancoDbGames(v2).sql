@@ -52,9 +52,11 @@ CREATE TABLE EmpresaProduto (
 CREATE TABLE Cliente (
 	idCliente INTEGER AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50),
+    sobrenome VARCHAR(50),
+    sexo varchar(1),
     idEmpresa INTEGER,
     cpf VARCHAR(11),
-    dtNasc VARCHAR (8),
+    dtNasc date,
     ativo boolean
 );
 
@@ -143,6 +145,7 @@ CREATE TABLE DetalheServico (
     FOREIGN KEY (idPedido) REFERENCES Pedido (idPedido),
     FOREIGN KEY (idServico) REFERENCES Servicos (idServicos)
 );
+
 
 
 Select * from Produto ;
