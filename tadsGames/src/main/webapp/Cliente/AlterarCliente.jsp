@@ -72,23 +72,24 @@
     </head>
     <body>
 
-        <h3 class="teste">Cadastro de Clientes</h3>
+        <h3 class="teste">Alterar de Clientes</h3>
 
         <div class="container">
-            <form method="post" action="${pageContext.request.contextPath}/inputCliente?action=CadastrarCliente" novalidate >
+            <form method="post" action="${pageContext.request.contextPath}/inputCliente?action=EditarCliente" novalidate >
                 <fieldset>
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome...">
+                    <input type="text" id="idCliente" hidden="" name="idCliente" value="${c.getIdCliente()}">
+                    <input type="text" id="nome" name="nome" value="${c.getNome()}" placeholder="Digite seu nome...">
 
                     <label for="sobrenome">Sobrenome</label>
-                    <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu Sobrenome...">
+                    <input type="text" id="sobrenome" name="sobrenome"  value="${c.getSobrenome()}" placeholder="Digite seu Sobrenome...">
 
                     <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
+                    <input type="text" id="cpf" name="cpf" value="${c.getCPF()}"  placeholder="Digite o CPF...">
 
                     <fieldset>
                         <label for="dtNasc">Data de Nascimento</label>
-                        <input type="date" id="dtNasc" name="dtNasc" placeholder="Digite o CPF...">
+                        <input type="date" id="dtNasc" name="dtNasc"  value="${c.getDtNasc()}" placeholder="Digite o CPF...">
                     </fieldset>
 
                     <fieldset>
@@ -101,8 +102,8 @@
                     </fieldset>
 
                     <label for="tpEmpresa" >Empresa</label>
-                    <select id="empresa" required="" name="tpEmpresa" >
-                        <option selected="" disabled=""><c:out value="Selecione uma Empresa"/></option>
+                    <select id="empresa"  required=""name="tpEmpresa" >
+                        <option selected="" value="${c.getIdempresa()}"><c:out value="${c.getNomeEmpresa()}"/></option>
                         <c:forEach items="${listaEmpresa}" var="e">
                             <option value="${e.getIdEmpresa()}"><c:out value="${e.getNome()}"/></option>
                         </c:forEach>

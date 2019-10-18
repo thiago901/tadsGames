@@ -7,6 +7,7 @@ package br.com.unidospi.DAO;
 
 
 import br.com.unidospi.model.Cliente;
+import br.com.unidospi.model.ClienteLista;
 import br.com.unidospi.model.Empresa;
 import java.sql.Connection;
 import java.sql.Date;
@@ -35,24 +36,24 @@ public class ClienteDAO {
             
         int retorno = 0;
         try {
-            String sql= "insert into Cliente (idEmpresa,nome, sobrenome, sexo, cpf, dataNasc, ativo) values(?,?,?,?,?,?,?)";
+            String sql= "insert into Cliente (nome, sobrenome, sexo, idEmpresa, cpf, dtNasc, ativo) values(?,?,?,?,?,?,?)";
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
-            Date dt = new Date(cliente.getDataNasc().getTime());
-            ps.setInt(1,cliente.getIdEmpresa());
-            ps.setString(2, cliente.getNome());
-            ps.setString(3, cliente.getSobrenome());
-            ps.setString(4, cliente.getSexo());
-            ps.setString(5, cliente.getCpf());
-            ps.setDate(6, dt);
-            ps.setBoolean(7, cliente.isAtivo());
-                        
-            int linhasAfetadas = ps.executeUpdate();
             
-            if (linhasAfetadas > 0)
-                retorno = linhasAfetadas;
-                        
+            java.sql.Date dtSQL = new java.sql.Date(cliente.getDataNasc().getTime());
+            
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getSobrenome());
+            ps.setString(3, cliente.getSexo());
+            ps.setInt(4,cliente.getIdEmpresa());
+            ps.setString(5, cliente.getCpf());
+            ps.setDate(6, dtSQL);
+            ps.setBoolean(7, cliente.isAtivo());
+    
+            ps.executeUpdate();
+            return 1;
+                                    
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -62,9 +63,21 @@ public class ClienteDAO {
         return retorno;
     }
     
-    public static ArrayList<Cliente> obterClientes() {
-        ArrayList<Cliente> listaClientes = new ArrayList<>();
-        String query = "SELECT * FROM Cliente";
+    public static ArrayList<ClienteLista> listarClientes() {
+        ArrayList<ClienteLista> listaClientes = new ArrayList<>();
+        String query = "SELECT 	a.idCliente, " +
+                      "a.nome,	\n" +
+        "		a.sobrenome,\n" +
+        "		a.CPF,\n" +
+               "        a.dtNasc,\n" +
+               "        a.sexo,\n" +
+               "        a.idempresa,\n" +
+               "        b.nome as nomeEmpresa,\n" +
+               "        a.ativo\n" +
+        "\n" +
+                    "FROM cliente a \n" +
+                    "left join empresa b on \n" +
+                    "a.idempresa = b.idempresa;";
         
         try {                        
             Class.forName(DRIVER);
@@ -73,61 +86,113 @@ public class ClienteDAO {
             ResultSet rs = ps.executeQuery(query);
             
             while (rs.next()) {
-                Cliente cliente = new Cliente(
-                   rs.getInt("idCliente"),
-                    rs.getInt("idEmpresa"), 
-                    rs.getString("nome"),
-                    rs.getString("sobrenome"),
-                    rs.getString("sexo"),
-                    rs.getString("cpf"),
-                    rs.getDate("dtNasc"),
-                    rs.getBoolean("ativo")                                                                               
-                );
-                
+                int idCliente=rs.getInt("idCliente");
+                String nome=rs.getString("nome"); 
+                String sobrenome=rs.getString("sobrenome");
+                String cpf = rs.getString("cpf");
+                Date dtNasc=rs.getDate("dtNasc");
+                String sexo=rs.getString("sexo");
+                int idempresa =rs.getInt("idEmpresa");
+                String nomeEmpresa=rs.getString("nomeEmpresa");; 
+                boolean ativo=rs.getBoolean("ativo") ;
+                ClienteLista cliente = new ClienteLista(idCliente, nome, sobrenome, cpf, dtNasc, sexo, idempresa, nomeEmpresa, ativo);
                 listaClientes.add(cliente);
             }
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.getMessage();
         }
         
         return listaClientes;
     }
-    
-     public static ArrayList<Empresa> obterEmpresas() {
-        ArrayList<Empresa> listaEmpresas = new ArrayList<>();
-        String query = "SELECT * FROM Empresa";
+    public static ClienteLista listarClientes(int id) {
+        
+        String query = "SELECT 	a.idCliente, " +
+                      "a.nome,	\n" +
+        "		a.sobrenome,\n" +
+        "		a.CPF,\n" +
+               "        a.dtNasc,\n" +
+               "        a.sexo,\n" +
+               "        a.idempresa,\n" +
+               "        b.nome as nomeEmpresa,\n" +
+               "        a.ativo\n" +
+                        "\n" +
+                    "FROM cliente a \n" +
+                    "left join empresa b on \n" +
+                    "a.idempresa = b.idempresa "
+                + "where a.idCliente = ?;";
         
         try {                        
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
-                Empresa empresa = new Empresa(
-                    rs.getInt("idEmpresa"), 
-                    rs.getString("nome"),
-                    rs.getString("cnpj"),
-                    rs.getDate("dataCriacao"),
-                    rs.getInt("idEstado"),
-                    2,
-                    rs.getBoolean("matriz"),
-                    rs.getBoolean("ativo")                    
-                );
-                
-                listaEmpresas.add(empresa);
+                int idCliente=rs.getInt("idCliente");
+                String nome=rs.getString("nome"); 
+                String sobrenome=rs.getString("sobrenome");
+                String cpf = rs.getString("cpf");
+                Date dtNasc=rs.getDate("dtNasc");
+                String sexo=rs.getString("sexo");
+                int idempresa =rs.getInt("idEmpresa");
+                String nomeEmpresa=rs.getString("nomeEmpresa");; 
+                boolean ativo=rs.getBoolean("ativo") ;
+                ClienteLista cliente = new ClienteLista(idCliente, nome, sobrenome, cpf, dtNasc, sexo, idempresa, nomeEmpresa, ativo);
+                return cliente;
             }
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ex.getMessage();
         }
         
-        return listaEmpresas;
+        return null;
+    }
+    
+    public static int alterar(Cliente cliente) {
+        
+        String query = "update cliente\n" +
+                        "SET nome=?,	\n" +
+                        "	sobrenome=?,\n" +
+                        "	CPF=?,\n" +
+                        "	dtNasc=?,\n" +
+                        "	sexo=?,\n" +
+                        "	idempresa=?,\n" +
+                        "	ativo =?\n" +
+                        "where idCliente=?;";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            
+            PreparedStatement ps = conexao.prepareStatement(query);
+            
+            java.sql.Date dtSQL = new java.sql.Date(cliente.getDataNasc().getTime());
+            
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getSobrenome());
+            ps.setString(3, cliente.getCpf());
+            ps.setDate(4, dtSQL);
+            ps.setString(5, cliente.getSexo());
+            ps.setInt(6,cliente.getIdEmpresa());       
+            ps.setBoolean(7, cliente.isAtivo());
+            ps.setInt(8,cliente.getId());
+            
+            ps.executeUpdate();
+            return 1;
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return 0;
     }
     
 }
