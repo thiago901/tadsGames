@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 public class ProdutoDAO {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";    //Driver do MySQL 8.0 em diante - Se mudar o SGBD mude o Driver
     private static final String LOGIN = "root";                         //nome de um usuário do banco de dados
-    private static final String SENHA = "";                             //sua senha de acesso
+    private static final String SENHA = "adminadmin";                             //sua senha de acesso
     private static String URL = "jdbc:mysql://localhost:3306/dbgames?useTimezone=true&serverTimezone=UTC";  //URL do banco de dados
     private static Connection conexao;
     
@@ -58,9 +58,29 @@ public class ProdutoDAO {
     }
     
     public static boolean editar(Produto produto) {
+        String query = "update produto set nome = ?,descricao= ?, tipo =?, ativo =? where idProduto = ?;";
         
         
-        return true;
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            ps.setString(1, produto.getNome());
+            ps.setString(2, produto.getDescricao());
+            ps.setString(3, produto.getTipo());
+            ps.setBoolean(4, produto.getAtivo());
+            
+            ps.execute();
+            return true;
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
     public static boolean alterarStatus(Produto produto) {
@@ -71,7 +91,7 @@ public class ProdutoDAO {
 
     public static ArrayList<Produto> listar() {
         ArrayList<Produto> lista = new ArrayList<>();
-        String query = "SELECT * FROM Produto";
+        String query = "SELECT * FROM Produto;";
         
         try {                        
             Class.forName(DRIVER);
@@ -102,4 +122,34 @@ public class ProdutoDAO {
         
         return lista;
     }
+    
+    public static Produto listarProduto(int id) {
+        String query = "SELECT * FROM Produto where idProduto = ?;";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                int idProduto = rs.getInt("idProduto");
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                String tipo = rs.getString("tipo");
+                Boolean ativo = rs.getBoolean("ativo");
+                
+                Produto p = new Produto(idProduto, nome, descricao, tipo, ativo);
+                return p;
+                
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
 }

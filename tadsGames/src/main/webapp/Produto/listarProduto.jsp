@@ -57,7 +57,7 @@
     </head>
 
     <body>
-        <form method="post" action="${pageContext.request.contextPath}/listar" novalidate>
+        <form method="post" action="${pageContext.request.contextPath}/formularioProduto" novalidate>
 
             <div class="container">
                 <label for="pesquisa">Pesquisa</label>
@@ -72,18 +72,19 @@
                             <th>Tipo</th>
                             <th>Descricao</th>
                             <th>Ativo</th>
+                            <th>Editar</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <c:forEach var="p" items="${lista}">
                             <tr>
-                                <td><c:out value="${p.idProduto}" /></td>
-                                <td><c:out value="${p.nome}" /></td>
-                                <td><c:out value="${p.descricao}" /></td>
-                                <td><c:out value="${p.tipo}" /></td>
-                                <td><c:out value="${p.ativo}" /></td>
-                                
+                                <td><c:out value="${p.getIdProduto()}" /></td>
+                                <td><c:out value="${p.getNome()}" /></td>
+                                <td><c:out value="${p.getDescricao()}" /></td>
+                                <td><c:out value="${p.getTipo()}" /></td>
+                                <td><c:out value="${p.getAtivo()}" /></td>
+                                <td><a href="${pageContext.request.contextPath}/editarProduto?id=<c:out value="${p.getIdProduto()}" />">Editar</a></td>
                                 
                             </tr>
                         </c:forEach>
