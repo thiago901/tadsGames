@@ -70,7 +70,7 @@
 <body>
 
 <div class="container">
-  <form method="post" action="${pageContext.request.contextPath}/formularioFuncionario" novalidate>
+  <form method="post" action="${pageContext.request.contextPath}/novoFuncionario" novalidate>
       <h1>Cadastro de Funcionários</h1> 
       
     <label for="nome">Nome</label>
@@ -106,40 +106,29 @@
     
     <label for="tpFuncionario">Cargo</label>
     <select id="tpFuncionario" name="tpFuncionario">
-      <option value="fdiretor">Diretor</option>
-      <option value="fadm">Funcionário Administrativo</option>
-      <option value="fti">Funcionário TI</option>
-      <option value="fvenda">Funcionário Venda</option>
-      <option value="fretaguarda">Funcionário Retaguarda</option>
-      <option value="grglobal">Gerente Global</option>
+      <option value="Diretor">Diretor</option>
+      <option value="Funcionario Administrativo">Funcionário Administrativo</option>
+      <option value="Funcionario TI">Funcionário TI</option>
+      <option value="Funcionario Venda">Funcionário Venda</option>
+      <option value="Funcionario Retaguarda">Funcionário Retaguarda</option>
+      <option value="Gerente Global">Gerente Global</option>
     </select>
     
-    <table border="1">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Sobrenome</th>
-      <th>CPF</th>
-      <th>login</th>
-      <th>Sexo</th>
-    </tr>
-  </thead>
-  <tbody>
-     <c:forEach items="${funcionariosAttr}" var="funcionario">
-       <tr>
-         <td>${funcionario.nome}</td>
-         <td>${funcionario.sobrenome}</td>
-         <td>${funcionario.cpf}</td>
-         <td>${funcionario.login}</td>
-         <td>${funcionario.sexo}</td>
-       </tr>
-     </c:forEach>
-  </tbody>
-</table>
+    <div>
+        <p>Sexo</p>
+        <input type="radio" name="sexo" value="Masculino" checked="">
+        <label>Masculino</label>
+        <input type="radio" name="sexo" value="Feminino">
+        <label>Feminino</label>                                   
+    </div>
 
-    <label for="ativo">Ativo</label>
-    <input type="checkbox" id="ativo" name="ativo">
-    <br>
+    <div>
+        <p>Status</p>
+        <input type="radio" name="status" value="true" checked="">
+        <label>Ativo</label>
+        <input type="radio" name="status" value="false">
+        <label>Inativo</label>                                   
+    </div>
     <button type="submit">Enviar</button>        
   </form>
 </div>
