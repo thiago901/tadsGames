@@ -54,7 +54,7 @@ public class ClienteController extends HttpServlet{
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
         
-        if(paramAction.equals("FormCadastrarCliente")){
+        if (paramAction.equals("FormCadastrarCliente")) {
             ArrayList<ClienteLista> listaClientes= ClienteController.listarClientes();
             ArrayList<ClienteLista> listaEmpresa= EmpresaController.listarEmpresas();
             req.setAttribute("listaEmpresa", listaEmpresa);
@@ -62,22 +62,21 @@ public class ClienteController extends HttpServlet{
             FormCadastrarCliente action = new FormCadastrarCliente();
             action.executa(req,resp);
             
-        }else if(paramAction.equals("CadastrarCliente")){
+        } else if (paramAction.equals("CadastrarCliente")) {
             CadastrarCliente action = new CadastrarCliente();
             action.executa(req,resp);
             
-        }else if(paramAction.equals("EditarCliente")){
+        } else if (paramAction.equals("EditarCliente")) {
             EditarCliente action = new EditarCliente();
             action.executa(req,resp);
             
-        }else if(paramAction.equals("FormEditarCliente")){
+        } else if (paramAction.equals("FormEditarCliente")) {
             ArrayList<ClienteLista> listaClientes= ClienteController.listarClientes();
             ArrayList<ClienteLista> listaEmpresa= EmpresaController.listarEmpresas();
             req.setAttribute("listaEmpresa", listaEmpresa);
             req.setAttribute("listaCliente", listaClientes);
             FormEditarCliente action = new FormEditarCliente();
-            action.executa(req,resp);
-            
+            action.executa(req,resp);            
         }
     }
 

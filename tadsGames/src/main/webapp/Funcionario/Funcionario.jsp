@@ -70,7 +70,7 @@
 <body>
 
 <div class="container">
-  <form method="post" action="${pageContext.request.contextPath}/novoFuncionario" novalidate>
+  <form method="post" action="${pageContext.request.contextPath}/inputFuncionario?action=CadastrarFuncionario" novalidate>
       <h1>Cadastro de Funcionários</h1> 
       
     <label for="nome">Nome</label>
@@ -99,8 +99,8 @@
     
     <label for="tpEmpresa">Empresa</label>
     <select id="empresa" name="tpEmpresa">
-        <c:forEach items="${empresasAttr}" var="empresa">
-            <option><c:out value="${empresa.nome}"/></option>
+        <c:forEach items="${empresas}" var="empresa">
+            <option value="${empresa.idEmpresa}">${empresa.nome}</option>
         </c:forEach>
     </select>
     

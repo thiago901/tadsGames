@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author thiago.srocha4
+ * @author gisidorio
  */
 public class CadastrarEmpresa implements Executavel{
 

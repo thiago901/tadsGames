@@ -6,17 +6,26 @@
 package br.com.unidospi.Acoes;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author thiago.srocha4
+ * @author gabri
  */
-public interface Executavel {
-    
+public class FormCadastrarFuncionario implements Executavel {
+
+    @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) 
-            throws IOException, ServletException;
+            throws IOException, ServletException {
+        
+        RequestDispatcher dispatcher = 
+                req.getRequestDispatcher("Funcionario/Funcionario.jsp");
+        dispatcher.forward(req, resp);
+        
+        return "";
+    }
     
 }
