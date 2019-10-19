@@ -21,9 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class CadastrarCliente {
+public class CadastrarCliente implements Executavel{
 
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    @Override
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int retorno;
         int idEmpresa = Integer.parseInt(req.getParameter("tpEmpresa")); 
         String nome = req.getParameter("nome");
@@ -47,6 +48,7 @@ public class CadastrarCliente {
             if (retorno > 0){
             resp.sendRedirect("sucesso.html");
         }
+            return "";
     }
 
    

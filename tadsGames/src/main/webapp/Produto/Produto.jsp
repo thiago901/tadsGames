@@ -59,7 +59,7 @@
         <h3>Cadastro de Produtos</h3>
 
         <div class="container">
-            <form method="post" action="${pageContext.request.contextPath}/formularioProduto">
+            <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=CadastrarProduto">
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto...">
 

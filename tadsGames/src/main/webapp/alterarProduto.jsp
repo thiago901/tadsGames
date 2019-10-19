@@ -58,7 +58,7 @@
         <h3>Alterar Produtos</h3>
 
         <div class="container">
-            <form method="post" action="${pageContext.request.contextPath}/editarProduto">
+            <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=EditarProduto">
                 
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" value = "${p.getNome()}">

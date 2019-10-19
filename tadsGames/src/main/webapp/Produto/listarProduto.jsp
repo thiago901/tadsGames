@@ -84,7 +84,7 @@
                                 <td><c:out value="${p.getDescricao()}" /></td>
                                 <td><c:out value="${p.getTipo()}" /></td>
                                 <td><c:out value="${p.getAtivo()}" /></td>
-                                <td><a href="editarProduto?idProduto=${p.getIdProduto()}">Editar</a></td>
+                                <td><a href="inputProduto?action=FormEditarProduto&idProduto=${p.getIdProduto()}">Editar</a></td>
                                 
                             </tr>
                         </c:forEach>

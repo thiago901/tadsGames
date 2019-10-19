@@ -19,14 +19,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class FormEditarCliente {
+public class FormEditarCliente implements Executavel{
 
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    /**
+     *
+     * @param req
+     * @param resp
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          int id =Integer.parseInt(req.getParameter("idCliente"));
         ClienteLista c = ClienteController.listarClientes(id);
         req.setAttribute("c", c);
         RequestDispatcher rd = req.getRequestDispatcher("/Cliente/AlterarCliente.jsp");
         rd.forward(req, resp);
+        return "";
     }
     
 }

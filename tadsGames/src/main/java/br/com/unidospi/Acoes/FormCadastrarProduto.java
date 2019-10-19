@@ -5,11 +5,7 @@
  */
 package br.com.unidospi.Acoes;
 
-
-import br.com.unidospi.Controller.EmpresaController;
-import br.com.unidospi.model.EmpresaLista;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,16 +15,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class ListarEmpresas implements Executavel{
-    
+public class FormCadastrarProduto implements Executavel{
+
     @Override
-    public String executa(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
-        ArrayList<EmpresaLista> le = EmpresaController.listarEmpresas();
-        RequestDispatcher rd = req.getRequestDispatcher("/listarEmpresa.jsp");
-        req.setAttribute("lista", le);
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        
+        RequestDispatcher rd = req.getRequestDispatcher("Produto/Produto.jsp");
         rd.forward(req, resp);
         return "";
     }
-        
     
 }

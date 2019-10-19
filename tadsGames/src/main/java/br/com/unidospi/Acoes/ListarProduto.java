@@ -7,7 +7,10 @@ package br.com.unidospi.Acoes;
 
 
 import br.com.unidospi.Controller.EmpresaController;
+import br.com.unidospi.Controller.ProdutoController;
+import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.EmpresaLista;
+import br.com.unidospi.model.Produto;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -19,13 +22,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class ListarEmpresas implements Executavel{
+public class ListarProduto implements Executavel{
     
     @Override
     public String executa(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
-        ArrayList<EmpresaLista> le = EmpresaController.listarEmpresas();
-        RequestDispatcher rd = req.getRequestDispatcher("/listarEmpresa.jsp");
-        req.setAttribute("lista", le);
+       ArrayList<Produto> lista = ProdutoController.listarProduto();
+        req.setAttribute("lista", lista);
+        RequestDispatcher rd = req.getRequestDispatcher("Produto/listarProduto.jsp");
         rd.forward(req, resp);
         return "";
     }

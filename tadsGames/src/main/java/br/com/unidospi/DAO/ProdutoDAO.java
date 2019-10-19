@@ -24,8 +24,8 @@ import java.util.logging.Logger;
 public class ProdutoDAO {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";    //Driver do MySQL 8.0 em diante - Se mudar o SGBD mude o Driver
     private static final String LOGIN = "root";                         //nome de um usuário do banco de dados
-    private static final String SENHA = "";                             //sua senha de acesso
-    private static String URL = "jdbc:mysql://localhost:3307/dbgames?useTimezone=true&serverTimezone=UTC";  //URL do banco de dados
+    private static final String SENHA = "adminadmin";                             //sua senha de acesso
+    static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     private static Connection conexao;
     
     public static int salvar(Produto produto) throws SQLException {
@@ -90,7 +90,7 @@ public class ProdutoDAO {
         return true;
     }
 
-    public static ArrayList<Produto> listar() {
+    public static ArrayList<Produto> listarProduto() {
         ArrayList<Produto> lista = new ArrayList<>();
         String query = "SELECT * FROM Produto;";
         

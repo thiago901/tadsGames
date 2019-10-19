@@ -24,10 +24,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class FormCadastrarEmpresa {
+public class FormCadastrarEmpresa implements Executavel{
 
     
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    @Override
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
                ArrayList<EstadoRegiao> ufs  = EmpresaController.listaEstadoRegiao();
         
                ArrayList<Cidade> cid = CidadeController.listarCidade();
@@ -36,6 +37,7 @@ public class FormCadastrarEmpresa {
         req.setAttribute("cids", cid);
         RequestDispatcher rd = req.getRequestDispatcher("/cadastrarEmpresa.jsp");
         rd.forward(req, resp);
+        return "";
         
     }
 

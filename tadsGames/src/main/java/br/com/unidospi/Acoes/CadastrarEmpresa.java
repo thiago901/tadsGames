@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,9 +18,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class CadastrarEmpresa {
+public class CadastrarEmpresa implements Executavel{
 
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    /**
+     *
+     * @param req
+     * @param resp
+     * @return
+     * @throws IOException
+     * @throws ServletException
+     */
+    @Override
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException,ServletException {
          boolean retorno = false;
         String nome=req.getParameter("nome");
         String cnpj=req.getParameter("cnpj");
@@ -47,6 +57,7 @@ public class CadastrarEmpresa {
         if(retorno){
             resp.sendRedirect("sucesso.html");
         }
+        return "";
     }
     
     

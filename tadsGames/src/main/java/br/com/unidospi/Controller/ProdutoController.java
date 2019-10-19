@@ -5,14 +5,16 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.Acoes.CadastrarProduto;
+import br.com.unidospi.Acoes.EditarProduto;
+import br.com.unidospi.Acoes.FormCadastrarProduto;
+import br.com.unidospi.Acoes.FormEditarProduto;
+import br.com.unidospi.Acoes.ListarProduto;
 import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,42 +23,39 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author marco.assilva8 
- * @author lucas.sfaria5
+ * @author thiago.srocha4
  */
-@WebServlet(name = "ProdutoController", urlPatterns = {"/formularioProduto"})
-
+@WebServlet(name = "ProdutoServlet", urlPatterns = {"/inputProduto"})
 public class ProdutoController extends HttpServlet {
-
+    public static ArrayList<Produto> listarProduto (){
+        return ProdutoDAO.listarProduto();
+    }
+       
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String paramAction = req.getParameter("action");
         
-        ArrayList<Produto> lista = ProdutoDAO.listar();
-        request.setAttribute("lista", lista);
-        RequestDispatcher rd = request.getRequestDispatcher("Produto/listarProduto.jsp");
-        rd.forward(request, response);
+        if(paramAction.equals("CadastrarProduto")){
+            CadastrarProduto action = new CadastrarProduto();
+            action.executa(req, resp);
+            
+        }else if(paramAction.equals("EditarProduto")){
+            EditarProduto action = new EditarProduto();
+            action.executa(req, resp);
+        }else if(paramAction.equals("FormCadastrarProduto")){
+            FormCadastrarProduto action = new FormCadastrarProduto();
+            action.executa(req, resp);
+            
+        }else if(paramAction.equals("FormEditarProduto")){
+            FormEditarProduto action = new FormEditarProduto();
+            action.executa(req, resp);
+            
+        }else if(paramAction.equals("ListarProduto")){
+            ListarProduto action = new ListarProduto();
+            action.executa(req, resp);
+        }
     }
+
     
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        int retorno;
-        String nome = request.getParameter("nome");
-        String descricao = request.getParameter("descricao");
-        String tipo = request.getParameter("tipo");
-        boolean ativo = Boolean.valueOf(request.getParameter("ativo"));
 
-        Produto p = new Produto (nome, descricao, tipo, ativo);
-        try {
-            retorno = ProdutoDAO.salvar(p);
-            if (retorno > 0) {
-            response.sendRedirect("sucesso.html");
-        }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProdutoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-    }
 }

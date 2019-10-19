@@ -18,9 +18,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class EditarEmpresa {
+public class EditarEmpresa implements Executavel{
 
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    @Override
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         
         boolean retorno;
         int idEmpresa=Integer.parseInt(req.getParameter("idEmpresa"));
@@ -50,7 +51,7 @@ public class EditarEmpresa {
         if(retorno){
             resp.sendRedirect("sucesso.html");
         }
-    
+        return "";
     }
     
 }

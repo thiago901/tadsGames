@@ -23,8 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class EditarCliente {
+public class EditarCliente implements Executavel{
 
+    @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int retorno;
         int idCliente = Integer.parseInt(req.getParameter("idCliente")); 

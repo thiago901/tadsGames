@@ -18,14 +18,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class FormEditarEmpresa {
+public class FormEditarEmpresa implements Executavel{
 
-    public void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id =Integer.parseInt(req.getParameter("id"));
         EmpresaLista e = EmpresaController.listarEmpresas(id);
         req.setAttribute("e", e);
         RequestDispatcher rd = req.getRequestDispatcher("/alterarCliente.jsp");
         rd.forward(req, resp);
+        return "";
     }
     
 }
