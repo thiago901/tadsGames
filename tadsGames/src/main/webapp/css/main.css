@@ -13,9 +13,9 @@ body{
 	align-items: center;
 	min-height: 100vh;
 	background: #00d0ff;
-	/*background-image: url("../img/games-modernos.jpg");*/
+	background-image: url("../img/controle.jpg");
 	background-size: cover;
-	background-size: 100% 80%;
+	
 	background-repeat: no-repeat;
 	background-position: center;
 
@@ -31,9 +31,9 @@ body{
 .container .card{
 	position: relative;
 	width: 300px;
-	height: 400px;
+	height: 200px;
 	margin: 0 auto;
-	background: #fff;
+	background: rgba(255,255,255,.1);
 	transition: 0.5s;
 }
 .container .card:hover{
@@ -48,26 +48,31 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+        
+        
 }
 
 .container .card .face.face1{
 	box-sizing: border-box;
 	padding: 20px;
 	text-align: center;
-	background: #fff;
+	background: rgba(255,255,255,0);
 	color: #013d4a;
+        
+        
 }
 
 .container .card .face.face1 h2{
 	margin-top: 60px;
 }
 .container .card .face.face1 a{
-	display: inline-block;
+	display: flex;
 	padding: 5px 10px;
 	margin-top: 20px;
 	text-decoration: none;
-	color: #013d4a;
+	color: #fff;
 	border: 2px solid #013d4a;
+        align-items: center;
 }
 .container .card .face.face1 a:hover{
 	color: #fff;
@@ -81,10 +86,10 @@ body{
 	transition: 0.5s;
 }
 .container .card:hover .face.face2{
-	height: 80px;
-	width: 80px;
-	border-radius: 50%;
-	top: 40px;
+	height: 30px;
+	width: 80%;
+	border-radius: 5%;
+	top: 10px;
 	left: 50%;
 	transform: translateX(-50%);
 	background: transparent;
@@ -101,5 +106,5 @@ body{
 
 .container .card:hover .face.face2 h2{
 	color: #013d4a;
-	font-size: 2em;
+	font-size: 1.2em;
 }

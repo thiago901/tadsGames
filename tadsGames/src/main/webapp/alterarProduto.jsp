@@ -9,50 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box;}
-
-            /* ENTRADAS ONDE O TIPO SEJA TEXTO, COMBO E TEXTAREA */
-            input[type=text], select, textarea {
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-                margin-top: 6px;
-                margin-bottom: 16px;
-                resize: vertical;
-            }
-
-            input[type=submit] {
-                background-color: #4CAF50;
-                color: white;
-                padding: 12px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-
-            input[type=submit]:hover {
-                background-color: #45a049;
-            }
-
-            .container {
-                position: absolute;
-                left: 25%;
-                width: 50%;
-                border: 2px solid gray;
-                border-radius: 5px;
-                padding: 20px;
-            }
-
-            h3 {
-                text-align: center;
-            }
-            
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="css/formularios.css">
     </head>
     <body>
         <h3>Alterar Produtos</h3>

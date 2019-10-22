@@ -12,7 +12,7 @@
 	<head>
 		<meta charset = "utf-8">
 		<title>Alterar de Empresa</title>
-		<link rel="stylesheet" type="text/css" href="css/cadastroEmpresa.css">
+		<link rel="stylesheet" type="text/css" href="css/formularios.css">
 	</head>
 	<body>
 		<div class="container">

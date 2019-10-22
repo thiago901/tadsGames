@@ -10,63 +10,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    body {font-family: Arial, Helvetica, sans-serif;}
-    * {box-sizing: border-box;}
-
-    /* ENTRADAS ONDE O TIPO SEJA TEXTO, COMBO E TEXTAREA */
-    input[type=text], input[type=date], input[type=password], select, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      margin-top: 6px;
-      margin-bottom: 16px;
-      resize: vertical;
-    }
-
-    button[type=submit] {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    input[type=submit]:hover {
-      background-color: #45a049;
-    }
-
-    h1 {
-        text-align: center;
-    }
-    
-    table, tr, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    
-    th {
-        padding: 5px;
-    }
-    
-    td {
-        padding: 10px;
-    }
-
-    .container {
-      position: absolute;
-      top: 80%;
-      left: 50%;
-      width: 50%;
-      transform: translate(-50%, -50%);
-      border: 2px solid gray;
-      border-radius: 5px;
-      padding: 20px;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="css/formularios.css">
 </head>
 <body>
 

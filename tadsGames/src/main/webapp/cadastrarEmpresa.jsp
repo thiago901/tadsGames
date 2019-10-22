@@ -14,11 +14,12 @@
     <head>
         <meta charset = "utf-8">
         <title>Cadastro de Empresa</title>
-        <link rel="stylesheet" type="text/css" href="css/cadastroEmpresa.css">
+       <link rel="stylesheet" type="text/css" href="css/formularios.css">
+        
     </head>
     <body>
         <div class="container">
-            <h2>Cadastre a Empresa</h2>
+            <h2 class="titulo">Cadastre a Empresa</h2>
             <form action="\TadsGames\input?action=CadastrarEmpresa" method="post">
                 <div>
                     <label>Nome Empresa</label>
@@ -55,20 +56,20 @@
 
                 </div>
                 <div>
-                    <p> Status da Empresa</p>
+                    <label> Status da Empresa:</label>
                     <input type="radio" name="status" value="true" checked="">
                     <label>Ativa</label>
                     <input type="radio" name="status" value="false">
                     <label>Inativa</label>
 
                 </div>
-                <div>
-                    <p> Empresa Matiz</p>
+                <%--<div>
+                    <h2 class="titulo"> Empresa Matiz:</h2>
                     <input type="radio" name="matriz" value="true" id="matrizSim">
                     <label for="matrizSim">Sim</label>
                     <input type="radio" name="matriz" value="false" id="matrizNao" checked="">
                     <label for="matrizNao">Não</label>
-                </div>
+                </div>--%>
                 <button type="submit">Cadastrar</button>
             </form>
         </div>
