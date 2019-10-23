@@ -10,32 +10,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <style>
-            h1 {
-        text-align: center;
-    }
-    
-    .container {
-        position: absolute;
-        top: 40%;
-        left: 30%;
-        width: 50%;
-        transform: translate(-50%, -50%);
-    }
-    
-    table, tr, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    
-    th, tr, td {
-        padding: 5px;
-    }
-        </style>
+       <link rel="stylesheet" type="text/css" href="css/tabelasListagem.css">
     </head>
     <body>
         <div class="container">
-            <h1>Consulta de Funcionários</h1>
+            <h1 class="titulo">Consulta de Funcionários</h1>
+            <input type="text" id="nomePesquisa" placeholder="Digite um Nome">
         <form method="post" action="${pageContext.request.contextPath}/listarFuncionario" novalidate>
         <table border="1">            
   <thead>
@@ -68,8 +48,8 @@
          <td>${funcionario.cargo}</td>
          <td>${funcionario.sexo}</td>
          <td>${funcionario.status}</td>
-         <td value="${funcionario.id}">
-             <a href="inputFuncionario?action=FormEditarFuncionario&id=${funcionario.id}">Editar</a>
+         <td class="altera" value="${funcionario.id}">
+             <a href="inputFuncionario?action=FormEditarFuncionario&id=${funcionario.id}"><img src="img/alterar.png"></a>
          </td>
        </tr>
      </c:forEach>

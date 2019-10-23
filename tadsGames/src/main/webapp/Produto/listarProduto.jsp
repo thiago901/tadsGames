@@ -8,50 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head><meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box;}
-
-            /* ENTRADAS ONDE O TIPO SEJA TEXTO, COMBO E TEXTAREA */
-            input[type=text], select, textarea {
-                width: 100%;
-                padding: 12px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-                margin-top: 6px;
-                margin-bottom: 16px;
-                resize: vertical;
-            }
-
-            input[type=submit] {
-                background-color: #4CAF50;
-                color: white;
-                padding: 12px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-
-            input[type=submit]:hover {
-                background-color: #45a049;
-            }
-
-            .container {
-                position: absolute;
-                left: 25%;
-                width: 50%;
-                border: 2px solid gray;
-                border-radius: 5px;
-                padding: 20px;
-            }
-
-            h3 {
-                text-align: center;
-            }
-
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="css/tabelasListagem.css">
         <title>Listar Produto</title>
 
     </head>
@@ -60,9 +17,9 @@
         <form method="post" action="${pageContext.request.contextPath}/formularioProduto" novalidate>
 
             <div class="container">
-                <label for="pesquisa">Pesquisa</label>
-                <input type="search" id="pesquisa" name="pesquisa"</input>
-                <button type="button">Buscar</button><br><br>
+                <h1 class="titulo">Listar Produtos</h1>
+                <input type="text" id="pesquisa" name="pesquisa" placeholder="Digite um produto"</input>
+
 
                 <table border="1">
                     <thead>
@@ -84,7 +41,7 @@
                                 <td><c:out value="${p.getDescricao()}" /></td>
                                 <td><c:out value="${p.getTipo()}" /></td>
                                 <td><c:out value="${p.getAtivo()}" /></td>
-                                <td><a href="inputProduto?action=FormEditarProduto&idProduto=${p.getIdProduto()}">Editar</a></td>
+                                <td class="altera"><a href="inputProduto?action=FormEditarProduto&idProduto=${p.getIdProduto()}"><img src="img/alterar.png"></a></td>
                                 
                             </tr>
                         </c:forEach>
