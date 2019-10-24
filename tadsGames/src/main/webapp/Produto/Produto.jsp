@@ -19,10 +19,10 @@
             <h2 class="titulo">Cadastro de Produtos</h2>
             <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=CadastrarProduto">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto...">
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto..." required="">
 
                 <label for="tipo">Tipo</label>
-                <select id="tipo" name="tipo">
+                <select id="tipo" name="tipo" required="">
                     <option selected disabled> Selecione o tipo de produto</option>
                     <option value="Componente">Componente</option>
                     <option value="Console">Console</option>
@@ -40,9 +40,12 @@
                 <label for="inativo">Inativo</label>
                 <input type="radio" id="status" name="ativo" value="false" </input><br><br>
                 
-                <button type="submit">Salvar</button>
-                <button type="reset">Reset</button>
-                <button type="button">Cancelar</button> <br><br>
+                <div class="teste">
+                        <button type="submit">Cadastrar</button>
+                        <button type="reset">Resetar dados</button>
+                        <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
+                        <!--<a href="#" role="button">Cancelar</a>-->
+                    </div>
                 
 
                 

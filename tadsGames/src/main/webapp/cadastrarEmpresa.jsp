@@ -22,7 +22,7 @@
             <form action="\TadsGames\input?action=CadastrarEmpresa" method="post">
                 <div>
                     <label>Nome Empresa</label>
-                    <input type="text" name="nome" required>
+                    <input  type="text" name="nome" required>
 
                 </div>
                 <div>
@@ -69,7 +69,13 @@
                     <input type="radio" name="matriz" value="false" id="matrizNao" checked="">
                     <label for="matrizNao">Não</label>
                 </div>--%>
-                <button type="submit">Cadastrar</button>
+                 <div class="teste">
+                        <button type="submit">Cadastrar</button>
+                        <button type="reset">Resetar dados</button>
+                        <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
+                        <!--<a href="#" role="button">Cancelar</a>-->
+                    </div>
+                        
             </form>
         </div>
     </body>

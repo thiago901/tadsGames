@@ -52,7 +52,9 @@
                             </c:forEach>
                         </tbody>
                     </table>
-                    <button><a href="input?action=FormCadastrarEmpresa">Sair</a></button>
+                                <div class="teste">
+                <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
+            </div>
 		</div>
             <script type="text/javascript" src="javaScript/filtraEmpresa.js"></script>
 	</body>

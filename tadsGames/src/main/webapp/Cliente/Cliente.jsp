@@ -19,30 +19,41 @@
         <div class="container">
             <h2 class="titulo">Cadastro de Clientes</h2>
             <form method="post" action="${pageContext.request.contextPath}/inputCliente?action=CadastrarCliente" novalidate >
-                <fieldset>
+                
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome...">
+                    <input required="" type="text" id="nome" name="nome" placeholder="Digite seu nome...">
 
                     <label for="sobrenome">Sobrenome</label>
-                    <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu Sobrenome...">
+                    <input required="" type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu Sobrenome...">
 
                     <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
+                    <input required="" type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
 
-                    <fieldset>
+                    
                         <label for="dtNasc">Data de Nascimento</label>
-                        <input type="date" id="dtNasc" name="dtNasc" placeholder="Digite o CPF...">
-                    </fieldset>
+                        <input required="" type="date" id="dtNasc" name="dtNasc" placeholder="Digite o CPF...">
+                    
 
-                    <fieldset>
-                        <legend>Sexo</legend>
+                    
+                        <label>Sexo</label>
                         <input type="radio" name="sexo"  id="optSexoF" value="F" checked />
                         <label for="optSexoF"> Feminino </label>
 
                         <input type="radio" name="sexo" id="optSexoM" value="M" />
                         <label for="optSexoM"> Masculino </label>
-                    </fieldset>
+                        <br>
+                        <br>
+                        
+                         <label>Status</label>
 
+                        <input type="radio" name="status" id="optStatusTrue" value="true" checked />
+                        <label for="optAtivo">Ativo</label>
+
+                        <input type="radio" name="status" id="optoptStatusFalse" value="false" />
+                        <label for="optInativo"> Inativo</label>
+                    
+                        <br>
+                        <br>
                     <label for="tpEmpresa" >Empresa</label>
                     <select id="empresa" required="" name="tpEmpresa" >
                         <option selected="" disabled=""><c:out value="Selecione uma Empresa"/></option>
@@ -51,22 +62,16 @@
                         </c:forEach>
                     </select>
 
-                    <fieldset>
-                        <legend>Status</legend>
-
-                        <input type="radio" name="status" id="optStatusTrue" value="true" checked />
-                        <label for="optAtivo">Ativo</label>
-
-                        <input type="radio" name="status" id="optoptStatusFalse" value="false" />
-                        <label for="optInativo"> Inativo</label>
-                    </fieldset>
+                    
+                       
+                    
                     <div class="teste">
-                        <button type="submit">Enviar</button>
+                        <button type="submit">Cadastrar</button>
                         <button type="reset">Resetar dados</button>
-                        <button type="submit" value="">Cancelar</button>
+                        <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
                         <!--<a href="#" role="button">Cancelar</a>-->
                     </div>
-                </fieldset>
+                
             </form>
         </div>
 
