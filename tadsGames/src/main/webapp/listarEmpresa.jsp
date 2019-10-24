@@ -4,7 +4,6 @@
     Author     : Thiago
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -25,10 +24,10 @@
                                     <th hidden="">Id</th>
                                         <th>Nome</th>
                                         <th>CNPJ</th>
-                                        <th>Data de Cria√ß√£o</th>
+                                        <th>Data de CriaÁ„o</th>
                                         <th>UF</th>
                                         <th>Cidade</th>
-                                        <th>Regi√£o</th>
+                                        <th>Regi„o</th>
                                         <th>Status</th>
                                         <th hidden="">Matiz</th>
                                         <th>Editar</th>

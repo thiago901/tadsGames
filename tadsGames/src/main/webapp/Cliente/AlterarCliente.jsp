@@ -4,7 +4,6 @@
     Author     : henrique.abastos
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,36 +59,6 @@
 
                         <input type="radio" name="status" id="optoptStatusFalse" value="false" />
                         <label for="optInativo"> Inativo</label>
-                    </fieldset>
-                    <fieldset>
-                        <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Sobrenome</th>
-                                    <th>CPF</th>
-                                    <th>Data Nasc.</th>
-                                    <th>Sexo</th>
-                                    <th>Empresa</th>
-                                    <th>Status</th>
-                                    <th>Alterar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="${listaCliente}" var="c">
-                                    <tr>
-                                        <td value="${c.getIdCliente()}">${c.getNome()}</td>
-                                        <td>${c.getSobrenome()}</td>
-                                        <td>${c.getCPF()}</td>
-                                        <td>${c.getDtNasc()}</td>
-                                        <td>${c.getSexo()}</td>
-                                        <td value="${c.getIdempresa()}">${c.getNomeEmpresa()}</td>
-                                        <td>${c.getAtivo()}</td>
-                                        <td value="${c.getIdCliente()}"><a href="inputCliente?action=FormEditarCliente&idCliente=${c.getIdCliente()}">Alterar</a></td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
                     </fieldset>
                     <div class="teste">
                         <button type="submit">Enviar</button>

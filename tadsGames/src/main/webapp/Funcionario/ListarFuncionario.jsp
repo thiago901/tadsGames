@@ -4,7 +4,6 @@
     Author     : gabri
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +13,7 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="titulo">Consulta de Funcion√°rios</h1>
+            <h1 class="titulo">Consulta de Funcion·rios</h1>
             <input type="text" id="nomePesquisa" placeholder="Digite um Nome">
         <form method="post" action="${pageContext.request.contextPath}/listarFuncionario" novalidate>
         <table border="1">            
@@ -25,13 +24,13 @@
       <th>CPF</th>
       <th>Data de Nascimento</th>
       <th>Login</th>
-      <th>Sal√°rio</th>
+      <th>Sal·rio</th>
       <th>Departamento</th>
       <th>Empresa</th>
       <th>Cargo</th>
       <th>Sexo</th>
       <th>Status</th>
-      <th>Op√ß√£o</th>
+      <th>OpÁ„o</th>
     </tr>
   </thead>
   <tbody>

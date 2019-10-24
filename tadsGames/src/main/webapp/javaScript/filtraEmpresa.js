@@ -5,7 +5,6 @@ nomePesquisado.addEventListener("input",function (){
 	
 	var pesquisado = nomePesquisado.value;
 	var empresas = document.querySelectorAll(".empresa");
-	
 
 
 	for(var i =0;i<empresas.length;i++){

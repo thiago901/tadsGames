@@ -4,7 +4,6 @@
     Author     : gabri
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +14,7 @@
 
 <div class="container">
   <form method="post" action="${pageContext.request.contextPath}/inputFuncionario?action=CadastrarFuncionario" novalidate>
-      <h2 class="titulo">Cadastro de FuncionÃ¡rios</h2> 
+      <h2 class="titulo">Cadastro de Funcionários</h2> 
       
     <label for="nome">Nome</label>
     <input type="text" id="nome" name="nome" placeholder="Digite seu nome...">
@@ -51,10 +50,10 @@
     <label for="tpFuncionario">Cargo</label>
     <select id="tpFuncionario" name="tpFuncionario">
       <option value="Diretor">Diretor</option>
-      <option value="Funcionario Administrativo">FuncionÃ¡rio Administrativo</option>
-      <option value="Funcionario TI">FuncionÃ¡rio TI</option>
-      <option value="Funcionario Venda">FuncionÃ¡rio Venda</option>
-      <option value="Funcionario Retaguarda">FuncionÃ¡rio Retaguarda</option>
+      <option value="Funcionario Administrativo">Funcionário Administrativo</option>
+      <option value="Funcionario TI">Funcionário TI</option>
+      <option value="Funcionario Venda">Funcionário Venda</option>
+      <option value="Funcionario Retaguarda">Funcionário Retaguarda</option>
       <option value="Gerente Global">Gerente Global</option>
     </select>
     

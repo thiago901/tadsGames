@@ -3,31 +3,30 @@
     Created on : 15/10/2019, 16:02:55
     Author     : lucas
 --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <head><meta name="viewport" content="width=device-width, initial-scale=1">
+    <head><meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/tabelasListagem.css">
         <title>Listar Produto</title>
 
     </head>
 
     <body>
-        <form method="post" action="${pageContext.request.contextPath}/formularioProduto" novalidate>
-
+        
             <div class="container">
                 <h1 class="titulo">Listar Produtos</h1>
-                <input type="text" id="pesquisa" name="pesquisa" placeholder="Digite um produto"</input>
+                <input type="text" id="pesquisaProduto" placeholder="Digite um nome..."</input>
 
 
-                <table border="1">
+                <table border="1" id="tabela">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Nome</th>
-                            <th>Tipo</th>
                             <th>Descricao</th>
+                            <th>Tipo</th>
                             <th>Ativo</th>
                             <th>Editar</th>
                         </tr>
@@ -35,12 +34,12 @@
                     <tbody>
 
                         <c:forEach var="p" items="${lista}">
-                            <tr>
-                                <td><c:out value="${p.getIdProduto()}" /></td>
-                                <td><c:out value="${p.getNome()}" /></td>
-                                <td><c:out value="${p.getDescricao()}" /></td>
-                                <td><c:out value="${p.getTipo()}" /></td>
-                                <td><c:out value="${p.getAtivo()}" /></td>
+                            <tr class="produto">
+                                <td class="idProduto"><c:out value="${p.getIdProduto()}" /></td>
+                                <td class="nome"><c:out value="${p.getNome()}" /></td>
+                                <td class="descricao"><c:out value="${p.getDescricao()}" /></td>
+                                <td class="tipo"><c:out value="${p.getTipo()}" /></td>
+                                <td class="ativo"><c:out value="${p.getAtivo()}" /></td>
                                 <td class="altera"><a href="inputProduto?action=FormEditarProduto&idProduto=${p.getIdProduto()}"><img src="img/alterar.png"></a></td>
                                 
                             </tr>
@@ -49,6 +48,6 @@
                     </tbody>
                 </table>
             </div>
-        </form>
+        <script type="text/javascript" src="javaScript/filtraProduto.js"></script>
     </body>
 </html> 

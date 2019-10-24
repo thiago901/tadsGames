@@ -4,7 +4,6 @@
     Author     : Thiago
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -30,7 +29,7 @@
 					
 				</div>
 				<div>
-                                        <label>Data de CriaÃ§Ã£o</label>
+                                        <label>Data de Criação</label>
 					<input type="date" name="dataCriacao" required value="${e.getDataCriacao()}">
 					
 				</div>
@@ -66,7 +65,7 @@
                                     <input type="radio" name="matriz" value="true" id="matrizSim">
                                     <label for="matrizSim">Sim</label>
                                     <input type="radio" name="matriz" value="false" id="matrizNao" checked="">
-                                    <label for="matrizNao">NÃ£o</label>
+                                    <label for="matrizNao">Não</label>
                                 </div>
                             <button type="submit">Cadastrar</button>
 			</form>
