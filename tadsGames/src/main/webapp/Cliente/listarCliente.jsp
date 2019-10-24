@@ -23,6 +23,7 @@
                         <th>Data Nasc.</th>
                         <th>Sexo</th>
                         <th>Status</th>
+                        <th>Empresa</th>
                         <th>Alterar</th>
                     </tr>
                 </thead>
@@ -36,8 +37,9 @@
                         <td class="cpf"><c:out value="${a.getCPF()}" /></td>
                         <td class="dtNasc"><c:out value="${a.getDtNasc()}" /></td>
                         <td class="sexo"><c:out value="${a.getSexo()}" /></td>
-                        <td class="idEmpresa" hidden><c:out value="${a.getIdempresa()}" /></td>
                         <td class="ativo"><c:out value="${a.getAtivo()}" /></td>
+                        <td class="idEmpresa" ><c:out value="${a.getNomeEmpresa()}" /></td>
+                        
                         <td class="altera" value="${a.getIdCliente()}"><a href="inputCliente?action=FormEditarCliente&idCliente=${a.getIdCliente()}"><img src="img/alterar.png"></a></td>
                     </tr>
                 </c:forEach>

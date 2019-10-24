@@ -14,59 +14,60 @@
     </head>
     <body>
 
-        <h3 class="teste">Alterar de Clientes</h3>
+
 
         <div class="container">
+            <h2 class="titulo">Alterar de Clientes</h2>
             <form method="post" action="${pageContext.request.contextPath}/inputCliente?action=EditarCliente" novalidate >
-                <fieldset>
-                    <label for="nome">Nome</label>
-                    <input type="text" id="idCliente" hidden="" name="idCliente" value="${c.getIdCliente()}">
-                    <input type="text" id="nome" name="nome" value="${c.getNome()}" placeholder="Digite seu nome...">
 
-                    <label for="sobrenome">Sobrenome</label>
-                    <input type="text" id="sobrenome" name="sobrenome"  value="${c.getSobrenome()}" placeholder="Digite seu Sobrenome...">
+                <label for="nome">Nome</label>
+                <input type="text" id="idCliente" hidden="" name="idCliente" value="${c.getIdCliente()}">
+                <input type="text" id="nome" name="nome" value="${c.getNome()}" placeholder="Digite seu nome...">
 
-                    <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" name="cpf" value="${c.getCPF()}"  placeholder="Digite o CPF...">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" id="sobrenome" name="sobrenome"  value="${c.getSobrenome()}" placeholder="Digite seu Sobrenome...">
 
-                    <fieldset>
-                        <label for="dtNasc">Data de Nascimento</label>
-                        <input type="date" id="dtNasc" name="dtNasc"  value="${c.getDtNasc()}" placeholder="Digite o CPF...">
-                    </fieldset>
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" value="${c.getCPF()}"  placeholder="Digite o CPF...">
 
-                    <fieldset>
-                        <legend>Sexo</legend>
-                        <input type="radio" name="sexo"  id="optSexoF" value="F" checked />
-                        <label for="optSexoF"> Feminino </label>
 
-                        <input type="radio" name="sexo" id="optSexoM" value="M" />
-                        <label for="optSexoM"> Masculino </label>
-                    </fieldset>
+                <label for="dtNasc">Data de Nascimento</label>
+                <input type="date" id="dtNasc" name="dtNasc"  value="${c.getDtNasc()}" placeholder="Digite o CPF...">
 
-                    <label for="tpEmpresa" >Empresa</label>
-                    <select id="empresa"  required=""name="tpEmpresa" >
-                        <option selected="" value="${c.getIdempresa()}"><c:out value="${c.getNomeEmpresa()}"/></option>
-                        <c:forEach items="${listaEmpresa}" var="e">
-                            <option value="${e.getIdEmpresa()}"><c:out value="${e.getNome()}"/></option>
-                        </c:forEach>
-                    </select>
 
-                    <fieldset>
-                        <legend>Status</legend>
 
-                        <input type="radio" name="status" id="optStatusTrue" value="true" checked />
-                        <label for="optAtivo">Ativo</label>
+                <label>Sexo</label>
+                <input type="radio" name="sexo"  id="optSexoF" value="F" checked />
+                <label for="optSexoF"> Feminino </label>
 
-                        <input type="radio" name="status" id="optoptStatusFalse" value="false" />
-                        <label for="optInativo"> Inativo</label>
-                    </fieldset>
-                    <div class="teste">
-                        <button type="submit">Enviar</button>
-                        <button type="reset">Resetar dados</button>
-                        <button type="submit" value="">Cancelar</button>
-                        <!--<a href="#" role="button">Cancelar</a>-->
-                    </div>
-                </fieldset>
+                <input type="radio" name="sexo" id="optSexoM" value="M" />
+                <label for="optSexoM"> Masculino </label>
+
+                <br><br>
+                <label for="tpEmpresa" >Empresa</label>
+                <select id="empresa"  required=""name="tpEmpresa" >
+                    <option selected="" value="${c.getIdempresa()}"><c:out value="${c.getNomeEmpresa()}"/></option>
+                    <c:forEach items="${listaEmpresa}" var="e">
+                        <option value="${e.getIdEmpresa()}"><c:out value="${e.getNome()}"/></option>
+                    </c:forEach>
+                </select>
+
+
+                <label>Status</label>
+
+                <input type="radio" name="status" id="optStatusTrue" value="true" checked />
+                <label for="optAtivo">Ativo</label>
+
+                <input type="radio" name="status" id="optoptStatusFalse" value="false" />
+                <label for="optInativo"> Inativo</label>
+
+                <div class="teste">
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Resetar dados</button>
+                    <button type="submit" value="">Cancelar</button>
+                    <!--<a href="#" role="button">Cancelar</a>-->
+                </div>
+
             </form>
         </div>
 

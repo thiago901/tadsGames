@@ -5,10 +5,15 @@
  */
 package br.com.unidospi.Acoes;
 
+import br.com.unidospi.Controller.CidadeController;
+import br.com.unidospi.Controller.EmpresaController;
+import br.com.unidospi.model.Cidade;
 import br.com.unidospi.model.Empresa;
+import br.com.unidospi.model.EstadoRegiao;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +28,7 @@ public class EditarEmpresa implements Executavel{
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         
+        
         boolean retorno;
         int idEmpresa=Integer.parseInt(req.getParameter("idEmpresa"));
         String nome=req.getParameter("nome");
@@ -34,7 +40,7 @@ public class EditarEmpresa implements Executavel{
         boolean matriz = Boolean.valueOf(req.getParameter("matriz"));
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
+       
         
         Date dataCriacao = null;
         try {
