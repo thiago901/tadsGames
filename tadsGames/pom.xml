@@ -8,7 +8,12 @@
     <packaging>war</packaging>
 
     <name>tadsGames</name>
-
+    <developers>
+        <developer>
+            <id>Loc-B</id>
+            <name>Lucas Souza</name>
+        </developer>
+    </developers>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
