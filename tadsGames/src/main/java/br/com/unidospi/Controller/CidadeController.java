@@ -14,10 +14,13 @@ import java.util.List;
  * @author Thiago
  */
 public class CidadeController {
+    // retorna uma lista de ciades
     public static ArrayList listarCidade(){
         return CidadeDAO.listaCidade();
         
     }
+    
+    // Recebe uma uf e retorna a cidade
     public static ArrayList listarCidade(int uf){
         return CidadeDAO.listaCidade(uf);
         

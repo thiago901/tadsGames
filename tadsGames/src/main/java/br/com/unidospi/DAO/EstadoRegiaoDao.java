@@ -26,6 +26,7 @@ public class EstadoRegiaoDao {
     private static final String SENHA = "adminadmin";
     private static Connection conexao;
     
+    // Retorna uma lista de estados e regiões
     public static ArrayList <EstadoRegiao> listarEstadosRegioes() {
         ArrayList <EstadoRegiao>listaEstadosRegioes = new ArrayList();
         

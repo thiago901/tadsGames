@@ -28,6 +28,9 @@ public class ProdutoDAO {
     static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     private static Connection conexao;
     
+    
+    /* Recebe um produto e retorna 1 caso o registro do produto seja salvo
+       na base de dados ou 0 caso não seja salvo */
     public static int salvar(Produto produto) throws SQLException {
         int retorno = 0;
         String sql = "INSERT INTO Produto (idProduto, nome, descricao, tipo, ativo)"
@@ -57,6 +60,8 @@ public class ProdutoDAO {
         return retorno;
     }
     
+    /* Recebe um produto e retorna 1 caso o(s) dado(s) do registro do produto
+       seja(m) alterado(s) ou 0 caso não seja(s) alterado(s) */
     public static boolean editar(Produto produto) {
         String query = "update produto set nome=?,descricao=?, tipo=?, ativo=? where idProduto=?";
         
@@ -90,6 +95,7 @@ public class ProdutoDAO {
         return true;
     }
 
+    // Retorna uma lista de produtos
     public static ArrayList<Produto> listarProduto() {
         ArrayList<Produto> lista = new ArrayList<>();
         String query = "SELECT * FROM Produto;";
@@ -124,6 +130,7 @@ public class ProdutoDAO {
         return lista;
     }
     
+    /* Recebe um identificador de um produto e retorna o produto */
     public static Produto listarProduto(int id) {
         String query = "SELECT * FROM Produto where idProduto = ?";
         

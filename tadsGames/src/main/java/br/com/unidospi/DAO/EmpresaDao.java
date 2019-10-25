@@ -29,6 +29,9 @@ public class EmpresaDao {
     static final String SENHA = "adminadmin";
     static Connection conexao;
 
+    
+    /* Recebe uma empresa e retorna verdadeiro caso o registro da empresa seja salvo
+     * retorna falso casp p registro da empresa não seja salvo na base de dados */
     public static boolean salvar(Empresa empr)  {
         
         try {
@@ -60,6 +63,9 @@ public class EmpresaDao {
         }
         return false;
     }
+    
+    /* Recebe uma empresa e retorna verdaidero caso o(s) dado(s) do registro 
+       sejam alterados ou falso caso não sejam alterados */
     public static boolean alterar(Empresa empr){
         try{
             Class.forName(DRIVER);
@@ -105,6 +111,7 @@ public class EmpresaDao {
         return false;
     }
 
+    /* Retorna uma lista de empresas */
     public static ArrayList listarEmpresas() {
         try{
             String sql = "select a.idEmpresa,\n" +
@@ -161,6 +168,7 @@ public class EmpresaDao {
         return null;
     }
     
+    // Recebe o identificador de uma empresa e retorna a empresa
     public static EmpresaLista listarEmpresas(int id) {
         try{
             String sql = "select a.idEmpresa,\n" +

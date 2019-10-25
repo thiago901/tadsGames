@@ -30,6 +30,8 @@ public class ClienteDAO {
     static final String SENHA = "adminadmin";
     static Connection conexao;
     
+    /* recebe um objeto cliente e retorna 1 caso obtenha sucesso em salvar cliente
+     * ou 0 caso não obtenha sucesso */   
     public static int salvar(Cliente cliente)  {
             
         int retorno = 0;
@@ -61,6 +63,7 @@ public class ClienteDAO {
         return retorno;
     }
     
+    // retorna uma lista de clientes
     public static ArrayList<ClienteLista> listarClientes() {
         ArrayList<ClienteLista> listaClientes = new ArrayList<>();
         String query = "SELECT 	a.idCliente, " +
@@ -105,6 +108,8 @@ public class ClienteDAO {
         
         return listaClientes;
     }
+    
+    // retorna um cliente localizando pelo identificador
     public static ClienteLista listarClientes(int id) {
         
         String query = "SELECT 	a.idCliente, " +
@@ -152,6 +157,8 @@ public class ClienteDAO {
         return null;
     }
     
+    /* Recebe um objeto cliente e retrna 1 caso o registro do cliente seja salvo
+     * ou zero caso não seja salvo */
     public static int alterar(Cliente cliente) {
         
         String query = "update cliente\n" +

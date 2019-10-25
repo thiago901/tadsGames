@@ -33,22 +33,29 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "EmpresaServelet", urlPatterns = {"/input"})
 public class EmpresaController extends HttpServlet {
     
+    // Recebe uma lista de Estados
     public static ArrayList<EstadoRegiao> listaEstadoRegiao(){
         return EstadoRegiaoDao.listarEstadosRegioes();
     }
-
+    
+    /* Recebe uma empresa e retorna verdadeiro caso o(s) dado(s) do registro
+       da empresa sej(a)m alterados ou falso caso o contrário */
     public static boolean alterar(Empresa e) {
         return EmpresaDao.alterar(e);
     }
 
+    // retorna uma lista de empresas
     public static ArrayList listarEmpresas() {
         return EmpresaDao.listarEmpresas();
     }
 
+    // Recebe um identificador e retorna a empresa identificada pelo mesmo
     public static EmpresaLista listarEmpresas(int id) {
         return EmpresaDao.listarEmpresas(id);
     }
 
+    /* Recebe requisição e resposta por parâmetro e determina qual ação será 
+       realizada atraves do atributo de requisição @paramAction após varios testes */
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");

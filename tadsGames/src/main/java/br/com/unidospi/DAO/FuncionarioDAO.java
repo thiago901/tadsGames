@@ -31,6 +31,8 @@ public class FuncionarioDAO {
     private static String URL = "jdbc:mysql://localhost:3306/dbgames?useTimezone=true&serverTimezone=UTC";  //URL do banco de dados
     private static Connection conexao;
     
+    /* Recebe um funcionario e retorna 1 caso o registro do funcionário seja salvo
+       ou 0 caso o registro não seja salvo na base de dados */
     public static int salvar(Funcionario funcionario) {
         int retorno = 0;
         String sql = "INSERT INTO Funcionario (idEmpresa, nomeFuncionario, sobrenome, sexo, cpf, dtNasc," +
@@ -69,6 +71,7 @@ public class FuncionarioDAO {
         return retorno;
     }
     
+    // Retorna uma lista de funcionários
     public static ArrayList<FuncionarioEmpresa> obterFuncionarios() {
         ArrayList<FuncionarioEmpresa> listaFuncionarioEmpresas = 
                 new ArrayList<>();
@@ -127,6 +130,8 @@ public class FuncionarioDAO {
         return listaFuncionarioEmpresas;
     }
     
+    /* Recebe um identificador de um funcionário 
+       e retorna o funcionário identificado */
     public static Funcionario obterFuncionarioPorId(int id) {
         Funcionario funcionario = null;
         String query = "SELECT * FROM Funcionario WHERE idFuncionario = ?";
@@ -167,6 +172,7 @@ public class FuncionarioDAO {
         return funcionario;
     }
     
+    /* retorna uma lista de empresas sem os dados de funcionarios */
     public static ArrayList<Empresa> obterEmpresas() {
         ArrayList<Empresa> listaEmpresas = new ArrayList<>();
         String query = "SELECT * FROM Empresa";
@@ -201,6 +207,7 @@ public class FuncionarioDAO {
         return listaEmpresas;
     }
     
+    /* Retorna uma lista de Funcionarios sem os dados de emprsas */
     public static ArrayList<Funcionario> obterFuncionario() {
         ArrayList<Funcionario> listaFuncionario = new ArrayList<>();
         String query = "SELECT * FROM Funcionario";
@@ -240,6 +247,8 @@ public class FuncionarioDAO {
         return listaFuncionario;
     }
     
+    /* Recebe um funcionário e retorna 1 caso o(s) dado(s) do registro do
+       funcionário seja(m) alterado(s) ou 0 caso não sejam alterado(s) */
     public static int alterar(Funcionario funcionario) {
         int retorno = 0;
         String query = "UPDATE Funcionario " +
@@ -292,6 +301,8 @@ public class FuncionarioDAO {
         return retorno;
     }
     
+    /* Recebe um identificador de um fucionário e retorna o funcionário
+       identificado pelo id */
     public static FuncionarioEmpresa obterFuncionarioEmpresaPorId(int id) {
         FuncionarioEmpresa funcionarioEmpresa = null;
         

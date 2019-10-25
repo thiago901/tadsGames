@@ -25,6 +25,7 @@ public class CidadeDAO {
     private static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     private static Connection conexao;
     
+    // retorna uma lista de cidades
     public static ArrayList listaCidade() {
         try{
             ArrayList <Cidade> cid = new ArrayList();
@@ -53,6 +54,8 @@ public class CidadeDAO {
         return null;
         
     }
+    
+    // recebe um uf e retorna uma lista de cidades da uf especificada
     public static ArrayList listaCidade(int uf) {
         try{
             ArrayList <Cidade> cid = new ArrayList();

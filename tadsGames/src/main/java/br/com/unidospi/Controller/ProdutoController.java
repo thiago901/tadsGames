@@ -26,10 +26,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ProdutoServlet", urlPatterns = {"/inputProduto"})
 public class ProdutoController extends HttpServlet {
+    
+    // retorna 
     public static ArrayList<Produto> listarProduto (){
         return ProdutoDAO.listarProduto();
     }
        
+    /* Recebe requisição e resposta por parâmetro e determina qual ação será 
+       realizada atraves do atributo de requisição @paramAction após varios testes */
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
