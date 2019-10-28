@@ -24,6 +24,7 @@ public class FormEditarProduto implements Executavel{
                int id = Integer.parseInt(req.getParameter("idProduto"));
         Produto p = ProdutoDAO.listarProduto(id);
         req.setAttribute("p", p);
+        req.setAttribute("erroNome", null);
         RequestDispatcher rd = req.getRequestDispatcher("/alterarProduto.jsp");
         rd.forward(req, resp);
         return "";

@@ -20,7 +20,12 @@
             <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=CadastrarProduto">
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto..." required="">
-
+                <c:if test="${erroNome}">
+                    <div class="erro-input com-erro">
+                        Digite menos que 50 caracteres
+                    </div>
+                </c:if>
+                
                 <label for="tipo">Tipo</label>
                 <select id="tipo" name="tipo" required="">
                     <option selected disabled> Selecione o tipo de produto</option>
@@ -28,6 +33,11 @@
                     <option value="Console">Console</option>
                     <option value="Jogo">Jogo</option>
                 </select>
+                <c:if test="${erroTipo}">
+                    <div class="erro-input com-erro">
+                        É obrigatório selecionar um tipo de produto!
+                    </div>
+                </c:if>
 
                 <br><br>
                 <label for="descricao">Descricao</label><br>

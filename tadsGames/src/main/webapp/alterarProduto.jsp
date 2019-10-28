@@ -18,7 +18,14 @@
             <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=EditarProduto">
                 
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" value = "${p.getNome()}">
+                <input type="text" name="nome" value="${p.getNome()}" required>
+                <div id="validacaoNome" hidden="true">
+                    <c:if test="${erroNome}">
+                        <div class="erro-input com-erro">
+                            Digite menos que 50 caracteres
+                        </div>
+                    </c:if>
+                </div>    
                 <input type="text" name="id" hidden="" value = "${p.getIdProduto()}">
 
                 <label for="tipo">Tipo</label>
@@ -28,7 +35,13 @@
                     <option value="Console">Console</option>
                     <option value="Jogo">Jogo</option>
                 </select>
-
+                <div class="validacao" hidden="true">
+                    <c:if test="${erroTipo}">
+                        <div class="erro-input com-erro">
+                            É obrigatório escolher um tipo de produto!
+                        </div>
+                    </c:if>
+                </div>
                 <br><br>
                 <label for="descricao">Descricao</label><br>
                 <textarea cols="30" rows="5" name="descricao" value="${p.getDescricao()}">${p.getDescricao()}</textarea>
@@ -40,13 +53,18 @@
                 <label for="inativo">Inativo</label>
                 <input type="radio" name="ativo" value="false"</input><br><br>
                 
-                <button type="submit">Salvar</button>
+                <button type="submit" id="btnSalvar">Salvar</button>
                 <button type="reset">Reset</button>
                 
                 
 
             </form>
         </div>
-
+                <script>
+                    document.getElementById('btnSalvar')
+                            .addEventListener('click', function() {
+                                document.getElementById('validacaoNome').hidden = false
+                            }, false);
+                </script>
     </body>
 </html>

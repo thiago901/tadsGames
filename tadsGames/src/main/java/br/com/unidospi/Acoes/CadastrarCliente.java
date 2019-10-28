@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,15 +26,39 @@ import javax.servlet.http.HttpServletResponse;
 public class CadastrarCliente implements Executavel{
 
     @Override
-    public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public String executa(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException, ServletException {
         int retorno;
-        int idEmpresa = Integer.parseInt(req.getParameter("tpEmpresa")); 
+        int idEmpresa = 0; 
+        String idEmpresaStr = req.getParameter("tpEmpresa");
         String nome = req.getParameter("nome");
         String sobrenome = req.getParameter("sobrenome");
         String cpf = req.getParameter("cpf");
         String dtNascm = req.getParameter("dtNasc");
         String sexo = req.getParameter("sexo");
         boolean ativo = Boolean.valueOf(req.getParameter("status"));
+        
+        boolean validacaoServidor = false;
+        
+        if (nome.length() > 100) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoNome", true);
+        }      
+        if (sobrenome.length() > 50) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoSobrenome", true);
+        }
+        if (idEmpresaStr == null) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoEmpresa", true);
+        } else 
+            idEmpresa = Integer.parseInt(idEmpresaStr);  
+        
+        if (validacaoServidor) {
+            RequestDispatcher dispatcher = 
+                    req.getRequestDispatcher("Cliente/Cliente.jsp");
+            dispatcher.forward(req, resp);
+        }
         
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dtNasc = null;

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,11 +26,32 @@ public class CadastrarProduto implements Executavel{
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         int retorno;
+        
         String nome = req.getParameter("nome");
         String descricao = req.getParameter("descricao");
         String tipo = req.getParameter("tipo");
-        boolean ativo = Boolean.valueOf(req.getParameter("ativo"));
-
+        boolean ativo = Boolean.valueOf(req.getParameter("ativo"));                
+        
+        boolean validacaoServidor = false;
+        
+        if (nome.length() < 1 || nome.length() > 70) {
+            validacaoServidor = true;
+            req.setAttribute("erroNome", true);
+        }
+        
+        if (tipo == null) {
+            validacaoServidor = true;
+            req.setAttribute("erroTipo", true);
+        }
+        
+        if (validacaoServidor) {
+            
+            RequestDispatcher dispatcher = 
+                    req.getRequestDispatcher("Produto/Produto.jsp");
+            dispatcher.forward(req, resp);
+        }
+        
+        
         Produto p = new Produto (nome, descricao, tipo, ativo);
         try {
             retorno = ProdutoDAO.salvar(p);
@@ -42,5 +64,4 @@ public class CadastrarProduto implements Executavel{
         return "";
 
     }
-    
 }

@@ -22,13 +22,27 @@
                 
                     <label for="nome">Nome</label>
                     <input required="" type="text" id="nome" name="nome" placeholder="Digite seu nome...">
+                    <c:if test="${validacaoNome}">
+                        <div class="erro-input com-erro">
+                            Digite menos que 50 caracteres
+                        </div>
+                    </c:if>
 
                     <label for="sobrenome">Sobrenome</label>
                     <input required="" type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu Sobrenome...">
-
+                    <c:if test="${validacaoSobrenome}">
+                        <div class="erro-input com-erro">
+                            Digite menos que 50 caracteres
+                        </div>
+                    </c:if>
+                    
                     <label for="cpf">CPF</label>
                     <input required="" type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
-
+                    <c:if test="${validacaoCPF}">
+                        <div class="erro-input com-erro">
+                            Digite 11 caracteres para o CPF
+                        </div>
+                    </c:if>
                     
                         <label for="dtNasc">Data de Nascimento</label>
                         <input required="" type="date" id="dtNasc" name="dtNasc" placeholder="Digite o CPF...">
@@ -38,13 +52,13 @@
                         <label>Sexo</label>
                         <input type="radio" name="sexo"  id="optSexoF" value="F" checked />
                         <label for="optSexoF"> Feminino </label>
-
+                                                
                         <input type="radio" name="sexo" id="optSexoM" value="M" />
                         <label for="optSexoM"> Masculino </label>
                         <br>
                         <br>
                         
-                         <label>Status</label>
+                        <label>Status</label>
 
                         <input type="radio" name="status" id="optStatusTrue" value="true" checked />
                         <label for="optAtivo">Ativo</label>
@@ -61,6 +75,11 @@
                             <option value="${e.getIdEmpresa()}"><c:out value="${e.getNome()}"/></option>
                         </c:forEach>
                     </select>
+                    <c:if test="${validacaoEmpresa}">
+                        <div class="erro-input com-erro">
+                            É obrigatório selecionar uma empresa
+                        </div>
+                    </c:if>
 
                     
                        

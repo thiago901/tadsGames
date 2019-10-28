@@ -14,7 +14,6 @@ a{
 body{
 	margin: 0;
 	padding: 0;
-        background: #00d0ff;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -81,4 +80,11 @@ table td,th{
 }
 .invisivel{
   display: none;
+}
+.erro-input {
+    display: none;
+    color: #e74c3c;
+}
+.com-erro {
+    display: block;
 }
