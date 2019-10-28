@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="container">
-            <form>
+            <form action="\TadsGames\inputCompra?action=CadastrarCompra" method="post">
                 <select name="empresa" required="">
                     <option disabled="" selected="" >Escolha um empresa</option>
                     <c:forEach items="${empresas}" var="e">
@@ -34,7 +34,7 @@
                 <label for="vlrUnitario">Valor Unitario</label>
                 <input  id="vlrUnitario" name="vlrUnitario" required="">
                 <label for="dtEntrada">Data de Entrada</label>
-                <input  id="dtEntrada" name="dtEntrada" required="">
+                <input type="date" id="dtEntrada" name="dtEntrada" required="">
                 <button>Salvar</button>
                 
             </form>

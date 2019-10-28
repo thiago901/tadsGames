@@ -5,10 +5,9 @@
  */
 package br.com.unidospi.Controller;
 
-import br.com.unidospi.Acoes.CadastrarEmpresa;
-import br.com.unidospi.Acoes.EditarEmpresa;
-import br.com.unidospi.Acoes.FormCadastrarEmpresa;
-import br.com.unidospi.Acoes.FormEditarEmpresa;
+import br.com.unidospi.Acoes.CadastrarCliente;
+import br.com.unidospi.Acoes.CadastrarCompra;
+import br.com.unidospi.Acoes.FormComprar;
 import br.com.unidospi.Acoes.ListarEmpresas;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -22,16 +21,19 @@ import javax.servlet.http.HttpServletResponse;
  * @author henrique.abastos
  */
 @WebServlet(name = "CompraConatroller", urlPatterns = {"/inputCompra"})
-public class CompraConatroller extends HttpServlet {
+public class CompraController extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
         
         if(paramAction.equals("FormComprar")){
-            ListarEmpresas action = new ListarEmpresas();
+            FormComprar action = new FormComprar();
             action.executa(req,resp);
             
+        }else if(paramAction.equals("CadastrarCompra")){
+            CadastrarCompra action = new CadastrarCompra();
+            action.executa(req, resp);
         }
         
         

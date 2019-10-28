@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.model;
 
+import br.com.unidospi.DAO.CompraDAO;
 import java.util.Date;
 
 /**
@@ -85,7 +86,9 @@ public class Compra {
         this.valorCompra = valorCompra;
     }
     
-    
+    public boolean salvar(){
+        return CompraDAO.salvar(this);
+    }
     
     
 }

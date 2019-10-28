@@ -28,9 +28,9 @@ public class CompraDAO {
     
     /* recebe um objeto cliente e retorna 1 caso obtenha sucesso em salvar cliente
      * ou 0 caso não obtenha sucesso */   
-    public static int salvar(Compra compra)  {
+    public static boolean salvar(Compra compra)  {
             
-        int retorno = 0;
+        
         try {
             String sql= "insert into Compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) values(?,?,?,?,?)";
             Class.forName(DRIVER);
@@ -46,7 +46,7 @@ public class CompraDAO {
             ps.setFloat(5, compra.getValorCompra());
     
             ps.executeUpdate();
-            return 1;
+            return true;
                                     
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,7 +54,7 @@ public class CompraDAO {
             ex.getMessage();
         }
         
-        return retorno;
+        return false;
     }
     
        
