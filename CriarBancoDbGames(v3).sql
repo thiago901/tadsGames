@@ -70,11 +70,14 @@ CREATE TABLE Estoque (
 
 CREATE TABLE Compra (
     idCompra INTEGER AUTO_INCREMENT PRIMARY KEY,
-    dataEntrada DATE,
-    qtdComprada INTEGER,
-    valorCompraUnitario float,
     idEmpresa INTEGER,
-    FOREIGN KEY (idEmpresa) REFERENCES Empresa (idEmpresa)
+    idProduto INTEGER,
+    qtdComprada INTEGER,
+    dataEntrada DATE,
+    valorCompraUnitario float,
+    
+    FOREIGN KEY (idEmpresa) REFERENCES Empresa (idEmpresa),
+    FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)
 );
 
 
