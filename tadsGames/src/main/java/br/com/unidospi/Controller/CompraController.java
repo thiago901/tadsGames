@@ -34,6 +34,7 @@ public class CompraController extends HttpServlet {
         }else if(paramAction.equals("CadastrarCompra")){
             CadastrarCompra action = new CadastrarCompra();
             action.executa(req, resp);
+            
         }
         
         

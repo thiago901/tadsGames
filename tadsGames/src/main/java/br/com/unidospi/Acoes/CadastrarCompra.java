@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.Acoes;
 
+import br.com.unidospi.Controller.EstoqueController;
 import br.com.unidospi.DAO.CompraDAO;
 import br.com.unidospi.model.Compra;
 import java.io.IOException;
@@ -40,9 +41,12 @@ public class CadastrarCompra implements Executavel{
         }
         
         Compra compra = new Compra(idEmpresa, idProduto, qtdCompra, dataCriacao, valorCompra);
+        boolean salvou=compra.salvar();
         
-        compra.salvar();
-       
+        if(salvou){
+            EstoqueController.estocar(compra);
+            
+        }
        return "";
     }
     
