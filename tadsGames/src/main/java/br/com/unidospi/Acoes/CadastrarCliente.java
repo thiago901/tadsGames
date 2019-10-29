@@ -40,14 +40,23 @@ public class CadastrarCliente implements Executavel{
         
         boolean validacaoServidor = false;
         
-        if (nome.length() > 100) {
+        if (nome.length() > 50 || nome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome", true);
         }      
-        if (sobrenome.length() > 50) {
+        if (sobrenome.length() > 50 || sobrenome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome", true);
         }
+        if (cpf.length() > 11 || sobrenome.equals("")) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoCPF", true);
+        }
+        if (dtNascm.equals("")) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoDtNasc", true);
+        }
+        
         if (idEmpresaStr == null) {
             validacaoServidor = true;
             req.setAttribute("validacaoEmpresa", true);

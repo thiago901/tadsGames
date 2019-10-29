@@ -34,7 +34,7 @@ public class CadastrarProduto implements Executavel{
         
         boolean validacaoServidor = false;
         
-        if (nome.length() < 1 || nome.length() > 70) {
+        if (nome.length() < 1 || nome.length() > 25) {
             validacaoServidor = true;
             req.setAttribute("erroNome", true);
         }

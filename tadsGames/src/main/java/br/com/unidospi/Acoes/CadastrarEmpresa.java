@@ -39,6 +39,12 @@ public class CadastrarEmpresa implements Executavel{
         boolean status = Boolean.valueOf(req.getParameter("status"));
         boolean matriz = Boolean.valueOf(req.getParameter("matriz"));
         
+        boolean validacao = false;
+        
+        if (nome.length() > 50 || nome.equals("")) {
+            req.setAttribute("erroNome", true);
+        }
+        
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         

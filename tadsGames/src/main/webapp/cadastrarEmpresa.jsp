@@ -22,13 +22,22 @@
             <form action="\TadsGames\input?action=CadastrarEmpresa" method="post">
                 <div>
                     <label>Nome Empresa</label>
-                    <input  type="text" name="nome" required>
+                    <input  type="text" name="nome" required maxlength="50">
+                    <c:if test="${erroNome}">
+                        <div class="erro-input com-erro">
+                            Digite menos que 50 caracteres
+                        </div>
+                    </c:if>
 
                 </div>
                 <div>
                     <label>CNPJ</label>
                     <input type="text" name="cnpj" required>
-
+                    <c:if test="${erroCNPJ}">
+                        <div class="erro-input com-erro">
+                            Digite menos que 50 caracteres
+                        </div>
+                    </c:if>
                 </div>
                 <div>
                     <label>Data de Criação</label>
