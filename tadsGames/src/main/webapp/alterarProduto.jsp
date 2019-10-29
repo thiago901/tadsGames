@@ -3,7 +3,7 @@
     Created on : 17/10/2019, 18:10:26
     Author     : lucas.sfaria5
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,7 +22,7 @@
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" value="${p.getNome()}">
                 <div id="validacaoNome" hidden="true">
-                    <c:if test="${erroNome}">
+                    <c:if test="${erroNome == true}">
                         <div class="erro-input com-erro">
                             Digite menos que 50 caracteres
                         </div>
@@ -71,7 +71,7 @@
                 <script>
                     document.getElementById('btnSalvar')
                             .addEventListener('click', function() {
-                                document.getElementById('validacaoNome').hidden = false
+                                document.getElementById('validacaoNome').hidden = false;
                             }, false);
                 </script>
     </body>

@@ -40,6 +40,16 @@ public class CadastrarCliente implements Executavel{
         
         boolean validacaoServidor = false;
         
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date dtNasc = null;
+            
+        try {
+            dtNasc = formatter.parse(dtNascm);
+        } catch (ParseException ex) {
+            Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         if (nome.length() > 50 || nome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome", true);
@@ -67,23 +77,16 @@ public class CadastrarCliente implements Executavel{
             RequestDispatcher dispatcher = 
                     req.getRequestDispatcher("Cliente/Cliente.jsp");
             dispatcher.forward(req, resp);
+        } else {                
+
+            Cliente p = new Cliente(idEmpresa, nome, sobrenome, sexo, cpf, dtNasc, ativo) ;
+            retorno = ClienteDAO.salvar(p);
+            if (retorno > 0){
+                resp.sendRedirect("sucesso.html");
+            }
         }
         
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date dtNasc = null;
-            
-        try {
-            dtNasc = formatter.parse(dtNascm);
-        } catch (ParseException ex) {
-            Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        Cliente p = new Cliente(idEmpresa, nome, sobrenome, sexo, cpf, dtNasc, ativo) ;
-        retorno = ClienteDAO.salvar(p);
-            if (retorno > 0){
-            resp.sendRedirect("sucesso.html");
-        }
-            return "";
+        return "";
     }
 
    

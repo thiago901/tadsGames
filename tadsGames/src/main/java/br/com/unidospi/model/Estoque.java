@@ -5,27 +5,50 @@
  */
 package br.com.unidospi.model;
 
+import br.com.unidospi.DAO.EstoqueDAO;
+
 /**
  *
  * @author lucas
  */
 public class Estoque {
     private int idEstoque;
+    private int idProduto;
+    private int idEmpresa;
     private int qtdEstoque;
     private float vlrVendaUnitario;
-    private int idP;
 
-    public Estoque(int idEstoque, int qtdEstoque, float vlrVendaUnitario, int idP) {
+    public Estoque(int idEstoque, int idProduto, int idEmpresa, int qtdEstoque, float vlrVendaUnitario) {
         this.idEstoque = idEstoque;
+        this.idProduto = idProduto;
+        this.idEmpresa = idEmpresa;
         this.qtdEstoque = qtdEstoque;
         this.vlrVendaUnitario = vlrVendaUnitario;
-        this.idP = idP;
     }
-    
-    public Estoque(int qtdEstoque, float vlrVendaUnitario, int idP) {
+
+    public Estoque(int idProduto, int idEmpresa, int qtdEstoque, float vlrVendaUnitario) {
+        this.idProduto = idProduto;
+        this.idEmpresa = idEmpresa;
         this.qtdEstoque = qtdEstoque;
         this.vlrVendaUnitario = vlrVendaUnitario;
-        this.idP = idP;
+    }
+
+    
+    
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
+    }
+
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public int getIdEstoque() {
@@ -36,8 +59,6 @@ public class Estoque {
         this.idEstoque = idEstoque;
     }
 
-    
-
     public int getQtdEstoque() {
         return qtdEstoque;
     }
@@ -46,7 +67,7 @@ public class Estoque {
         this.qtdEstoque = qtdEstoque;
     }
 
-    public double getVlrVendaUnitario() {
+    public float getVlrVendaUnitario() {
         return vlrVendaUnitario;
     }
 
@@ -54,14 +75,16 @@ public class Estoque {
         this.vlrVendaUnitario = vlrVendaUnitario;
     }
 
-    public int getIdP() {
-        return idP;
+    public boolean alterar() {
+        return EstoqueDAO.alterar(this);
     }
 
-    public void setIdP(int idP) {
-        this.idP = idP;
+    public boolean salva() {
+        return EstoqueDAO.salvar(this);
     }
-
+    
+    
+    
     
 
 }

@@ -46,9 +46,9 @@
 
                  
                 <label for="ativo">Ativo</label>
-                <input type="radio" id="status" name="ativo" value="true" </input>
+                <input type="radio" id="status" name="ativo" value="true" checked >
                 <label for="inativo">Inativo</label>
-                <input type="radio" id="status" name="ativo" value="false" </input><br><br>
+                <input type="radio" id="status" name="ativo" value="false" ><br><br>
                 
                 <div class="teste">
                         <button type="submit">Cadastrar</button>

@@ -22,7 +22,7 @@
             <form action="\TadsGames\input?action=CadastrarEmpresa" method="post">
                 <div>
                     <label>Nome Empresa</label>
-                    <input  type="text" name="nome" required maxlength="50">
+                    <input  type="text" name="nome" maxlength="50">
                     <c:if test="${erroNome}">
                         <div class="erro-input com-erro">
                             Digite menos que 50 caracteres
@@ -32,7 +32,7 @@
                 </div>
                 <div>
                     <label>CNPJ</label>
-                    <input type="text" name="cnpj" required>
+                    <input type="text" name="cnpj">
                     <c:if test="${erroCNPJ}">
                         <div class="erro-input com-erro">
                             Digite menos que 50 caracteres
@@ -41,27 +41,41 @@
                 </div>
                 <div>
                     <label>Data de Criação</label>
-                    <input type="date" name="dataCriacao" required>
-
+                    <input type="date" name="dataCriacao">
+                    <c:if test="${erroDtCriacao}">
+                        <div class="erro-input com-erro">
+                            Escolha a data de criação da empresa!
+                        </div>
+                    </c:if>
                 </div>
                 <div>
 
-                    <select name="estado" required="">
+                    <select name="estado">
                         <option disabled selected="">Escolha a UF</option>
                         <c:forEach var="uf" items="${ufs}">
                             <option value="${uf.getId()}"><c:out value="${uf.getUf()}"/></option>
                         </c:forEach>
                     </select>
+                    <c:if test="${erroEstado}">
+                        <div class="erro-input com-erro">
+                            É obrigatório escolher uma UF
+                        </div>
+                    </c:if>
 
                 </div>
                 <div>
-                    <select name="cidade" required="">
+                    <select name="cidade">
                         <option disabled selected="">Escolha a Cidade</option>
                         <c:forEach var="cid" items="${cids}">
                             <option value="${cid.getIdCidade()}"><c:out value="${cid.getNomeCidade()}"/></option>
                         </c:forEach>
                     </select>
-
+                    <c:if test="${erroCidade}">
+                        <div class="erro-input com-erro">
+                            É obrigatório escolher uma cidade
+                        </div>
+                    </c:if>
+                    
                 </div>
                 <div>
                     <label> Status da Empresa:</label>

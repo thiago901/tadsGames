@@ -17,14 +17,14 @@ import java.util.Date;
  */
 public class Empresa {
 
-    int cod;
-    String nome;
-    String cnpj;
-    Date dataCriacao;
-    int estado;
-    int cidade;
-    boolean status;
-    boolean matriz;
+    private int cod;
+    private String nome;
+    private String cnpj;
+    private Date dataCriacao;
+    private int estado;
+    private int cidade;
+    private boolean status;
+    private boolean matriz;
 
     public Empresa(int cod, String nome, String cnpj, Date dataCriacao, int estado, int cidade, boolean status, boolean matriz) {
         this.cod = cod;

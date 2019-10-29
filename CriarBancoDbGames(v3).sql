@@ -61,11 +61,14 @@ CREATE TABLE Cliente (
 );
 
 CREATE TABLE Estoque (
-    idEstoque INTEGER AUTO_INCREMENT PRIMARY KEY,
+    
+    idProduto INTEGER,
+    idEmpresa INTEGER,
     qtdEstoque INTEGER,
     valorVendaUnitario float,
-    idProduto INTEGER,
-    FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)    
+    PRIMARY KEY (idProduto, idEmpresa),
+    FOREIGN KEY (idProduto) REFERENCES Produto (idProduto),    
+    FOREIGN KEY (idEmpresa) REFERENCES Empresa (idEmpresa)    
 );
 
 CREATE TABLE Compra (
