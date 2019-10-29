@@ -130,4 +130,39 @@ public class EstoqueDAO {
         
     }
     
+    public static int qtdEstoque(int idProduto, int idEmpresa) {
+        int resultado=0;
+        try {
+            String sql= "select qtdEstoque as qtd from Estoque where idProduto=? and idEmpresa=?;";
+            
+            
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            
+            ps.setInt(1, idProduto);
+            ps.setInt(2, idEmpresa);
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+               resultado = rs.getInt("qtd");
+               return resultado;
+            }
+           
+            
+            
+        } catch (SQLException | ClassNotFoundException e) {
+            e.getMessage();
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException e) {
+                e.getMessage();
+            }
+            
+        }
+        return resultado;
+        
+    }
+    
 }

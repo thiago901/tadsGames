@@ -43,7 +43,9 @@ public class CadastrarCompra implements Executavel{
         Compra compra = new Compra(idEmpresa, idProduto, qtdCompra, dataCriacao, valorCompra);
         boolean salvou=compra.salvar();
         
+        //verifica se a compra foi salva no banco
         if(salvou){
+            //funcao estocar ira acrescentar produto ou add quantidade
             EstoqueController.estocar(compra);
             
         }
