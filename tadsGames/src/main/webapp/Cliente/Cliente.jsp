@@ -45,8 +45,13 @@
                     </c:if>
                     
                         <label for="dtNasc">Data de Nascimento</label>
-                        <input required="" type="date" id="dtNasc" name="dtNasc" placeholder="Digite o CPF...">
-                    
+                        <input required="" type="date" id="dtNasc" name="dtNasc" placeholder="Digite o CPF..." 
+                               onkeydown="return false">
+                        <c:if test="${validacaoDtNasc}">
+                        <div class="erro-input com-erro">
+                            Escolha uma data válida
+                        </div>
+                    </c:if>
 
                     
                         <label>Sexo</label>

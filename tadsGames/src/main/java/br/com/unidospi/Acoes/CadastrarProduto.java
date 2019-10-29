@@ -10,8 +10,6 @@ import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +32,7 @@ public class CadastrarProduto implements Executavel{
         
         boolean validacaoServidor = false;
         
-        if (nome.length() < 1 || nome.length() > 70) {
+        if (nome.length() < 1 || nome.length() > 25) {
             validacaoServidor = true;
             req.setAttribute("erroNome", true);
         }
@@ -49,19 +47,20 @@ public class CadastrarProduto implements Executavel{
             RequestDispatcher dispatcher = 
                     req.getRequestDispatcher("Produto/Produto.jsp");
             dispatcher.forward(req, resp);
-        }
+        } else {
         
         
-        Produto p = new Produto (nome, descricao, tipo, ativo);
-        try {
-            retorno = ProdutoDAO.salvar(p);
-            if (retorno > 0) {
-            resp.sendRedirect("sucesso.html");
+            Produto p = new Produto (nome, descricao, tipo, ativo);
+            try {
+                retorno = ProdutoDAO.salvar(p);
+                if (retorno > 0) {
+                resp.sendRedirect("sucesso.html");
+            }
+            } catch (SQLException ex) {
+                ex.getMessage();
+            }
         }
-        } catch (SQLException ex) {
-            ex.getMessage();
-        }
+        
         return "";
-
     }
 }

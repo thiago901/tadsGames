@@ -21,7 +21,7 @@ public class EditarProduto implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-         boolean retorno;
+        boolean retorno;
         String nome = req.getParameter("nome");
         String descricao = req.getParameter("descricao");
         String tipo = req.getParameter("tipo");
@@ -29,7 +29,7 @@ public class EditarProduto implements Executavel{
         
         boolean validacaoServidor = false;
         
-        if (nome.length() < 1 || nome.length() > 70) {
+        if (nome.length() < 1 || nome.length() > 50) {
             validacaoServidor = true;
             req.setAttribute("erroNome", true);
         }

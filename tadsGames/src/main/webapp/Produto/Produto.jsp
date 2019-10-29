@@ -19,7 +19,7 @@
             <h2 class="titulo">Cadastro de Produtos</h2>
             <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=CadastrarProduto">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto..." required="">
+                <input type="text" maxlength="50" id="nome" name="nome" placeholder="Digite o nome do produto..." >
                 <c:if test="${erroNome}">
                     <div class="erro-input com-erro">
                         Digite menos que 50 caracteres
@@ -46,9 +46,9 @@
 
                  
                 <label for="ativo">Ativo</label>
-                <input type="radio" id="status" name="ativo" value="true" </input>
+                <input type="radio" id="status" name="ativo" value="true" checked >
                 <label for="inativo">Inativo</label>
-                <input type="radio" id="status" name="ativo" value="false" </input><br><br>
+                <input type="radio" id="status" name="ativo" value="false" ><br><br>
                 
                 <div class="teste">
                         <button type="submit">Cadastrar</button>
