@@ -39,7 +39,10 @@
                             <td class="nome"><c:out value="${p.getNome()}" /></td>
                             <td class="descricao"><c:out value="${p.getDescricao()}" /></td>
                             <td class="tipo"><c:out value="${p.getTipo()}" /></td>
-                            <td class="ativo"><c:out value="${p.getAtivo()}" /></td>
+                            
+                            <td class="ativo">
+                                <c:if test="${p.getAtivo()==true}">Sim</td></c:if>
+                                <c:if test="${p.getAtivo()==false}">Não</td></c:if>
                             <td class="altera"><a href="inputProduto?action=FormEditarProduto&idProduto=${p.getIdProduto()}"><img src="img/alterar.png"></a></td>
 
                         </tr>

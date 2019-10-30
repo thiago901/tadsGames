@@ -46,7 +46,9 @@
          <td>${funcionario.nomeEmpresa}</td>
          <td>${funcionario.cargo}</td>
          <td>${funcionario.sexo}</td>
-         <td>${funcionario.status}</td>
+         <td class="ativo">
+            <c:if test="${funcionario.isAtivo()==true}">Sim</td></c:if>
+            <c:if test="${funcionario.isAtivo()==false}">Não</td></c:if>
          <td class="altera" value="${funcionario.id}">
              <a href="inputFuncionario?action=FormEditarFuncionario&id=${funcionario.id}"><img src="img/alterar.png"></a>
          </td>

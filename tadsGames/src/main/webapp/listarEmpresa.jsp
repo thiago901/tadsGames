@@ -45,7 +45,9 @@
                                     <td class="idCidade" hidden><c:out value="${e.getIdCidade()}"/></td>
                                     <td class="cidade"><c:out value="${e.getNomeCidade()}"/></td>
                                     <td class="regiao"><c:out value="${e.getRegiao()}"/></td>
-                                    <td class="status"><c:out value="${e.getAtivo()}"/></td>
+                                    <td class="status">
+                                             <c:if test="${e.getAtivo()==true}">Sim</td></c:if>
+                                             <c:if test="${e.getAtivo()==false}">Não</td></c:if>
                                     <td class="matiz" hidden=""><c:out value="${e.getMatriz()}"/></td>
                                     <td class="altera" value="${e.getIdEmpresa()}"><a href="input?action=FormEditarEmpresa&id=${e.getIdEmpresa()}"><img src="img/alterar.png"></a></td>
                                 </tr>

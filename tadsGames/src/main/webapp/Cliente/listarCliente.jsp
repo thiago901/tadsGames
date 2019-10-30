@@ -37,7 +37,9 @@
                         <td class="cpf"><c:out value="${a.getCPF()}" /></td>
                         <td class="dtNasc"><c:out value="${a.getDtNasc()}" /></td>
                         <td class="sexo"><c:out value="${a.getSexo()}" /></td>
-                        <td class="ativo"><c:out value="${a.getAtivo()}" /></td>
+                        <td class="ativo">
+                                <c:if test="${a.getAtivo()==true}">Sim</td></c:if>
+                                <c:if test="${a.getAtivo()==false}">Não</td></c:if>
                         <td class="idEmpresa" ><c:out value="${a.getNomeEmpresa()}" /></td>
                         
                         <td class="altera" value="${a.getIdCliente()}"><a href="inputCliente?action=FormEditarCliente&idCliente=${a.getIdCliente()}"><img src="img/alterar.png"></a></td>
