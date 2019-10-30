@@ -22,7 +22,7 @@
                 <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto...">
                 <c:if test="${erroNome}">
                     <div class="erro-input com-erro">
-                        Digite menos que 50 caracteres
+                        Digite mais de 1 caracter e menos de 50 caracteres
                     </div>
                 </c:if>
                 
