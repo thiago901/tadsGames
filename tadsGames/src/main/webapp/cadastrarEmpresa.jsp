@@ -13,8 +13,8 @@
     <head>
         <meta charset = "utf-8">
         <title>Cadastro de Empresa</title>
-       <link rel="stylesheet" type="text/css" href="css/formularios.css">
-        
+        <link rel="stylesheet" type="text/css" href="css/formularios.css">
+        <link rel="icon" href="img/icon-controle-pequeno.png">
     </head>
     <body>
         <div class="container">

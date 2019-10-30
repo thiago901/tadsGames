@@ -13,25 +13,17 @@ import java.util.Date;
  *
  * @author gabri
  */
-public abstract class Usuario extends PessoaCadastravel {
+public class Usuario {
 
     private String login;
     private String senha;
+    Funcionario funcionario;
 
-    public Usuario(String login, String senha, int id, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(id, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public Usuario(String login, String senha) {       
         this.login = login;
         this.senha = senha;
     }
-
-    public Usuario(String login, String senha, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
-        this.login = login;
-        this.senha = senha;
-    }
-
    
-
     public String getLogin() {
         return login;
     }
