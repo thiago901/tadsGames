@@ -90,8 +90,8 @@ public class EmpresaDao {
             ps.setDate(3, dataSql);
             ps.setInt(4, empr.getEstado());
             ps.setInt(5, empr.getCidade());
-            ps.setBoolean(6, empr.getStatus());
-            ps.setBoolean(7, empr.getMatriz());
+            ps.setBoolean(6, empr.getMatriz());
+            ps.setBoolean(7, empr.getStatus());
             ps.setInt(8, empr.getCod());
             
             ps.execute();
