@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.Acoes;
 
+import static br.com.unidospi.Acoes.ValidaCPF.isCPF;
 import br.com.unidospi.Controller.ClienteController;
 import br.com.unidospi.DAO.ClienteDAO;
 import br.com.unidospi.model.Cliente;
@@ -39,6 +40,8 @@ public class CadastrarCliente implements Executavel{
         boolean ativo = Boolean.valueOf(req.getParameter("status"));
         
         boolean validacaoServidor = false;
+        boolean testeCPF;
+        testeCPF=isCPF(cpf);
         
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dtNasc = null;
@@ -58,7 +61,8 @@ public class CadastrarCliente implements Executavel{
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome", true);
         }
-        if (cpf.length() > 11 || sobrenome.equals("")) {
+        
+        if (testeCPF == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoCPF", true);
         }
@@ -75,7 +79,7 @@ public class CadastrarCliente implements Executavel{
         
         if (validacaoServidor) {
             RequestDispatcher dispatcher = 
-                    req.getRequestDispatcher("Cliente/Cliente.jsp");
+                    req.getRequestDispatcher("inputCliente?action=FormCadastrarCliente");
             dispatcher.forward(req, resp);
         } else {                
 

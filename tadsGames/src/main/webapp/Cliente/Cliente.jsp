@@ -24,7 +24,7 @@
                     <input required="" type="text" id="nome" name="nome" placeholder="Digite seu nome...">
                     <c:if test="${validacaoNome}">
                         <div class="erro-input com-erro">
-                            Digite menos que 50 caracteres
+                            Digite mais de 1 e menos de 50 caracteres
                         </div>
                     </c:if>
 
@@ -32,7 +32,7 @@
                     <input required="" type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu Sobrenome...">
                     <c:if test="${validacaoSobrenome}">
                         <div class="erro-input com-erro">
-                            Digite menos que 50 caracteres
+                            Digite mais de 1 e menos de 50 caracteres
                         </div>
                     </c:if>
                     
@@ -40,7 +40,7 @@
                     <input required="" type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
                     <c:if test="${validacaoCPF}">
                         <div class="erro-input com-erro">
-                            Digite 11 caracteres para o CPF
+                            Digite um CPF válido
                         </div>
                     </c:if>
                     
@@ -48,10 +48,10 @@
                         <input required="" type="date" id="dtNasc" name="dtNasc" placeholder="Digite o CPF..." 
                                onkeydown="return false">
                         <c:if test="${validacaoDtNasc}">
-                        <div class="erro-input com-erro">
-                            Escolha uma data válida
-                        </div>
-                    </c:if>
+                            <div class="erro-input com-erro">
+                                Escolha uma data válida
+                            </div>
+                        </c:if>
 
                     
                         <label>Sexo</label>
