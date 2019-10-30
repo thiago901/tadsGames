@@ -85,23 +85,24 @@ CREATE TABLE Compra (
 
 
 
-CREATE TABLE Pedido (
-    idPedido INTEGER AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Venda (
+    idVenda INTEGER AUTO_INCREMENT PRIMARY KEY,
     valorTotal float,
-    dataSolicitaco INTEGER,
-    dataFinalizacao DATE,
+    dataVenda DATE,
     statusPedido VARCHAR(20),
     idCliente integer,
+    idEmpresa integer,
     FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente)
     
 );
 CREATE TABLE DetalheProduto (
-    idPedido INTEGER,
+    idVenda INTEGER,
     idProduto INTEGER,
     qtdVenda INTEGER,
-    vlrVenda float,
-    PRIMARY KEY (idPedido, idProduto),
-	FOREIGN KEY (idPedido) REFERENCES Pedido (idPedido),
+    vlrVendaUnitario float,
+    vlrTotal float,
+    PRIMARY KEY (idVenda, idProduto),
+	FOREIGN KEY (idVenda) REFERENCES Venda (idVenda),
     FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)
 );
 
