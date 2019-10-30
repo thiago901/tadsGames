@@ -19,7 +19,7 @@
             <h2 class="titulo">Cadastro de Produtos</h2>
             <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=CadastrarProduto">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto...">
+                <input type="text" maxlength="50" id="nome" name="nome" placeholder="Digite o nome do produto..." >
                 <c:if test="${erroNome}">
                     <div class="erro-input com-erro">
                         Digite mais de 1 caracter e menos de 50 caracteres

@@ -32,7 +32,7 @@ public class CadastrarProduto implements Executavel{
         
         boolean validacaoServidor = false;
         
-        if (nome.length() < 1 || nome.length() > 70) {
+        if (nome.length() < 1 || nome.length() > 25) {
             validacaoServidor = true;
             req.setAttribute("erroNome", true);
         }
@@ -47,19 +47,20 @@ public class CadastrarProduto implements Executavel{
             RequestDispatcher dispatcher = 
                     req.getRequestDispatcher("Produto/Produto.jsp");
             dispatcher.forward(req, resp);
-        }
+        } else {
         
         
-        Produto p = new Produto (nome, descricao, tipo, ativo);
-        try {
-            retorno = ProdutoDAO.salvar(p);
-            if (retorno > 0) {
-            resp.sendRedirect("sucesso.html");
+            Produto p = new Produto (nome, descricao, tipo, ativo);
+            try {
+                retorno = ProdutoDAO.salvar(p);
+                if (retorno > 0) {
+                resp.sendRedirect("sucesso.html");
+            }
+            } catch (SQLException ex) {
+                ex.getMessage();
+            }
         }
-        } catch (SQLException ex) {
-            ex.getMessage();
-        }
+        
         return "";
-
     }
 }

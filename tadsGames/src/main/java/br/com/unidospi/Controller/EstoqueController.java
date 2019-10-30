@@ -25,12 +25,12 @@ public class EstoqueController {
         }
         
     }
-    private static void atualizarEstoque(Compra compra) {
-        
-        int idProduto = compra.getIdProduto();
-        int idEmpresa = compra.getIdEmpresa();
-        int qtdEstoque =compra.getQtdCompra();
-        float vlrUnitario = compra.getValorCompra();
+    private static void atualizarEstoque(Compra c) {
+        int qtdEstoqueAtual = estoqueAtual(c) ;
+        int idProduto = c.getIdProduto();
+        int idEmpresa = c.getIdEmpresa();
+        int qtdEstoque =c.getQtdCompra()+qtdEstoqueAtual;
+        float vlrUnitario = c.getValorCompra();
         
         
         
@@ -57,8 +57,10 @@ public class EstoqueController {
     
     private boolean temEstoque(int idProduto, int idEmpresa) {
         return EstoqueDAO.temEstoque(idProduto, idEmpresa);
-        
-        
+    }
+    
+    private static int estoqueAtual(Compra c){
+        return EstoqueDAO.qtdEstoque(c.getIdProduto(), c.getIdEmpresa());
     }
      
     

@@ -6,7 +6,7 @@
 }
 
 
-a{
+a {
    text-decoration:none; 
    color: #fff;
     
@@ -15,6 +15,8 @@ body{
 	margin: 0;
 	padding: 0;
 	background-size: cover;
+        min-height: 100vh;
+        background-image: url("../img/controle.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 
@@ -39,7 +41,8 @@ input[type=text], select, textarea,input[type=date] {
   
 }
 
-input[type=submit],button {
+
+input[type=submit], button {
   position: relative;
   background-color: #4CAF50;
   color: white;

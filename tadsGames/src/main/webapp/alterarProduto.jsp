@@ -5,6 +5,8 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -55,9 +57,9 @@
                 </c:if>
                 <c:if test="${p.getAtivo() == false}">
                     <label for="ativo">Ativo</label>
-                    <input type="radio" name="ativo" value="true" >
+                    <input type="radio" name="ativo" value="true">
                     <label for="inativo">Inativo</label>
-                    <input type="radio" name="ativo" value="false"checked><br><br>
+                    <input type="radio" name="ativo" value="false" checked><br><br>
                 </c:if>
                 <button type="submit" id="btnSalvar">Salvar</button>
                 <button type="reset">Reset</button>
