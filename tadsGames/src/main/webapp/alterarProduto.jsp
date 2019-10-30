@@ -19,14 +19,14 @@
                 
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" value="${p.getNome()}">
-                <div id="validacaoNome" hidden="true">
-                    <c:if test="${erroNome == true}">
+                <%--<div id="validacaoNome" hidden="true">--%>
+                    <c:if test="${erroNome}">
                         <div class="erro-input com-erro">
-                            Digite menos que 50 caracteres
+                            Digite mais de 1 caracter e menos de 50 caracteres
                         </div>
                     </c:if>
-                </div>    
-                <input type="text" name="id" hidden="" value = "${p.getIdProduto()}">
+                <%--</div>    --%>
+                <input type="text" name="idProduto" hidden="" value = "${p.getIdProduto()}">
 
                 <label for="tipo">Tipo</label>
                 <select name="tipo" >
@@ -66,11 +66,11 @@
 
             </form>
         </div>
-                <script>
+                <%--<script>
                     document.getElementById('btnSalvar')
                             .addEventListener('click', function() {
                                 document.getElementById('validacaoNome').hidden = false;
                             }, false);
-                </script>
+                </script>--%>
     </body>
 </html>
