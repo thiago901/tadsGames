@@ -1,67 +1,142 @@
+
 var add = document.querySelector("#add");
 
-add.addEventListener('click',function(){
-	var tabela = document.querySelector("#tabela-detalhe-venda");
-	var tbody = tabela.querySelector("tbody");
-	
-	//criando a tr para colocar na tabela
-	var linha = document.createElement("tr");
-
-//criando as td para inserir no tr
-	
-	var tdIdProduto = document.createElement("td");
-	var tdProduto = document.createElement("td");
-	var tdQuantidade = document.createElement("td");
-	var tdVlrUnitario = document.createElement("td");
-	var tdVlrTotal = document.createElement("td");
-
-//pegando os valores do formulario
-	var produto =document.querySelector("#produto");
-	var idProduto = produto.value;
-	var txtProduto = produto.options[produto.selectedIndex].text;
-	var quantidade = document.querySelector("#qtdComprada").value;
-	var vlrUnitario = document.querySelector("#vlrUnitario").value;
-	var vlrTotal = vlrUnitario*quantidade;
-
-
-
-//atribuindo valor para as tds
-	tdIdProduto.textContent = idProduto;
-	tdProduto.textContent = txtProduto;
-	tdQuantidade.textContent = quantidade;
-	tdVlrUnitario.textContent =vlrUnitario;vlrUnitario;
-	tdVlrTotal.textContent = vlrTotal;
+var form = document.querySelector("#formAdiciona");
+var arrayDetalheVenda = [];
+var salvar = document.querySelector("#salvar");
 
 
 
 
-//colocando as colunas na linha
+add.addEventListener('click', function () {
 
-	linha.appendChild(tdIdProduto);
-	linha.appendChild(tdProduto);
-	linha.appendChild(tdQuantidade);
-	linha.appendChild(tdVlrUnitario);
-	linha.appendChild(tdVlrTotal);
+    event.preventDefault();
+    var tabela = document.querySelector("#tabela-detalhe-venda");
+    var tbody = tabela.querySelector("tbody");
 
-//colocando a linha na tabela
 
-	tbody.appendChild(linha);
-	console.log(obterDadosFormulario(form));
+
+
+
+    var detalheVenda = obterDadosFormulario(form);
+    arrayDetalheVenda.push(detalheVenda);
+    console.log(arrayDetalheVenda);
+    var linhaDetalheVenda = montarTr(detalheVenda);
+
+
+
+    tbody.appendChild(linhaDetalheVenda);
+
+
+
 });
 
-var form = document.querySelector("#formAdiciona");
 
-console.log(form.produto.value);
 
-function obterDadosFormulario(form){
-	var detalheVenda={
-		idProduto:form.produto.value,
-		nomeProduto:form.produto.options[produto.selectedIndex].text,
-		qtd:form.qtdComprada.value,
-		vlrUnitario:form.vlrUnitario.value,
-		tdVlrTotal:form.qtdComprada.value*form.vlrUnitario.value
-		
-	}
-	return detalheVenda;
+function obterDadosFormulario(form) {
+
+    var detalheVenda = {
+
+        idProduto: form.produto.value,
+        nomeProduto: form.produto.options[produto.selectedIndex].text,
+        qtd: form.qtdComprada.value,
+        vlrUnitario: form.vlrUnitario.value,
+        vlrTotal: form.qtdComprada.value * form.vlrUnitario.value
+    }
+
+    return detalheVenda;
+
 }
 
+
+
+function montarTr(detalheVenda) {
+
+    //criando a tr para colocar na tabela
+
+    var linha = document.createElement("tr");
+
+
+
+
+
+    var tdIdProduto = montarTd(detalheVenda.idProduto, "idProduto");
+    var tdProduto = montarTd(detalheVenda.nomeProduto, "nomeProduto");
+    var tdQuantidade = montarTd(detalheVenda.qtd, "qtd");
+    var tdVlrUnitario = montarTd(detalheVenda.vlrUnitario, "vlrUnitario");
+    var tdVlrTotal = montarTd(detalheVenda.vlrTotal, "vlrTotal");
+
+
+
+    var imgAdd = document.createElement("img");
+    imgAdd.setAttribute("href", "img/add.png")
+
+
+    var imgAddTd = document.createElement("td");
+
+    imgAddTd.appendChild(imgAdd);
+
+
+
+
+
+    //colocando as colunas na linha
+
+
+
+    linha.appendChild(tdIdProduto);
+
+    linha.appendChild(tdProduto);
+
+    linha.appendChild(tdQuantidade);
+
+    linha.appendChild(tdVlrUnitario);
+
+    linha.appendChild(tdVlrTotal);
+
+    linha.appendChild(imgAddTd);
+
+
+
+    return linha;
+
+
+
+}
+
+
+
+function montarTd(dado, classe) {
+
+    var td = document.createElement("td");
+
+    td.textContent = dado;
+
+    td.classList.add(classe);
+
+    return td;
+
+
+
+}
+
+salvar.addEventListener("click", function(){
+    event.preventDefault();
+    
+    var objeto={
+        detalheVenda:arrayDetalheVenda
+    };
+    
+    var xml = new XMLHttpRequest();
+    xml.open("POST","http://localhost:8084/TadsGames/inputVenda?action=CadastrarVenda",true);
+    
+    xml.setRequestHeader("arrayDetalheVenda",objeto);
+    console.log(objeto);
+    xml.addEventListener('load', function (){
+        console.log(xml.responseText);
+    });
+    
+    
+    
+    xml.send(objeto);
+});
