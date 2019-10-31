@@ -123,20 +123,20 @@ function montarTd(dado, classe) {
 salvar.addEventListener("click", function(){
     event.preventDefault();
     
+    
     var objeto={
         detalheVenda:arrayDetalheVenda
     };
     
     var xml = new XMLHttpRequest();
     xml.open("POST","http://localhost:8084/TadsGames/inputVenda?action=CadastrarVenda",true);
+   
+    xml.setRequestHeader("c", JSON.stringify(arrayDetalheVenda));
     
-    xml.setRequestHeader("arrayDetalheVenda",objeto);
-    console.log(objeto);
-    xml.addEventListener('load', function (){
-        console.log(xml.responseText);
-    });
+    console.log(objeto.valueOf());
     
     
     
-    xml.send(objeto);
+    
+    xml.send(JSON.stringify(arrayDetalheVenda));
 });

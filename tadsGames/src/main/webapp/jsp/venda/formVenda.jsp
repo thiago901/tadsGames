@@ -17,7 +17,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
         <title>Venda</title>
 
-        <link rel="stylesheet" type="text/css" href="css\icon.css">
+        
 
     </head>
 
@@ -29,9 +29,9 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
                 <select name="empresa" required="" id="empresa">
 
-                    <option disabled="" selected="" >Escolha uma Empresa</option>
+                    <option disabled="">Escolha uma Empresa</option>
 
-                    <option value="1">Loja 1</option>
+                    <option value="1"  selected="" >Loja 1</option>
 
                 </select>
 
@@ -39,9 +39,9 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
                 <select name="produto" required="" id="produto">
 
-                    <option disabled="" selected="" >Escolha um produto</option>
+                    <option disabled=""  >Escolha um produto</option>
 
-                    <option value="1">God of War</option>
+                    <option value="1" selected="">God of War</option>
 
                 </select>
 
@@ -49,9 +49,9 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
                 <select name="cliente" required="" id="cliente">
 
-                    <option disabled="" selected="" >Escolha um Cliente</option>
+                    <option disabled=""  >Escolha um Cliente</option>
 
-                    <option value="1">Jose</option>
+                    <option value="1" selected="">Jose</option>
 
                 </select>
 
@@ -61,19 +61,19 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
                 <label for="qtdComprada">Quantidade</label>
 
-                <input  id="qtdComprada" name="qtdComprada" required="">
+                <input  id="qtdComprada" name="qtdComprada" required="" value="50">
 
  
 
                 <label for="vlrUnitario">Valor Unitario</label>
 
-                <input  id="vlrUnitario" name="vlrUnitario" required="">
+                <input  id="vlrUnitario" name="vlrUnitario" required="" value="47">
 
  
 
                 <label for="dtEntrada">Data de Entrada</label>
 
-                <input type="date" id="dtEntrada" name="dtEntrada" required="">
+                <input type="date" id="dtEntrada" name="dtEntrada" >
 
  
 
