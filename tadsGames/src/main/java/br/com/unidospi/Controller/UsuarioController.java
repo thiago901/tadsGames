@@ -5,10 +5,21 @@
  */
 package br.com.unidospi.Controller;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author henrique.abastos
  */
-public class UsuarioController {
+public class UsuarioController extends HttpServlet {
     
+    @Override
+    public void service(HttpServletRequest req, HttpServletResponse resp) {
+        
+        String parametroAcao = req.getParameter("action");
+        
+        
+    }
 }
