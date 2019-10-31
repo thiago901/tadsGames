@@ -10,8 +10,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Edição de Produto</title>
         <meta http-equiv="Content-Type" content="text/html" charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/formularios.css">
+        <link rel="icon" href="img/icon-controle-pequeno.png">
     </head>
     <body>
         <h3>Alterar Produtos</h3>

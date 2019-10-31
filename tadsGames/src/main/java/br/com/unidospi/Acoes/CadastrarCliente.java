@@ -52,7 +52,7 @@ public class CadastrarCliente implements Executavel{
             Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        //VALIDAÇÃO PROVISÓRIA------------------------------------------------
         if (nome.length() > 50 || nome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome", true);

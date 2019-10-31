@@ -19,15 +19,15 @@ public class FuncionarioEmpresa {
     private String cpf;
     private Date dtNasc;
     private boolean status;
-    private String login;
-    private String senha;
     private float salario;
     private String cargo;
     private String departamento;
     private int idEmpresa;
     private String nomeEmpresa;
 
-    public FuncionarioEmpresa(int id, String nome, String sobrenome, String sexo, String cpf, Date dtNasc, boolean status, String login, String senha, float salario, String cargo, String departamento, int idEmpresa, String nomeEmpresa) {
+    public FuncionarioEmpresa(int id, String nome, String sobrenome, String sexo, 
+            String cpf, Date dtNasc, boolean status, float salario, String cargo, 
+            String departamento, int idEmpresa, String nomeEmpresa) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -35,8 +35,6 @@ public class FuncionarioEmpresa {
         this.cpf = cpf;
         this.dtNasc = dtNasc;
         this.status = status;
-        this.login = login;
-        this.senha = senha;
         this.salario = salario;
         this.cargo = cargo;
         this.departamento = departamento;
@@ -94,22 +92,6 @@ public class FuncionarioEmpresa {
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public float getSalario() {

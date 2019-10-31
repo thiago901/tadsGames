@@ -14,12 +14,12 @@ import java.util.Date;
  */
 public class GerenteGlobal extends Funcionario {
 
-    public GerenteGlobal(double salario, String departamento, String cargo, String login, String senha, int id, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(salario, departamento, cargo, login, senha, id, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public GerenteGlobal(double salario, String departamento, String cargo, int id, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(salario, departamento, cargo, id, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 
-    public GerenteGlobal(double salario, String departamento, String cargo, String login, String senha, int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
-        super(salario, departamento, cargo, login, senha, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
+    public GerenteGlobal(double salario, String departamento, String cargo,  int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
+        super(salario, departamento, cargo, idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
 
             

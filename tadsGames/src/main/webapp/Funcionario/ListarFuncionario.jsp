@@ -23,7 +23,6 @@
       <th>Sobrenome</th>
       <th>CPF</th>
       <th>Data de Nascimento</th>
-      <th>Login</th>
       <th>Salário</th>
       <th>Departamento</th>
       <th>Empresa</th>
@@ -40,15 +39,14 @@
          <td>${funcionario.sobrenome}</td>
          <td>${funcionario.cpf}</td>         
          <td>${funcionario.dtNasc}</td>
-         <td>${funcionario.login}</td>
          <td>${funcionario.salario}</td>
          <td>${funcionario.departamento}</td>
          <td>${funcionario.nomeEmpresa}</td>
          <td>${funcionario.cargo}</td>
          <td>${funcionario.sexo}</td>
          <td class="ativo">
-            <c:if test="${funcionario.isAtivo()==true}">Sim</td></c:if>
-            <c:if test="${funcionario.isAtivo()==false}">Não</td></c:if>
+            <c:if test="${funcionario.status == true}">Sim</td></c:if>
+            <c:if test="${funcionario.status == false}">Não</td></c:if>
          <td class="altera" value="${funcionario.id}">
              <a href="inputFuncionario?action=FormEditarFuncionario&id=${funcionario.id}"><img src="img/alterar.png"></a>
          </td>

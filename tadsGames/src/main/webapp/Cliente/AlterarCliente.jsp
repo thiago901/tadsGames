@@ -7,10 +7,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cadastro de Cliente</title>
+        <title>Edição de Cliente</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="css/formularios.css">
+        <link rel="icon" href="img/icon-controle-pequeno.png">
     </head>
     <body>
 

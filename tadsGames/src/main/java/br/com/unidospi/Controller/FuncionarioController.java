@@ -15,6 +15,7 @@ import br.com.unidospi.model.Diretor;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.Funcionario;
 import br.com.unidospi.model.FuncionarioAdministrativo;
+import br.com.unidospi.model.FuncionarioEmpresa;
 import br.com.unidospi.model.FuncionarioRetaguarda;
 import br.com.unidospi.model.FuncionarioTI;
 import br.com.unidospi.model.FuncionarioVenda;
@@ -52,7 +53,7 @@ public class FuncionarioController extends HttpServlet {
         String parametroAcao = req.getParameter("action");
         
         if (parametroAcao.equals("FormCadastrarFuncionario")) {
-            ArrayList<Funcionario> listaFuncionarios = FuncionarioDAO.obterFuncionario();
+            ArrayList<FuncionarioEmpresa> listaFuncionarios = FuncionarioDAO.obterFuncionarios();
             ArrayList<Empresa> listaEmpresas = EmpresaController.listarEmpresas();
             req.setAttribute("funcionarios", listaFuncionarios);
             req.setAttribute("empresas", listaEmpresas);

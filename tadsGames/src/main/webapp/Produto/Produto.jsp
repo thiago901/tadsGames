@@ -8,8 +8,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Cadastro de Produto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
        <link rel="stylesheet" type="text/css" href="css/formularios.css">
+       <link rel="icon" href="img/icon-controle-pequeno.png">
     </head>
     <body>
 
@@ -18,8 +20,13 @@
         <div class="container">
             <h2 class="titulo">Cadastro de Produtos</h2>
             <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=CadastrarProduto">
+                
+                    
+                
                 <label for="nome">Nome</label>
-                <input type="text" maxlength="50" id="nome" name="nome" placeholder="Digite o nome do produto..." >
+                <c:if test="${!erroNome}">
+                    <input type="text" maxlength="50" id="nome" name="nome" value="" placeholder="Digite o nome do produto..." >                
+                </c:if>
                 <c:if test="${erroNome}">
                     <div class="erro-input com-erro">
                         Digite mais de 1 caracter e menos de 50 caracteres
