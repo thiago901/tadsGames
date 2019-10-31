@@ -61,14 +61,11 @@ CREATE TABLE Cliente (
 );
 
 CREATE TABLE Estoque (
-    
-    idProduto INTEGER,
-    idEmpresa INTEGER,
+    idEstoque INTEGER AUTO_INCREMENT PRIMARY KEY,
     qtdEstoque INTEGER,
     valorVendaUnitario float,
-    PRIMARY KEY (idProduto, idEmpresa),
-    FOREIGN KEY (idProduto) REFERENCES Produto (idProduto),    
-    FOREIGN KEY (idEmpresa) REFERENCES Empresa (idEmpresa)    
+    idProduto INTEGER,
+    FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)    
 );
 
 CREATE TABLE Compra (
@@ -85,24 +82,23 @@ CREATE TABLE Compra (
 
 
 
-CREATE TABLE Venda (
-    idVenda INTEGER AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Pedido (
+    idPedido INTEGER AUTO_INCREMENT PRIMARY KEY,
     valorTotal float,
-    dataVenda DATE,
+    dataSolicitaco INTEGER,
+    dataFinalizacao DATE,
     statusPedido VARCHAR(20),
     idCliente integer,
-    idEmpresa integer,
     FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente)
     
 );
 CREATE TABLE DetalheProduto (
-    idVenda INTEGER,
+    idPedido INTEGER,
     idProduto INTEGER,
     qtdVenda INTEGER,
-    vlrVendaUnitario float,
-    vlrTotal float,
-    PRIMARY KEY (idVenda, idProduto),
-	FOREIGN KEY (idVenda) REFERENCES Venda (idVenda),
+    vlrVenda float,
+    PRIMARY KEY (idPedido, idProduto),
+	FOREIGN KEY (idPedido) REFERENCES Pedido (idPedido),
     FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)
 );
 
@@ -117,8 +113,6 @@ CREATE TABLE Funcionario (
     cpf VARCHAR(11) UNIQUE,
     dtNasc DATE,
     ativo BOOLEAN,
-    login VARCHAR(50),
-    senha VARCHAR(20),
     salario float,
     cargo VARCHAR(50),
     departamento VARCHAR(50),
@@ -127,10 +121,11 @@ CREATE TABLE Funcionario (
 
 CREATE TABLE Usuario (
     idUsuario INTEGER AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(50),
-    senha VARCHAR(16),
-    idFuncionario INTEGER,
+    nomeUsuario VARCHAR(50),
+    senha VARCHAR(16),        
+    dataCadastro DATE,
     ativo BOOLEAN,
-    UNIQUE (email, idFuncionario),
+    idFuncionario INTEGER,
+    UNIQUE (nomeUsuario),
     FOREIGN KEY (idFuncionario) REFERENCES Funcionario (idFuncionario)
 );
