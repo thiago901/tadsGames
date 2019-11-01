@@ -11,34 +11,35 @@ package br.com.unidospi.model;
  */
 public class VendaDetalhe {
     private int idVenda;
-    private Produto produto;
+    private int idProduto;
     private int qtdVenda;
     private float vlrUnitario;
+    private float vlrTotal;
 
-    public VendaDetalhe(int idVenda, Produto produto, int qtdVenda, float vlrUnitario) {
+    public VendaDetalhe(int idVenda, int idProduto, int qtdVenda, float vlrUnitario, float vlrTotal) {
         this.idVenda = idVenda;
-        this.produto = produto;
+        this.idProduto = idProduto;
         this.qtdVenda = qtdVenda;
         this.vlrUnitario = vlrUnitario;
+        this.vlrTotal = vlrTotal;
     }
 
-    public VendaDetalhe(Produto produto, int qtdVenda, float vlrUnitario) {
-        this.produto = produto;
-        this.qtdVenda = qtdVenda;
-        this.vlrUnitario = vlrUnitario;
-    }
+   
 
     public int getIdVenda() {
         return idVenda;
     }
 
-
-    public Produto getProduto() {
-        return produto;
+    public void setIdVenda(int idVenda) {
+        this.idVenda = idVenda;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public int getIdProduto() {
+        return idProduto;
+    }
+
+    public void setIdProduto(int idProduto) {
+        this.idProduto = idProduto;
     }
 
     public int getQtdVenda() {
@@ -56,8 +57,11 @@ public class VendaDetalhe {
     public void setVlrUnitario(float vlrUnitario) {
         this.vlrUnitario = vlrUnitario;
     }
+
+    public float getVlrTotal() {
+        return vlrTotal;
+    }
+
     
-    
-    
-    
+        
 }

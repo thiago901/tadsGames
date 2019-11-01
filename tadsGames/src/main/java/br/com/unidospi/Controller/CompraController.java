@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,12 +23,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CompraConatroller", urlPatterns = {"/inputCompra"})
 public class CompraController extends HttpServlet {
-
+    
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
         
-        if(paramAction.equals("FormComprar")){
+            if(paramAction.equals("FormComprar")){
             FormComprar action = new FormComprar();
             action.executa(req,resp);
             

@@ -1,9 +1,9 @@
 
 var add = document.querySelector("#add");
-
 var form = document.querySelector("#formAdiciona");
 var arrayDetalheVenda = [];
 var salvar = document.querySelector("#salvar");
+var i=0;
 
 
 
@@ -14,18 +14,27 @@ add.addEventListener('click', function () {
     var tabela = document.querySelector("#tabela-detalhe-venda");
     var tbody = tabela.querySelector("tbody");
 
-
-
-
-
     var detalheVenda = obterDadosFormulario(form);
     arrayDetalheVenda.push(detalheVenda);
     console.log(arrayDetalheVenda);
     var linhaDetalheVenda = montarTr(detalheVenda);
 
-
+    var inputsQtd = document.createElement("input");
+    inputsQtd.setAttribute("name","qtds[]");
+    inputsQtd.setAttribute("value",detalheVenda.qtd);
+    var inputsIdProdutos = document.createElement("input");
+    inputsIdProdutos.setAttribute("name","idProdutos[]");
+    inputsIdProdutos.setAttribute("value",detalheVenda.idProduto);
+    var inputsVlrUnitarios = document.createElement("input");
+    inputsVlrUnitarios.setAttribute("name","vlrUnitarios[]");
+    inputsVlrUnitarios.setAttribute("value",detalheVenda.vlrUnitario);
 
     tbody.appendChild(linhaDetalheVenda);
+    
+    tbody.appendChild(inputsQtd);
+    tbody.appendChild(inputsIdProdutos);
+    tbody.appendChild(inputsVlrUnitarios);
+    
 
 
 
@@ -76,7 +85,7 @@ function montarTr(detalheVenda) {
 
     imgAddTd.appendChild(imgAdd);
 
-
+   
 
 
 
@@ -85,16 +94,12 @@ function montarTr(detalheVenda) {
 
 
     linha.appendChild(tdIdProduto);
-
     linha.appendChild(tdProduto);
-
     linha.appendChild(tdQuantidade);
-
     linha.appendChild(tdVlrUnitario);
-
     linha.appendChild(tdVlrTotal);
-
     linha.appendChild(imgAddTd);
+    
 
 
 
@@ -120,7 +125,7 @@ function montarTd(dado, classe) {
 
 }
 
-salvar.addEventListener("click", function(){
+/*salvar.addEventListener("click", function(){
     event.preventDefault();
     
     
@@ -139,4 +144,4 @@ salvar.addEventListener("click", function(){
     
     
     xml.send(JSON.stringify(arrayDetalheVenda));
-});
+});*/

@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.model;
 
+import br.com.unidospi.DAO.VendaDAO;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,31 +16,34 @@ import java.util.Date;
 public class Venda {
     
     private int idVenda;
+    private int idCliente;
+    private int idEmpresa;
     private float vlrVenda;
     private Date dtVenda;
     private String statusVenda;
-    private Cliente cliente;
-    private Empresa empresa;
+    
+    
     
     private ArrayList<VendaDetalhe> vendaDetalhe;
 
-    public Venda(int idVenda, float vlrVenda, Date dtVenda, String statusVenda, Cliente cliente, Empresa empresa) {
+    public Venda(int idVenda, int idCliente, int idEmpresa, float vlrVenda, Date dtVenda, String statusVenda) {
         this.idVenda = idVenda;
+        this.idCliente = idCliente;
+        this.idEmpresa = idEmpresa;
         this.vlrVenda = vlrVenda;
         this.dtVenda = dtVenda;
         this.statusVenda = statusVenda;
-        this.cliente = cliente;
-        this.empresa = empresa;
     }
 
-    public Venda(float vlrVenda, Date dtVenda, String statusVenda, Cliente cliente, Empresa empresa) {
+    public Venda(int idCliente, int idEmpresa, float vlrVenda, Date dtVenda, String statusVenda) {
+        this.idCliente = idCliente;
+        this.idEmpresa = idEmpresa;
         this.vlrVenda = vlrVenda;
         this.dtVenda = dtVenda;
         this.statusVenda = statusVenda;
-        this.cliente = cliente;
-        this.empresa = empresa;
-        
     }
+
+  
 
     public int getIdVenda() {
         return idVenda;
@@ -49,46 +53,31 @@ public class Venda {
         return vlrVenda;
     }
 
-    public void setVlrVenda(float vlrVenda) {
-        this.vlrVenda = vlrVenda;
-    }
-
     public Date getDtVenda() {
         return dtVenda;
-    }
-
-    public void setDtVenda(Date dtVenda) {
-        this.dtVenda = dtVenda;
     }
 
     public String getStatusVenda() {
         return statusVenda;
     }
 
-    public void setStatusVenda(String statusVenda) {
-        this.statusVenda = statusVenda;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getIdEmpresa() {
+        return idEmpresa;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public ArrayList<VendaDetalhe> getVendaDetalhe() {
+        return vendaDetalhe;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public int salvar() {
+        return VendaDAO.salvar(this);
     }
 
     
-    public boolean salvar(){
-        return true;
-    }
     
     
     

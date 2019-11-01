@@ -12,9 +12,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 <html>
 
     <head>
-
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
         <title>Venda</title>
 
         
@@ -25,102 +23,59 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
         <div class="container">
 
-            <form id="formAdiciona"  method="post">
+            <form id="formAdiciona"  method="post" action="inputVenda?action=CadastrarVenda">
 
                 <select name="empresa" required="" id="empresa">
-
                     <option disabled="">Escolha uma Empresa</option>
-
-                    <option value="1"  selected="" >Loja 1</option>
-
+                    <c:forEach items="${empresa}" var="e">
+                        <option value="${e.getIdEmpresa()}"><c:out value="${e.getNome()}"/></option>
+                    </c:forEach>
+                    
                 </select>
-
- 
-
                 <select name="produto" required="" id="produto">
-
                     <option disabled=""  >Escolha um produto</option>
-
-                    <option value="1" selected="">God of War</option>
-
+                    <c:forEach items="${produto}" var="p">
+                        <option value="${p.getIdProduto()}"><c:out value="${p.getNome()}"/></option>
+                    </c:forEach>
+                        
+                       
+                    
                 </select>
-
- 
 
                 <select name="cliente" required="" id="cliente">
-
                     <option disabled=""  >Escolha um Cliente</option>
-
-                    <option value="1" selected="">Jose</option>
-
+                    <c:forEach items="${cliente}" var="c">
+                        <option value="${c.getIdCliente()}"><c:out value="${c.getNome()}"/></option>
+                    </c:forEach>
+                    
                 </select>
 
- 
-
- 
-
                 <label for="qtdComprada">Quantidade</label>
-
                 <input  id="qtdComprada" name="qtdComprada" required="" value="50">
-
- 
-
                 <label for="vlrUnitario">Valor Unitario</label>
-
                 <input  id="vlrUnitario" name="vlrUnitario" required="" value="47">
-
- 
-
-                <label for="dtEntrada">Data de Entrada</label>
-
-                <input type="date" id="dtEntrada" name="dtEntrada" >
-
- 
-
+                
                 <table id="tabela-detalhe-venda">
-
                     <thead>
-
- 
-
-                    <th>idProduto</th>
-
-                    <th>Produto</th>
-
-                    <th>Quantidade</th>
-
-                    <th>Valor Unitario</th>
-
-                    <th>Valor Total</th>
-
-                    <th>Add/Remover</th>
-
- 
-
+                        <th>idProduto</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Valor Unitario</th>
+                        <th>Valor Total</th>
+                        <th>Add/Remover</th>
                     </thead>
-
                     <tbody>
-
- 
-
                     </tbody>
-
                 </table>
-
                 <button id="add">Add</button>
-
- 
-
+                <input type="submit">
+                <input name="vlrTotal" value="600">
             </form>
-
-            <button id="salvar">Salvar</button>
-
-           
-
+            
         </div>
 
         <script type="text/javascript" src="javaScript/addDetalheVenda.js"></script>
-
+        
     </body>
 
 </html>

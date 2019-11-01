@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.Acoes.CadastrarVenda;
 import br.com.unidospi.Acoes.FormVenda;
 
 //import com.google.gson.Gson;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,14 +32,8 @@ public class VendaController extends HttpServlet {
             action.executa(req, resp);
             
         }else if(paramAction.equals("CadastrarVenda")){
-            
-            String a= req.getHeader("c");
-            System.out.println(a);
-            
-            
-            
-            
-            
+            CadastrarVenda action = new CadastrarVenda();
+            action.executa(req, resp);
         }
     }
     
