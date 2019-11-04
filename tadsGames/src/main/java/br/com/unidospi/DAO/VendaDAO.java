@@ -6,7 +6,7 @@
 package br.com.unidospi.DAO;
 
 import br.com.unidospi.model.Venda;
-import com.mysql.cj.protocol.Resultset;
+import br.com.unidospi.model.VendaDetalhe;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  *
@@ -28,32 +29,30 @@ public class VendaDAO {
     private static Connection conexao;
 
     /* recebe um usuário e retorna 1 caso os dados sejam salvos com sucesso
-       e 0 caso não seja salvo com sucesso */
-    public static int salvar(Venda venda) {
+     e 0 caso não seja salvo com sucesso */
+    private static int salvarVendaDetalhe(List<VendaDetalhe> vd,int idVenda) {
+        String sql = "INSERT INTO detalheVenda(idVenda, idProduto, qtdVenda, vlrVenda,vlrTotalItem ) "
+                + " VALUES(?, ?, ?, ?,?)";
         
-        String sql = "INSERT INTO Venda(idCliente,idEmpresa,valorTotal, dataVenda, statusPedido ) "
-                + " VALUES(?, ?, ?, ?, ?)";
 
         try {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
-            PreparedStatement ps = conexao.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS );
-            Date dataSql = new Date(venda.getDtVenda().getTime());
+            PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
-            ps.setInt(1, venda.getIdCliente());
-            ps.setInt(2, venda.getIdEmpresa());
-            ps.setFloat(3, venda.getVlrVenda());
-            ps.setDate(4, dataSql);
-            ps.setString(5, venda.getStatusVenda());
             
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
+           for(VendaDetalhe v : vd){
+                ps.setInt(1, idVenda);
+                ps.setInt(2, v.getIdProduto());
+                ps.setInt(3, v.getQtdVenda());
+                ps.setFloat(4, v.getVlrUnitario());
+                ps.setFloat(5, v.getVlrTotal());
+                ps.executeUpdate();
+           }
+
             
-            while(rs.next()){
-                int chave = rs.getInt(1);
-                return chave;
-            }
- 
+            
+
         } catch (SQLException | ClassNotFoundException e) {
             e.getMessage();
         } finally {
@@ -62,10 +61,49 @@ public class VendaDAO {
             } catch (SQLException e) {
                 e.getMessage();
             }
-            
+
         }
         return 0;
-    
+    }
+
+    public static int salvar(Venda venda) {
+
+        String sql = "INSERT INTO Venda(idCliente,idEmpresa,valorTotal, dataVenda, statusPedido ) "
+                + " VALUES(?, ?, ?, ?, ?)";
+
+        try {
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            Date dataSql = new Date(venda.getDtVenda().getTime());
+
+            ps.setInt(1, venda.getIdCliente());
+            ps.setInt(2, venda.getIdEmpresa());
+            ps.setFloat(3, venda.getVlrVenda());
+            ps.setDate(4, dataSql);
+            ps.setString(5, venda.getStatusVenda());
+
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+
+            while (rs.next()) {
+                int chaveVenda = rs.getInt(1);
+                salvarVendaDetalhe(venda.getVendaDetalhe(),chaveVenda);
+                return chaveVenda;
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.getMessage();
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException e) {
+                e.getMessage();
+            }
+
+        }
+        return 0;
+
     }
 
 }

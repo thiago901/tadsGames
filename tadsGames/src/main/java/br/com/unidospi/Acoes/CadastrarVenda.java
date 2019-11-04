@@ -27,14 +27,21 @@ public class CadastrarVenda implements Executavel{
         int idEmpresa =Integer.parseInt(req.getParameter("empresa"));
         int idCliente=Integer.parseInt(req.getParameter("cliente"));
         float vlrVenda=Float.parseFloat(req.getParameter("vlrTotal"));
-        String idProduto[] = req.getParameterValues("idProdutos[]");
-        String qtd[] = req.getParameterValues("qtds[]");
-        String vlr[] = req.getParameterValues("vlrUnitarios[]");
+        String arrayIdProduto[] = req.getParameterValues("idProdutos[]");
+        String arrayQtd[] = req.getParameterValues("qtds[]");
+        String arrayVlr[] = req.getParameterValues("vlrUnitarios[]");
         
 
         Date dtVenda = new Date();
         Venda venda = new Venda(idCliente, idEmpresa, vlrVenda, dtVenda, "Finalizado");
-        VendaDetalhe vendaDetalhe = new VendaDetalhe(idCliente, idCliente, idCliente, vlrVenda, vlrVenda);
+        for(int i =0;i<arrayIdProduto.length;i++){
+            int idProduto = Integer.parseInt(arrayIdProduto[i]);
+            int qtd = Integer.parseInt(arrayQtd[i]);
+            float vlrUnitario = Float.parseFloat(arrayVlr[i]);
+            float vlrUnitarioTotal = qtd*vlrUnitario;
+            venda.adiciona(new VendaDetalhe(idProduto, qtd, vlrUnitario, vlrUnitarioTotal));
+        }
+        
         
         
         venda.salvar();

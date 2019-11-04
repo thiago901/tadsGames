@@ -7,7 +7,9 @@ package br.com.unidospi.model;
 
 import br.com.unidospi.DAO.VendaDAO;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -21,10 +23,11 @@ public class Venda {
     private float vlrVenda;
     private Date dtVenda;
     private String statusVenda;
+    private List<VendaDetalhe> vendaDetalhe =new ArrayList<>();
     
     
     
-    private ArrayList<VendaDetalhe> vendaDetalhe;
+    
 
     public Venda(int idVenda, int idCliente, int idEmpresa, float vlrVenda, Date dtVenda, String statusVenda) {
         this.idVenda = idVenda;
@@ -69,12 +72,16 @@ public class Venda {
         return idEmpresa;
     }
 
-    public ArrayList<VendaDetalhe> getVendaDetalhe() {
-        return vendaDetalhe;
+    public List<VendaDetalhe> getVendaDetalhe() {
+        return Collections.unmodifiableList(vendaDetalhe);
     }
 
     public int salvar() {
         return VendaDAO.salvar(this);
+    }
+
+    public void adiciona(VendaDetalhe vd) {
+        vendaDetalhe.add(vd);
     }
 
     

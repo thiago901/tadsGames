@@ -16,8 +16,8 @@ public class VendaDetalhe {
     private float vlrUnitario;
     private float vlrTotal;
 
-    public VendaDetalhe(int idVenda, int idProduto, int qtdVenda, float vlrUnitario, float vlrTotal) {
-        this.idVenda = idVenda;
+    public VendaDetalhe(int idProduto, int qtdVenda, float vlrUnitario, float vlrTotal) {
+        
         this.idProduto = idProduto;
         this.qtdVenda = qtdVenda;
         this.vlrUnitario = vlrUnitario;
@@ -60,6 +60,10 @@ public class VendaDetalhe {
 
     public float getVlrTotal() {
         return vlrTotal;
+    }
+
+    public void setVlrTotal(float vlrTotal) {
+        this.vlrTotal = vlrTotal;
     }
 
     

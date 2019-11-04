@@ -1,0 +1,123 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03/11/2019, 21:15:22
+    Author     : Thiago
+*/
+
+
+*{
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins',sans-serif;
+	color: #fff;
+}
+.insere-produto{
+	background-color:#013d4a;
+	display: flex;
+	height: 70px;
+
+
+}
+
+
+.insere-nome-produto{
+	background-color:#013d4a;
+	flex-grow: 3;
+
+}
+.Quantidade{
+	background-color:#013d4a;
+	flex-grow: 1;
+}
+
+.valorUnitario{
+	background-color:#013d4b;
+	flex-grow: 2;
+}
+.valorTotal{
+	background-color:#013d4b;
+	flex-grow: 2;
+}
+
+input::placeholder{
+	font-family: 'Poppins',sans-serif;
+	color: #fff;
+
+
+}
+.botao{
+	flex-grow: 0.5;
+	border: none;
+
+}
+.add{
+	background-color:#013d4b;
+	font-family: 'Poppins',sans-serif;
+	color: #fff;
+	height: 100%;
+	width: 100%;
+	border: none;
+}
+button:hover{
+	background: #4CAF50;
+}
+
+
+span{
+	display: block;
+	text-align: center;
+	padding: 5px;
+}
+.dadosQtd{
+	background:none;
+
+	height: 50%;
+	width: 100%;
+	border: none;
+	text-align: center;
+	
+}
+.nomeProduto{
+  background:none;
+  height: 100%;
+  width: 100%;
+  border: none;
+ 
+}
+.salvar{
+	background-color:#013d4b;
+	font-family: 'Poppins',sans-serif;
+	color: #fff;
+
+	border: none;
+}
+thead{
+	
+	border: 1px solid black;
+
+
+}
+
+table{
+	border-collapse: collapse;
+}
+
+.tabelas-itens{
+	
+}
+body{
+	margin: 5px;
+	background-image: url("../img/controle.jpg");
+	background-size: cover;
+}
+.tabela{
+	width: 70%;
+	margin-top: 2px;
+
+}
+
+
