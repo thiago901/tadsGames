@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -18,11 +19,11 @@ public class Usuario {
     private int idUsuario;
     private String nomeUsuario;
     private String senha;
-    private Date dtCadastro;
+    private LocalDate dtCadastro;
     private boolean status;    
     private int idFuncionario;
 
-    public Usuario(String nomeUsuario, String senha, Date dtCadastro, boolean status, int idFuncionario) {
+    public Usuario(String nomeUsuario, String senha, LocalDate dtCadastro, boolean status, int idFuncionario) {
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
         this.dtCadastro = dtCadastro;
@@ -30,7 +31,7 @@ public class Usuario {
         this.idFuncionario = idFuncionario;
     }
 
-    public Usuario(int idUsuario, String nomeUsuario, String senha, Date dtCadastro, boolean status, int idFuncionario) {
+    public Usuario(int idUsuario, String nomeUsuario, String senha, LocalDate dtCadastro, boolean status, int idFuncionario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
@@ -63,11 +64,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Date getDtCadastro() {
+    public LocalDate getDtCadastro() {
         return dtCadastro;
     }
 
-    public void setDtCadastro(Date dtCadastro) {
+    public void setDtCadastro(LocalDate dtCadastro) {
         this.dtCadastro = dtCadastro;
     }
 

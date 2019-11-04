@@ -40,7 +40,7 @@ public class UsuarioDAO {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
-            Date dataSql = new Date(usuario.getDtCadastro().getTime());
+            Date dataSql = Date.valueOf(usuario.getDtCadastro());
             
             ps.setString(1, usuario.getNomeUsuario());
             ps.setString(2, usuario.getSenha());
@@ -62,23 +62,19 @@ public class UsuarioDAO {
     }
     
     /* retorna uma lista de usuarios associados com funcionarios */
-    public static ArrayList<UsuarioFuncionario> obterUsuarios() {
+    public static ArrayList<UsuarioFuncionario> obterFuncionariosSemUsuario() {
         ArrayList<UsuarioFuncionario> listaUsuarios = new ArrayList<>();
         
-        String query = "SELECT u.idUsuario,\n" + 
-                       "u.nomeUsuario,\n" +
-                       " u.senha,\n" +
-                       " u.dataCadastro,\n" +
-                       " u.ativo,\n" +
-                       " u.idFuncionario,\n" +
+        String query = "SELECT f.idFuncionario,\n" + 
                        " f.nomeFuncionario,\n" + 
-                       " f.nomeFuncionario,\n" + 
+                       " f.sobrenome,\n" + 
                        " f.departamento,\n" + 
-                       " f.cargo,\n" + 
-                       " f.statusFuncionario\n" + 
+                       " f.cargo\n" + 
                        " FROM Usuario u\n" +
-                       " INNER JOIN Funcionario f\n" +
-                       " ON u.idFuncionario = f.idFuncionario;";
+                       " RIGHT JOIN Funcionario f\n" +
+                       " ON u.idFuncionario = f.idFuncionario\n" +
+                       " WHERE u.idFuncionario IS NULL\n" +
+                       " AND f.ativo = true;";
         
         try {
             Class.forName(DRIVER);
@@ -88,16 +84,11 @@ public class UsuarioDAO {
             
             while (rs.next()) {
                 UsuarioFuncionario usuarioFuncionario = new UsuarioFuncionario(
-                        rs.getInt("idUsuario"),
-                        rs.getString("nomeUsuario"),
-                        rs.getString("senha"),
-                        rs.getDate("dataCadastro"),
-                        rs.getBoolean("statusUsuario"),
                         rs.getInt("idFuncionario"),
                         rs.getString("nomeFuncionario"),
+                        rs.getString("sobrenome"),
                         rs.getString("departamento"),
-                        rs.getString("cargo"),
-                        rs.getBoolean("statusFuncionario")
+                        rs.getString("cargo")
                 );
                 
                 listaUsuarios.add(usuarioFuncionario);
@@ -109,5 +100,47 @@ public class UsuarioDAO {
         }
         
         return listaUsuarios;        
+    }
+    
+    public static UsuarioFuncionario obterUsuarioFuncionarioPorId(int id) {
+        UsuarioFuncionario usuarioFuncionario = null;
+        
+        String query = "SELECT f.idFuncionario,\n" + 
+                       " f.nomeFuncionario,\n" + 
+                       " f.sobrenome,\n" + 
+                       " f.departamento,\n" + 
+                       " f.cargo\n" + 
+                       " FROM Usuario u\n" +
+                       " RIGHT JOIN Funcionario f\n" +
+                       " ON u.idFuncionario = f.idFuncionario\n" +
+                       " WHERE u.idFuncionario IS NULL\n" +
+                       " AND f.ativo = true\n" +
+                       " AND f.idFuncionario = ?;";
+        
+        try {
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+                        
+            while (rs.next()) {
+                usuarioFuncionario = new UsuarioFuncionario(
+                        rs.getInt("idFuncionario"),
+                        rs.getString("nomeFuncionario"),
+                        rs.getString("sobrenome"),
+                        rs.getString("departamento"),
+                        rs.getString("cargo")
+                );
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return usuarioFuncionario;
     }
 }
