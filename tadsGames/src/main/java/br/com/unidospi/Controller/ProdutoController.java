@@ -10,6 +10,7 @@ import br.com.unidospi.Acoes.EditarProduto;
 import br.com.unidospi.Acoes.FormCadastrarProduto;
 import br.com.unidospi.Acoes.FormEditarProduto;
 import br.com.unidospi.Acoes.ListarProduto;
+import br.com.unidospi.Acoes.ListarProduto2;
 import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
 import java.io.IOException;
@@ -24,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-@WebServlet(name = "ProdutoServlet", urlPatterns = {"/inputProduto"})
+    @WebServlet(name = "ProdutoServlet", urlPatterns = {"/inputProduto"})
 public class ProdutoController extends HttpServlet {
     
     // retorna 
@@ -55,6 +56,9 @@ public class ProdutoController extends HttpServlet {
             
         }else if(paramAction.equals("ListarProduto")){
             ListarProduto action = new ListarProduto();
+            action.executa(req, resp);
+        }else if(paramAction.equals("ListarProduto2")){
+            ListarProduto2 action = new ListarProduto2();
             action.executa(req, resp);
         }
     }

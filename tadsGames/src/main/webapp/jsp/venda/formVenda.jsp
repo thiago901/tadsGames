@@ -5,7 +5,7 @@
 action="\TadsGames\inputVenda?action=CadastrarVenda"
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
@@ -18,20 +18,12 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
     <body>
         <div class="insere-produto">
             <div class="insere-nome-produto">
-                <input value=""  id="nomeProduto" type="text" name="nomeProduto" class="nomeProduto" placeholder="Digite o Codigo ou nome do Item">
-                <div>
+                <input value=""  id="nomeProduto" type="text" name="nomeProduto" class="procuraNomeProduto" placeholder="Digite o Codigo ou nome do Item">
+                <div class="divAutocomplete">
                     <table id="tbSource" hidden="">
-                        <thead>
-                            <th>
-                            <td hidden="">Id</td>
-                                <td>Nome Produto</td>
-                            </th>
-                        </thead>
+                        
                         <tbody>
-                            <tr>
-                            <td class="id" hidden=""></td>
-                            <td class="produto"></td>
-                        </tr>
+                            
                         </tbody>
                         
                     </table>
@@ -43,7 +35,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                 <input type="number"  min="0" name="qtd" class="dadosQtd" value="0">
             </div>
             <div class="valorUnitario">
-                <span>Valor Unit√°rio</span>
+                <span>Valor Unit·rio</span>
                 <span>0,00</span>
             </div>
 

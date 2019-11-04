@@ -81,7 +81,7 @@ span{
 	text-align: center;
 	
 }
-.nomeProduto{
+.procuraNomeProduto{
   background:none;
   height: 100%;
   width: 100%;
@@ -106,9 +106,7 @@ table{
 	border-collapse: collapse;
 }
 
-.tabelas-itens{
-	
-}
+
 body{
 	margin: 5px;
 	background-image: url("../img/controle.jpg");
@@ -116,8 +114,24 @@ body{
 }
 .tabela{
 	width: 70%;
-	margin-top: 2px;
+	margin-top: 300px;
 
 }
+.idProduto{
+    display: none;
+}
 
+.divAutocomplete{
+    background: rgba(255,255,255,0.2);
+}
+#tbSource{
+    width: 100%;
+}
+.autoCompleteNomeProduto{
+    width: 100%;
+}
+.autoCompleteNomeProduto:hover{
+    background: red;
+    
+}
 
