@@ -14,28 +14,25 @@ import java.util.Date;
 public class UsuarioFuncionario {
     
     private int idUsuario;
-    private String nomeUsuario;
+    private String nomeUsuario;    
     private String senha;
     private Date dtCadastro;
     private boolean statusUsuario;
     private int idFuncionario;
     private String nomeFuncionario;
+    private String sobrenome;
     private String departamento;
     private String cargo;
     private boolean statusFuncionario;
 
-    public UsuarioFuncionario(int idUsuario, String nomeUsuario, String senha, Date dtCadastro, boolean statusUsuario, int idFuncionario, String nomeFuncionario, String departamento, String cargo, boolean statusFuncionario) {
-        this.idUsuario = idUsuario;
-        this.nomeUsuario = nomeUsuario;
-        this.senha = senha;
-        this.dtCadastro = dtCadastro;
-        this.statusUsuario = statusUsuario;
+    public UsuarioFuncionario(int idFuncionario, String nomeFuncionario, 
+            String sobrenome, String departamento, String cargo) {
         this.idFuncionario = idFuncionario;
         this.nomeFuncionario = nomeFuncionario;
+        this.sobrenome = sobrenome;
         this.departamento = departamento;
         this.cargo = cargo;
-        this.statusFuncionario = statusFuncionario;
-    }
+    }        
 
     public int getIdUsuario() {
         return idUsuario;
@@ -115,6 +112,14 @@ public class UsuarioFuncionario {
 
     public void setStatusFuncionario(boolean statusFuncionario) {
         this.statusFuncionario = statusFuncionario;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
     
     

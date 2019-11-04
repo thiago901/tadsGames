@@ -5626,3 +5626,29 @@ insert into produto (nome, descricao, tipo, ativo) values
 ('Fifa','Game de Esporte','Jogo',1),
 ('PS4','Aparelho de Video Game','Console',1);
 
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+(10,5,1);
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+(10,80,2);
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+(10,55,3);
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+(10,50,4);
+
+insert into venda (idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
+(1,1,150,'2019-10-12','Finalizada');
+insert into venda (idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
+(2,2,10,'2019-08-10','Finalizada');
+insert into venda (idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
+(3,3,15,'2019-05-15','Finalizada');
+insert into venda (idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
+(4,4,50,'2019-11-20','Finalizada');
+
+insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
+(1,1,1,5,5);
+insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
+(2,2,2,80,160);
+insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
+(3,3,1,55,55);
+insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
+(4,4,3,50,150);
