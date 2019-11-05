@@ -32,6 +32,9 @@ public class ProdutoController extends HttpServlet {
     public static ArrayList<Produto> listarProduto (){
         return ProdutoDAO.listarProduto();
     }
+    public static ArrayList<Produto> listarProduto (String nomePesquisado){
+        return ProdutoDAO.listarProduto(nomePesquisado);
+    }
        
     /* Recebe requisição e resposta por parâmetro e determina qual ação será 
        realizada atraves do atributo de requisição @paramAction após varios testes */

@@ -25,10 +25,13 @@ public class ListarProduto2 implements Executavel{
     
     @Override
     public String executa(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
-       ArrayList<Produto> lista = ProdutoController.listarProduto();
+        
+        String nomePesquisado = req.getParameter("nome");
+        ArrayList<Produto> lista = ProdutoController.listarProduto(nomePesquisado);
         req.setAttribute("lista", lista);
         
-        Produto p = new Produto(0, "Homem Aranha", "Batman é muito melhor", "Avenduta", true);
+        
+        
         
         Gson g = new Gson();
         String json = g.toJson(lista);

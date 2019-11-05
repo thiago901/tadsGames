@@ -16,7 +16,7 @@ add.addEventListener('click', function () {
 
     var detalheVenda = obterDadosFormulario(form);
     arrayDetalheVenda.push(detalheVenda);
-    console.log(arrayDetalheVenda);
+    
     var linhaDetalheVenda = montarTr(detalheVenda);
 
     var inputsQtd = document.createElement("input");

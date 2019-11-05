@@ -129,6 +129,45 @@ public class ProdutoDAO {
         
         return lista;
     }
+   
+    public static ArrayList<Produto> listarProduto(String nomePesquisado) {
+        ArrayList<Produto> lista = new ArrayList<>();
+        String query = "select * from produto where nome LIKE ?";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1,  nomePesquisado +"%");
+            ResultSet rs = ps.executeQuery();
+            
+            
+            
+            while (rs.next()) {
+                int idProduto = rs.getInt("idProduto");
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                String tipo = rs.getString("tipo");
+                Boolean ativo = rs.getBoolean("ativo");
+                
+                Produto p = new Produto(idProduto, nome, descricao, tipo, ativo);
+                lista.add(p);
+                
+            }
+            for (int i = 0; i > lista.size(); i++) {
+                System.out.println(lista.get(i));
+            }
+
+        } catch (ClassNotFoundException ex) {
+            ex.getMessage();
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lista;
+    }
     
     /* Recebe um identificador de um produto e retorna o produto */
     public static Produto listarProduto(int id) {
