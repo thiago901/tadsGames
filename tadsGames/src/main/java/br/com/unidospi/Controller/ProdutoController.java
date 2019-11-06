@@ -13,6 +13,7 @@ import br.com.unidospi.Acoes.ListarProduto;
 import br.com.unidospi.Acoes.ListarProduto2;
 import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
+import br.com.unidospi.model.ProdutoLista;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -32,7 +33,7 @@ public class ProdutoController extends HttpServlet {
     public static ArrayList<Produto> listarProduto (){
         return ProdutoDAO.listarProduto();
     }
-    public static ArrayList<Produto> listarProduto (String nomePesquisado){
+    public static ArrayList<ProdutoLista> listarProduto (String nomePesquisado){
         return ProdutoDAO.listarProduto(nomePesquisado);
     }
        

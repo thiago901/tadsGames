@@ -32,16 +32,20 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
             </div>
             <div class="Quantidade">
                 <span>Quantidade</span>
-                <input type="number"  min="0" name="qtd" class="dadosQtd" value="0">
+                <input id="qtd" type="number"  min="0" name="qtd" class="dadosQtd" value="0">
+            </div>
+            <div class="QuantidadeEstoque">
+                <span>Quantidade Estoque</span>
+                <span id="SpanQtdEstoque">0,00</span>
             </div>
             <div class="valorUnitario">
                 <span>Valor Unitário</span>
-                <span>0,00</span>
+                <span  id="SpanvlrUnitario">0,00</span>
             </div>
 
             <div class="valorTotal">
                 <span>Valor Total</span>
-                <span>0,00</span>
+                <span id="vlrTotal" >0,00</span>
             </div>
             <div class="botao">
                 <button id="add" class="add">Incluir Produto</button>

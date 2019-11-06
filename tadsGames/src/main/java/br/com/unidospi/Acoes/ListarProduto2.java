@@ -8,6 +8,7 @@ package br.com.unidospi.Acoes;
 
 import br.com.unidospi.Controller.ProdutoController;
 import br.com.unidospi.model.Produto;
+import br.com.unidospi.model.ProdutoLista;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +28,7 @@ public class ListarProduto2 implements Executavel{
     public String executa(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
         
         String nomePesquisado = req.getParameter("nome");
-        ArrayList<Produto> lista = ProdutoController.listarProduto(nomePesquisado);
+        ArrayList<ProdutoLista> lista = ProdutoController.listarProduto(nomePesquisado);
         req.setAttribute("lista", lista);
         
         

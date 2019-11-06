@@ -6,6 +6,7 @@
 package br.com.unidospi.DAO;
 
 import br.com.unidospi.model.Produto;
+import br.com.unidospi.model.ProdutoLista;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -130,9 +131,14 @@ public class ProdutoDAO {
         return lista;
     }
    
-    public static ArrayList<Produto> listarProduto(String nomePesquisado) {
-        ArrayList<Produto> lista = new ArrayList<>();
-        String query = "select * from produto where nome LIKE ?";
+    public static ArrayList<ProdutoLista> listarProduto(String nomePesquisado) {
+        ArrayList<ProdutoLista> lista = new ArrayList<>();
+        String q = "select * from produto where nome LIKE ?";
+        
+        String query = "select p.idProduto,p.nome, e.qtdEstoque, e.valorVendaUnitario from produto p\n" +
+                    "inner join Estoque e on\n" +
+                    "p.idProduto = e.idProduto"
+                + " where p.nome LIKE ?;";
         
         try {                        
             Class.forName(DRIVER);
@@ -146,11 +152,10 @@ public class ProdutoDAO {
             while (rs.next()) {
                 int idProduto = rs.getInt("idProduto");
                 String nome = rs.getString("nome");
-                String descricao = rs.getString("descricao");
-                String tipo = rs.getString("tipo");
-                Boolean ativo = rs.getBoolean("ativo");
+                int qtdEstoque = rs.getInt("qtdEstoque");
+                float vlrUnitario = rs.getFloat("valorVendaUnitario");
                 
-                Produto p = new Produto(idProduto, nome, descricao, tipo, ativo);
+                ProdutoLista p = new ProdutoLista(idProduto, nome, qtdEstoque, vlrUnitario);
                 lista.add(p);
                 
             }

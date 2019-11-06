@@ -4,52 +4,82 @@
  * and open the template in the editor.
  */
 
-var produto = document.querySelector("#nomeProduto");
-var source = document.querySelector("#tbSource");
-var listaAutoComplete = source.querySelector("tbody");
+var inputNomeProduto = document.querySelector("#nomeProduto");
+var tblListaProdutos = document.querySelector("#tbSource");
+var listaProdutos = tblListaProdutos.querySelector("tbody");
+var spanQtdEstoque = document.querySelector("#SpanQtdEstoque");
+var spanVlrUnitarios = document.querySelector("#SpanvlrUnitario");
+var qtdComprada = document.querySelector("#qtd");
+var vlrCompradaTotal = document.querySelector("#vlrTotal");
 
-source.addEventListener("click",function(event){
-    var valor= event.target;
-    var opcaoClicada = valor.parentNode;
-    var id = opcaoClicada.querySelector(".idProduto");
-    var nomeProduto = opcaoClicada.querySelector(".autoCompleteNomeProduto");
-    produto.setAttribute("value",id.textContent);
-    produto.value = nomeProduto.textContent;
-    source.setAttribute("hidden","");
-    
-    
-    
+
+function escondeListaProdutos(){
+    tblListaProdutos.setAttribute("hidden","");
+}
+function mostraListaProdutos(){
+    tblListaProdutos.removeAttribute("hidden");
+}
+
+qtdComprada.addEventListener("input",function(){
+    var textVlrUni = document.querySelector("#SpanvlrUnitario").textContent;
+    var textqtdComprada = this.value;
+    var qtdComprada = eval(textqtdComprada);
+    var vlrUni=eval(textVlrUni);
+    console.log(textqtdComprada);
+    console.log(vlrUni);
+    vlrCompradaTotal.textContent = somaValorTotalItem(qtdComprada,vlrUni);
 });
 
-produto.addEventListener("input", function (){
-    if(produto.value.length==0){
-        source.setAttribute("hidden","");
-        
-        
+function somaValorTotalItem(qtd,vlrUnitario){
+    return qtd*vlrUnitario;
+};
+tblListaProdutos.addEventListener("click",function(event){
+    
+    var produtoSelecionado= event.target;
+    var paiProdutoSelecionado = produtoSelecionado.parentNode;
+    var id = paiProdutoSelecionado.querySelector(".idProduto");
+    var nomeProduto = paiProdutoSelecionado.querySelector(".autoCompleteNomeProduto");
+    var qtdEs= paiProdutoSelecionado.querySelector(".qtdEstoque");
+    var vlrUni = paiProdutoSelecionado.querySelector(".vlrUnitario");
+    
+    //Atribui ao Input os dados do nome produto e id
+    inputNomeProduto.setAttribute("value",id.textContent);
+    inputNomeProduto.value = nomeProduto.textContent;
+    
+    //atribui informação do qtd de estoque e o valor unitario
+    spanQtdEstoque.textContent = qtdEs.textContent;
+    spanVlrUnitarios.textContent = vlrUni.textContent;
+    
+    
+    //depois de clicado a tabela fica escondida
+    escondeListaProdutos();
+    
+    
+
+});
+
+function limparAutoComplete(){
+    var tr = document.getElementsByClassName("produto");
+    for(var i=0;i<tr.length;i++){
+        tr[i].remove();
+    }
+}
+inputNomeProduto.addEventListener("input", function (){
+    
+    limparAutoComplete();
+    if(inputNomeProduto.value.length==0){
+        escondeListaProdutos();
     }else{
-        
-        
-        source.removeAttribute("hidden");
-        var tr = document.getElementsByClassName("asd");
-        console.log(tr);
-        if(tr.length>0){
-           console.log(tr);
-           tr.parentNode.removeChild(tr);
-        }
-        
-        var n =produto.value
-        buscarProdutos(n);
-        
-        
+        mostraListaProdutos();
+        var vlrInputNomeProduto =inputNomeProduto.value;
+        buscarProdutos(vlrInputNomeProduto);
     }
     
-    
 });
 
-function buscarProdutos(n){
-    
+function buscarProdutos(vlrInputNomeProduto){
     var xhl  = new XMLHttpRequest();
-    xhl.open("GET","http://localhost:8084/TadsGames/inputProduto?action=ListarProduto2&&nome="+n);
+    xhl.open("GET","/TadsGames/inputProduto?action=ListarProduto2&&nome="+vlrInputNomeProduto);
     xhl.addEventListener("load",function(){
         var text =xhl.responseText;
         var produtos = JSON.parse(text);
@@ -62,30 +92,33 @@ function buscarProdutos(n){
     });
     xhl.send();
 
-    
 }
 
 function adicionarNaPesquisa(produto){
-    listaAutoComplete.appendChild(montarTr(produto));
+    //coloca na lista de produtos buscados uma linha
+    listaProdutos.appendChild(montarTr(produto));
     
 }
 
 function montarTr(produto) {
 
     //criando a tr para colocar na tabela
-
     var linha = document.createElement("tr");
-    linha.classList.add("asd")
+    linha.classList.add("produto");
 
     var tdIdProduto = montarTd(produto.idProduto, "idProduto");
     var tdProduto = montarTd(produto.nome, "autoCompleteNomeProduto");
+    var tdQtdEstoque = montarTd(produto.qtdEstoque, "qtdEstoque");
+    var tdVlrUnitario = montarTd(produto.vlrUnitario, "vlrUnitario");
+    tdQtdEstoque.setAttribute("hidden","");
+    tdVlrUnitario.setAttribute("hidden","");
     linha.appendChild(tdIdProduto);
     linha.appendChild(tdProduto);
+    linha.appendChild(tdQtdEstoque);
+    linha.appendChild(tdVlrUnitario);
     return linha;
 
 }
-
-
 
 function montarTd(dado, classe) {
     var td = document.createElement("td");
