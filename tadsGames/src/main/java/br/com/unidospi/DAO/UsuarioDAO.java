@@ -143,4 +143,33 @@ public class UsuarioDAO {
         
         return usuarioFuncionario;
     }
+    
+    public Usuario obterUsuarioLogado(String login, String senha)  {
+        int retorno = 0;
+        String query = "SELECT  *\n"
+                     + "FROM    Usuario u\n"
+                     + "WHERE   u.nomeUsuario = ?\n"
+                     + "AND     u.senha = ?;";
+        
+        try {
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            
+            ps.setString(1, login);
+            ps.setString(2, senha);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        return null;
+    }
 }
