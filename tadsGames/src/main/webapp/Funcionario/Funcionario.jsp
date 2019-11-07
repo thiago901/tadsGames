@@ -23,11 +23,21 @@
             Digite mais de 1 e menos de 50 caracteres
         </div>
     </c:if>
+    <c:if test="${validacaoNome2}">
+        <div class="erro-input com-erro">
+            É permitido somente caracteres alfabeticos.
+        </div>
+    </c:if>
     <label for="sobrenome">Sobrenome</label>
     <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome...">
     <c:if test="${validacaoSobrenome}">
         <div class="erro-input com-erro">
             Digite mais de 1 e menos de 50 caracteres
+        </div>
+    </c:if>
+    <c:if test="${validacaoSobrenome2}">
+        <div class="erro-input com-erro">
+            É permitido somente caracteres alfabeticos.
         </div>
     </c:if>
     <label for="cpf">CPF</label>
@@ -51,9 +61,14 @@
             Defina um salario
         </div>
     </c:if>
+    <c:if test="${validacaoSalario2}">
+        <div class="erro-input com-erro">
+            É permitido somente caracteres numéricos.
+        </div>
+    </c:if>
     <label for="depto">Departamento</label>
     <select id="depto" name="depto">
-      <option selected value="vazio" disabled>Selecione um departamento</option>
+      <option selected disabled>Selecione um departamento</option>
       <option value="Diretoria">Diretoria</option>
       <option value="Retaguarda">Retaguarda</option>
       <option value="Vendas">Vendas</option>
@@ -78,7 +93,7 @@
     </c:if>
     <label for="tpFuncionario">Cargo</label>
     <select id="tpFuncionario" name="tpFuncionario">
-        <option selected value="vazio" disabled>Selecione um departamento</option>
+        <option selected disabled>Selecione um departamento</option>
     </select>
     <c:if test="${validacaoCargo}">
         <div class="erro-input com-erro">

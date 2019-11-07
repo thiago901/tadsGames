@@ -5,16 +5,16 @@ depto.onchange = function(){
     if (depto.options[depto.selectedIndex].value === "Diretoria"){
         cargo.options.length = 0;
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Diretoria");
-        var t = document.createTextNode("Diretoria");
+        x.setAttribute("value", "Diretor");
+        var t = document.createTextNode("Diretor");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
     }
     if (depto.options[depto.selectedIndex].value === "Retaguarda"){
         cargo.options.length = 0;
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Gerencia global");
-        var t = document.createTextNode("Gerencia global");
+        x.setAttribute("value", "Gerente global");
+        var t = document.createTextNode("Gerente global");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
         
@@ -25,14 +25,14 @@ depto.onchange = function(){
         document.getElementById("tpFuncionario").appendChild(x);
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Gerencia regional");
-        var t = document.createTextNode("Gerencia regional");
+        x.setAttribute("value", "Gerente regional");
+        var t = document.createTextNode("Gerente regional");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Funcionario Regional");
-        var t = document.createTextNode("Funcionario Regional");
+        x.setAttribute("value", "Funcionario regional");
+        var t = document.createTextNode("Funcionario regional");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
     }
@@ -40,14 +40,14 @@ depto.onchange = function(){
         cargo.options.length = 0;
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Gerencia global");
-        var t = document.createTextNode("Gerencia global");
+        x.setAttribute("value", "Gerente global");
+        var t = document.createTextNode("Gerente global");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Gerencia regional");
-        var t = document.createTextNode("Gerencia regional");
+        x.setAttribute("value", "Gerente regional");
+        var t = document.createTextNode("Gerente regional");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
         
@@ -61,20 +61,20 @@ depto.onchange = function(){
         cargo.options.length = 0;
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Gerencia global");
-        var t = document.createTextNode("Gerencia global");
+        x.setAttribute("value", "Gerente global");
+        var t = document.createTextNode("Gerente global");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Gerencia regional");
-        var t = document.createTextNode("Gerencia regional");
+        x.setAttribute("value", "Gerente regional");
+        var t = document.createTextNode("Gerente regional");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Equipe de suporte tecnico");
-        var t = document.createTextNode("Equipe de suporte tecnico");
+        x.setAttribute("value", "Suporte tecnico");
+        var t = document.createTextNode("Suporte tecnico");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
     }
@@ -82,8 +82,8 @@ depto.onchange = function(){
         cargo.options.length = 0;
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Gerencia global");
-        var t = document.createTextNode("Gerencia global");
+        x.setAttribute("value", "Gerente global");
+        var t = document.createTextNode("Gerente global");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
         
