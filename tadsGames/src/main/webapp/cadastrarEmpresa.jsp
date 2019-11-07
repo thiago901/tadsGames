@@ -28,7 +28,11 @@
                         Digite mais de 1 caracter e menos de 50 caracteres
                     </div>
                     </c:if> 
-
+                    <c:if test="${validacaoNome2}">
+                        <div class="erro-input com-erro">
+                            O primeiro caracter deve necessariamente ser alfabetico.
+                        </div>
+                    </c:if>
                 </div>
                 <div>
                     <label>CNPJ</label>
