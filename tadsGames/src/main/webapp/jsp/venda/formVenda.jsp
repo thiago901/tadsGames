@@ -22,7 +22,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                 <div class="divAutocomplete">
                     <table id="tbSource" hidden="">
                         
-                        <tbody>
+                        <tbody id="tbodyListaProdutos">
                             
                         </tbody>
                         
@@ -61,7 +61,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                 <th>Valor Total</th>
                 <th>Add/Remover</th>
                 </thead>
-                <tbody>
+                <tbody id="tbodyDetalheVenda">
                 </tbody>
             </table>
 
@@ -69,5 +69,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
         </div>
         <script src="javaScript/autoCompleteProduto.js"></script>
+        <script src="javaScript/addDetalheVenda.js"></script>
+        
     </body>
 </html>

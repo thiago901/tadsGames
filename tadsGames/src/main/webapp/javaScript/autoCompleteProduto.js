@@ -6,7 +6,7 @@
 
 var inputNomeProduto = document.querySelector("#nomeProduto");
 var tblListaProdutos = document.querySelector("#tbSource");
-var listaProdutos = tblListaProdutos.querySelector("tbody");
+var listaProdutos = tblListaProdutos.querySelector("#tbodyListaProdutos");
 var spanQtdEstoque = document.querySelector("#SpanQtdEstoque");
 var spanVlrUnitarios = document.querySelector("#SpanvlrUnitario");
 var qtdComprada = document.querySelector("#qtd");
@@ -25,9 +25,10 @@ qtdComprada.addEventListener("input",function(){
     var textqtdComprada = this.value;
     var qtdComprada = eval(textqtdComprada);
     var vlrUni=eval(textVlrUni);
-    console.log(textqtdComprada);
-    console.log(vlrUni);
-    vlrCompradaTotal.textContent = somaValorTotalItem(qtdComprada,vlrUni);
+    
+    
+    
+    vlrCompradaTotal.textContent = formatoReal(somaValorTotalItem(qtdComprada,vlrUni));
 });
 
 function somaValorTotalItem(qtd,vlrUnitario){
@@ -86,6 +87,7 @@ function buscarProdutos(vlrInputNomeProduto){
         
         produtos.forEach(function(produto){
             adicionarNaPesquisa(produto);
+            
         });
         
         
@@ -96,20 +98,20 @@ function buscarProdutos(vlrInputNomeProduto){
 
 function adicionarNaPesquisa(produto){
     //coloca na lista de produtos buscados uma linha
-    listaProdutos.appendChild(montarTr(produto));
+    listaProdutos.appendChild(montarTrBusca(produto));
     
 }
 
-function montarTr(produto) {
+function montarTrBusca(produto) {
 
     //criando a tr para colocar na tabela
     var linha = document.createElement("tr");
     linha.classList.add("produto");
 
-    var tdIdProduto = montarTd(produto.idProduto, "idProduto");
-    var tdProduto = montarTd(produto.nome, "autoCompleteNomeProduto");
-    var tdQtdEstoque = montarTd(produto.qtdEstoque, "qtdEstoque");
-    var tdVlrUnitario = montarTd(produto.vlrUnitario, "vlrUnitario");
+    var tdIdProduto = montarTdBusca(produto.idProduto, "idProduto");
+    var tdProduto = montarTdBusca(produto.nome, "autoCompleteNomeProduto");
+    var tdQtdEstoque = montarTdBusca(produto.qtdEstoque, "qtdEstoque");
+    var tdVlrUnitario = montarTdBusca(formatoReal(produto.vlrUnitario), "vlrUnitario");
     tdQtdEstoque.setAttribute("hidden","");
     tdVlrUnitario.setAttribute("hidden","");
     linha.appendChild(tdIdProduto);
@@ -120,7 +122,10 @@ function montarTr(produto) {
 
 }
 
-function montarTd(dado, classe) {
+function formatoReal(valor){
+    return valor.toFixed(2);/*toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })*/
+}
+function montarTdBusca(dado, classe) {
     var td = document.createElement("td");
     td.textContent = dado;
     td.classList.add(classe);

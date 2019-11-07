@@ -22,7 +22,9 @@ and open the template in the editor.
 
 
 }
-
+#tbodyDetalheVenda tr{
+    text-align: center;
+}
 
 .insere-nome-produto{
 	background-color:#013d4a;

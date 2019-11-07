@@ -9,39 +9,9 @@ var i=0;
 
 
 add.addEventListener('click', function () {
-    event.preventDefault();
-    
-    var tbody = document.querySelector("#tbodyDetalheVenda");
-    
-    
-    var detalheVenda=montarObjetoDetalhe();
-    var linhaDetalheVenda = montarTr(detalheVenda);
-    
 
-    var inputsQtd = document.createElement("input");
-    inputsQtd.setAttribute("name","qtds[]");
-    inputsQtd.setAttribute("value",detalheVenda.qtd);
-    inputsQtd.setAttribute("hidden","");
-    
-    var inputsIdProdutos = document.createElement("input");
-    inputsIdProdutos.setAttribute("name","idProdutos[]");
-    inputsIdProdutos.setAttribute("value",detalheVenda.idProduto);
-    inputsIdProdutos.setAttribute("hidden","");
-    var inputsVlrUnitarios = document.createElement("input");
-    inputsVlrUnitarios.setAttribute("name","vlrUnitarios[]");
-    inputsVlrUnitarios.setAttribute("value",detalheVenda.vlrUnitario);
-    inputsVlrUnitarios.setAttribute("hidden","");
-    
-    tbody.appendChild(linhaDetalheVenda);
-    
-    tbody.appendChild(inputsQtd);
-    tbody.appendChild(inputsIdProdutos);
-    tbody.appendChild(inputsVlrUnitarios);
-    
-    
-    
-    
-    /*var tabela = document.querySelector("#tabela-detalhe-venda");
+    event.preventDefault();
+    var tabela = document.querySelector("#tabela-detalhe-venda");
     var tbody = tabela.querySelector("tbody");
 
     var detalheVenda = obterDadosFormulario(form);
@@ -63,7 +33,7 @@ add.addEventListener('click', function () {
     
     tbody.appendChild(inputsQtd);
     tbody.appendChild(inputsIdProdutos);
-    tbody.appendChild(inputsVlrUnitarios);*/
+    tbody.appendChild(inputsVlrUnitarios);
     
 
 
@@ -72,22 +42,16 @@ add.addEventListener('click', function () {
 
 
 
-function montarObjetoDetalhe() {
-    
-    var inputNomeProduto = document.querySelector("#nomeProduto");
-    var inputQtd= document.querySelector("#qtd");
-    var spanValorUnitario = document.querySelector("#SpanvlrUnitario");
-    var spanValorTotal = document.querySelector("#vlrTotal");
-    
-    
-    
-    var detalheVenda ={
-        idProduto: inputNomeProduto.getAttribute("value"),
-        nomeProduto: inputNomeProduto.value,
-        qtd: inputQtd.value,
-        vlrUnitario: spanValorUnitario.textContent,
-        vlrTotal: spanValorTotal.textContent
-    };
+function obterDadosFormulario(form) {
+
+    var detalheVenda = {
+
+        idProduto: form.produto.value,
+        nomeProduto: form.produto.options[produto.selectedIndex].text,
+        qtd: form.qtdComprada.value,
+        vlrUnitario: form.vlrUnitario.value,
+        vlrTotal: form.qtdComprada.value * form.vlrUnitario.value
+    }
 
     return detalheVenda;
 
@@ -105,7 +69,7 @@ function montarTr(detalheVenda) {
 
 
 
-    var tdIdProduto = montarTd(detalheVenda.idProduto, "idProdutoD");
+    var tdIdProduto = montarTd(detalheVenda.idProduto, "idProduto");
     var tdProduto = montarTd(detalheVenda.nomeProduto, "nomeProduto");
     var tdQuantidade = montarTd(detalheVenda.qtd, "qtd");
     var tdVlrUnitario = montarTd(detalheVenda.vlrUnitario, "vlrUnitario");
