@@ -52,7 +52,14 @@
         </div>
     </c:if>
     <label for="depto">Departamento</label>
-    <input type="text" id="depto" name="depto" placeholder="Digite o departamento...">   
+    <select id="depto" name="depto">
+      <option selected value="vazio" disabled>Selecione um departamento</option>
+      <option value="Diretoria">Diretoria</option>
+      <option value="Retaguarda">Retaguarda</option>
+      <option value="Vendas">Vendas</option>
+      <option value="TI">TI</option>
+      <option value="Administrativo">Administrativo</option>
+    </select>
     <c:if test="${validacaoDept}">
         <div class="erro-input com-erro">
             Defina um departamento
@@ -71,12 +78,7 @@
     </c:if>
     <label for="tpFuncionario">Cargo</label>
     <select id="tpFuncionario" name="tpFuncionario">
-      <option value="Diretor">Diretor</option>
-      <option value="Funcionario Administrativo">Funcionário Administrativo</option>
-      <option value="Funcionario TI">Funcionário TI</option>
-      <option value="Funcionario Venda">Funcionário Venda</option>
-      <option value="Funcionario Retaguarda">Funcionário Retaguarda</option>
-      <option value="Gerente Global">Gerente Global</option>
+        <option selected value="vazio" disabled>Selecione um departamento</option>
     </select>
     <c:if test="${validacaoCargo}">
         <div class="erro-input com-erro">
@@ -101,6 +103,6 @@
     <button type="submit">Enviar</button>        
   </form>
 </div>
-
+<script type="text/javascript" src="javaScript/filtraCargo.js"></script>
 </body>
 </html>
