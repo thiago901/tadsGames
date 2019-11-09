@@ -44,7 +44,7 @@
     <input type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
     <c:if test="${validacaoCPF}">
         <div class="erro-input com-erro">
-            Digite um CPF válido
+            O cpf digitado é inválido ou já está cadastrado no sistema.
         </div>
     </c:if>
     <label for="dtNasc">Data de Nascimento</label>
@@ -66,20 +66,20 @@
             É permitido somente caracteres numéricos.
         </div>
     </c:if>
-    <label for="depto">Departamento</label>
-    <select id="depto" name="depto">
-      <option selected disabled>Selecione um departamento</option>
-      <option value="Diretoria">Diretoria</option>
-      <option value="Retaguarda">Retaguarda</option>
-      <option value="Vendas">Vendas</option>
-      <option value="TI">TI</option>
-      <option value="Administrativo">Administrativo</option>
-    </select>
-    <c:if test="${validacaoDept}">
-        <div class="erro-input com-erro">
-            Defina um departamento
-        </div>
-    </c:if>
+        <label for="depto">Departamento</label>
+        <select id="depto" name="depto">
+          <option selected disabled>Selecione um departamento</option>
+          <option value="Diretoria">Diretoria</option>
+          <option value="Retaguarda">Retaguarda</option>
+          <option value="Vendas">Vendas</option>
+          <option value="TI">TI</option>
+          <option value="Administrativo">Administrativo</option>
+        </select>
+        <c:if test="${validacaoDept}">
+            <div class="erro-input com-erro">
+                Defina um departamento
+            </div>
+        </c:if>
     <label for="tpEmpresa">Empresa</label>
     <select id="empresa" name="tpEmpresa">
         <c:forEach items="${empresas}" var="empresa">

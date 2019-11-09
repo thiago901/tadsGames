@@ -88,8 +88,8 @@ depto.onchange = function(){
         document.getElementById("tpFuncionario").appendChild(x);
         
         var x = document.createElement("OPTION");
-        x.setAttribute("value", "Funcionário");
-        var t = document.createTextNode("Funcionário");
+        x.setAttribute("value", "Funcionario");
+        var t = document.createTextNode("Funcionario");
         x.appendChild(t);
         document.getElementById("tpFuncionario").appendChild(x);
     }

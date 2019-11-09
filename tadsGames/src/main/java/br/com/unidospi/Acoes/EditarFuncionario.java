@@ -7,12 +7,8 @@ package br.com.unidospi.Acoes;
 
 import static br.com.unidospi.Acoes.ValidaCPF.isCPF;
 import br.com.unidospi.DAO.FuncionarioDAO;
-import br.com.unidospi.model.Diretor;
-import br.com.unidospi.model.FuncionarioAdministrativo;
-import br.com.unidospi.model.FuncionarioRetaguarda;
-import br.com.unidospi.model.FuncionarioTI;
-import br.com.unidospi.model.FuncionarioVenda;
-import br.com.unidospi.model.GerenteGlobal;
+import static br.com.unidospi.DAO.FuncionarioDAO.validaNovoCPF;
+import br.com.unidospi.model.Funcionario;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,9 +27,9 @@ import javax.servlet.http.HttpServletResponse;
 public class EditarFuncionario implements Executavel {
 
     @Override
-    public String executa(HttpServletRequest req, HttpServletResponse resp) 
+    public String executa(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
-        
+
         String strIdEmpresa = req.getParameter("tpEmpresa");
         int id = Integer.parseInt(req.getParameter("idFuncionario"));
         String nome = req.getParameter("nome");
@@ -45,23 +41,24 @@ public class EditarFuncionario implements Executavel {
         String deptoStr = req.getParameter("depto");
         //int empresaSelecionada = Integer.parseInt(req.getParameter("tpEmpresa"));
         int empresaSelecionada = 0;
-        String tpFuncStr = req.getParameter("tpFuncionario");
-        String sexo = req.getParameter("sexo");                                              
-            
+        String cargo = req.getParameter("tpFuncionario");
+        String sexo = req.getParameter("sexo");
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dtNasc = null;
-            
-        try {     
+
+        try {
             dtNasc = formatter.parse(dtNascStr);
         } catch (ParseException ex) {
             Logger.getLogger(EditarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         //VALIDAÇÃO PROVISÓRIA------------------------------------------------
         boolean validacaoServidor = false;
         boolean testeCPF;
+        boolean cpfDisponivel;
         testeCPF = isCPF(cpfStr);
+        cpfDisponivel = validaNovoCPF(cpfStr);
 
         if (nome.length() > 50 || nome.equals("")) {
             validacaoServidor = true;
@@ -71,7 +68,7 @@ public class EditarFuncionario implements Executavel {
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome", true);
         }
-        if (testeCPF == false) {
+        if (testeCPF == false || cpfDisponivel==false) {
             validacaoServidor = true;
             req.setAttribute("validacaoCPF", true);
         }
@@ -94,64 +91,24 @@ public class EditarFuncionario implements Executavel {
             validacaoServidor = true;
             req.setAttribute("validacaoDept", true);
         }
-        /*if (cargo == null) {
+        if (cargo == null) {
             validacaoServidor = true;
             req.setAttribute("validacaoCargo", true);
-        }*/
+        }
         if (validacaoServidor) {
             RequestDispatcher dispatcher
-                    = req.getRequestDispatcher("inputFuncionario?action=FormEditarFuncionario&id="+
-                            Integer.parseInt(req.getParameter("idFuncionario")));
+                    = req.getRequestDispatcher("inputFuncionario?action=FormEditarFuncionario&id="
+                            + Integer.parseInt(req.getParameter("idFuncionario")));
             dispatcher.forward(req, resp);
-        }
-        else{
-            
-        switch (tpFuncStr) {
-            case "Funcionario Venda" :
-                FuncionarioVenda funcionarioVenda = new FuncionarioVenda(
-                    Double.parseDouble(salarioStr), deptoStr, "Funcionario Venda", 
-                    id, empresaSelecionada, nome, sobrenome, sexo, cpfStr, 
+        } else {
+            Funcionario funcionario = new Funcionario(
+                    Double.parseDouble(salarioStr), deptoStr, cargo,
+                    id, empresaSelecionada, nome, sobrenome, sexo, cpfStr,
                     dtNasc, status);
-                    FuncionarioDAO.alterar(funcionarioVenda);
-                    break;
-            case "Funcionario Administrativo" :
-                FuncionarioAdministrativo funcionarioAdm = new FuncionarioAdministrativo(
-                    Double.parseDouble(salarioStr), deptoStr, "Funcionario Administrativo",
-                    id, empresaSelecionada, nome, sobrenome, 
-                    sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.alterar(funcionarioAdm);
-                    break;
-            case "Diretor" :
-                Diretor diretor = new Diretor(
-                    Double.parseDouble(salarioStr), deptoStr, "Diretor", 
-                    id, empresaSelecionada, nome, sobrenome, 
-                    sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.alterar(diretor);
-                    break;
-            case "Funcionario TI" :
-                FuncionarioTI funcionarioTI = new FuncionarioTI(
-                    Double.parseDouble(salarioStr), deptoStr, "Funcionario TI", 
-                    id, empresaSelecionada, nome, sobrenome, 
-                    sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.alterar(funcionarioTI);
-                    break;
-            case "Gerente Global" :
-                GerenteGlobal gerenteGlobal = new GerenteGlobal(
-                    Double.parseDouble(salarioStr), deptoStr, "Gerente Global", 
-                    id, empresaSelecionada, nome, sobrenome, 
-                    sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.alterar(gerenteGlobal);
-                    break;
-            case "Funcionario Retaguarda" :
-                FuncionarioRetaguarda funcionarioRetaguarda = new FuncionarioRetaguarda(
-                    Double.parseDouble(salarioStr), deptoStr, "Funcionario Retaguarda", 
-                    id, empresaSelecionada, nome, sobrenome, sexo, 
-                    cpfStr, dtNasc, status);
-                    FuncionarioDAO.alterar(funcionarioRetaguarda);
-                    break;
+            FuncionarioDAO.alterar(funcionario);
+
         }
-        } 
         return "";
     }
-    
+
 }
