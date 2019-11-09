@@ -9,21 +9,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
-        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="css/login.css">
         <link rel="icon" href="img/icon-controle-pequeno.png">
+        <title>Login</title>
+        <meta charset="UTF-8"/>        
     </head>
     <body>
-        <form method="post" action="${pageContext.request.contextPath}/inputLogin?action=LoginForm" novalidate>
-            <h1>Tela de Login</h1>
-            <label>Login</label>
-            <input type="text" name="login">
-            <label>Senha</label>
-            <input type="password" name="senha">
+        <div class="container">
+            <form method="post" action="${pageContext.request.contextPath}/inputLogin?action=Login" novalidate>
+                <h1 class="titulo">Tades Games</h1>
+                <c:if test="${msgErro != null}">
+                    <div class="erro-input com-erro">
+                        <h3>${msgErro}</h3>
+                    </div>
+                </c:if>
+                <label>Usuário</label>
+                <input type="text" name="login" autofocus>
+                <label>Senha</label>
+                <input type="password" name="senha">
 
-            <input type="hidden" name="acao" value="Login">
+                <input type="hidden" name="acao" value="Login">
 
-            <input type="submit">
-        </form>
+                <button type="submit">Acessar</button>
+            </form>
+        </div>
     </body>
 </html>

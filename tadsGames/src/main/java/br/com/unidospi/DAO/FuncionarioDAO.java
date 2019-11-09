@@ -290,7 +290,25 @@ public class FuncionarioDAO {
         
         return retorno;
     }
-    
+    public static boolean validaNovoCPF(String cpf){
+        String query = "Select f.nomeFuncionario from FUNCIONARIO f where f.cpf LIKE ?;";
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1,  cpf);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+                if (rs.getString("nomeFuncionario") != null)
+                    return false;
+            } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
     /* Recebe um identificador de um fucionário e retorna o funcionário
        identificado pelo id */
     public static FuncionarioEmpresa obterFuncionarioEmpresaPorId(int id) {

@@ -6,6 +6,7 @@
 package br.com.unidospi.Controller;
 
 import br.com.unidospi.Acoes.FormLogin;
+import br.com.unidospi.Acoes.Login;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +28,11 @@ public class LoginController extends HttpServlet {
         
         String parametroAcao = req.getParameter("action");
         
-        if (parametroAcao.equals("LoginForm")) {
+        if (parametroAcao.equals("FormLogin")) {
             FormLogin action = new FormLogin();
+            action.executa(req, resp);
+        } else if (parametroAcao.equals("Login")) {
+            Login action = new Login();
             action.executa(req, resp);
         }
     }

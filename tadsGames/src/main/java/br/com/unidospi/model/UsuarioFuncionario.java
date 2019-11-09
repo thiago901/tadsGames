@@ -32,7 +32,16 @@ public class UsuarioFuncionario {
         this.sobrenome = sobrenome;
         this.departamento = departamento;
         this.cargo = cargo;
-    }        
+    } 
+
+    public UsuarioFuncionario(int idUsuario, String nomeUsuario, String departamento, String cargo) {
+        this.idUsuario = idUsuario;
+        this.nomeUsuario = nomeUsuario;
+        this.departamento = departamento;
+        this.cargo = cargo;
+    }
+    
+    
 
     public int getIdUsuario() {
         return idUsuario;

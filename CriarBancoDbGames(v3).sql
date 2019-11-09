@@ -113,7 +113,7 @@ CREATE TABLE Funcionario (
     nomeFuncionario VARCHAR(50),
     sobrenome VARCHAR(30),
     sexo VARCHAR(12),
-    cpf VARCHAR(11) UNIQUE,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
     dtNasc DATE,
     ativo BOOLEAN,
     salario float,
