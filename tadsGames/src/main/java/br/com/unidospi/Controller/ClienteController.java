@@ -10,8 +10,10 @@ import br.com.unidospi.Acoes.EditarCliente;
 import br.com.unidospi.Acoes.FormCadastrarCliente;
 import br.com.unidospi.Acoes.FormEditarCliente;
 import br.com.unidospi.Acoes.ListarCliente;
+import br.com.unidospi.Acoes.ListarCliente2;
 
 import br.com.unidospi.DAO.ClienteDAO;
+import br.com.unidospi.model.Cliente;
 import br.com.unidospi.model.ClienteLista;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +33,9 @@ public class ClienteController extends HttpServlet {
     // Retorna uma lista de clientes
     public static ArrayList<ClienteLista> listarClientes() {
         return ClienteDAO.listarClientes();
+    }
+    public static ArrayList<Cliente> listarClientes(String nomePesquisado) {
+        return ClienteDAO.listarClientes(nomePesquisado);
     }
     
     /* Recebe um identificador de um cliente e retorna 
@@ -72,6 +77,10 @@ public class ClienteController extends HttpServlet {
             
         } else if (paramAction.equals("ListarCliente")) {
             ListarCliente action = new ListarCliente();
+            action.executa(req, resp);
+        }
+        else if (paramAction.equals("ListarCliente2")) {
+            ListarCliente2 action = new ListarCliente2();
             action.executa(req, resp);
         }
     }

@@ -24,9 +24,9 @@ public class CadastrarVenda implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        int idEmpresa =Integer.parseInt(req.getParameter("empresa"));
-        int idCliente=Integer.parseInt(req.getParameter("cliente"));
-        float vlrVenda=Float.parseFloat(req.getParameter("vlrTotal"));
+        int idEmpresa =1;//Integer.parseInt(req.getParameter("empresa"));
+        int idCliente=1;//Integer.parseInt(req.getParameter("cliente"));
+        float vlrVenda=30;//Float.parseFloat(req.getParameter("vlrTotal"));
         String arrayIdProduto[] = req.getParameterValues("idProdutos[]");
         String arrayQtd[] = req.getParameterValues("qtds[]");
         String arrayVlr[] = req.getParameterValues("vlrUnitarios[]");

@@ -6,8 +6,10 @@
 package br.com.unidospi.DAO;
 
 
+import static br.com.unidospi.DAO.ProdutoDAO.URL;
 import br.com.unidospi.model.Cliente;
 import br.com.unidospi.model.ClienteLista;
+import br.com.unidospi.model.ProdutoLista;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -107,6 +109,49 @@ public class ClienteDAO {
         }
         
         return listaClientes;
+    }
+    
+     public static ArrayList<Cliente> listarClientes(String nomePesquisado) {
+        ArrayList<Cliente> lista = new ArrayList<>();
+        
+        
+        String query = "select * from cliente where nome LIKE ?;";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1,  nomePesquisado +"%");
+            ResultSet rs = ps.executeQuery();
+            
+            
+            
+            while (rs.next()) {
+                int idProduto = rs.getInt("idCliente");
+                String nome = rs.getString("nome");
+                String sobrenome = rs.getString("sobrenome");
+                String sexo = rs.getString("sexo");
+                int idEmpresa = rs.getInt("idEmpresa");
+                String cpf = rs.getString("cpf");
+                Date dtNasc = rs.getDate("dtNasc");
+                boolean ativo = rs.getBoolean("ativo");
+                Cliente c = new Cliente(idProduto, idEmpresa, nome, sobrenome, sexo, cpf, dtNasc, ativo);
+                lista.add(c);
+                
+            }
+            for (int i = 0; i > lista.size(); i++) {
+                System.out.println(lista.get(i));
+            }
+
+        } catch (ClassNotFoundException ex) {
+            ex.getMessage();
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return lista;
     }
     
     // retorna um cliente localizando pelo identificador

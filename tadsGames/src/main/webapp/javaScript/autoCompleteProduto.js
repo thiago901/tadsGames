@@ -13,11 +13,12 @@ var qtdComprada = document.querySelector("#qtd");
 var vlrCompradaTotal = document.querySelector("#vlrTotal");
 
 
-function escondeListaProdutos(){
-    tblListaProdutos.setAttribute("hidden","");
+
+function ocultarTabela(tabela){
+    tabela.setAttribute("hidden","");
 }
-function mostraListaProdutos(){
-    tblListaProdutos.removeAttribute("hidden");
+function mostrarTabela(tabela){
+    tabela.removeAttribute("hidden");
 }
 
 qtdComprada.addEventListener("input",function(){
@@ -53,25 +54,29 @@ tblListaProdutos.addEventListener("click",function(event){
     
     
     //depois de clicado a tabela fica escondida
-    escondeListaProdutos();
+    ocultarTabela(tblListaProdutos);
     
     
 
 });
 
-function limparAutoComplete(){
-    var tr = document.getElementsByClassName("produto");
+function limparAutoComplete(tr){
     for(var i=0;i<tr.length;i++){
         tr[i].remove();
     }
 }
+inputNomeProduto.addEventListener("blur", function (e){
+
+        //ocultarTabela(tblListaProdutos);
+
+});
 inputNomeProduto.addEventListener("input", function (){
-    
-    limparAutoComplete();
+    var tr = document.getElementsByClassName("produto");
+    limparAutoComplete(tr);
     if(inputNomeProduto.value.length==0){
-        escondeListaProdutos();
+        ocultarTabela(tblListaProdutos);
     }else{
-        mostraListaProdutos();
+        mostrarTabela(tblListaProdutos);
         var vlrInputNomeProduto =inputNomeProduto.value;
         buscarProdutos(vlrInputNomeProduto);
     }

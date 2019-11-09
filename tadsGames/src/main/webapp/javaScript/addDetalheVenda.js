@@ -7,7 +7,14 @@ var i=0;
 
 
 
-
+function limparVenda(){
+    spanQtdEstoque.textContent = "0,00";
+    spanVlrUnitarios.textContent = "0,00";
+    qtdComprada.value = 0;
+    vlrCompradaTotal.textContent = "0,00";
+    inputNomeProduto.removeAttribute("value");
+    inputNomeProduto.value="";
+}
 add.addEventListener('click', function () {
     event.preventDefault();
     
@@ -39,31 +46,9 @@ add.addEventListener('click', function () {
     tbody.appendChild(inputsVlrUnitarios);
     
     
+    limparVenda();
     
-    
-    /*var tabela = document.querySelector("#tabela-detalhe-venda");
-    var tbody = tabela.querySelector("tbody");
-
-    var detalheVenda = obterDadosFormulario(form);
-    arrayDetalheVenda.push(detalheVenda);
-    
-    var linhaDetalheVenda = montarTr(detalheVenda);
-
-    var inputsQtd = document.createElement("input");
-    inputsQtd.setAttribute("name","qtds[]");
-    inputsQtd.setAttribute("value",detalheVenda.qtd);
-    var inputsIdProdutos = document.createElement("input");
-    inputsIdProdutos.setAttribute("name","idProdutos[]");
-    inputsIdProdutos.setAttribute("value",detalheVenda.idProduto);
-    var inputsVlrUnitarios = document.createElement("input");
-    inputsVlrUnitarios.setAttribute("name","vlrUnitarios[]");
-    inputsVlrUnitarios.setAttribute("value",detalheVenda.vlrUnitario);
-
-    tbody.appendChild(linhaDetalheVenda);
-    
-    tbody.appendChild(inputsQtd);
-    tbody.appendChild(inputsIdProdutos);
-    tbody.appendChild(inputsVlrUnitarios);*/
+ 
     
 
 
