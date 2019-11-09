@@ -144,12 +144,18 @@ public class UsuarioDAO {
         return usuarioFuncionario;
     }
     
-    public Usuario obterUsuarioLogado(String login, String senha)  {
-        int retorno = 0;
-        String query = "SELECT  *\n"
-                     + "FROM    Usuario u\n"
-                     + "WHERE   u.nomeUsuario = ?\n"
-                     + "AND     u.senha = ?;";
+    public static UsuarioFuncionario obterUsuarioLogado(String login, String senha)  {
+        UsuarioFuncionario usuarioFuncionario = null;
+        
+        String query = "SELECT u.idUsuario,\n "
+                     + " u.nomeUsuario,\n"
+                     + " f.departamento,\n"
+                     + " f.cargo\n"
+                     + " FROM Usuario u\n"
+                     + " INNER JOIN Funcionario f\n"
+                     + " ON u.idFuncionario = f.idFuncionario\n"
+                     + " WHERE   u.nomeUsuario = ?\n"
+                     + " AND     u.senha = ?;";
         
         try {
             Class.forName(DRIVER);
@@ -162,7 +168,12 @@ public class UsuarioDAO {
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
-                
+                usuarioFuncionario = new UsuarioFuncionario(
+                        rs.getInt("idUsuario"),
+                        rs.getString("nomeUsuario"),
+                        rs.getString("departamento"),
+                        rs.getString("cargo")
+                );
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -170,6 +181,6 @@ public class UsuarioDAO {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-        return null;
+        return usuarioFuncionario;
     }
 }
