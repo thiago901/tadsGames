@@ -7,12 +7,8 @@ package br.com.unidospi.Acoes;
 
 import static br.com.unidospi.Acoes.ValidaCPF.isCPF;
 import br.com.unidospi.DAO.FuncionarioDAO;
-import br.com.unidospi.model.Diretor;
-import br.com.unidospi.model.FuncionarioAdministrativo;
-import br.com.unidospi.model.FuncionarioRetaguarda;
-import br.com.unidospi.model.FuncionarioTI;
-import br.com.unidospi.model.FuncionarioVenda;
-import br.com.unidospi.model.GerenteGlobal;
+import static br.com.unidospi.DAO.FuncionarioDAO.validaNovoCPF;
+import br.com.unidospi.model.Funcionario;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -59,24 +55,25 @@ public class CadastrarFuncionario implements Executavel {
         //VALIDAÇÃO PROVISÓRIA------------------------------------------------
         boolean validacaoServidor = false;
         boolean testeCPF;
+        boolean cpfDisponivel;
         testeCPF = isCPF(cpfStr);
-
+        cpfDisponivel = validaNovoCPF(cpfStr);
+        
         if (nome.length() > 50 || nome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome", true);
-        }
-        else if (nome.matches("[A-z]*") == false){
+        } else if (nome.matches("[A-z]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome2", true);
         }
         if (sobrenome.length() > 50 || sobrenome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome", true);
-        }else if (sobrenome.matches("[A-z]*") == false){
+        } else if (sobrenome.matches("[A-z]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome2", true);
         }
-        if (testeCPF == false) {
+        if (testeCPF == false  || cpfDisponivel==false) {
             validacaoServidor = true;
             req.setAttribute("validacaoCPF", true);
         }
@@ -94,7 +91,7 @@ public class CadastrarFuncionario implements Executavel {
         if (salarioStr.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoSalario", true);
-        }else if (salarioStr.matches("[0-9]*") == false){
+        } else if (salarioStr.matches("[0-9]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoSalario2", true);
         }
@@ -111,51 +108,12 @@ public class CadastrarFuncionario implements Executavel {
                     = req.getRequestDispatcher("inputFuncionario?action=FormCadastrarFuncionario");
             dispatcher.forward(req, resp);
         } else {
+            Funcionario funcionario = new Funcionario(
+                    Double.parseDouble(salarioStr), deptoStr, cargo,
+                    idEmpresaSelecionada, nome, sobrenome, sexo, cpfStr,
+                    dtNasc, status);
+            FuncionarioDAO.salvar(funcionario);
 
-            switch (cargo) {
-                case "Funcionario Venda":
-                    FuncionarioVenda funcionarioVenda = new FuncionarioVenda(
-                            Double.parseDouble(salarioStr), deptoStr, "Funcionario Venda",
-                            idEmpresaSelecionada, nome, sobrenome, sexo, cpfStr,
-                            dtNasc, status);
-                    FuncionarioDAO.salvar(funcionarioVenda);
-                    break;
-                case "Funcionario Administrativo":
-                    FuncionarioAdministrativo funcionarioAdm = new FuncionarioAdministrativo(
-                            Double.parseDouble(salarioStr), deptoStr, "Funcionario Administrativo",
-                            idEmpresaSelecionada, nome, sobrenome,
-                            sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(funcionarioAdm);
-                    break;
-                case "Diretor":
-                    Diretor diretor = new Diretor(
-                            Double.parseDouble(salarioStr), deptoStr, "Diretor",
-                            idEmpresaSelecionada, nome, sobrenome,
-                            sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(diretor);
-                    break;
-                case "Funcionario TI":
-                    FuncionarioTI funcionarioTI = new FuncionarioTI(
-                            Double.parseDouble(salarioStr), deptoStr, "Funcionario TI",
-                            idEmpresaSelecionada, nome, sobrenome,
-                            sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(funcionarioTI);
-                    break;
-                case "Gerente Global":
-                    GerenteGlobal gerenteGlobal = new GerenteGlobal(
-                            Double.parseDouble(salarioStr), deptoStr, "Gerente Global",
-                            idEmpresaSelecionada, nome, sobrenome,
-                            sexo, cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(gerenteGlobal);
-                    break;
-                case "Funcionario Retaguarda":
-                    FuncionarioRetaguarda funcionarioRetaguarda = new FuncionarioRetaguarda(
-                            Double.parseDouble(salarioStr), deptoStr, "Funcionario Retaguarda",
-                            idEmpresaSelecionada, nome, sobrenome, sexo,
-                            cpfStr, dtNasc, status);
-                    FuncionarioDAO.salvar(funcionarioRetaguarda);
-                    break;
-            }
         }
 
         return "";

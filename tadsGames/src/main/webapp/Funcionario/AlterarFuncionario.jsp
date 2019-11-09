@@ -36,7 +36,7 @@
     <input type="text" id="cpf" name="cpf" value="${funcionario.cpf}">
     <c:if test="${validacaoCPF}">
         <div class="erro-input com-erro">
-            Digite um CPF válido
+            O cpf digitado é inválido.
         </div>
     </c:if>
     <label for="dtNasc">Data de Nascimento</label>
@@ -54,7 +54,39 @@
         </div>
     </c:if>
     <label for="depto">Departamento</label>
-    <input type="text" id="depto" name="depto" value="${funcionario.departamento}">   
+    <select id="depto" name="depto">
+      <option selected value="${funcionario.departamento}">${funcionario.departamento}</option> 
+        <c:if test="${funcionario.departamento == 'Diretoria'}">
+            <option value="Retaguarda">Retaguarda</option>
+            <option value="Vendas">Vendas</option>
+            <option value="TI">TI</option>
+            <option value="Administrativo">Administrativo</option>
+        </c:if>
+        <c:if test="${funcionario.departamento == 'Retaguarda'}">
+            <option value="Diretor">Diretor</option>
+            <option value="Vendas">Vendas</option>
+            <option value="TI">TI</option>
+            <option value="Administrativo">Administrativo</option>
+        </c:if>
+        <c:if test="${funcionario.departamento == 'Vendas'}">
+            <option value="Diretor">Diretor</option>
+            <option value="Retaguarda">Retaguarda</option>
+            <option value="TI">TI</option>
+            <option value="Administrativo">Administrativo</option>
+        </c:if>
+        <c:if test="${funcionario.departamento == 'TI'}">
+            <option value="Diretor">Diretor</option>
+            <option value="Retaguarda">Retaguarda</option>
+            <option value="Vendas">Vendas</option>
+            <option value="Administrativo">Administrativo</option>
+        </c:if>
+        <c:if test="${funcionario.departamento == 'Administrativo'}">
+            <option value="Diretor">Diretor</option>
+            <option value="Retaguarda">Retaguarda</option>
+            <option value="Vendas">Vendas</option>
+            <option value="TI">TI</option>
+        </c:if>
+    </select>
     <c:if test="${validacaoDept}">
         <div class="erro-input com-erro">
             Defina um departamento
@@ -77,48 +109,6 @@
     <label for="tpFuncionario">Cargo</label>
     <select id="tpFuncionario" name="tpFuncionario">
         <option selected value="${funcionario.cargo}">${funcionario.cargo}</option> 
-        <c:if test="${funcionario.cargo == 'Diretor'}">
-            <option value="Funcionario Administrativo">Funcionário Administrativo</option>
-            <option value="Funcionario TI">Funcionário TI</option>
-            <option value="Funcionario Venda">Funcionário Venda</option>
-            <option value="Funcionario Retaguarda">Funcionário Retaguarda</option>
-            <option value="Gerente Global">Gerente Global</option>
-        </c:if>
-        <c:if test="${funcionario.cargo == 'Funcionario Administrativo'}">
-            <option value="Diretor">Diretor</option>
-            <option value="Funcionario TI">Funcionário TI</option>
-            <option value="Funcionario Venda">Funcionário Venda</option>
-            <option value="Funcionario Retaguarda">Funcionário Retaguarda</option>
-            <option value="Gerente Global">Gerente Global</option>
-        </c:if>
-        <c:if test="${funcionario.cargo == 'Funcionario TI'}">
-            <option value="Diretor">Diretor</option>
-            <option value="Funcionario Administrativo">Funcionário Administrativo</option>
-            <option value="Funcionario Venda">Funcionário Venda</option>
-            <option value="Funcionario Retaguarda">Funcionário Retaguarda</option>
-            <option value="Gerente Global">Gerente Global</option>
-        </c:if>
-        <c:if test="${funcionario.cargo == 'Funcionario Venda'}">
-            <option value="Diretor">Diretor</option>
-            <option value="Funcionario Administrativo">Funcionário Administrativo</option>
-            <option value="Funcionario TI">Funcionário TI</option>
-            <option value="Funcionario Retaguarda">Funcionário Retaguarda</option>
-            <option value="Gerente Global">Gerente Global</option>
-        </c:if>
-        <c:if test="${funcionario.cargo == 'Funcionario Retaguarda'}">
-            <option value="Diretor">Diretor</option>
-            <option value="Funcionario Administrativo">Funcionário Administrativo</option>
-            <option value="Funcionario TI">Funcionário TI</option>
-            <option value="Funcionario Venda">Funcionário Venda</option>
-            <option value="Gerente Global">Gerente Global</option>
-        </c:if>
-        <c:if test="${funcionario.cargo == 'Gerente Global'}">
-            <option value="Diretor">Diretor</option>
-            <option value="Funcionario Administrativo">Funcionário Administrativo</option>
-            <option value="Funcionario TI">Funcionário TI</option>
-            <option value="Funcionario Venda">Funcionário Venda</option>
-            <option value="Funcionario Retaguarda">Funcionário Retaguarda</option>
-        </c:if>
     </select>
     <c:if test="${validacaoCargo}">
         <div class="erro-input com-erro">
@@ -160,6 +150,6 @@
     <button type="submit">Enviar</button>        
   </form>
 </div>
-
+<script type="text/javascript" src="javaScript/filtraCargo.js"></script>
 </body>
 </html>
