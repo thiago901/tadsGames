@@ -30,7 +30,7 @@ public class FormComprar implements Executavel {
         req.setAttribute("empresas", E);
         req.setAttribute("produtos", P);
         
-        RequestDispatcher rd = req.getRequestDispatcher("jsp/compra/formCompra.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/compra/formCompra.jsp");
         rd.forward(req, resp);
         return "";
     }

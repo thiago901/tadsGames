@@ -20,7 +20,7 @@ public class FormLogin implements Executavel {
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         RequestDispatcher dispatcher = 
-                req.getRequestDispatcher("Login/Login.jsp");
+                req.getRequestDispatcher("WEB-INF/jsp/login/Login.jsp");
         dispatcher.forward(req, resp);
         return "";
     }

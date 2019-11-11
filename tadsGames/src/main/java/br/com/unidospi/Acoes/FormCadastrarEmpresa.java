@@ -35,7 +35,7 @@ public class FormCadastrarEmpresa implements Executavel{
         
         req.setAttribute("ufs", ufs);
         req.setAttribute("cids", cid);
-        RequestDispatcher rd = req.getRequestDispatcher("/cadastrarEmpresa.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/empresa/cadastrarEmpresa.jsp");
         rd.forward(req, resp);
         return "";
         

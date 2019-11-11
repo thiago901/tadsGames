@@ -18,20 +18,23 @@ tabela.addEventListener("click",function(event){
     var selecionado= event.target;
     var paiSelecionado = selecionado.parentNode;
     var id = paiSelecionado.querySelector(".idCliente");
-    var nomeProduto = paiSelecionado.querySelector(".nomeCliente");
+    var nomeCliente = paiSelecionado.querySelector(".nomeCliente");
     
     
     
     //Atribui ao Input os dados do nome produto e id
     cliente.setAttribute("value",id.textContent);
-    cliente.value = nomeProduto.textContent;
+    cliente.value = nomeCliente.textContent;
+
+
     //depois de clicado a tabela fica escondida
     ocultarTabela(tabela);
     var divCliente = document.getElementById("divCliente");
-    console.log(divCliente);
+
     ocultarTabela(divCliente);
-    
-    
+    var h1NomeCliente = document.getElementById("h1NomeCLiente");
+
+    h1NomeCliente.textContent = "Cliente: "+nomeCliente.textContent;
     
 
 });
@@ -44,7 +47,9 @@ cliente.addEventListener("input", function (){
     limparAutoComplete(tr);
     if(this.value.length==0){
         ocultarTabela(tabela);
+        limparAutoComplete(tr);
     }else{
+        
         mostrarTabela(tabela);
         var nomeProcurado =cliente.value;
         buscarClientes(nomeProcurado);
@@ -57,8 +62,7 @@ function buscarClientes(nomeProcurado){
     xhl.addEventListener("load",function(){
         var text =xhl.responseText;
         var clientes = JSON.parse(text);
-        console.log(nomeProcurado);
-        console.log(clientes);
+
         clientes.forEach(function(cliente){
             addTblClientes(cliente);
             

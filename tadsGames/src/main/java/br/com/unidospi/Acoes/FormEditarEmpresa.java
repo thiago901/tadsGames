@@ -35,7 +35,7 @@ public class FormEditarEmpresa implements Executavel{
         int id =Integer.parseInt(req.getParameter("id"));
         EmpresaLista e = EmpresaController.listarEmpresas(id);
         req.setAttribute("e", e);
-        RequestDispatcher rd = req.getRequestDispatcher("/alterarEmpresa.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/empresa/alterarEmpresa.jsp");
         rd.forward(req, resp);
         return "";
     }

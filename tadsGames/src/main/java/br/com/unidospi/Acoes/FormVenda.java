@@ -8,7 +8,6 @@ package br.com.unidospi.Acoes;
 import br.com.unidospi.Controller.ClienteController;
 import br.com.unidospi.Controller.EmpresaController;
 import br.com.unidospi.Controller.ProdutoController;
-import br.com.unidospi.model.Cliente;
 import br.com.unidospi.model.ClienteLista;
 import br.com.unidospi.model.EmpresaLista;
 import br.com.unidospi.model.Produto;
@@ -18,7 +17,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sun.rmi.server.Dispatcher;
 
 /**
  *
@@ -36,7 +34,7 @@ public class FormVenda implements Executavel{
         req.setAttribute("produto", produtos);
         req.setAttribute("empresa", empresas);
         
-        RequestDispatcher rd = req.getRequestDispatcher("/jsp/venda/formVenda.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/venda/formVenda.jsp");
         rd.forward(req, resp);
         return "";
     }

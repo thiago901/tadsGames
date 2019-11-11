@@ -23,7 +23,7 @@ public class ListarCliente implements Executavel {
     public String executa(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
        ArrayList<ClienteLista> lista = ClienteController.listarClientes();
         req.setAttribute("lista", lista);
-        RequestDispatcher rd = req.getRequestDispatcher("Cliente/listarCliente.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/cliente/listarCliente.jsp");
         rd.forward(req, resp);
         return "";
     }

@@ -25,7 +25,7 @@ public class ListarProduto implements Executavel{
     public String executa(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
        ArrayList<Produto> lista = ProdutoController.listarProduto();
         req.setAttribute("lista", lista);
-        RequestDispatcher rd = req.getRequestDispatcher("Produto/listarProduto.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/jsp/produto/listarProduto.jsp");
         rd.forward(req, resp);
         return "";
     }

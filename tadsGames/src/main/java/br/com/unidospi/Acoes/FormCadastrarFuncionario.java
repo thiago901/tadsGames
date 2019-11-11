@@ -22,7 +22,7 @@ public class FormCadastrarFuncionario implements Executavel {
             throws IOException, ServletException {
         
         RequestDispatcher dispatcher = 
-                req.getRequestDispatcher("Funcionario/Funcionario.jsp");
+                req.getRequestDispatcher("/WEB-INF/jsp/funcionario/Funcionario.jsp");
         dispatcher.forward(req, resp);
         
         return "";

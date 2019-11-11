@@ -20,7 +20,7 @@ public class FormCadastrarProduto implements Executavel{
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         
-        RequestDispatcher rd = req.getRequestDispatcher("Produto/Produto.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/produto/Produto.jsp");
         rd.forward(req, resp);
         return "";
     }

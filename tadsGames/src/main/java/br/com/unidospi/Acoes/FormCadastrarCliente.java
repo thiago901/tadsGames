@@ -20,7 +20,7 @@ public class FormCadastrarCliente implements Executavel{
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = 
-                req.getRequestDispatcher("/Cliente/Cliente.jsp");
+                req.getRequestDispatcher("/WEB-INF/jsp/cliente/Cliente.jsp");
         dispatcher.forward(req, resp);
         return "";
     }

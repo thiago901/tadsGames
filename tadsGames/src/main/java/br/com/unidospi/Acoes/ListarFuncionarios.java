@@ -27,7 +27,7 @@ public class ListarFuncionarios implements Executavel {
         ArrayList<FuncionarioEmpresa> listaFuncionarios = FuncionarioDAO.obterFuncionarios();
         req.setAttribute("funcionarios", listaFuncionarios);
         RequestDispatcher dispatcher = 
-                req.getRequestDispatcher("Funcionario/ListarFuncionario.jsp");
+                req.getRequestDispatcher("/WEB-INF/jsp/funcionario/ListarFuncionario.jsp");
         dispatcher.forward(req, resp);
         
         return "";

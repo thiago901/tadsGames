@@ -24,7 +24,7 @@ public class ListarEmpresas implements Executavel{
     @Override
     public String executa(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
         ArrayList<EmpresaLista> le = EmpresaController.listarEmpresas();
-        RequestDispatcher rd = req.getRequestDispatcher("/listarEmpresa.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/empresa/listarEmpresa.jsp");
         req.setAttribute("lista", le);
         rd.forward(req, resp);
         return "";

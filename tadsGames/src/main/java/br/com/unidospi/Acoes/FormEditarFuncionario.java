@@ -35,7 +35,7 @@ public class FormEditarFuncionario implements Executavel {
         req.setAttribute("empresas", listaEmpresas);
         
         RequestDispatcher dispatcher = 
-                req.getRequestDispatcher("Funcionario/AlterarFuncionario.jsp");
+                req.getRequestDispatcher("/WEB-INF/jsp/funcionario/AlterarFuncionario.jsp");
         dispatcher.forward(req, resp);
         
         return "";

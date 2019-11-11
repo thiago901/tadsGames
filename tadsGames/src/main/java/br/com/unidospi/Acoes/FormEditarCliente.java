@@ -33,7 +33,7 @@ public class FormEditarCliente implements Executavel{
          int id =Integer.parseInt(req.getParameter("idCliente"));
         ClienteLista c = ClienteController.listarClientes(id);
         req.setAttribute("c", c);
-        RequestDispatcher rd = req.getRequestDispatcher("/Cliente/AlterarCliente.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/cliente/AlterarCliente.jsp");
         rd.forward(req, resp);
         return "";
     }

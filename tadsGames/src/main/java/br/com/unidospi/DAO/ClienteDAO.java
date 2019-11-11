@@ -115,7 +115,7 @@ public class ClienteDAO {
         ArrayList<Cliente> lista = new ArrayList<>();
         
         
-        String query = "select * from cliente where nome LIKE ?;";
+        String query = "select * from cliente where nome LIKE ? order by nome;";
         
         try {                        
             Class.forName(DRIVER);

@@ -30,7 +30,7 @@ public class FormCadastrarUsuario implements Executavel {
         
         req.setAttribute("f", usuarioFuncionario);
         
-        RequestDispatcher dispatcher = req.getRequestDispatcher("Usuario/CadastrarUsuario.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/usuario/CadastrarUsuario.jsp");
         dispatcher.forward(req, resp);
         return "";
     }
