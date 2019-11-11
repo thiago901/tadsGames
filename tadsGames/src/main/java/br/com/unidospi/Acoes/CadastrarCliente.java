@@ -8,6 +8,7 @@ package br.com.unidospi.Acoes;
 import static br.com.unidospi.Acoes.ValidaCPF.isCPF;
 import br.com.unidospi.Controller.ClienteController;
 import br.com.unidospi.DAO.ClienteDAO;
+import static br.com.unidospi.DAO.ClienteDAO.validaNovoCPF;
 import br.com.unidospi.model.Cliente;
 import java.io.IOException;
 import java.text.ParseException;
@@ -41,7 +42,10 @@ public class CadastrarCliente implements Executavel{
         
         boolean validacaoServidor = false;
         boolean testeCPF;
+        boolean cpfDisponivel;
+        
         testeCPF=isCPF(cpf);
+        cpfDisponivel = validaNovoCPF(cpf);
         
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dtNasc = null;
@@ -62,7 +66,7 @@ public class CadastrarCliente implements Executavel{
             req.setAttribute("validacaoSobrenome", true);
         }
         
-        if (testeCPF == false) {
+        if (testeCPF == false || cpfDisponivel==false) {
             validacaoServidor = true;
             req.setAttribute("validacaoCPF", true);
         }

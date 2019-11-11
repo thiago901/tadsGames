@@ -20,7 +20,7 @@
             <form method="post" action="${pageContext.request.contextPath}/inputUsuario?action=CadastrarUsuario">
                 <input type="hidden" name="idFuncionario" value="${f.idFuncionario}">
                 <label for="nome">Login</label>                
-                <input type="text" maxlength="50" id="nome" name="login" placeholder="Digite o nome do produto..." >                
+                <input type="text" maxlength="50" id="nome" name="login" placeholder="Digite um nome de usuario..." >                
                 <!--
                 <c:if test="${erroNome}">
                     <div class="erro-input com-erro">
@@ -29,7 +29,7 @@
                 </c:if> 
                  -->   
                 <label for="nome">Senha</label>                
-                <input type="password" maxlength="50" id="senha" name="senha" placeholder="Digite o nome do produto..." >                
+                <input type="password" maxlength="50" id="senha" name="senha" placeholder="Digite um nome de usuario..." >                
                 <!--
                 <c:if test="${erroSenha}">
                     <div class="erro-input com-erro">

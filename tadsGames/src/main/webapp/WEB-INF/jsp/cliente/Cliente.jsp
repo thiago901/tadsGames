@@ -41,7 +41,7 @@
                     <input required="" type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
                     <c:if test="${validacaoCPF}">
                         <div class="erro-input com-erro">
-                            Digite um CPF válido
+                            O CPF digitado é inválido ou está indisponível
                         </div>
                     </c:if>
                     

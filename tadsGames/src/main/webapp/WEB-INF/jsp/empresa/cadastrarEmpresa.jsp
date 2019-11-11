@@ -27,10 +27,10 @@
                     <div class="erro-input com-erro">
                         Digite mais de 1 caracter e menos de 50 caracteres
                     </div>
-                    </c:if> 
+                    </c:if>
                     <c:if test="${validacaoNome2}">
                         <div class="erro-input com-erro">
-                            O primeiro caracter deve necessariamente ser alfabetico.
+                            O primeiro caracter deve necessariamente ser alfabetico
                         </div>
                     </c:if>
                 </div>
@@ -39,7 +39,7 @@
                     <input type="text" name="cnpj">
                     <c:if test="${erroCNPJ}">
                         <div class="erro-input com-erro">
-                        Digite um CNPJ válido
+                        O CNPJ digitado é inválido ou está indisponível
                         </div>
                     </c:if>
 

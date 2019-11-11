@@ -42,7 +42,7 @@
                 <div class="validacao" hidden="true">
                     <c:if test="${erroTipo}">
                         <div class="erro-input com-erro">
-                            É obrigatório escolher um tipo de produto!
+                            É obrigatório escolher um tipo de produto
                         </div>
                     </c:if>
                 </div>

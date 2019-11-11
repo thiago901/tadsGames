@@ -36,7 +36,7 @@
     <input type="text" id="cpf" name="cpf" value="${funcionario.cpf}">
     <c:if test="${validacaoCPF}">
         <div class="erro-input com-erro">
-            O cpf digitado é inválido.
+            O cpf digitado é inválido
         </div>
     </c:if>
     <label for="dtNasc">Data de Nascimento</label>

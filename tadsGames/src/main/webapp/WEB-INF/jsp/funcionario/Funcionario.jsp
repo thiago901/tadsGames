@@ -25,7 +25,7 @@
     </c:if>
     <c:if test="${validacaoNome2}">
         <div class="erro-input com-erro">
-            É permitido somente caracteres alfabeticos.
+            É permitido somente caracteres alfabeticos
         </div>
     </c:if>
     <label for="sobrenome">Sobrenome</label>
@@ -37,14 +37,14 @@
     </c:if>
     <c:if test="${validacaoSobrenome2}">
         <div class="erro-input com-erro">
-            É permitido somente caracteres alfabeticos.
+            É permitido somente caracteres alfabeticos
         </div>
     </c:if>
     <label for="cpf">CPF</label>
     <input type="text" id="cpf" name="cpf" placeholder="Digite o CPF...">
     <c:if test="${validacaoCPF}">
         <div class="erro-input com-erro">
-            O cpf digitado é inválido ou já está cadastrado no sistema.
+            O cpf digitado é inválido ou está indisponível
         </div>
     </c:if>
     <label for="dtNasc">Data de Nascimento</label>
@@ -63,7 +63,7 @@
     </c:if>
     <c:if test="${validacaoSalario2}">
         <div class="erro-input com-erro">
-            É permitido somente caracteres numéricos.
+            É permitido somente caracteres numéricos
         </div>
     </c:if>
         <label for="depto">Departamento</label>
@@ -115,7 +115,7 @@
         <input type="radio" name="status" value="false">
         <label>Inativo</label>                                   
     </div>
-    <button type="submit">Enviar</button>        
+    <button type="submit">Cadastrar</button>        
   </form>
 </div>
 <script type="text/javascript" src="javaScript/filtraCargo.js"></script>

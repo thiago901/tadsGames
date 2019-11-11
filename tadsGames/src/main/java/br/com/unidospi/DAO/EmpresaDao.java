@@ -13,9 +13,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -111,6 +111,25 @@ public class EmpresaDao {
         return false;
     }
 
+        public static boolean validaNovoCnpj(String cnpj){
+        String query = "Select e.nome from EMPRESA e where e.cnpj LIKE ?;";
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1,  cnpj);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+                if (rs.getString("nome") != null)
+                    return false;
+            } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
+    
     /* Retorna uma lista de empresas */
     public static ArrayList listarEmpresas() {
         try{

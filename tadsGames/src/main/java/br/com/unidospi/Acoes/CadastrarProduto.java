@@ -45,7 +45,7 @@ public class CadastrarProduto implements Executavel{
         if (validacaoServidor) {
             
             RequestDispatcher dispatcher = 
-                    req.getRequestDispatcher("Produto/Produto.jsp");
+                    req.getRequestDispatcher("inputProduto?action=FormCadastrarProduto");
             dispatcher.forward(req, resp);
         } else {
         

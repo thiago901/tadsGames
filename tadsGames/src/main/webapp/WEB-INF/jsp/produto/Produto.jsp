@@ -24,9 +24,7 @@
                     
                 
                 <label for="nome">Nome</label>
-                <c:if test="${!erroNome}">
-                    <input type="text" maxlength="50" id="nome" name="nome" value="" placeholder="Digite o nome do produto..." >                
-                </c:if>
+                <input type="text" maxlength="50" id="nome" name="nome" value="" placeholder="Digite o nome do produto..." >                
                 <c:if test="${erroNome}">
                     <div class="erro-input com-erro">
                         Digite mais de 1 caracter e menos de 50 caracteres
@@ -42,7 +40,7 @@
                 </select>
                 <c:if test="${erroTipo}">
                     <div class="erro-input com-erro">
-                        É obrigatório selecionar um tipo de produto!
+                        É obrigatório selecionar um tipo de produto
                     </div>
                 </c:if>
 

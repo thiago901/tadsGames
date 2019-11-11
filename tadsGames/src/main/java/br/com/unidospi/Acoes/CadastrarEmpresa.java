@@ -6,6 +6,7 @@
 package br.com.unidospi.Acoes;
 
 import static br.com.unidospi.Acoes.ValidaCNPJ.isCNPJ;
+import static br.com.unidospi.DAO.EmpresaDao.validaNovoCnpj;
 import br.com.unidospi.model.Empresa;
 import java.io.IOException;
 import java.text.ParseException;
@@ -35,7 +36,7 @@ public class CadastrarEmpresa implements Executavel {
         boolean retorno = false;
         int idEstado = 0;
         int idCidade = 0;
-        
+
         String nome = req.getParameter("nome");
         String cnpj = req.getParameter("cnpj");
         String strDataCriacao = req.getParameter("dataCriacao");
@@ -53,48 +54,52 @@ public class CadastrarEmpresa implements Executavel {
         //VALIDAÇÃO PROVISÓRIA------------------------------------------------
         boolean validacaoServidor = false;
         boolean validarCNPJ = isCNPJ(cnpj);
+        boolean cnpjDisponivel;
+        
+        cnpjDisponivel = validaNovoCnpj(cnpj);
         if (nome.length() < 1 || nome.length() > 70) {
             validacaoServidor = true;
             req.setAttribute("erroNome", true);
-        }else if (nome.substring(0,1).matches("[A-z]*") == false){
+        } else if (nome.substring(0, 1).matches("[A-z]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome2", true);
         }
-        if (cnpj.length() < 1 || cnpj.length() > 14 || validarCNPJ == false){
+        if (cnpj.length() < 1 || cnpj.length() > 14 || validarCNPJ == false || cnpjDisponivel==false) {
             validacaoServidor = true;
             req.setAttribute("erroCNPJ", true);
         }
-        if (dataCriacao == null){
+        if (dataCriacao == null) {
             validacaoServidor = true;
             req.setAttribute("erroData", true);
         }
-        if (req.getParameter("estado") == null){
+        if (req.getParameter("estado") == null) {
             validacaoServidor = true;
             req.setAttribute("erroUF", true);
-        }
-        else
+        } else {
             idEstado = Integer.parseInt(req.getParameter("estado"));
-        if (req.getParameter("cidade") == null){
+        }
+        if (req.getParameter("cidade") == null) {
             validacaoServidor = true;
             req.setAttribute("erroCidade", true);
-        }
-        else 
+        } else {
             idCidade = Integer.parseInt(req.getParameter("cidade"));
+        }
         //--------------------------------------------------------------------------
         if (validacaoServidor) {
 
             RequestDispatcher dispatcher
-                    = req.getRequestDispatcher("input?action=FormCadastrarEmpresa ");
+                    = req.getRequestDispatcher("input?action=FormCadastrarEmpresa");
             dispatcher.forward(req, resp);
-        }
-        else{
+        } else {
 
-        Empresa empr = new Empresa(nome, cnpj, dataCriacao, idEstado, idCidade, status, matriz);
-        retorno = empr.salvar();
+            Empresa empr = new Empresa(nome, cnpj, dataCriacao, idEstado, idCidade, status, matriz);
+            
+            retorno = empr.salvar();
+            if (retorno) {
+                resp.sendRedirect("sucesso.html");
+            }
         }
-        if (retorno) {
-            resp.sendRedirect("sucesso.html");
-        }
+
         return "";
     }
 

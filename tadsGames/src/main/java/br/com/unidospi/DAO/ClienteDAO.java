@@ -6,10 +6,8 @@
 package br.com.unidospi.DAO;
 
 
-import static br.com.unidospi.DAO.ProdutoDAO.URL;
 import br.com.unidospi.model.Cliente;
 import br.com.unidospi.model.ClienteLista;
-import br.com.unidospi.model.ProdutoLista;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -110,6 +108,25 @@ public class ClienteDAO {
         
         return listaClientes;
     }
+    
+    public static boolean validaNovoCPF(String cpf){
+        String query = "Select c.nome from CLIENTE c where c.cpf LIKE ?;";
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1,  cpf);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+                if (rs.getString("nomeFuncionario") != null)
+                    return false;
+            } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
     
      public static ArrayList<Cliente> listarClientes(String nomePesquisado) {
         ArrayList<Cliente> lista = new ArrayList<>();
