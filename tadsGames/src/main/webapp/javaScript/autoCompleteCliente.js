@@ -22,16 +22,18 @@ tabela.addEventListener("click",function(event){
     
     
     
+    console.log(id);
+    console.log(id.textContent);
     //Atribui ao Input os dados do nome produto e id
-    cliente.setAttribute("value",id.textContent);
-    cliente.value = nomeCliente.textContent;
+    //cliente.setAttribute("value",id.textContent);
+    cliente.value = id.textContent;
 
 
     //depois de clicado a tabela fica escondida
     ocultarTabela(tabela);
     var divCliente = document.getElementById("divCliente");
 
-    ocultarTabela(divCliente);
+    
     var h1NomeCliente = document.getElementById("h1NomeCLiente");
 
     h1NomeCliente.textContent = "Cliente: "+nomeCliente.textContent;

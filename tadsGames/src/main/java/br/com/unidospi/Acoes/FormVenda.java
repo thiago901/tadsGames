@@ -34,7 +34,7 @@ public class FormVenda implements Executavel{
         req.setAttribute("produto", produtos);
         req.setAttribute("empresa", empresas);
         
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/venda/formVenda.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/venda/formVenda_1.jsp");
         rd.forward(req, resp);
         return "";
     }

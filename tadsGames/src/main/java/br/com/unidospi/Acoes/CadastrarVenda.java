@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.Acoes;
 
+import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.model.Venda;
 import br.com.unidospi.model.VendaDetalhe;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -24,8 +26,10 @@ public class CadastrarVenda implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        int idEmpresa =1;//Integer.parseInt(req.getParameter("empresa"));
-        int idCliente=1;//Integer.parseInt(req.getParameter("cliente"));
+        HttpSession sessao = req.getSession();
+        UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
+        int idEmpresa = usuario.getIdEmpresa();//Integer.parseInt(req.getParameter("empresa"));
+        int idCliente= Integer.parseInt(req.getParameter("nomeCliente"));
         float vlrVenda=30;//Float.parseFloat(req.getParameter("vlrTotal"));
         String arrayIdProduto[] = req.getParameterValues("idProdutos[]");
         String arrayQtd[] = req.getParameterValues("qtds[]");
@@ -41,11 +45,8 @@ public class CadastrarVenda implements Executavel{
             float vlrUnitarioTotal = qtd*vlrUnitario;
             venda.adiciona(new VendaDetalhe(idProduto, qtd, vlrUnitario, vlrUnitarioTotal));
         }
-        
-        
-        
+
         venda.salvar();
-        
         return "";
     }
     

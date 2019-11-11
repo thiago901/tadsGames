@@ -24,6 +24,7 @@ public class UsuarioFuncionario {
     private String departamento;
     private String cargo;
     private boolean statusFuncionario;
+    private int idEmpresa;
 
     public UsuarioFuncionario(int idFuncionario, String nomeFuncionario, 
             String sobrenome, String departamento, String cargo) {
@@ -34,11 +35,12 @@ public class UsuarioFuncionario {
         this.cargo = cargo;
     } 
 
-    public UsuarioFuncionario(int idUsuario, String nomeUsuario, String departamento, String cargo) {
+    public UsuarioFuncionario(int idUsuario, String nomeUsuario, String departamento, String cargo,int idEmpresa) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.departamento = departamento;
         this.cargo = cargo;
+        this.idEmpresa=idEmpresa;
     }
     
     
@@ -129,6 +131,10 @@ public class UsuarioFuncionario {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
+    }
+
+    public int getIdEmpresa() {
+        return idEmpresa;
     }
     
     

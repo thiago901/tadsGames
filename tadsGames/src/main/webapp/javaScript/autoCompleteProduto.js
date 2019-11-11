@@ -14,6 +14,14 @@ var vlrCompradaTotal = document.querySelector("#vlrTotal");
 
 
 
+function limparVenda(){
+    //spanQtdEstoque.textContent = "0,00";
+    spanVlrUnitarios.textContent = "0,00";
+    qtdComprada.value = 0;
+    vlrCompradaTotal.textContent = "0,00";
+    inputNomeProduto.removeAttribute("value");
+    inputNomeProduto.value="";
+}
 function ocultarTabela(tabela){
     tabela.setAttribute("hidden","");
 }
@@ -23,9 +31,11 @@ function mostrarTabela(tabela){
 
 qtdComprada.addEventListener("input",function(){
     var textVlrUni = document.querySelector("#SpanvlrUnitario").textContent;
+    console.log(textVlrUni);
     var textqtdComprada = this.value;
     var qtdComprada = eval(textqtdComprada);
     var vlrUni=eval(textVlrUni);
+    
     
     
     
@@ -49,7 +59,7 @@ tblListaProdutos.addEventListener("click",function(event){
     inputNomeProduto.value = nomeProduto.textContent;
     
     //atribui informação do qtd de estoque e o valor unitario
-    spanQtdEstoque.textContent = qtdEs.textContent;
+    //spanQtdEstoque.textContent = qtdEs.textContent;
     spanVlrUnitarios.textContent = vlrUni.textContent;
     
     

@@ -7,14 +7,7 @@ var i=0;
 
 
 
-function limparVenda(){
-    spanQtdEstoque.textContent = "0,00";
-    spanVlrUnitarios.textContent = "0,00";
-    qtdComprada.value = 0;
-    vlrCompradaTotal.textContent = "0,00";
-    inputNomeProduto.removeAttribute("value");
-    inputNomeProduto.value="";
-}
+
 add.addEventListener('click', function () {
     event.preventDefault();
     
@@ -85,6 +78,8 @@ function montarTr(detalheVenda) {
     //criando a tr para colocar na tabela
 
     var linha = document.createElement("tr");
+    
+    linha.classList.add("itemVenda");
 
 
 

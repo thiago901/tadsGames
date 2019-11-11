@@ -9,71 +9,110 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
-
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Venda</title>
-        <link rel="icon" href="img/icon-controle-pequeno.png">
+        <title>Vendas</title>        
+        <link rel="stylesheet" type="text/css" href="css/venda.css">
     </head>
-
     <body>
-
-        <div class="container">
-
-            <form id="formAdiciona"  method="post" action="inputVenda?action=CadastrarVenda">
-
-                <select name="empresa" required="" id="empresa">
-                    <option disabled="">Escolha uma Empresa</option>
-                    <c:forEach items="${empresa}" var="e">
-                        <option value="${e.getIdEmpresa()}"><c:out value="${e.getNome()}"/></option>
-                    </c:forEach>
-                    
-                </select>
-                <select name="produto" required="" id="produto">
-                    <option disabled=""  >Escolha um produto</option>
-                    <c:forEach items="${produto}" var="p">
-                        <option value="${p.getIdProduto()}"><c:out value="${p.getNome()}"/></option>
-                    </c:forEach>
-                        
-                       
-                    
-                </select>
-
-                <select name="cliente" required="" id="cliente">
-                    <option disabled=""  >Escolha um Cliente</option>
-                    <c:forEach items="${cliente}" var="c">
-                        <option value="${c.getIdCliente()}"><c:out value="${c.getNome()}"/></option>
-                    </c:forEach>
-                    
-                </select>
-
-                <label for="qtdComprada">Quantidade</label>
-                <input  id="qtdComprada" name="qtdComprada" required="" value="50">
-                <label for="vlrUnitario">Valor Unitario</label>
-                <input  id="vlrUnitario" name="vlrUnitario" required="" value="47">
+<div class="container">
+        <form action="\TadsGames\inputVenda?action=CadastrarVenda" method="post">
+            
+            <div id="divNomeCLiente" >  
+                        <h1 hidden="" id="h1NomeCLiente"> Cliente: </h1>
                 
-                <table id="tabela-detalhe-venda">
-                    <thead>
+            </div>
+            <div id="divCliente" class="divCliente">
+                <div  class="divClienteConteudo">
+                    
+                        <input id="resumoCliente" name="nomeCliente" class="" placeholder="Digite o nome do Cliente">
+                        
+                        <table id="tabelaClientes" hidden="">
+
+                            <tbody id="tbodyListaClientes">
+
+                            </tbody>
+
+                        </table>
+                    
+                </div>
+                </div>    
+            <div class="conteudo-principal">
+                <div class="insere-produto-botao">
+                <div class="insere-produto">
+
+                    <div class="insere-nome-produto">
+                        <input value=""  id="nomeProduto" type="text" name="nomeProduto" class="procuraNomeProduto" placeholder="Digite o Codigo ou nome do Item">
+                        <div class="divAutocomplete">
+                            <table id="tbSource" hidden="">
+
+                                <tbody id="tbodyListaProdutos">
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="insere-produto2">
+                    <div class="Quantidade">
+                        
+                        <input value="0" id="qtd" type="number"  min="0" name="qtd" class="dadosQtd" placeholder="Informe a quantidade">
+                    </div>
+                    
+                    <div class="valorUnitario">
+                        <span>Valor Unitario</span>
+                        <span  id="SpanvlrUnitario">0,00</span>
+                    </div>
+
+                    <div class="valorTotal">
+                        <span>Valor Total</span>
+                        <span id="vlrTotal" >0,00</span>
+                    </div>
+                   
+                </div>
+
+                </div>
+                <div class="botao">
+                    <button id="add" class="add">Incluir Produto</button>
+                </div>
+                </div>
+                <div class="tabelas-itens">
+                    <table id="tabela-detalhe-venda" class="tabela">
+                        <thead>
                         <th>idProduto</th>
                         <th>Produto</th>
                         <th>Quantidade</th>
                         <th>Valor Unitario</th>
                         <th>Valor Total</th>
                         <th>Add/Remover</th>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <button id="add">Add</button>
-                <input type="submit">
-                <input name="vlrTotal" value="600">
-            </form>
-            
-        </div>
+                        </thead>
+                        <tbody id="tbodyDetalheVenda">
+                            
+                        </tbody>
+                    </table>
+                    <div class="divBotoes">
+                        
+                        
+                        <a href="#">Voltar ao Menu</a>
+                        <button type="reset" id="reset" class="reset" >Limpar</button>
+                        <button type="subimit" id="salvar" class="salvar" >Salvar</button>
+                    </div>
 
-        <script type="text/javascript" src="javaScript/addDetalheVenda.js"></script>
+                </div>
+            </div>
+                         
+                
+
+          
+        </form>
+         </div>
+        <script src="javaScript/autoCompleteProduto.js"></script>
+        <script src="javaScript/autoCompleteCliente.js"></script>
+        <script src="javaScript/addDetalheVenda.js"></script>
         
-    </body>
 
+
+    </body>
 </html>
