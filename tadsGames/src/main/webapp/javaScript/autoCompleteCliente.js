@@ -22,8 +22,6 @@ tabela.addEventListener("click",function(event){
     
     
     
-    console.log(id);
-    console.log(id.textContent);
     //Atribui ao Input os dados do nome produto e id
     //cliente.setAttribute("value",id.textContent);
     cliente.value = id.textContent;

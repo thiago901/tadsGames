@@ -5,17 +5,23 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.Acoes.CadastrarItemVenda;
 import br.com.unidospi.Acoes.CadastrarVenda;
 import br.com.unidospi.Acoes.FormVenda;
+import br.com.unidospi.model.VendaDetalhe;
+
+
 
 //import com.google.gson.Gson;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +40,11 @@ public class VendaController extends HttpServlet {
         }else if(paramAction.equals("CadastrarVenda")){
             CadastrarVenda action = new CadastrarVenda();
             action.executa(req, resp);
+        }
+        else if(paramAction.equals("CadastrarItemVenda")){
+            CadastrarItemVenda action = new CadastrarItemVenda();
+            action.executa(req, resp);
+
         }
     }
     

@@ -12,9 +12,11 @@ package br.com.unidospi.model;
 public class VendaDetalhe {
     private int idVenda;
     private int idProduto;
+    private String nomeProduto;
     private int qtdVenda;
     private float vlrUnitario;
     private float vlrTotal;
+    
 
     public VendaDetalhe(int idProduto, int qtdVenda, float vlrUnitario, float vlrTotal) {
         
@@ -22,6 +24,14 @@ public class VendaDetalhe {
         this.qtdVenda = qtdVenda;
         this.vlrUnitario = vlrUnitario;
         this.vlrTotal = vlrTotal;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
    
