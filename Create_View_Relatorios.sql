@@ -64,4 +64,35 @@ CREATE VIEW Rel_Compra AS
             INNER JOIN
         empresa b ON b.idEmpresa = a.idEmpresa
             INNER JOIN
-        produto c ON c.idProduto = a.idProduto
+        produto c ON c.idProduto = a.idProduto;
+        
+        
+/*RELATORIO DE FATURA DIARIA*/
+CREATE VIEW Rel_Fatura_Dia AS
+	SELECT 
+        a.datavenda AS DATA_VENDA,
+        c.nome as EMPRESA,
+        sum(b.vlrTotalItem) AS TOTAL
+    FROM venda a
+	INNER JOIN detalheVenda b
+		ON b.idVenda = a.idVenda
+    INNER JOIN empresa c
+		on c.idempresa = a.idEmpresa    
+	where a.datavenda = CURDATE();
+
+
+
+/*RELATORIO DOS 10 PRODUTOS MAIS VENDIDOS NO DIA ATUAL*/
+CREATE VIEW Rel_Top10_vendas_dia AS
+	SELECT distinct(a.datavenda)AS DATA_VENDA,
+        c.nome AS PRODUTO,
+        d.nome as EMPRESA
+	FROM venda a
+    INNER JOIN detalheVenda b 
+		ON b.idVenda = a.idVenda
+    INNER JOIN produto c 
+        ON c.idProduto = b.idProduto
+	INNER JOIN empresa d
+		on d.idempresa = a.idEmpresa
+	where a.datavenda = CURDATE()
+    limit 10;
