@@ -7,6 +7,7 @@ package br.com.unidospi.Acoes;
 
 import br.com.unidospi.DAO.UsuarioDAO;
 import br.com.unidospi.model.UsuarioFuncionario;
+import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,6 +31,12 @@ public class Login implements Executavel {
         if (usuario != null) {
             HttpSession sessao = req.getSession();
             sessao.setAttribute("usuario", usuario);
+            
+            String acao = "login";
+            GeraLog registro = new GeraLog();
+            registro.escreverLog(usuario.getNomeUsuario(), acao, usuario);
+
+            
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.html");
             dispatcher.forward(req, resp);
 //            resp.sendRedirect(req.getContextPath() + "WEB-INF/index.html");
