@@ -8,7 +8,6 @@ package br.com.unidospi.Controller;
 import br.com.unidospi.DAO.EstoqueDAO;
 import br.com.unidospi.model.Compra;
 import br.com.unidospi.model.Estoque;
-import br.com.unidospi.model.Produto;
 
 /**
  *

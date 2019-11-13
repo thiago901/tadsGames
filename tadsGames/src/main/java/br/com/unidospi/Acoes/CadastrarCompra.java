@@ -6,8 +6,9 @@
 package br.com.unidospi.Acoes;
 
 import br.com.unidospi.Controller.EstoqueController;
-import br.com.unidospi.DAO.CompraDAO;
 import br.com.unidospi.model.Compra;
+import br.com.unidospi.model.UsuarioFuncionario;
+import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,7 @@ import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,8 +48,14 @@ public class CadastrarCompra implements Executavel{
         //verifica se a compra foi salva no banco
         if(salvou){
             //funcao estocar ira acrescentar produto ou add quantidade
+            
             EstoqueController.estocar(compra);
             
+            HttpSession sessao = req.getSession();
+            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+            String acao = "Compra";
+            GeraLog registro = new GeraLog();
+            registro.escreverLog(usuario.getNomeUsuario(), acao, compra);
         }
        return "";
     }

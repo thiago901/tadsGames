@@ -8,10 +8,8 @@ package br.com.unidospi.Acoes;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.model.Venda;
 import br.com.unidospi.model.VendaDetalhe;
+import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +24,7 @@ public class CadastrarVenda implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        int retorno = 0;
         HttpSession sessao = req.getSession();
         UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
         int idEmpresa = usuario.getIdEmpresa();//Integer.parseInt(req.getParameter("empresa"));
@@ -46,7 +45,13 @@ public class CadastrarVenda implements Executavel{
             venda.adiciona(new VendaDetalhe(idProduto, qtd, vlrUnitario, vlrUnitarioTotal));
         }
 
-        venda.salvar();
+        retorno = venda.salvar();
+        if (retorno > 0){
+            String acao = "Venda";
+            GeraLog registro = new GeraLog();
+            registro.escreverLog(usuario.getNomeUsuario(), acao, venda);
+        }
+        
         return "";
     }
     

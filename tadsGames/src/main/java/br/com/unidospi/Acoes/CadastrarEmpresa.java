@@ -7,9 +7,7 @@ package br.com.unidospi.Acoes;
 
 import static br.com.unidospi.Acoes.ValidaCNPJ.isCNPJ;
 import static br.com.unidospi.DAO.EmpresaDao.validaNovoCnpj;
-import br.com.unidospi.DAO.UsuarioDAO;
 import br.com.unidospi.model.Empresa;
-import br.com.unidospi.model.Usuario;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
@@ -108,6 +106,7 @@ public class CadastrarEmpresa implements Executavel {
                 String acao = "cadastro de Empresa";
                 GeraLog registro = new GeraLog();
                 registro.escreverLog(usuario.getNomeUsuario(), acao, empr);
+                
                 resp.sendRedirect("sucesso.html");
             }
         }

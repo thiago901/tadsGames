@@ -32,7 +32,7 @@ public class Login implements Executavel {
             HttpSession sessao = req.getSession();
             sessao.setAttribute("usuario", usuario);
             
-            String acao = "login";
+            String acao = "Login";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario.getNomeUsuario(), acao, usuario);
 
