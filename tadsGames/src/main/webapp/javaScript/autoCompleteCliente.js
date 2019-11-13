@@ -5,13 +5,20 @@
  */
 
 var cliente = document.querySelector("#resumoCliente");
+var inputIdCliente = document.querySelector("#idCliente");
+var imgAlterarCliente = document.querySelector(".imgAltera");
 var tabela = document.getElementById("tabelaClientes");
 var tabelaBody = document.getElementById("tbodyListaClientes");
 
 
 
-
-
+console.log(imgAlterarCliente);
+imgAlterarCliente.addEventListener("click",function(){
+    cliente.removeAttribute("disabled");
+    cliente.value ="";
+    cliente.focus();
+    
+});
 
 tabela.addEventListener("click",function(event){
     
@@ -19,31 +26,26 @@ tabela.addEventListener("click",function(event){
     var paiSelecionado = selecionado.parentNode;
     var id = paiSelecionado.querySelector(".idCliente");
     var nomeCliente = paiSelecionado.querySelector(".nomeCliente");
-    
-    
-    
-    //Atribui ao Input os dados do nome produto e id
-    //cliente.setAttribute("value",id.textContent);
-    cliente.value = id.textContent;
 
-
-    //depois de clicado a tabela fica escondida
+    console.log(nomeCliente);
+    console.log(nomeCliente.textContent);
+    console.log(cliente.value);
+    cliente.value = nomeCliente.textContent;
+    
+   
+    inputIdCliente.value ="";
+    inputIdCliente.value = id.textContent;
+    cliente.value = nomeCliente.textContent;
+    
     ocultarTabela(tabela);
-    var divCliente = document.getElementById("divCliente");
-
     
-    var h1NomeCliente = document.getElementById("h1NomeCLiente");
 
-    h1NomeCliente.textContent = "Cliente: "+nomeCliente.textContent;
-    
 
 });
 
 
 cliente.addEventListener("input", function (){
     var tr = document.getElementsByClassName("cliente");
-    
-    
     limparAutoComplete(tr);
     if(this.value.length==0){
         ocultarTabela(tabela);

@@ -7,17 +7,21 @@ and open the template in the editor.
     Created on : 11/11/2019, 17:26:39
     Author     : thiago.srocha4
 */
-
+.imgAltera{
+    width: 30px;
+    height: 30px;
+    display: inline;
+}
 .divClienteConteudo{
     width: 50%;
 }
 #tabelaClientes{
     background: rgba(255,255,255,.5);
-    width: 100%;
+    width: 90%;
 }
 #tabelaClientes tr:hover{
     background: #4CAF50;
-    width: 100%;
+    width: 90%;
 }
 #tbSource{
         
@@ -184,7 +188,7 @@ input::placeholder{
 #resumoCliente{
         display: inline;
         color: #fff;
-	width: 100%;
+	width: 90%;
 	border-top: #95a5a6 solid 2px;
 	border-left: #95a5a6 solid 2px;
 	border-right: #95a5a6 solid 2px;
