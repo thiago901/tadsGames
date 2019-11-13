@@ -66,7 +66,11 @@ tblListaProdutos.addEventListener("click",function(event){
     //depois de clicado a tabela fica escondida
     ocultarTabela(tblListaProdutos);
     
+    var idProduto =document.querySelector("#idProduto");
+    var vlrUni2 =document.querySelector("#vlrUnitario");
     
+    idProduto.value = id.textContent;
+    vlrUni2.value =vlrUni.textContent;
 
 });
 

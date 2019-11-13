@@ -80,33 +80,6 @@ CREATE TABLE Compra (
     FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)
 );
 
-
-
-CREATE TABLE Venda (
-    idVenda INTEGER AUTO_INCREMENT PRIMARY KEY,
-    idCliente integer,
-    idEmpresa integer,
-    valorTotal float,
-    dataVenda DATE,
-    statusPedido VARCHAR(20),
-    
-    FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente)
-    
-);
-CREATE TABLE DetalheVenda (
-	
-    idVenda INTEGER,
-    idProduto INTEGER,
-    qtdVenda INTEGER,
-    vlrVenda float,
-    vlrTotalItem float,
-    PRIMARY KEY (idVenda, idProduto),
-	FOREIGN KEY (idVenda) REFERENCES Venda (idVenda),
-    FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)
-);
-
-
-
 CREATE TABLE Funcionario (
     idFuncionario INTEGER AUTO_INCREMENT PRIMARY KEY,
     idEmpresa INTEGER,
@@ -120,6 +93,31 @@ CREATE TABLE Funcionario (
     cargo VARCHAR(50),
     departamento VARCHAR(50),
     FOREIGN KEY (idEmpresa) REFERENCES Empresa (idEmpresa)    
+);
+
+CREATE TABLE Venda (
+    idVenda INTEGER AUTO_INCREMENT PRIMARY KEY,
+    idFuncionario integer,
+    idCliente integer,
+    idEmpresa integer,
+    valorTotal float,
+    dataVenda DATE,
+    statusPedido VARCHAR(20),
+    
+    FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente),
+    FOREIGN KEY (idFuncionario) REFERENCES Funcionario (idFuncionario)
+    
+);
+CREATE TABLE DetalheVenda (
+	
+    idVenda INTEGER,
+    idProduto INTEGER,
+    qtdVenda INTEGER,
+    vlrVenda float,
+    vlrTotalItem float,
+    PRIMARY KEY (idVenda, idProduto),
+	FOREIGN KEY (idVenda) REFERENCES Venda (idVenda),
+    FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)
 );
 
 CREATE TABLE Usuario (

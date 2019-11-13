@@ -17,7 +17,8 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
     </head>
     <body>
 <div class="container">
-        <form action="\TadsGames\inputVenda?action=CadastrarVenda" method="post">
+    
+        <form action="\TadsGames\inputVenda?action=CadastrarItemVenda" method="post">
             
             <div id="divNomeCLiente" >  
                         <h1 hidden="" id="h1NomeCLiente"> Cliente: </h1>
@@ -31,6 +32,8 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                         <table id="tabelaClientes" hidden="">
 
                             <tbody id="tbodyListaClientes">
+                                
+                                
 
                             </tbody>
 
@@ -48,7 +51,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                             <table id="tbSource" hidden="">
 
                                 <tbody id="tbodyListaProdutos">
-
+                                    
                                 </tbody>
 
                             </table>
@@ -89,7 +92,22 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                         <th>Add/Remover</th>
                         </thead>
                         <tbody id="tbodyDetalheVenda">
-                            
+                        <input id="idProduto" name="idProduto" value="" hidden="">
+                        <input id="vlrUnitario" name="vlrUnitario" value="" hidden="">
+                       
+                            <c:forEach items="${itemVenda}" var="i">
+                                <tr class="itemVenda">
+                                    <td class="idProdutoD"><c:out value="${i.getIdProduto()}"/></td>
+                                    <td class="nomeProduto"><c:out value="${i.getNomeProduto()}"/></td>
+                                    <td class="qtd"><c:out value="${i.getQtdVenda()}"/></td>
+                                    <td class="vlrUnitario"><c:out value="${i.getVlrUnitario()}"/></td>
+                                    <td class="vlrTotal"><c:out value="${i.getVlrTotal()}"/></td>
+                                    <td><img href="img/add.png"></td>
+                                    <input name="idProdutos[]" value="${i.getIdProduto()}" hidden="">
+                                    <input name="qtds[]" value="${i.getQtdVenda()}" hidden="">
+                                    <input name="vlrUnitarios[]" value="${i.getVlrUnitario()}" hidden="">
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
                     <div class="divBotoes">
@@ -110,7 +128,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
          </div>
         <script src="javaScript/autoCompleteProduto.js"></script>
         <script src="javaScript/autoCompleteCliente.js"></script>
-        <script src="javaScript/addDetalheVenda.js"></script>
+        
         
 
 
