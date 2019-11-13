@@ -29,7 +29,10 @@ insert into EstadoRegiao (uf, estado, capital, regiao, pais) values('SC','Santa 
 insert into EstadoRegiao (uf, estado, capital, regiao, pais) values('SE','Sergipe','Aracaju','Nordeste','BR');
 insert into EstadoRegiao (uf, estado, capital, regiao, pais) values('SP','São Paulo','São Paulo','Sudeste','BR');
 insert into EstadoRegiao (uf, estado, capital, regiao, pais) values('TO','Tocantins','Palmas','Norte','BR');
-select * from EstadoRegiao;
+SELECT 
+    *
+FROM
+    EstadoRegiao;
 
 /*INSERIR CIDADES*/
 
@@ -5652,6 +5655,8 @@ insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
 (10,55,3);
 insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
 (10,50,4);
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+(0,100,5);
 
 insert into venda (idFuncionario,idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
 (1,1,1,150,'2019-10-12','Finalizada');
@@ -5670,3 +5675,13 @@ insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) 
 (3,3,1,55,55);
 insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
 (4,4,3,50,150);
+
+/*INSERIR DADOS COMPRAS*/
+insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) 
+values (1,1,10,'2019-05-10',85);
+insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) 
+values (2,2,5,'2019-02-09',120);
+insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) 
+values (3,3,15,'2019-01-11',150);
+insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) 
+values (4,4,90,'2019-04-07',60);
