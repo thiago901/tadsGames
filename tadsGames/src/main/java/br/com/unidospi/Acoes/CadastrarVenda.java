@@ -28,16 +28,20 @@ public class CadastrarVenda implements Executavel{
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         int retorno = 0;
         HttpSession sessao = req.getSession();
+        List<VendaDetalhe> vd = (ArrayList<VendaDetalhe> ) sessao.getAttribute("itemVenda");
+        
         UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
         int idEmpresa = usuario.getIdEmpresa();
         int idCliente= Integer.parseInt(sessao.getAttribute("idCliente").toString());
-        float vlrVenda=30;//Float.parseFloat(req.getParameter("vlrTotal"));
+        float vlrVenda=0;
+        int idFuncionario= usuario.getIdFuncionario();
 
-        
-        List<VendaDetalhe> vd = (ArrayList<VendaDetalhe> ) sessao.getAttribute("itemVenda");
+          for(VendaDetalhe item:vd){
+            vlrVenda += item.getVlrTotal();
+        }
         
         Date dtVenda = new Date();
-        Venda venda = new Venda(idCliente, idEmpresa, vlrVenda, dtVenda, "Finalizado");
+        Venda venda = new Venda(idCliente, idEmpresa,idFuncionario, vlrVenda, dtVenda, "Finalizado");
         
         for(VendaDetalhe item:vd){
             int idProduto =item.getIdProduto();
@@ -51,12 +55,13 @@ public class CadastrarVenda implements Executavel{
         retorno = venda.salvar();
         
         if (retorno > 0){
+            sessao.removeAttribute("itemVenda");
             String acao = "Venda";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, venda);
         }
         
-        
+        resp.sendRedirect(req.getContextPath() + "/inputVenda?action=FormVenda");
         
         return "";
     }

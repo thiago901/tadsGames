@@ -68,8 +68,8 @@ public class VendaDAO {
 
     public static int salvar(Venda venda) {
 
-        String sql = "INSERT INTO Venda(idCliente,idEmpresa,valorTotal, dataVenda, statusPedido ) "
-                + " VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Venda(idCliente,idEmpresa,valorTotal, dataVenda, statusPedido,idFuncionario ) "
+                + " VALUES(?, ?, ?, ?, ?,?)";
 
         try {
             Class.forName(DRIVER);
@@ -82,6 +82,7 @@ public class VendaDAO {
             ps.setFloat(3, venda.getVlrVenda());
             ps.setDate(4, dataSql);
             ps.setString(5, venda.getStatusVenda());
+            ps.setInt(6, venda.getIdFuncionario());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();

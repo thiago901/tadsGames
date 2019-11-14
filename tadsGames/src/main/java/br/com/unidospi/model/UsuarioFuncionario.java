@@ -35,12 +35,13 @@ public class UsuarioFuncionario {
         this.cargo = cargo;
     } 
 
-    public UsuarioFuncionario(int idUsuario, String nomeUsuario, String departamento, String cargo,int idEmpresa) {
+    public UsuarioFuncionario(int idUsuario, String nomeUsuario, String departamento, String cargo,int idEmpresa,int idFuncionario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.departamento = departamento;
         this.cargo = cargo;
         this.idEmpresa=idEmpresa;
+        this.idFuncionario = idFuncionario;
     }
     
     

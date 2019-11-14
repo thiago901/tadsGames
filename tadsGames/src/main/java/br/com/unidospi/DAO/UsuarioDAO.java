@@ -151,7 +151,8 @@ public class UsuarioDAO {
                      + " u.nomeUsuario,\n"
                      + " f.departamento,\n"
                      + " f.cargo,\n"
-                     + "f.idEmpresa\n"
+                     + "f.idEmpresa,\n"
+                     + "f.idFuncionario\n"
                      + " FROM Usuario u\n"
                      + " INNER JOIN Funcionario f\n"
                      + " ON u.idFuncionario = f.idFuncionario\n"
@@ -174,7 +175,8 @@ public class UsuarioDAO {
                         rs.getString("nomeUsuario"),
                         rs.getString("departamento"),
                         rs.getString("cargo"),
-                        rs.getInt("idEmpresa")
+                        rs.getInt("idEmpresa"),
+                        rs.getInt("idFuncionario")
                 );
             }
         } catch (ClassNotFoundException ex) {
