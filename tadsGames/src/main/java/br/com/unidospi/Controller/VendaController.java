@@ -51,16 +51,12 @@ public class VendaController extends HttpServlet {
                 CadastrarItemVenda action = new CadastrarItemVenda();
                 action.executa(req, resp);
 
-            }
-        } else if(paramAction.equals("ExcluirItemVenda")){
-            ExcluirItemVenda action = new ExcluirItemVenda();
-            action.executa(req, resp);
+            } else if(paramAction.equals("ExcluirItemVenda")){
+                ExcluirItemVenda action = new ExcluirItemVenda();
+                action.executa(req, resp);
+            } 
         } else {
             resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
-        }
-    }
-    
-    
-
-    
+        } 
+    }    
 }
