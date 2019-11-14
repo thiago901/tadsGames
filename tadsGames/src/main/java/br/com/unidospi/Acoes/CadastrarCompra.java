@@ -55,7 +55,7 @@ public class CadastrarCompra implements Executavel{
             UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
             String acao = "Compra";
             GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario.getNomeUsuario(), acao, compra);
+            registro.escreverLog(usuario, acao, compra);
         }
        return "";
     }

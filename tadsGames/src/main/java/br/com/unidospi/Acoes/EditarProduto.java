@@ -7,12 +7,15 @@ package br.com.unidospi.Acoes;
 
 import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
+import br.com.unidospi.model.UsuarioFuncionario;
+import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -51,6 +54,11 @@ public class EditarProduto implements Executavel {
         retorno = ProdutoDAO.editar(p);
 
         if (retorno) {
+            HttpSession sessao = req.getSession();
+            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+            String acao = "edição de Produto";
+            GeraLog registro = new GeraLog();
+            registro.escreverLog(usuario, acao, p);
             resp.sendRedirect("sucesso.html");
         }
         

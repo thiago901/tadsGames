@@ -9,7 +9,8 @@ import static br.com.unidospi.Acoes.ValidaCPF.isCPF;
 import br.com.unidospi.Controller.ClienteController;
 import br.com.unidospi.DAO.ClienteDAO;
 import br.com.unidospi.model.Cliente;
-import br.com.unidospi.model.ClienteLista;
+import br.com.unidospi.model.UsuarioFuncionario;
+import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -86,6 +88,12 @@ public class EditarCliente implements Executavel {
             Cliente p = new Cliente(idCliente, idEmpresa, nome, sobrenome, sexo, cpf, dtNasc, ativo);
             retorno = ClienteDAO.alterar(p);
             if (retorno > 0) {
+                HttpSession sessao = req.getSession();
+                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+                String acao = "edição de Cliente";
+                GeraLog registro = new GeraLog();
+                registro.escreverLog(usuario, acao, p);
+                
                 resp.sendRedirect("sucesso.html");
             }
         }

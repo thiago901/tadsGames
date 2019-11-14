@@ -30,7 +30,7 @@ public class CadastrarVenda implements Executavel{
         HttpSession sessao = req.getSession();
         UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
         int idEmpresa = usuario.getIdEmpresa();
-        int idCliente= (int) sessao.getAttribute("idCliente");
+        int idCliente= Integer.parseInt(sessao.getAttribute("idCliente").toString());
         float vlrVenda=30;//Float.parseFloat(req.getParameter("vlrTotal"));
 
         
@@ -49,7 +49,14 @@ public class CadastrarVenda implements Executavel{
         }
         
         retorno = venda.salvar();
-
+        
+        if (retorno > 0){
+            String acao = "Venda";
+            GeraLog registro = new GeraLog();
+            registro.escreverLog(usuario, acao, venda);
+        }
+        
+        
         
         return "";
     }

@@ -7,6 +7,8 @@ package br.com.unidospi.Acoes;
 
 import static br.com.unidospi.Acoes.ValidaCNPJ.isCNPJ;
 import br.com.unidospi.model.Empresa;
+import br.com.unidospi.model.UsuarioFuncionario;
+import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +17,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -84,10 +87,16 @@ public class EditarEmpresa implements Executavel{
 
         Empresa empr = new Empresa(idEmpresa, nome, cnpj, dataCriacao, idEstado, idCidade, status, matriz);
         retorno=empr.alterar();
+            if(retorno){
+                HttpSession sessao = req.getSession();
+                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+                String acao = "edição de Empresa";
+                GeraLog registro = new GeraLog();
+                registro.escreverLog(usuario, acao, empr);
+                resp.sendRedirect("sucesso.html");
+            }
         }
-        if(retorno){
-            resp.sendRedirect("sucesso.html");
-        }
+        
         return "";
     }
     
