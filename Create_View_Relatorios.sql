@@ -86,7 +86,8 @@ CREATE VIEW Rel_Fatura_Dia AS
 CREATE VIEW Rel_Top10_vendas_dia AS
 	SELECT distinct(a.datavenda)AS DATA_VENDA,
         c.nome AS PRODUTO,
-        d.nome as EMPRESA
+        d.nome as EMPRESA,
+        SUM(B.qtdVenda) as QUANTIDADE
 	FROM venda a
     INNER JOIN detalheVenda b 
 		ON b.idVenda = a.idVenda
@@ -95,7 +96,11 @@ CREATE VIEW Rel_Top10_vendas_dia AS
 	INNER JOIN empresa d
 		on d.idempresa = a.idEmpresa
 	where a.datavenda = CURDATE()
+    
+    group by PRODUTO
+    order by QUANTIDADE desc
     limit 10;
+
     
     /*RELATORIO TOTAL POR EMPRESA E PORCENTAGEM*/
  CREATE VIEW Rel_Total_Empresa_Porcentagem AS       

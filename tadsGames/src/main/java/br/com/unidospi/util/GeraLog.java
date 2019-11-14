@@ -13,6 +13,7 @@ import br.com.unidospi.model.Compra;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.Funcionario;
 import br.com.unidospi.model.Produto;
+import br.com.unidospi.model.Usuario;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.model.Venda;
 import java.io.BufferedReader;
@@ -286,7 +287,7 @@ public class GeraLog {
                 break;
             case "cadastro de Usuario":
                 try {
-                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
+                    Usuario usuario = (Usuario)user;
                     UsuarioFuncionario u = (UsuarioFuncionario)objeto;
                     arquivo = new File("Teste.txt");
                     LocalDateTime hora = LocalDateTime.now();

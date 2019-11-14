@@ -10,25 +10,23 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author gabriel.gisidorio
+ * @author marco.assilva8
  */
-public class FormLogin implements Executavel {
+public class FormIndex implements Executavel{
 
     @Override
-    public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        HttpSession sessao = req.getSession();
-        if (sessao.getAttribute("usuario") != null) {
-            resp.sendRedirect(req.getContextPath() + "/inputHome");
-            return "";
-        }
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
         RequestDispatcher dispatcher = 
-                req.getRequestDispatcher("WEB-INF/jsp/login/Login.jsp");
+                req.getRequestDispatcher("/WEB-INF/index.jsp");
         dispatcher.forward(req, resp);
         return "";
+        
+        
+        
     }
     
 }

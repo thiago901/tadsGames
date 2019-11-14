@@ -46,7 +46,6 @@ public class CadastrarUsuario implements Executavel {
             String acao = "cadastro de Usuario";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, u);
-            
             resp.sendRedirect("sucesso.html");
         }
         return "";

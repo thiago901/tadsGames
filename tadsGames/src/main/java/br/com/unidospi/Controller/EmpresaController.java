@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -57,29 +58,33 @@ public class EmpresaController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
         
-        if(paramAction.equals("ListarEmpresas")){
-            ListarEmpresas action = new ListarEmpresas();
-            action.executa(req,resp);
-            
-        }else if(paramAction.equals("FormEditarEmpresa")){
-            FormEditarEmpresa action = new FormEditarEmpresa();
-            action.executa(req,resp);
-            
-            
-        }else if(paramAction.equals("EditarEmpresa")){
-        EditarEmpresa action =new EditarEmpresa();
-            action.executa(req,resp);
-            
-        }else if(paramAction.equals("FormCadastrarEmpresa")){
-        FormCadastrarEmpresa action =new FormCadastrarEmpresa();
-            action.executa(req,resp);
-        }
-        else if(paramAction.equals("CadastrarEmpresa")){
-            CadastrarEmpresa action = new CadastrarEmpresa();
-            action.executa(req,resp);
-        }
+        HttpSession sessao = req.getSession();
         
-        
+        if (sessao.getAttribute("usuario") != null) {
+            if(paramAction.equals("ListarEmpresas")){
+                ListarEmpresas action = new ListarEmpresas();
+                action.executa(req,resp);
+
+            }else if(paramAction.equals("FormEditarEmpresa")){
+                FormEditarEmpresa action = new FormEditarEmpresa();
+                action.executa(req,resp);
+
+
+            }else if(paramAction.equals("EditarEmpresa")){
+            EditarEmpresa action =new EditarEmpresa();
+                action.executa(req,resp);
+
+            }else if(paramAction.equals("FormCadastrarEmpresa")){
+            FormCadastrarEmpresa action =new FormCadastrarEmpresa();
+                action.executa(req,resp);
+            }
+            else if(paramAction.equals("CadastrarEmpresa")){
+                CadastrarEmpresa action = new CadastrarEmpresa();
+                action.executa(req,resp);
+            }        
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
+        }
     }
 
     

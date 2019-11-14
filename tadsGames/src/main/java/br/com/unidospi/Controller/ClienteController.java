@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -50,38 +51,44 @@ public class ClienteController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
         String paramAction = req.getParameter("action");
-                
-        if (paramAction.equals("FormCadastrarCliente")) {
-            ArrayList<ClienteLista> listaClientes = ClienteController.listarClientes();
-            ArrayList<ClienteLista> listaEmpresa = EmpresaController.listarEmpresas();
-            req.setAttribute("listaEmpresa", listaEmpresa);
-            req.setAttribute("listaCliente", listaClientes);
-            FormCadastrarCliente action = new FormCadastrarCliente();
-            action.executa(req, resp);
+        
+        HttpSession sessao = req.getSession();
+        
+        if (sessao.getAttribute("usuario") != null) {
+            if (paramAction.equals("FormCadastrarCliente")) {
+                ArrayList<ClienteLista> listaClientes = ClienteController.listarClientes();
+                ArrayList<ClienteLista> listaEmpresa = EmpresaController.listarEmpresas();
+                req.setAttribute("listaEmpresa", listaEmpresa);
+                req.setAttribute("listaCliente", listaClientes);
+                FormCadastrarCliente action = new FormCadastrarCliente();
+                action.executa(req, resp);
 
-        } else if (paramAction.equals("CadastrarCliente")) {
-            CadastrarCliente action = new CadastrarCliente();
-            action.executa(req, resp);
+            } else if (paramAction.equals("CadastrarCliente")) {
+                CadastrarCliente action = new CadastrarCliente();
+                action.executa(req, resp);
 
-        } else if (paramAction.equals("EditarCliente")) {
-            EditarCliente action = new EditarCliente();
-            action.executa(req, resp);
+            } else if (paramAction.equals("EditarCliente")) {
+                EditarCliente action = new EditarCliente();
+                action.executa(req, resp);
 
-        } else if (paramAction.equals("FormEditarCliente")) {
-            ArrayList<ClienteLista> listaClientes = ClienteController.listarClientes();
-            ArrayList<ClienteLista> listaEmpresa = EmpresaController.listarEmpresas();
-            req.setAttribute("listaEmpresa", listaEmpresa);
-            req.setAttribute("listaCliente", listaClientes);
-            FormEditarCliente action = new FormEditarCliente();
-            action.executa(req, resp);
-            
-        } else if (paramAction.equals("ListarCliente")) {
-            ListarCliente action = new ListarCliente();
-            action.executa(req, resp);
-        }
-        else if (paramAction.equals("ListarCliente2")) {
-            ListarCliente2 action = new ListarCliente2();
-            action.executa(req, resp);
+            } else if (paramAction.equals("FormEditarCliente")) {
+                ArrayList<ClienteLista> listaClientes = ClienteController.listarClientes();
+                ArrayList<ClienteLista> listaEmpresa = EmpresaController.listarEmpresas();
+                req.setAttribute("listaEmpresa", listaEmpresa);
+                req.setAttribute("listaCliente", listaClientes);
+                FormEditarCliente action = new FormEditarCliente();
+                action.executa(req, resp);
+
+            } else if (paramAction.equals("ListarCliente")) {
+                ListarCliente action = new ListarCliente();
+                action.executa(req, resp);
+            }
+            else if (paramAction.equals("ListarCliente2")) {
+                ListarCliente2 action = new ListarCliente2();
+                action.executa(req, resp);
+            }
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
         }
     }
 

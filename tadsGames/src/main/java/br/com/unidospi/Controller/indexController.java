@@ -5,36 +5,27 @@
  */
 package br.com.unidospi.Controller;
 
-import br.com.unidospi.Acoes.FormLogin;
-import br.com.unidospi.Acoes.Login;
+import br.com.unidospi.Acoes.FormIndex;
+import br.com.unidospi.Acoes.ListarCliente2;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author gabriel.gisidorio
+ * @author marco.assilva8
  */
 
-@WebServlet(name = "LoginController", urlPatterns = {"/inputLogin"})
-public class LoginController extends HttpServlet {
-    
+@WebServlet(name = "indexController", urlPatterns = {"/indexHome"})
+public class indexController extends HttpServlet{
     @Override
     public void service(HttpServletRequest req, HttpServletResponse resp) 
             throws IOException, ServletException {
-        
-        String parametroAcao = req.getParameter("action");       
-        
-        if (parametroAcao.equals("FormLogin")) {
-            FormLogin action = new FormLogin();
-            action.executa(req, resp);
-        } else if (parametroAcao.equals("Login")) {
-            Login action = new Login();
-            action.executa(req, resp);
-        }
+        FormIndex action = new FormIndex();
+        action.executa(req, resp);   
+    
     }
 }
