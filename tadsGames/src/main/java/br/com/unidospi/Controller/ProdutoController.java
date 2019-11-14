@@ -21,12 +21,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author thiago.srocha4
  */
-    @WebServlet(name = "ProdutoServlet", urlPatterns = {"/inputProduto"})
+@WebServlet(name = "ProdutoServlet", urlPatterns = {"/inputProduto"})
 public class ProdutoController extends HttpServlet {
     
     // retorna 
@@ -46,27 +47,33 @@ public class ProdutoController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
         
-        if(paramAction.equals("CadastrarProduto")){
-            CadastrarProduto action = new CadastrarProduto();
-            action.executa(req, resp);
-            
-        }else if(paramAction.equals("EditarProduto")){
-            EditarProduto action = new EditarProduto();
-            action.executa(req, resp);
-        }else if(paramAction.equals("FormCadastrarProduto")){
-            FormCadastrarProduto action = new FormCadastrarProduto();
-            action.executa(req, resp);
-            
-        }else if(paramAction.equals("FormEditarProduto")){
-            FormEditarProduto action = new FormEditarProduto();
-            action.executa(req, resp);
-            
-        }else if(paramAction.equals("ListarProduto")){
-            ListarProduto action = new ListarProduto();
-            action.executa(req, resp);
-        }else if(paramAction.equals("ListarProduto2")){
-            ListarProduto2 action = new ListarProduto2();
-            action.executa(req, resp);
+        HttpSession sessao = req.getSession();
+        
+        if (sessao.getAttribute("usuario") != null) {
+            if(paramAction.equals("CadastrarProduto")){
+                CadastrarProduto action = new CadastrarProduto();
+                action.executa(req, resp);
+
+            }else if(paramAction.equals("EditarProduto")){
+                EditarProduto action = new EditarProduto();
+                action.executa(req, resp);
+            }else if(paramAction.equals("FormCadastrarProduto")){
+                FormCadastrarProduto action = new FormCadastrarProduto();
+                action.executa(req, resp);
+
+            }else if(paramAction.equals("FormEditarProduto")){
+                FormEditarProduto action = new FormEditarProduto();
+                action.executa(req, resp);
+
+            }else if(paramAction.equals("ListarProduto")){
+                ListarProduto action = new ListarProduto();
+                action.executa(req, resp);
+            }else if(paramAction.equals("ListarProduto2")){
+                ListarProduto2 action = new ListarProduto2();
+                action.executa(req, resp);
+            }
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
         }
     }
 

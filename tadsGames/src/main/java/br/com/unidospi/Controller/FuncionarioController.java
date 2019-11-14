@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,26 +36,31 @@ public class FuncionarioController extends HttpServlet {
             throws ServletException, IOException {
         
         String parametroAcao = req.getParameter("action");
+        HttpSession sessao = req.getSession();
         
-        if (parametroAcao.equals("FormCadastrarFuncionario")) {
-            ArrayList<FuncionarioEmpresa> listaFuncionarios = FuncionarioDAO.obterFuncionarios();
-            ArrayList<Empresa> listaEmpresas = EmpresaController.listarEmpresas();
-            req.setAttribute("funcionarios", listaFuncionarios);
-            req.setAttribute("empresas", listaEmpresas);
-            FormCadastrarFuncionario acao = new FormCadastrarFuncionario();
-            acao.executa(req, resp);
-        } else if (parametroAcao.equals("CadastrarFuncionario")) {
-            CadastrarFuncionario acao = new CadastrarFuncionario();
-            acao.executa(req, resp);
-        } else if (parametroAcao.equals("FormEditarFuncionario")) {
-            FormEditarFuncionario acao = new FormEditarFuncionario();
-            acao.executa(req, resp);
-        } else if (parametroAcao.equals("EditarFuncionario"))  {
-            EditarFuncionario acao = new EditarFuncionario();
-            acao.executa(req, resp);
-        } else if (parametroAcao.equals("ListarFuncionarios")) {
-            ListarFuncionarios acao = new ListarFuncionarios();
-            acao.executa(req, resp);
+        if (sessao.getAttribute("usuario") != null) {
+            if (parametroAcao.equals("FormCadastrarFuncionario")) {
+                ArrayList<FuncionarioEmpresa> listaFuncionarios = FuncionarioDAO.obterFuncionarios();
+                ArrayList<Empresa> listaEmpresas = EmpresaController.listarEmpresas();
+                req.setAttribute("funcionarios", listaFuncionarios);
+                req.setAttribute("empresas", listaEmpresas);
+                FormCadastrarFuncionario acao = new FormCadastrarFuncionario();
+                acao.executa(req, resp);
+            } else if (parametroAcao.equals("CadastrarFuncionario")) {
+                CadastrarFuncionario acao = new CadastrarFuncionario();
+                acao.executa(req, resp);
+            } else if (parametroAcao.equals("FormEditarFuncionario")) {
+                FormEditarFuncionario acao = new FormEditarFuncionario();
+                acao.executa(req, resp);
+            } else if (parametroAcao.equals("EditarFuncionario"))  {
+                EditarFuncionario acao = new EditarFuncionario();
+                acao.executa(req, resp);
+            } else if (parametroAcao.equals("ListarFuncionarios")) {
+                ListarFuncionarios acao = new ListarFuncionarios();
+                acao.executa(req, resp);
+            }
+        } else {
+              resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
         }
     } 
 }
