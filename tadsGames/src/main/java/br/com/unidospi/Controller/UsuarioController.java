@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,16 +29,22 @@ public class UsuarioController extends HttpServlet {
         
         String parametroAcao = req.getParameter("action");
         
-        if (parametroAcao.equals("ListarFuncionariosUsuarioCadastravel")) {
-            ListarFuncionariosUsuarioCadastravel action = 
-                    new ListarFuncionariosUsuarioCadastravel();
-            action.executa(req, resp);
-        } else if (parametroAcao.equals("FormCadastrarUsuario")) {
-            FormCadastrarUsuario action = new FormCadastrarUsuario();
-            action.executa(req, resp);
-        } else if (parametroAcao.equals("CadastrarUsuario")) {
-            CadastrarUsuario action = new CadastrarUsuario();
-            action.executa(req, resp);
+        HttpSession sessao = req.getSession();
+        
+        if (sessao.getAttribute("usuario") != null) {
+            if (parametroAcao.equals("ListarFuncionariosUsuarioCadastravel")) {
+                ListarFuncionariosUsuarioCadastravel action = 
+                        new ListarFuncionariosUsuarioCadastravel();
+                action.executa(req, resp);
+            } else if (parametroAcao.equals("FormCadastrarUsuario")) {
+                FormCadastrarUsuario action = new FormCadastrarUsuario();
+                action.executa(req, resp);
+            } else if (parametroAcao.equals("CadastrarUsuario")) {
+                CadastrarUsuario action = new CadastrarUsuario();
+                action.executa(req, resp);
+            }
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
         }
     }
 }

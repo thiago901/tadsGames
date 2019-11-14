@@ -33,18 +33,25 @@ public class VendaController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
-        if(paramAction.equals("FormVenda")){
-            FormVenda action = new FormVenda();
-            action.executa(req, resp);
-            
-        }else if(paramAction.equals("CadastrarVenda")){
-            CadastrarVenda action = new CadastrarVenda();
-            action.executa(req, resp);
-        }
-        else if(paramAction.equals("CadastrarItemVenda")){
-            CadastrarItemVenda action = new CadastrarItemVenda();
-            action.executa(req, resp);
+        
+        HttpSession sessao = req.getSession();
+        
+        if (sessao.getAttribute("usuario") != null) {
+            if(paramAction.equals("FormVenda")){
+                FormVenda action = new FormVenda();
+                action.executa(req, resp);
 
+            }else if(paramAction.equals("CadastrarVenda")){
+                CadastrarVenda action = new CadastrarVenda();
+                action.executa(req, resp);
+            }
+            else if(paramAction.equals("CadastrarItemVenda")){
+                CadastrarItemVenda action = new CadastrarItemVenda();
+                action.executa(req, resp);
+
+            }
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
         }
     }
     
