@@ -41,7 +41,7 @@ public class GeraLog {
            
     public GeraLog() {
     }
-    public void escreverLog(String usuario, String acao, Object objeto){
+    public void escreverLog(Object user, String acao, Object objeto){
         
         String tipo = acao;
         switch (tipo){
@@ -49,7 +49,7 @@ public class GeraLog {
                 try {
                     arquivo = new File("Teste.txt");
                     LocalDateTime hora = LocalDateTime.now();
-
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     fileReader = new FileReader(arquivo);
                     bufferedReader = new BufferedReader(fileReader);
                     ArrayList<String> texto = new ArrayList();
@@ -65,14 +65,14 @@ public class GeraLog {
                     }
                     bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
                                         hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
-                                        usuario+" realizou um "+acao+" no sistema.");
+                                        usuario.getNomeUsuario()+" realizou um "+acao+" no sistema.");
                     bufferedReader.close();
                     bufferedWriter.close();
 
                 } catch (FileNotFoundException ex) {
                     try {
                         arquivo.createNewFile();
-                        escreverLog(usuario, acao, objeto);
+                        escreverLog(user, acao, objeto);
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
@@ -84,7 +84,7 @@ public class GeraLog {
                 break;
             case "cadastro de Empresa":
                 try {
-                    
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Empresa empr = (Empresa)objeto;
                     arquivo = new File("Teste.txt");
                     LocalDateTime hora = LocalDateTime.now();
@@ -104,7 +104,7 @@ public class GeraLog {
                     }
                     bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
                                         hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
-                                        usuario+" realizou um "+acao+" no sistema, cadastrando a Empresa: "
+                                        usuario.getNomeUsuario()+" realizou um "+acao+" no sistema, cadastrando a Empresa: "
                                         +empr.getNome()+".");
                     bufferedReader.close();
                     bufferedWriter.close();
@@ -112,7 +112,7 @@ public class GeraLog {
                 } catch (FileNotFoundException ex) {
                     try {
                         arquivo.createNewFile();
-                        escreverLog(usuario, acao, objeto);
+                        escreverLog(user, acao, objeto);
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
@@ -124,7 +124,7 @@ public class GeraLog {
                 break;
             case "cadastro de Cliente":
                 try {
-                    
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Cliente c = (Cliente)objeto;
                     arquivo = new File("Teste.txt");
                     LocalDateTime hora = LocalDateTime.now();
@@ -144,7 +144,7 @@ public class GeraLog {
                     }
                     bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
                                         hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
-                                        usuario+" realizou um "+acao+" no sistema, cadastrando o Cliente: "
+                                        usuario.getNomeUsuario()+" realizou um "+acao+" no sistema, cadastrando o Cliente: "
                                         +c.getNome()+" "+c.getSobrenome()+".");
                     bufferedReader.close();
                     bufferedWriter.close();
@@ -152,7 +152,7 @@ public class GeraLog {
                 } catch (FileNotFoundException ex) {
                     try {
                         arquivo.createNewFile();
-                        escreverLog(usuario, acao, objeto);
+                        escreverLog(user, acao, objeto);
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
@@ -164,7 +164,7 @@ public class GeraLog {
                 break;
             case "Compra":
                 try {
-                    
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Compra cmp = (Compra)objeto;
                     Produto produto = listarProduto(cmp.getIdProduto());
                     arquivo = new File("Teste.txt");
@@ -185,7 +185,7 @@ public class GeraLog {
                     }
                     bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
                                         hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
-                                        usuario+" realizou uma "+acao+" no sistema, referente a: "+
+                                        usuario.getNomeUsuario()+" realizou uma "+acao+" no sistema, referente a: "+
                                         cmp.getQtdCompra()+" unidade(s) do produto: "+produto.getNome()+", totalizando o valor de: "+
                                         cmp.getValorCompra()*cmp.getQtdCompra()+".");
                     bufferedReader.close();
@@ -194,7 +194,7 @@ public class GeraLog {
                 } catch (FileNotFoundException ex) {
                     try {
                         arquivo.createNewFile();
-                        escreverLog(usuario, acao, objeto);
+                        escreverLog(user, acao, objeto);
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
@@ -206,7 +206,7 @@ public class GeraLog {
                 break;
             case "cadastro de Funcionario":
                 try {
-                    
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Funcionario f = (Funcionario)objeto;
                     arquivo = new File("Teste.txt");
                     LocalDateTime hora = LocalDateTime.now();
@@ -226,15 +226,15 @@ public class GeraLog {
                     }
                     bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
                                         hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
-                                        usuario+" realizou um "+acao+" no sistema, cadastrando o Funcionario: "
-                                        +f.getNome()+".");
+                                        usuario.getNomeUsuario()+" realizou um "+acao+" no sistema, cadastrando o Funcionario: "
+                                        +f.getNome()+" "+f.getSobrenome()+".");
                     bufferedReader.close();
                     bufferedWriter.close();
 
                 } catch (FileNotFoundException ex) {
                     try {
                         arquivo.createNewFile();
-                        escreverLog(usuario, acao, objeto);
+                        escreverLog(user, acao, objeto);
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
@@ -246,7 +246,7 @@ public class GeraLog {
                 break;
             case "cadastro de Produto":
                 try {
-                    
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Produto p = (Produto)objeto;
                     arquivo = new File("Teste.txt");
                     LocalDateTime hora = LocalDateTime.now();
@@ -266,7 +266,7 @@ public class GeraLog {
                     }
                     bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
                                         hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
-                                        usuario+" realizou um "+acao+" no sistema, cadastrando o Produto: "
+                                        usuario.getNomeUsuario()+" realizou um "+acao+" no sistema, cadastrando o Produto: "
                                         +p.getNome()+".");
                     bufferedReader.close();
                     bufferedWriter.close();
@@ -274,7 +274,7 @@ public class GeraLog {
                 } catch (FileNotFoundException ex) {
                     try {
                         arquivo.createNewFile();
-                        escreverLog(usuario, acao, objeto);
+                        escreverLog(user, acao, objeto);
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
@@ -286,7 +286,7 @@ public class GeraLog {
                 break;
             case "cadastro de Usuario":
                 try {
-                    
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     UsuarioFuncionario u = (UsuarioFuncionario)objeto;
                     arquivo = new File("Teste.txt");
                     LocalDateTime hora = LocalDateTime.now();
@@ -306,7 +306,7 @@ public class GeraLog {
                     }
                     bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
                                         hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
-                                        usuario+" realizou um "+acao+" no sistema, cadastrando o Usuario: "+
+                                        usuario.getNomeUsuario()+" realizou um "+acao+" no sistema, cadastrando o Usuario: "+
                                         u.getNomeUsuario()+" e atribuindo ao Funcionario: "+u.getNomeFuncionario()+" "+
                                         u.getSobrenome()+".");
                     bufferedReader.close();
@@ -315,7 +315,7 @@ public class GeraLog {
                 } catch (FileNotFoundException ex) {
                     try {
                         arquivo.createNewFile();
-                        escreverLog(usuario, acao, objeto);
+                        escreverLog(user, acao, objeto);
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
@@ -327,8 +327,9 @@ public class GeraLog {
                 break;
             case "Venda":
                 try {
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Venda v = (Venda)objeto;
-                    UsuarioFuncionario u = (UsuarioFuncionario)objeto;
+                    
                     ClienteLista c = listarClientes(v.getIdCliente());
                     arquivo = new File("Teste.txt");
                     LocalDateTime hora = LocalDateTime.now();
@@ -348,8 +349,8 @@ public class GeraLog {
                     }
                     bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
                                         hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
-                                        usuario+" registrou uma "+acao+" no sistema, efetuada pelo Funcionario: "+
-                                        u.getNomeFuncionario()+" destinada ao Cliente: "+c.getNome()+" "+
+                                        usuario.getNomeUsuario()+" registrou uma "+acao+" no sistema, efetuada pelo Funcionario: "+
+                                        usuario.getNomeFuncionario()+" destinada ao Cliente: "+c.getNome()+" "+
                                         c.getSobrenome()+", no valor de: "+v.getVlrVenda()+".");
                     bufferedReader.close();
                     bufferedWriter.close();
@@ -357,7 +358,168 @@ public class GeraLog {
                 } catch (FileNotFoundException ex) {
                     try {
                         arquivo.createNewFile();
-                        escreverLog(usuario, acao, objeto);
+                        escreverLog(user, acao, objeto);
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex1) {
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                }
+                catch (IOException e){
+                    Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+            /////////////////////////EDIÇÕES///////////////////
+            case "edição de Cliente":
+                try {
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
+                    Cliente c = (Cliente)objeto;
+                    arquivo = new File("Teste.txt");
+                    LocalDateTime hora = LocalDateTime.now();
+
+                    fileReader = new FileReader(arquivo);
+                    bufferedReader = new BufferedReader(fileReader);
+                    ArrayList<String> texto = new ArrayList();
+                    while (bufferedReader.ready()){
+                        texto.add(bufferedReader.readLine());
+                    }
+                    fileWriter  = new FileWriter (arquivo);
+                    bufferedWriter = new BufferedWriter (fileWriter);
+                
+                    for (int i = 0; i < texto.size(); i++) {
+                        bufferedWriter.write(texto.get(i));
+                        bufferedWriter.newLine();
+                    }
+                    bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
+                                        hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
+                                        usuario.getNomeUsuario()+" realizou uma "+acao+" no sistema, editando o Cliente: "
+                                        +c.getNome()+" "+c.getSobrenome()+".");
+                    bufferedReader.close();
+                    bufferedWriter.close();
+
+                } catch (FileNotFoundException ex) {
+                    try {
+                        arquivo.createNewFile();
+                        escreverLog(user, acao, objeto);
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex1) {
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                }
+                catch (IOException e){
+                    Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+            case "edição de Empresa":
+                try {
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
+                    Empresa empr = (Empresa)objeto;
+                    arquivo = new File("Teste.txt");
+                    LocalDateTime hora = LocalDateTime.now();
+
+                    fileReader = new FileReader(arquivo);
+                    bufferedReader = new BufferedReader(fileReader);
+                    ArrayList<String> texto = new ArrayList();
+                    while (bufferedReader.ready()){
+                        texto.add(bufferedReader.readLine());
+                    }
+                    fileWriter  = new FileWriter (arquivo);
+                    bufferedWriter = new BufferedWriter (fileWriter);
+                
+                    for (int i = 0; i < texto.size(); i++) {
+                        bufferedWriter.write(texto.get(i));
+                        bufferedWriter.newLine();
+                    }
+                    bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
+                                        hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
+                                        usuario.getNomeUsuario()+" realizou uma "+acao+" no sistema, editando a Empresa: "
+                                        +empr.getNome()+".");
+                    bufferedReader.close();
+                    bufferedWriter.close();
+
+                } catch (FileNotFoundException ex) {
+                    try {
+                        arquivo.createNewFile();
+                        escreverLog(user, acao, objeto);
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex1) {
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                }
+                catch (IOException e){
+                    Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+            case "edição de Funcionario":
+                try {
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
+                    Funcionario f = (Funcionario)objeto;
+                    arquivo = new File("Teste.txt");
+                    LocalDateTime hora = LocalDateTime.now();
+
+                    fileReader = new FileReader(arquivo);
+                    bufferedReader = new BufferedReader(fileReader);
+                    ArrayList<String> texto = new ArrayList();
+                    while (bufferedReader.ready()){
+                        texto.add(bufferedReader.readLine());
+                    }
+                    fileWriter  = new FileWriter (arquivo);
+                    bufferedWriter = new BufferedWriter (fileWriter);
+                
+                    for (int i = 0; i < texto.size(); i++) {
+                        bufferedWriter.write(texto.get(i));
+                        bufferedWriter.newLine();
+                    }
+                    bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
+                                        hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
+                                        usuario.getNomeUsuario()+" realizou uma "+acao+" no sistema, editando o Funcionario: "
+                                        +f.getNome()+" "+f.getSobrenome()+".");
+                    bufferedReader.close();
+                    bufferedWriter.close();
+
+                } catch (FileNotFoundException ex) {
+                    try {
+                        arquivo.createNewFile();
+                        escreverLog(user, acao, objeto);
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex1) {
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                }
+                catch (IOException e){
+                    Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+                }
+                break;
+            case "edição de Produto":
+                try {
+                    UsuarioFuncionario usuario = (UsuarioFuncionario)user;
+                    Produto p = (Produto)objeto;
+                    arquivo = new File("Teste.txt");
+                    LocalDateTime hora = LocalDateTime.now();
+
+                    fileReader = new FileReader(arquivo);
+                    bufferedReader = new BufferedReader(fileReader);
+                    ArrayList<String> texto = new ArrayList();
+                    while (bufferedReader.ready()){
+                        texto.add(bufferedReader.readLine());
+                    }
+                    fileWriter  = new FileWriter (arquivo);
+                    bufferedWriter = new BufferedWriter (fileWriter);
+                
+                    for (int i = 0; i < texto.size(); i++) {
+                        bufferedWriter.write(texto.get(i));
+                        bufferedWriter.newLine();
+                    }
+                    bufferedWriter.write(hora.getDayOfMonth()+"/"+hora.getMonthValue()+"/"+hora.getYear()+" - "+
+                                        hora.getHour()+"h"+hora.getMinute()+"m"+hora.getSecond()+"s - O usuario: "+
+                                        usuario.getNomeUsuario()+" realizou uma "+acao+" no sistema, editando o registro do Produto: "
+                                        +p.getNome()+".");
+                    bufferedReader.close();
+                    bufferedWriter.close();
+
+                } catch (FileNotFoundException ex) {
+                    try {
+                        arquivo.createNewFile();
+                        escreverLog(user, acao, objeto);
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
                         Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);

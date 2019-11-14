@@ -64,4 +64,52 @@ CREATE VIEW Rel_Compra AS
             INNER JOIN
         empresa b ON b.idEmpresa = a.idEmpresa
             INNER JOIN
-        produto c ON c.idProduto = a.idProduto
+        produto c ON c.idProduto = a.idProduto;
+        
+        
+/*RELATORIO DE FATURA DIARIA*/
+CREATE VIEW Rel_Fatura_Dia AS
+	SELECT 
+        a.datavenda AS DATA_VENDA,
+        c.nome as EMPRESA,
+        sum(b.vlrTotalItem) AS TOTAL
+    FROM venda a
+	INNER JOIN detalheVenda b
+		ON b.idVenda = a.idVenda
+    INNER JOIN empresa c
+		on c.idempresa = a.idEmpresa    
+	where a.datavenda = CURDATE();
+
+
+
+/*RELATORIO DOS 10 PRODUTOS MAIS VENDIDOS NO DIA ATUAL*/
+CREATE VIEW Rel_Top10_vendas_dia AS
+	SELECT distinct(a.datavenda)AS DATA_VENDA,
+        c.nome AS PRODUTO,
+        d.nome as EMPRESA,
+        SUM(B.qtdVenda) as QUANTIDADE
+	FROM venda a
+    INNER JOIN detalheVenda b 
+		ON b.idVenda = a.idVenda
+    INNER JOIN produto c 
+        ON c.idProduto = b.idProduto
+	INNER JOIN empresa d
+		on d.idempresa = a.idEmpresa
+	where a.datavenda = CURDATE()
+    
+    group by PRODUTO
+    order by QUANTIDADE desc
+    limit 10;
+
+    
+    /*RELATORIO TOTAL POR EMPRESA E PORCENTAGEM*/
+ CREATE VIEW Rel_Total_Empresa_Porcentagem AS       
+	SELECT c.nome as EMPRESA,
+        sum(b.vlrTotalItem) AS TOTAL_FATURADO,
+        (select sum(b.vlrTotalItem)/sum(vlrTotalItem)*100 from detalheVenda) as PORCENTAGEM
+        FROM venda a
+    INNER JOIN detalheVenda b 
+		ON b.idVenda = a.idVenda
+   INNER JOIN empresa c
+		on c.idempresa = a.idempresa
+        group by c.nome;

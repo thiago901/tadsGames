@@ -121,7 +121,7 @@ public class CadastrarFuncionario implements Executavel {
             UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
             String acao = "cadastro de Funcionario";
             GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario.getNomeUsuario(), acao, funcionario);
+            registro.escreverLog(usuario, acao, funcionario);
             
         }
 

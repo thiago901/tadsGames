@@ -34,7 +34,7 @@ public class Login implements Executavel {
             
             String acao = "Login";
             GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario.getNomeUsuario(), acao, usuario);
+            registro.escreverLog(usuario, acao, usuario);
 
             
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");

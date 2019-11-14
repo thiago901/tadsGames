@@ -10,6 +10,7 @@ package br.com.unidospi.model;
  * @author thiago.srocha4
  */
 public class VendaDetalhe {
+    private int item;
     private int idVenda;
     private int idProduto;
     private String nomeProduto;
@@ -26,6 +27,14 @@ public class VendaDetalhe {
         this.vlrTotal = vlrTotal;
     }
 
+    public int getItem() {
+        return item;
+    }
+
+    public void setItem(int item) {
+        this.item = item;
+    }
+    
     public String getNomeProduto() {
         return nomeProduto;
     }

@@ -10,7 +10,9 @@ import br.com.unidospi.model.Venda;
 import br.com.unidospi.model.VendaDetalhe;
 import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,30 +29,34 @@ public class CadastrarVenda implements Executavel{
         int retorno = 0;
         HttpSession sessao = req.getSession();
         UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
-        int idEmpresa = usuario.getIdEmpresa();//Integer.parseInt(req.getParameter("empresa"));
-        int idCliente= Integer.parseInt(req.getParameter("nomeCliente"));
+        int idEmpresa = usuario.getIdEmpresa();
+        int idCliente= Integer.parseInt(sessao.getAttribute("idCliente").toString());
         float vlrVenda=30;//Float.parseFloat(req.getParameter("vlrTotal"));
-        String arrayIdProduto[] = req.getParameterValues("idProdutos[]");
-        String arrayQtd[] = req.getParameterValues("qtds[]");
-        String arrayVlr[] = req.getParameterValues("vlrUnitarios[]");
-        
 
+        
+        List<VendaDetalhe> vd = (ArrayList<VendaDetalhe> ) sessao.getAttribute("itemVenda");
+        
         Date dtVenda = new Date();
         Venda venda = new Venda(idCliente, idEmpresa, vlrVenda, dtVenda, "Finalizado");
-        for(int i =0;i<arrayIdProduto.length;i++){
-            int idProduto = Integer.parseInt(arrayIdProduto[i]);
-            int qtd = Integer.parseInt(arrayQtd[i]);
-            float vlrUnitario = Float.parseFloat(arrayVlr[i]);
-            float vlrUnitarioTotal = qtd*vlrUnitario;
+        
+        for(VendaDetalhe item:vd){
+            int idProduto =item.getIdProduto();
+            int qtd = item.getQtdVenda();
+            float vlrUnitario = item.getVlrUnitario();
+            float vlrUnitarioTotal = item.getVlrTotal();
+            
             venda.adiciona(new VendaDetalhe(idProduto, qtd, vlrUnitario, vlrUnitarioTotal));
         }
-
+        
         retorno = venda.salvar();
+        
         if (retorno > 0){
             String acao = "Venda";
             GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario.getNomeUsuario(), acao, venda);
+            registro.escreverLog(usuario, acao, venda);
         }
+        
+        
         
         return "";
     }

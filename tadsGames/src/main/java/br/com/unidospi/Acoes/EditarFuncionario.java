@@ -9,6 +9,8 @@ import static br.com.unidospi.Acoes.ValidaCPF.isCPF;
 import br.com.unidospi.DAO.FuncionarioDAO;
 import static br.com.unidospi.DAO.FuncionarioDAO.validaNovoCPF;
 import br.com.unidospi.model.Funcionario;
+import br.com.unidospi.model.UsuarioFuncionario;
+import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,6 +21,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -106,6 +109,13 @@ public class EditarFuncionario implements Executavel {
                     id, empresaSelecionada, nome, sobrenome, sexo, cpfStr,
                     dtNasc, status);
             FuncionarioDAO.alterar(funcionario);
+            
+            HttpSession sessao = req.getSession();
+            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+            String acao = "edição de Funcionario";
+            GeraLog registro = new GeraLog();
+            registro.escreverLog(usuario, acao, funcionario);
+            
 
         }
         return "";

@@ -97,7 +97,7 @@ public class CadastrarCliente implements Executavel{
                 UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
                 String acao = "cadastro de Cliente";
                 GeraLog registro = new GeraLog();
-                registro.escreverLog(usuario.getNomeUsuario(), acao, p);
+                registro.escreverLog(usuario, acao, p);
                 
                 resp.sendRedirect("sucesso.html");
             }

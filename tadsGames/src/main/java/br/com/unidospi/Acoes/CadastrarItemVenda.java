@@ -27,6 +27,23 @@ public class CadastrarItemVenda implements Executavel{
         if(sessao.getAttribute("itemVenda")==null){
             sessao.setAttribute("itemVenda", new ArrayList<VendaDetalhe>());
         }
+        
+         if(sessao.getAttribute("idLinhaItemVenda")==null){
+            sessao.setAttribute("idLinhaItemVenda", 0);
+         }else{
+            sessao.setAttribute("idLinhaItemVenda", (int) sessao.getAttribute("idLinhaItemVenda")+1); 
+         }
+            
+            
+        
+        
+        
+        
+        sessao.setAttribute("idCliente", req.getParameter("idCliente"));
+        sessao.setAttribute("idCliente", req.getParameter("idCliente"));
+
+        sessao.setAttribute("nomeCliente2", req.getParameter("nomeCliente"));
+        
         List<VendaDetalhe> itensVenda = (List<VendaDetalhe>)sessao.getAttribute("itemVenda");
            
         
@@ -35,10 +52,10 @@ public class CadastrarItemVenda implements Executavel{
             System.out.println("Quantidade é "+qtd);
             float vlrUnitario = Float.parseFloat(req.getParameter("vlrUnitario"));
             float vlrUnitarioTotal = qtd*vlrUnitario;
-            
-            
 
+            
             VendaDetalhe vd = new VendaDetalhe(idProduto, qtd, vlrUnitario, vlrUnitarioTotal);
+            vd.setItem((int) sessao.getAttribute("idLinhaItemVenda"));
             vd.setNomeProduto(ProdutoController.listarProduto(idProduto).getNome());
             itensVenda.add(vd);
 

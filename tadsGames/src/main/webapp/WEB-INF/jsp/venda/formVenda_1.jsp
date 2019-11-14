@@ -18,16 +18,20 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
     <body>
 <div class="container">
     
-        <form action="\TadsGames\inputVenda?action=CadastrarItemVenda" method="post">
+    <form autocomplete="off" id="form" action="inputVenda?action=CadastrarItemVenda" method="post">
             
             <div id="divNomeCLiente" >  
-                        <h1 hidden="" id="h1NomeCLiente"> Cliente: </h1>
+                        
                 
             </div>
             <div id="divCliente" class="divCliente">
                 <div  class="divClienteConteudo">
                     
-                        <input id="resumoCliente" name="nomeCliente" class="" placeholder="Digite o nome do Cliente">
+                    <input value="${nomeCliente2}" id="resumoCliente" name="nomeCliente" class="" placeholder="" disabled="">
+                    <img class="imgAltera" src="img/alterar.png">
+                    <input value="${idCliente}" id="idCliente" name="idCliente" hidden="">
+                        
+                        
                         
                         <table id="tabelaClientes" hidden="">
 
@@ -89,7 +93,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                         <th>Quantidade</th>
                         <th>Valor Unitario</th>
                         <th>Valor Total</th>
-                        <th>Add/Remover</th>
+                        <th>Remover</th>
                         </thead>
                         <tbody id="tbodyDetalheVenda">
                         <input id="idProduto" name="idProduto" value="" hidden="">
@@ -97,12 +101,13 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                        
                             <c:forEach items="${itemVenda}" var="i">
                                 <tr class="itemVenda">
+                                    <td hidden="" class="idLinha"><c:out value="${i.getItem()}"/></td>
                                     <td class="idProdutoD"><c:out value="${i.getIdProduto()}"/></td>
                                     <td class="nomeProduto"><c:out value="${i.getNomeProduto()}"/></td>
                                     <td class="qtd"><c:out value="${i.getQtdVenda()}"/></td>
                                     <td class="vlrUnitario"><c:out value="${i.getVlrUnitario()}"/></td>
                                     <td class="vlrTotal"><c:out value="${i.getVlrTotal()}"/></td>
-                                    <td><img href="img/add.png"></td>
+                                    <td><a href="inputVenda?action=ExcluirItemVenda&&itemVenda=${i.getItem()}"><img class="imgAltera" src="img/alterar.png"></a></td>
                                     <input name="idProdutos[]" value="${i.getIdProduto()}" hidden="">
                                     <input name="qtds[]" value="${i.getQtdVenda()}" hidden="">
                                     <input name="vlrUnitarios[]" value="${i.getVlrUnitario()}" hidden="">
@@ -128,6 +133,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
          </div>
         <script src="javaScript/autoCompleteProduto.js"></script>
         <script src="javaScript/autoCompleteCliente.js"></script>
+        <script src="javaScript/alteraAcaoForm.js"></script>
         
         
 

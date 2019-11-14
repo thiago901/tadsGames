@@ -7,6 +7,7 @@ package br.com.unidospi.Controller;
 
 import br.com.unidospi.Acoes.CadastrarItemVenda;
 import br.com.unidospi.Acoes.CadastrarVenda;
+import br.com.unidospi.Acoes.ExcluirItemVenda;
 import br.com.unidospi.Acoes.FormVenda;
 import br.com.unidospi.model.VendaDetalhe;
 
@@ -30,6 +31,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "VendaController", urlPatterns = {"/inputVenda"})
 public class VendaController extends HttpServlet {
 
+    
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String paramAction = req.getParameter("action");
@@ -50,6 +52,9 @@ public class VendaController extends HttpServlet {
                 action.executa(req, resp);
 
             }
+        } else if(paramAction.equals("ExcluirItemVenda")){
+            ExcluirItemVenda action = new ExcluirItemVenda();
+            action.executa(req, resp);
         } else {
             resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
         }
