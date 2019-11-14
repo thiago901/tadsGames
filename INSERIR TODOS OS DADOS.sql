@@ -5621,22 +5621,22 @@ insert into cliente (nome, sobrenome, sexo, idEmpresa, cpf, dtNasc, ativo) value
 ('Marco','Aurelio','M',4,97400774042,'2007-08-28',1);
 
 /*INSERIR FUNCIONARIOS*/
-INSERT INTO funcionario
-(`idFuncionario`,`idEmpresa`,`nomeFuncionario`,`sobrenome`,`sexo`,`cpf`,`dtNasc`,`ativo`,`salario`,`cargo`,`departamento`)
-VALUES
-(1,1,'Lula','Livre','M','123445910','1945-01-01',true,12.000,'Presidiario','Coritiba');
-INSERT INTO funcionario
-(`idFuncionario`,`idEmpresa`,`nomeFuncionario`,`sobrenome`,`sexo`,`cpf`,`dtNasc`,`ativo`,`salario`,`cargo`,`departamento`)
-VALUES
-(2,2,'Bolsonaro','Hokage','M','12345345910','1945-01-01',true,12.000,'Hokage','Brasilia');
-INSERT INTO funcionario
-(`idFuncionario`,`idEmpresa`,`nomeFuncionario`,`sobrenome`,`sexo`,`cpf`,`dtNasc`,`ativo`,`salario`,`cargo`,`departamento`)
-VALUES
-(3,3,'Bruce','Wine','M','123453910','1945-01-01',true,50.000,'Presidente','Presidencia');
-INSERT INTO funcionario
-(`idFuncionario`,`idEmpresa`,`nomeFuncionario`,`sobrenome`,`sexo`,`cpf`,`dtNasc`,`ativo`,`salario`,`cargo`,`departamento`)
-VALUES
-(4,4,'Maria','Siqueira','F','12354358910','1945-01-01',true,12.000,'Vendedora','Vendas');
+INSERT INTO Funcionario (idEmpresa, nomeFuncionario, sobrenome, sexo, cpf, dtNasc, ativo, salario, cargo, departamento) VALUES
+(1, 'Maria', 'Cardoso', 'Feminino', '99950493849', '1970-02-12', true, '2000', 'Gerente Regional', 'Vendas'),
+(4, 'Vitor', 'Araujo', 'Masculino', '88889593849', '1979-07-20', true, '10000', 'Diretor', 'Retaguarda'),
+(2, 'Marcos', 'Marinho', 'Masculino', '77793793849', '1980-01-10', true, '8500', 'Gerente Global', 'TI'),
+(1, 'Valeria', 'Alves', 'Feminino', '23593793849', '1985-01-10', false, '3500', 'Funcionário RH', 'Administrativo'),
+(3, 'Alessandra', 'Santana', 'Feminino', '70943793849', '1980-07-20', true, '6000', 'Gerente Regional', 'TI'),
+(2, 'Jandira', 'Santos', 'Feminino', '19437938491', '1980-07-22', true, '15500', 'Diretor', 'TI'), 
+(2, 'Bebezinha', 'Ya', 'Feminino', '95847382910', '1988-07-22', true, '15500', 'Diretor', 'TI');
+
+/*INSERIR USUARIOS*/
+INSERT INTO Usuario (nomeUsuario, senha, dataCadastro, ativo, idFuncionario) 
+VALUES ('mazinhacardoso', '948571', curdate(), TRUE, 1),
+('mmarinho', '395678', curdate(), TRUE, 3),
+('araujovitor', '908070', curdate(), TRUE, 2),
+('valeriaAlves', '905941', curdate(), FALSE, 4),
+('bebezinha', '12345', curdate(), TRUE, 7);
 
 /*INSERIR PRODUTOS*/
 
