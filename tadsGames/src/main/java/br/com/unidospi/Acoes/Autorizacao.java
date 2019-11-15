@@ -24,9 +24,9 @@ import javax.servlet.http.HttpSession;
  * @author gabri
  */
 
-@WebFilter(filterName = "Autorizacao")
-
-
+@WebFilter(filterName = "Autorizacao",
+        servletNames = { "HomeServlet", "FuncionarioController" },
+        urlPatterns = { "/tads/*" })
 public class Autorizacao implements Filter {
 
     
@@ -39,17 +39,29 @@ public class Autorizacao implements Filter {
         String parametroAcao = httpRequest.getParameter("action");
         
         HttpSession sessao = httpRequest.getSession();
-        boolean usuarioNaoEstaLogado = (sessao.getAttribute("usuario") == null);
-        boolean ehUmaAcaoProtegida = !(parametroAcao.equals("Login") || (parametroAcao.equals("FormLogin")));
-        
-        if (usuarioNaoEstaLogado && ehUmaAcaoProtegida) {
-            httpResponse.sendRedirect("inputLogin?acao=FormLogin");
+        if (sessao.getAttribute("usuario") == null) {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");//PROFESSOR
             return;
         }
-        else {
-            httpRequest.getRequestDispatcher("/WEB-INF/index.jsp")
-                    .forward(httpRequest, httpResponse);
+        // Verificar se usuario tem permissao de acesso na pagina
+        UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
+        if (verificarPermissaoAcesso(httpRequest, usuario)) {
+            chain.doFilter(request, response);
+        } else {
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/erro-nao-autorizado.jsp");
         }
+    }
+    
+    private boolean verificarPermissaoAcesso(
+            HttpServletRequest httpRequest, UsuarioFuncionario usuario) {
+        String urlAcessada = httpRequest.getRequestURI();
+        if (urlAcessada.endsWith("/home")) {
+            return true;
+        } else if (urlAcessada.endsWith("/tads/inputFuncionario") 
+                && usuario.getCargo().equals("Diretor")) {
+            return true;
+        }
+        return false;
     }
     
     @Override

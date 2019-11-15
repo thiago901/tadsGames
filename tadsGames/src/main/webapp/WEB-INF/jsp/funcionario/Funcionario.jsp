@@ -8,12 +8,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/formularios.css">
+    <link rel="stylesheet" type="text/css" href="../css/formularios.css">
 </head>
 <body>
 
 <div class="container">
-  <form method="post" action="${pageContext.request.contextPath}/inputFuncionario?action=CadastrarFuncionario" novalidate>
+  <form method="post" action="${pageContext.request.contextPath}/tads/inputFuncionario?action=CadastrarFuncionario" novalidate>
       <h2 class="titulo">Cadastro de Funcionários</h2> 
       
     <label for="nome">Nome</label>

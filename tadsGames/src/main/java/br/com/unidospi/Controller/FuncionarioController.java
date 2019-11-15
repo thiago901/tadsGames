@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author henrique.abastos
  */
-@WebServlet(name = "FuncionarioController", urlPatterns = {"/inputFuncionario"})
+@WebServlet(name = "FuncionarioController", urlPatterns = {"/tads/inputFuncionario"})
 public class FuncionarioController extends HttpServlet {
     
     /* Recebe requisição e resposta por parâmetro e determina qual ação será 

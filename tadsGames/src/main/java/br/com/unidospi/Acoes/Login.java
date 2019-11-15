@@ -39,7 +39,7 @@ public class Login implements Executavel {
             
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
             dispatcher.forward(req, resp);
-//            resp.sendRedirect(req.getContextPath() + "/inputLogin?action=Login");
+            //resp.sendRedirect(req.getContextPath() + "/inputLogin?action=Login");
 
         } else {
             req.setAttribute("msgErro", "Usuario inexistente ou senha inválida");

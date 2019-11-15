@@ -65,7 +65,7 @@
                     <div class="face face1">
                         <div class="content">
 
-                            <a href="inputFuncionario?action=FormCadastrarFuncionario">Novo Funcionario</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=FormCadastrarFuncionario">Novo Funcionario</a>
                             <a href="inputFuncionario?action=ListarFuncionarios">Manutenção de Funcionario</a>
                         </div>
                     </div>
