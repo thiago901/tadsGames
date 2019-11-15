@@ -8,8 +8,9 @@ package br.com.unidospi.Controller;
 import br.com.unidospi.Acoes.Relatorio;
 import br.com.unidospi.DAO.RelatorioDao;
 import br.com.unidospi.model.RelatorioFaturaDia;
+import br.com.unidospi.model.RelatorioPercentagem;
+import br.com.unidospi.model.RelatorioTop10;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,11 +29,11 @@ public class RelatoriosController extends HttpServlet {
         return RelatorioDao.rel_fatura_dia();
     }
     
-    public static ArrayList<String[]> rel_top10_vendas_dia(){
+    public static ArrayList<RelatorioTop10> rel_top10_vendas_dia(){
         return RelatorioDao.rel_top10_vendas_dia();
     }
     
-    public static ArrayList<String[]> rel_total_empresa_porcentagem(){
+    public static ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem(){
         return RelatorioDao.rel_total_empresa_porcentagem();
     }
     @Override
