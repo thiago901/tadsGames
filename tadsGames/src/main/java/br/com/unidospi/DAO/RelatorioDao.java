@@ -8,12 +8,15 @@ package br.com.unidospi.DAO;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.EmpresaLista;
 import br.com.unidospi.model.RelatorioFaturaDia;
+import br.com.unidospi.model.RelatorioPercentagem;
+import br.com.unidospi.model.RelatorioTop10;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,49 +33,11 @@ public class RelatorioDao {
     static final String SENHA = "adminadmin";
     static Connection conexao;
 
-    
+   
 
     
 
-    
-    
-    /* Retorna uma lista de empresas */
-    public static ArrayList<String[]> rel_top10_vendas_dia() {
-        try{
-            String sql = "select * from rel_top10_vendas_dia;";
-            
-            ArrayList <String[]> le = new ArrayList<>();
-            Class.forName(DRIVER);
-            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-            PreparedStatement ps = conexao.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-                Date dataVenda= rs.getDate("DATA_VENDA");
-                String produto= rs.getString("PRODUTO");
-                String empresa= rs.getString("EMPRESA");
-                int qtd= rs.getInt("QUANTIDADE");
-                le.add(new String[]{
-                    String.valueOf(dataVenda),
-                    produto,
-                    empresa,
-                    String.valueOf(qtd)
-                });
-            }
-            return le;
-        }catch(SQLException | ClassNotFoundException e ){
-            e.getMessage();
-        }finally{
-            try{
-                conexao.close();
-            }catch(SQLException e){
-                e.getMessage();
-            }
-        }
-        return null;
-    }
-    
-    public static ArrayList<RelatorioFaturaDia> rel_fatura_dia() {
+       public static ArrayList<RelatorioFaturaDia> rel_fatura_dia() {
         try{
             String sql = "select * from rel_fatura_dia;";
             
@@ -100,14 +65,46 @@ public class RelatorioDao {
             }
         }
         return null;
+    } 
+    
+    /* Retorna uma lista de empresas */
+    public static ArrayList<RelatorioTop10> rel_top10_vendas_dia() {
+        try{
+            String sql = "select * from rel_top10_vendas_dia;";
+            
+            ArrayList <RelatorioTop10> le = new ArrayList<>();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Date dataVenda= rs.getDate("DATA_VENDA");
+                String produto= rs.getString("PRODUTO");
+                String empresa= rs.getString("EMPRESA");
+                int qtd= rs.getInt("QUANTIDADE");
+                le.add(new RelatorioTop10(dataVenda, produto, empresa, qtd));
+            }
+            return le;
+        }catch(SQLException | ClassNotFoundException e ){
+            e.getMessage();
+        }finally{
+            try{
+                conexao.close();
+            }catch(SQLException e){
+                e.getMessage();
+            }
+        }
+        return null;
     }
     
+   
     
-    public static ArrayList<String[]> rel_total_empresa_porcentagem() {
+    public static ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem() {
         try{
             String sql = "select * from rel_total_empresa_porcentagem;";
             
-            ArrayList <String[]> le = new ArrayList<>();
+            ArrayList <RelatorioPercentagem> le = new ArrayList<>();
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -115,13 +112,9 @@ public class RelatorioDao {
             
             while(rs.next()){
                 String empresa= rs.getString("EMPRESA");
-                String total= rs.getString("TOTAL_FATURADO");
+                double total= rs.getDouble("TOTAL_FATURADO");
                 double percentagem= rs.getDouble("PORCENTAGEM");
-                le.add(new String[]{
-                    empresa,
-                    total,
-                    String.valueOf(percentagem)
-                });
+                le.add(new RelatorioPercentagem(empresa, total, percentagem));
             }
             return le;
         }catch(SQLException | ClassNotFoundException e ){

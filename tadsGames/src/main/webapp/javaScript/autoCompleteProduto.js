@@ -31,7 +31,7 @@ function mostrarTabela(tabela){
 
 qtdComprada.addEventListener("input",function(){
     var textVlrUni = document.querySelector("#SpanvlrUnitario").textContent;
-    console.log(textVlrUni);
+    
     var textqtdComprada = this.value;
     var qtdComprada = eval(textqtdComprada);
     var vlrUni=eval(textVlrUni);
@@ -77,6 +77,7 @@ tblListaProdutos.addEventListener("click",function(event){
 function limparAutoComplete(tr){
     for(var i=0;i<tr.length;i++){
         tr[i].remove();
+        
     }
 }
 inputNomeProduto.addEventListener("blur", function (e){
@@ -85,7 +86,7 @@ inputNomeProduto.addEventListener("blur", function (e){
 
 });
 inputNomeProduto.addEventListener("input", function (){
-    var tr = document.getElementsByClassName("produto");
+    var tr = document.querySelectorAll(".produto");
     limparAutoComplete(tr);
     if(inputNomeProduto.value.length==0){
         ocultarTabela(tblListaProdutos);

@@ -122,6 +122,7 @@ public class CadastrarFuncionario implements Executavel {
             String acao = "cadastro de Funcionario";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, funcionario);
+            resp.sendRedirect("sucesso.html");
             
         }
 

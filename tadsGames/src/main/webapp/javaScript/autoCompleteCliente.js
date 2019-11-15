@@ -12,7 +12,7 @@ var tabelaBody = document.getElementById("tbodyListaClientes");
 
 
 
-console.log(imgAlterarCliente);
+
 imgAlterarCliente.addEventListener("click",function(){
     cliente.removeAttribute("disabled");
     cliente.value ="";
@@ -27,9 +27,6 @@ tabela.addEventListener("click",function(event){
     var id = paiSelecionado.querySelector(".idCliente");
     var nomeCliente = paiSelecionado.querySelector(".nomeCliente");
 
-    console.log(nomeCliente);
-    console.log(nomeCliente.textContent);
-    console.log(cliente.value);
     cliente.value = nomeCliente.textContent;
     
    
@@ -45,8 +42,9 @@ tabela.addEventListener("click",function(event){
 
 
 cliente.addEventListener("input", function (){
-    var tr = document.getElementsByClassName("cliente");
+    var tr = document.querySelectorAll(".cliente");
     limparAutoComplete(tr);
+   
     if(this.value.length==0){
         ocultarTabela(tabela);
         limparAutoComplete(tr);
