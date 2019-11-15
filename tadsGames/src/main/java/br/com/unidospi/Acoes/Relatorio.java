@@ -8,6 +8,8 @@ package br.com.unidospi.Acoes;
 import br.com.unidospi.Controller.RelatoriosController;
 import br.com.unidospi.DAO.RelatorioDao;
 import br.com.unidospi.model.RelatorioFaturaDia;
+import br.com.unidospi.model.RelatorioPercentagem;
+import br.com.unidospi.model.RelatorioTop10;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -23,12 +25,12 @@ public class Relatorio implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        ArrayList<String[]> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
+        ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
         ArrayList<RelatorioFaturaDia> rel_fatura_dia =RelatoriosController.rel_fatura_dia();
-        ArrayList<String[]> rel_total_empresa_porcentagem = RelatoriosController.rel_total_empresa_porcentagem();
+        ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem = RelatoriosController.rel_total_empresa_porcentagem();
         req.setAttribute("top10", rel_top10_vendas_dia);
         req.setAttribute("faturaDia", rel_fatura_dia);
-        req.setAttribute("totalPorcentagem", rel_total_empresa_porcentagem);
+        req.setAttribute("totalEmpresa", rel_total_empresa_porcentagem);
         
         RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/jsp/Relatorio/Relatorio.jsp");
         rd.forward(req, resp);

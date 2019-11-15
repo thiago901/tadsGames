@@ -23,6 +23,22 @@ public class RelatorioTop10 {
         this.EMPRESA = EMPRESA;
         this.QUANTIDADE = QUANTIDADE;
     }
+
+    public Date getDATA_VENDA() {
+        return DATA_VENDA;
+    }
+
+    public String getPRODUTO() {
+        return PRODUTO;
+    }
+
+    public String getEMPRESA() {
+        return EMPRESA;
+    }
+
+    public int getQUANTIDADE() {
+        return QUANTIDADE;
+    }
     
     
 }
