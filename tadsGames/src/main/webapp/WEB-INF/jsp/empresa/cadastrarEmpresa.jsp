@@ -55,7 +55,7 @@
                 </div>
                 <div>
 
-                    <select name="estado">
+                    <select id="selEstado" name="estado">
                         <option disabled selected="">Escolha a UF</option>
                         <c:forEach var="uf" items="${ufs}">
                             <option value="${uf.getId()}"><c:out value="${uf.getUf()}"/></option>
@@ -68,11 +68,11 @@
                     </c:if>
                 </div>
                 <div>
-                    <select name="cidade">
+                    <select id="selCidade" name="cidade">
                         <option disabled selected="">Escolha a Cidade</option>
-                        <c:forEach var="cid" items="${cids}">
+                        <%--<c:forEach var="cid" items="${cids}">
                             <option value="${cid.getIdCidade()}"><c:out value="${cid.getNomeCidade()}"/></option>
-                        </c:forEach>
+                        </c:forEach>--%>
                     </select>
                     <c:if test="${erroCidade}">
                         <div class="erro-input com-erro">
@@ -104,5 +104,6 @@
                         
             </form>
         </div>
+        <script src="javaScript/filtrarCidades.js"></script>
     </body>
 </html>

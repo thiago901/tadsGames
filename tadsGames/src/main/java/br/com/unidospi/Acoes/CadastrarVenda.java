@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.Acoes;
 
+import br.com.unidospi.Controller.EstoqueController;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.model.Venda;
 import br.com.unidospi.model.VendaDetalhe;
@@ -48,14 +49,16 @@ public class CadastrarVenda implements Executavel{
             int qtd = item.getQtdVenda();
             float vlrUnitario = item.getVlrUnitario();
             float vlrUnitarioTotal = item.getVlrTotal();
-            
             venda.adiciona(new VendaDetalhe(idProduto, qtd, vlrUnitario, vlrUnitarioTotal));
         }
-        
+        EstoqueController.atualizarEstoque(venda);
         retorno = venda.salvar();
         
         if (retorno > 0){
             sessao.removeAttribute("itemVenda");
+            sessao.removeAttribute("idLinhaItemVenda");
+            sessao.removeAttribute("idCliente");
+            sessao.removeAttribute("nomeCliente2");
             String acao = "Venda";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, venda);
