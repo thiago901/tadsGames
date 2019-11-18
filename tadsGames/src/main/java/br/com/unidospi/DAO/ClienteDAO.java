@@ -132,13 +132,14 @@ public class ClienteDAO {
         ArrayList<Cliente> lista = new ArrayList<>();
         
         
-        String query = "select * from cliente where nome LIKE ? order by nome;";
+        String query = "select * from cliente where nome LIKE ? or cpf like ? order by nome;";
         
         try {                        
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
-            ps.setString(1,  nomePesquisado +"%");
+            ps.setString(1, "%"+ nomePesquisado +"%");
+            ps.setString(2, "%"+ nomePesquisado +"%");
             ResultSet rs = ps.executeQuery();
             
             

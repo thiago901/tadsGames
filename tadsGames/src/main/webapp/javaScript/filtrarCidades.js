@@ -1,26 +1,23 @@
 
 var estado = document.querySelector("#selEstado");
-var cidades = document.querySelector("#selCidade");
-
-
-
 
 estado.addEventListener("input",function(){
     var valueItemSelecionado = estado.options[estado.selectedIndex].value;
-    var textItemSelecionado = estado.options[estado.selectedIndex].text;
-    console.log(valueItemSelecionado);
-    console.log(textItemSelecionado);
+    //var textItemSelecionado = estado.options[estado.selectedIndex].text;
+
+    buscarCidades(valueItemSelecionado);
 });
 
 function buscarCidades(idUf){
     var xhl  = new XMLHttpRequest();
-    xhl.open("GET","/TadsGames/inputProduto?action=ListarProduto2&&nome="+idUf);
+    xhl.open("GET","/TadsGames/input?action=ListarCidades&&nome="+idUf);
     xhl.addEventListener("load",function(){
         var text =xhl.responseText;
         var cidades = JSON.parse(text);
         
         cidades.forEach(function(cidade){
             adicionarNoSelect(cidade);
+            console.log(cidade);
             
         });
         
@@ -32,8 +29,32 @@ function buscarCidades(idUf){
 
 function adicionarNoSelect(cidade){
     var opcoes = document.createElement("option");
-    opcoes.setAttribute("value",cidade);
-    opcoes.textContent = cidade;
-    cidades.options[cidades.selectedIndex].value;
-    cidades.options[cidades.selectedIndex].text;
+    opcoes.setAttribute("value",cidade.idCidade);
+    opcoes.textContent = cidade.nomeCidade;
+    
+    var tableSelect = document.querySelector("#opcoesCidades");
+    
+    
+    tableSelect.appendChild(montarTrBuscaCidade(cidade));
+    //cidades.options[cidades.selectedIndex].value;
+    //cidades.options[cidades.selectedIndex].text;
+}
+
+function montarTrBuscaCidade(cidade){
+    var linha = document.createElement("tr");
+    
+    var tdIdCidade = montarTdBusca(cidade.idCidade,"idCidade");
+    var tdNomeCidade = montarTdBusca(cidade.nomeCidade,"nomeCidade");
+    
+    linha.appendChild(tdIdCidade);
+    linha.appendChild(tdNomeCidade);
+    
+    return linha;
+}
+
+function montarTdBusca(dado, classe) {
+    var td = document.createElement("td");
+    td.textContent = dado;
+    td.classList.add(classe);
+    return td;
 }

@@ -9,6 +9,7 @@ import br.com.unidospi.Acoes.CadastrarEmpresa;
 import br.com.unidospi.Acoes.EditarEmpresa;
 import br.com.unidospi.Acoes.FormCadastrarEmpresa;
 import br.com.unidospi.Acoes.FormEditarEmpresa;
+import br.com.unidospi.Acoes.ListarCidades;
 import br.com.unidospi.Acoes.ListarEmpresas;
 import br.com.unidospi.DAO.EmpresaDao;
 import br.com.unidospi.DAO.EstadoRegiaoDao;
@@ -82,6 +83,10 @@ public class EmpresaController extends HttpServlet {
                 CadastrarEmpresa action = new CadastrarEmpresa();
                 action.executa(req,resp);
             }        
+            else if(paramAction.equals("ListarCidades")){
+                ListarCidades action = new ListarCidades();
+                action.executa(req,resp);
+            }
         } else {
             resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
         }

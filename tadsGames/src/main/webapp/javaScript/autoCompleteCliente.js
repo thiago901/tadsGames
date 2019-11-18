@@ -88,12 +88,14 @@ function montarTrBuscaCliente(cliente) {
     linha.classList.add("cliente");
 
     var tdIdCliente = montarTdBusca(cliente.id, "idCliente");
-    var tdNomeCliente = montarTdBusca(cliente.nome, "nomeCliente");
+    var tdNomeCliente = montarTdBusca(cliente.nome + " " +cliente.sobrenome, "nomeCliente");
+    var tdCpf = montarTdBusca(cliente.cpf, "cpfCliente");
     tdIdCliente.setAttribute("Hidden","");
     
     
     linha.appendChild(tdIdCliente);
     linha.appendChild(tdNomeCliente);
+    linha.appendChild(tdCpf);
 
     return linha;
 

@@ -132,7 +132,7 @@ function montarTrBusca(produto) {
     var tdProduto = montarTdBusca(produto.nome, "autoCompleteNomeProduto");
     var tdQtdEstoque = montarTdBusca(produto.qtdEstoque, "qtdEstoque");
     var tdVlrUnitario = montarTdBusca(formatoReal(produto.vlrUnitario), "vlrUnitario");
-    tdQtdEstoque.setAttribute("hidden","");
+    //tdQtdEstoque.setAttribute("hidden","");
     tdVlrUnitario.setAttribute("hidden","");
     linha.appendChild(tdIdProduto);
     linha.appendChild(tdProduto);

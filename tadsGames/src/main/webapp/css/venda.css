@@ -11,13 +11,22 @@ and open the template in the editor.
     width: 30px;
     height: 30px;
     display: inline;
+    transition: .5s;
+    
+}
+.imgAltera:hover{
+    width: 35px;
+    height: 35px;
 }
 .divClienteConteudo{
     width: 50%;
 }
 #tabelaClientes{
     background: rgba(255,255,255,.5);
-    width: 90%;
+    width: 30%;
+    text-align: left;
+    position: absolute
+        
 }
 #tabelaClientes tr:hover{
     background: #4CAF50;
@@ -26,7 +35,9 @@ and open the template in the editor.
 #tbSource{
         
     background: rgba(255,255,255,.5);
-    width: 100%;
+    width: 30%;
+    position: absolute;
+    text-align: left;
 }
 #tbSource tr:hover{
     background: #4CAF50;

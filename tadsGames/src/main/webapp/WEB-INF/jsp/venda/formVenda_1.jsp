@@ -27,7 +27,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
             <div id="divCliente" class="divCliente">
                 <div  class="divClienteConteudo">
                     
-                    <input value="${nomeCliente2}" id="resumoCliente" name="nomeCliente" class="" placeholder="" disabled="">
+                    <input value="${nomeCliente2}" id="resumoCliente" name="nomeCliente" class="" placeholder="Insira um nome ou CPF" disabled="">
                     <img class="imgAltera" src="img/alterar.png">
                     <input value="${idCliente}" id="idCliente" name="idCliente" hidden="">
                         
@@ -36,6 +36,14 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                         <table id="tabelaClientes" hidden="">
 
                             <tbody id="tbodyListaClientes">
+                            <thead>
+                                <tr>
+                                    <th hidden="">id</th>
+                                    <th>Nome</th>
+                                    <th>CPF</th>
+                                </tr>
+                            </thead>
+                                
                                 
                                 
 
@@ -55,6 +63,12 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                             <table id="tbSource" hidden="">
 
                                 <tbody id="tbodyListaProdutos">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Estoque</th>
+                                    </tr>
+                                </thead>
                                     
                                 </tbody>
 

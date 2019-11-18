@@ -24,9 +24,9 @@
                     <label>Nome Empresa</label>
                     <input  type="text" name="nome">
                     <c:if test="${erroNome}">
-                    <div class="erro-input com-erro">
-                        Digite mais de 1 caracter e menos de 50 caracteres
-                    </div>
+                        <div class="erro-input com-erro">
+                            Digite mais de 1 caracter e menos de 50 caracteres
+                        </div>
                     </c:if>
                     <c:if test="${validacaoNome2}">
                         <div class="erro-input com-erro">
@@ -39,7 +39,7 @@
                     <input type="text" name="cnpj">
                     <c:if test="${erroCNPJ}">
                         <div class="erro-input com-erro">
-                        O CNPJ digitado é inválido ou está indisponível
+                            O CNPJ digitado é inválido ou está indisponível
                         </div>
                     </c:if>
 
@@ -49,7 +49,7 @@
                     <input type="date" name="dataCriacao">
                     <c:if test="${erroData}">
                         <div class="erro-input com-erro">
-                        Selecione uma data
+                            Selecione uma data
                         </div>
                     </c:if>
                 </div>
@@ -63,47 +63,47 @@
                     </select>
                     <c:if test="${erroUF}">
                         <div class="erro-input com-erro">
-                        Selecione uma UF
+                            Selecione uma UF
                         </div>
                     </c:if>
                 </div>
                 <div>
-                    <select id="selCidade" name="cidade">
-                        <option disabled selected="">Escolha a Cidade</option>
+                    
+                        
+                    <input hidde type="text" placeholder="Digite o nome da Cidade">
+                    <table  id="opcoesCidades">
+
+                    </table>
+
+                </div>
                         <%--<c:forEach var="cid" items="${cids}">
                             <option value="${cid.getIdCidade()}"><c:out value="${cid.getNomeCidade()}"/></option>
                         </c:forEach>--%>
-                    </select>
+                    
                     <c:if test="${erroCidade}">
                         <div class="erro-input com-erro">
                             Selecione uma cidade
                         </div>
                     </c:if>
-                </div>
-                <div>
-                    <label> Status da Empresa:</label>
-                    <input type="radio" name="status" value="true" checked="">
-                    <label>Ativa</label>
-                    <input type="radio" name="status" value="false">
-                    <label>Inativa</label>
+                    <div>
+                        <label> Status da Empresa:</label>
+                        <input type="radio" name="status" value="true" checked="">
+                        <label>Ativa</label>
+                        <input type="radio" name="status" value="false">
+                        <label>Inativa</label>
 
-                </div>
-                <%--<div>
-                    <h2 class="titulo"> Empresa Matiz:</h2>
-                    <input type="radio" name="matriz" value="true" id="matrizSim">
-                    <label for="matrizSim">Sim</label>
-                    <input type="radio" name="matriz" value="false" id="matrizNao" checked="">
-                    <label for="matrizNao">Não</label>
-                </div>--%>
-                 <div class="teste">
+                    </div>
+                    <div class="teste">
                         <button type="submit">Cadastrar</button>
                         <button type="reset">Resetar dados</button>
                         <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
                         <!--<a href="#" role="button">Cancelar</a>-->
                     </div>
-                        
+                </div>
+
             </form>
         </div>
         <script src="javaScript/filtrarCidades.js"></script>
+
     </body>
 </html>

@@ -133,18 +133,19 @@ public class ProdutoDAO {
    
     public static ArrayList<ProdutoLista> listarProduto(String nomePesquisado) {
         ArrayList<ProdutoLista> lista = new ArrayList<>();
-        String q = "select * from produto where nome LIKE ?";
+        
         
         String query = "select p.idProduto,p.nome, e.qtdEstoque, e.valorVendaUnitario from produto p\n" +
                     "inner join Estoque e on\n" +
                     "p.idProduto = e.idProduto"
-                + " where p.nome LIKE ?;";
+                + " where p.nome LIKE ? or p.idProduto LIKE ?;";
         
         try {                        
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
-            ps.setString(1,  nomePesquisado +"%");
+            ps.setString(1, "%"+ nomePesquisado +"%");
+            ps.setString(2, "%"+ nomePesquisado +"%");
             ResultSet rs = ps.executeQuery();
             
             
