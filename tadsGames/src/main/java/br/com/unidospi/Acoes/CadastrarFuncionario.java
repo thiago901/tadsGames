@@ -33,7 +33,6 @@ public class CadastrarFuncionario implements Executavel {
     public String executa(HttpServletRequest req, HttpServletResponse resp)
             throws IOException, ServletException {
 
-        //String idEmpresa = req.getParameter("idEmpresa");
         String strIdEmpresa = req.getParameter("tpEmpresa");
         String nome = req.getParameter("nome");
         String sobrenome = req.getParameter("sobrenome");
@@ -41,8 +40,7 @@ public class CadastrarFuncionario implements Executavel {
         String dtNascStr = req.getParameter("dtNasc");
         String salarioStr = req.getParameter("salario");
         String deptoStr = req.getParameter("depto");
-        boolean status = Boolean.parseBoolean(req.getParameter("status"));
-//        int idEmpresaSelecionada = Integer.parseInt(req.getParameter("tpEmpresa"));            
+        boolean status = Boolean.parseBoolean(req.getParameter("status"));         
         int idEmpresaSelecionada = 0;
         String cargo = req.getParameter("tpFuncionario");
         String sexo = req.getParameter("sexo");
@@ -55,7 +53,7 @@ public class CadastrarFuncionario implements Executavel {
         } catch (ParseException ex) {
             Logger.getLogger(CadastrarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //VALIDAÇÃO PROVISÓRIA------------------------------------------------
+        
         boolean validacaoServidor = false;
         boolean testeCPF;
         boolean cpfDisponivel;
@@ -65,14 +63,14 @@ public class CadastrarFuncionario implements Executavel {
         if (nome.length() > 50 || nome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome", true);
-        } else if (nome.matches("[A-z]*") == false) {
+        } else if (nome.matches("[A-z ]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome2", true);
         }
         if (sobrenome.length() > 50 || sobrenome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome", true);
-        } else if (sobrenome.matches("[A-z]*") == false) {
+        } else if (sobrenome.matches("[A-z ]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome2", true);
         }
@@ -122,7 +120,8 @@ public class CadastrarFuncionario implements Executavel {
             String acao = "cadastro de Funcionario";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, funcionario);
-            resp.sendRedirect("sucesso.html");
+            
+            resp.sendRedirect(req.getContextPath() + "/sucesso.html");
             
         }
 

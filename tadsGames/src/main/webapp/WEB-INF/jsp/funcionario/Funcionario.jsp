@@ -25,7 +25,7 @@
     </c:if>
     <c:if test="${validacaoNome2}">
         <div class="erro-input com-erro">
-            É permitido somente caracteres alfabeticos
+            É permitido somente caracteres alfabeticos sem acentuação
         </div>
     </c:if>
     <label for="sobrenome">Sobrenome</label>
@@ -37,7 +37,7 @@
     </c:if>
     <c:if test="${validacaoSobrenome2}">
         <div class="erro-input com-erro">
-            É permitido somente caracteres alfabeticos
+            É permitido somente caracteres alfabeticos e sem acentuação
         </div>
     </c:if>
     <label for="cpf">CPF</label>
@@ -118,6 +118,6 @@
     <button type="submit">Cadastrar</button>        
   </form>
 </div>
-<script type="text/javascript" src="javaScript/filtraCargo.js"></script>
+<script type="text/javascript" src="../javaScript/filtraCargo.js"></script>
 </body>
 </html>

@@ -29,12 +29,22 @@
                         Digite mais de 1 e menos de 50 caracteres
                     </div>
                 </c:if>
+                <c:if test="${validacaoNome2}">
+                    <div class="erro-input com-erro">
+                        É permitido somente caracteres alfabeticos sem acentuação
+                    </div>
+                </c:if>
                 <label for="sobrenome">Sobrenome</label>
                 <input type="text" id="sobrenome" name="sobrenome"  value="${c.getSobrenome()}" placeholder="Digite seu Sobrenome...">
                 <c:if test="${validacaoSobrenome}">
                         <div class="erro-input com-erro">
                             Digite mais de 1 e menos de 50 caracteres
                         </div>
+                </c:if>
+                <c:if test="${validacaoSobrenome2}">
+                    <div class="erro-input com-erro">
+                        É permitido somente caracteres alfabeticos sem acentuação
+                    </div>
                 </c:if>
                 <label for="cpf">CPF</label>
                 <input type="text" id="cpf" name="cpf" value="${c.getCPF()}"  placeholder="Digite o CPF...">

@@ -36,7 +36,7 @@
                         <div class="face face1">
                             <div class="content">
 
-                                <a href="inputProduto?action=FormCadastrarProduto">Novo Produto</a>
+                                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=FormCadastrarProduto">Novo Produto</a>
                                 <a href="inputProduto?action=ListarProduto">Listar Produtos</a>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                         <div class="face face1">
                             <div class="content">
 
-                                <a href="inputCliente?action=FormCadastrarCliente">Novo Cliente</a>
+                                <a href="${pageContext.request.contextPath}/tads/inputCliente?action=FormCadastrarCliente">Novo Cliente</a>
                                 <a href="inputCliente?action=ListarCliente">Listar Clientes</a>
                             </div>
                         </div>

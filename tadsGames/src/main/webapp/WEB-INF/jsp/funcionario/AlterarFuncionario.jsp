@@ -32,6 +32,11 @@
             Digite mais de 1 e menos de 50 caracteres
         </div>
     </c:if>
+    <c:if test="${validacaoSobrenome2}">
+        <div class="erro-input com-erro">
+            É permitido somente caracteres alfabeticos sem acentuação
+        </div>
+    </c:if>
     <label for="cpf">CPF</label>
     <input type="text" id="cpf" name="cpf" value="${funcionario.cpf}">
     <c:if test="${validacaoCPF}">

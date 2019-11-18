@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author henrique.abastos
  */
-@WebServlet(name = "ClienteController", urlPatterns = {"/inputCliente"})
+@WebServlet(name = "ClienteController", urlPatterns = {"/tads/inputCliente"})
 public class ClienteController extends HttpServlet {
 
     // Retorna uma lista de clientes

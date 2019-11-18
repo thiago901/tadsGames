@@ -14,21 +14,26 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author gabriel.gisidorio
+ * @author marco.assilva8
  */
-public class FormLogin implements Executavel {
+public class FormSucesso implements Executavel{
 
     @Override
-    public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession sessao = req.getSession();
         if (sessao.getAttribute("usuario") != null) {
-            resp.sendRedirect(req.getContextPath() + "/inputHome");
+            resp.sendRedirect(req.getContextPath() + "/sucesso");
             return "";
         }
-        RequestDispatcher dispatcher = 
-                req.getRequestDispatcher("WEB-INF/jsp/login/Login.jsp");//NECESSARIO?
-        dispatcher.forward(req, resp);
+        else {
+            req.setAttribute("msgErro", "Sessão expirada");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/login/Login.jsp");
+            dispatcher.forward(req, resp);
+        }
         return "";
+        
+        
+        
     }
     
 }

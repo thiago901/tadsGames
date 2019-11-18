@@ -21,22 +21,32 @@
                 <input type="hidden" name="idFuncionario" value="${f.idFuncionario}">
                 <label for="nome">Login</label>                
                 <input type="text" maxlength="50" id="nome" name="login" placeholder="Digite um nome de usuario..." >                
-                <!--
-                <c:if test="${erroNome}">
+
+                <c:if test="${validacaoNome}">
                     <div class="erro-input com-erro">
                         Digite mais de 1 caracter e menos de 50 caracteres
                     </div>
-                </c:if> 
-                 -->   
+                </c:if>
+                <c:if test="${validacaoNome2}">
+                    <div class="erro-input com-erro">
+                        É permitido somente caracteres numericos e alfabeticos sem acentuação
+                    </div>
+                </c:if>
+
                 <label for="nome">Senha</label>                
                 <input type="password" maxlength="50" id="senha" name="senha" placeholder="Digite um nome de usuario..." >                
-                <!--
+
                 <c:if test="${erroSenha}">
                     <div class="erro-input com-erro">
-                        Digite mais de 1 caracter e menos de 50 caracteres
+                        Digite mais de 5 caracter e menos de 16 caracteres
                     </div>
                 </c:if> 
-                -->
+                
+                <c:if test="${erroSenha2}">
+                    <div class="erro-input com-erro">
+                        É permitido somente caracteres numericos e alfabeticos sem acentuação
+                    </div>
+                </c:if>
                 
                 <div>
                     <input type="radio" name="status" value="true" checked="">
