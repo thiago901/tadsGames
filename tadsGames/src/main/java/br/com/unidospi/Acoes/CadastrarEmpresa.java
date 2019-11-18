@@ -65,7 +65,7 @@ public class CadastrarEmpresa implements Executavel {
         if (nome.length() < 1 || nome.length() > 70) {
             validacaoServidor = true;
             req.setAttribute("erroNome", true);
-        } else if (nome.substring(0, 1).matches("[A-z]*") == false) {
+        } else if (nome.substring(0, 1).matches("[A-z ]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome2", true);
         }

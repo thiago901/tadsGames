@@ -27,7 +27,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author thiago.srocha4
  */
-@WebServlet(name = "ProdutoServlet", urlPatterns = {"/inputProduto"})
+@WebServlet(name = "ProdutoController", urlPatterns = {"/tads/inputProduto"})
 public class ProdutoController extends HttpServlet {
     
     // retorna 
