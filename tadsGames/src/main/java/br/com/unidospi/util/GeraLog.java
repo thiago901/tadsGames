@@ -48,7 +48,8 @@ public class GeraLog {
         switch (tipo){
             case "Login":
                 try {
-                    arquivo = new File("Teste.txt");
+                    //ESPECIFICAR O CAMINHO DA PASTA AQUI
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     fileReader = new FileReader(arquivo);

@@ -63,10 +63,16 @@ public class CadastrarCliente implements Executavel{
         if (nome.length() > 50 || nome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome", true);
-        }      
+        }else if (nome.matches("[A-z ]*") == false) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoNome2", true);
+        }
         if (sobrenome.length() > 50 || sobrenome.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome", true);
+        }else if (sobrenome.matches("[A-z ]*") == false) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoSobrenome2", true);
         }
         
         if (testeCPF == false || cpfDisponivel==false) {

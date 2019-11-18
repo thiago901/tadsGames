@@ -10,7 +10,7 @@
     <head>
         <title>Cadastro de Produto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-       <link rel="stylesheet" type="text/css" href="css/formularios.css">
+       <link rel="stylesheet" type="text/css" href="../css/formularios.css">
        <link rel="icon" href="img/icon-controle-pequeno.png">
     </head>
     <body>
@@ -19,7 +19,7 @@
 
         <div class="container">
             <h2 class="titulo">Cadastro de Produtos</h2>
-            <form method="post" action="${pageContext.request.contextPath}/inputProduto?action=CadastrarProduto">
+            <form method="post" action="${pageContext.request.contextPath}/tads/inputProduto?action=CadastrarProduto">
                 
                     
                 

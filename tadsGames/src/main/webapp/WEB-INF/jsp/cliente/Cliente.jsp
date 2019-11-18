@@ -10,7 +10,7 @@
         <title>Cadastro de Cliente</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/formularios.css">
+        <link rel="stylesheet" type="text/css" href="../css/formularios.css">
         <link rel="icon" href="img/icon-controle-pequeno.png">
     </head>
     <body>
@@ -19,7 +19,7 @@
 
         <div class="container">
             <h2 class="titulo">Cadastro de Clientes</h2>
-            <form method="post" action="${pageContext.request.contextPath}/inputCliente?action=CadastrarCliente" novalidate >
+            <form method="post" action="${pageContext.request.contextPath}/tads/inputCliente?action=CadastrarCliente" novalidate >
                 
                     <label for="nome">Nome</label>
                     <input required="" type="text" id="nome" name="nome" placeholder="Digite seu nome...">
@@ -27,6 +27,11 @@
                         <div class="erro-input com-erro">
                             Digite mais de 1 e menos de 50 caracteres
                         </div>
+                    </c:if>
+                    <c:if test="${validacaoNome2}">
+                    <div class="erro-input com-erro">
+                        É permitido somente caracteres alfabeticos sem acentuação
+                    </div>
                     </c:if>
 
                     <label for="sobrenome">Sobrenome</label>

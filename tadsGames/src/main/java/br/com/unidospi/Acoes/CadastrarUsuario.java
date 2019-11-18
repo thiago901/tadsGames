@@ -37,16 +37,35 @@ public class CadastrarUsuario implements Executavel {
         
         int idFuncionario = Integer.parseInt(idFuncionarioStr);
         
-        Usuario usuario = new Usuario(login, senha, dtCadastro, status, idFuncionario);
+        boolean validacaoServidor = false;
         
-        retorno = UsuarioDAO.salvar(usuario);
-        if (retorno > 0){
-            HttpSession sessao = req.getSession();
-            UsuarioFuncionario u = (UsuarioFuncionario)sessao.getAttribute("usuario");
-            String acao = "cadastro de Usuario";
-            GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario, acao, u);
-            resp.sendRedirect("sucesso.html");
+        if (login.length() > 50 || login.equals("")) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoNome", true);
+        }else if (login.substring(0, 2).matches("[A-z 0-9]*") == false) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoNome2", true);
+        }
+        if (senha.length() > 16 || login.equals("") || senha.length() < 6 ) {
+            validacaoServidor = true;
+            req.setAttribute("erroSenha", true);
+        }else if (login.substring(0, 2).matches("[A-z 0-9]*") == false) {
+            validacaoServidor = true;
+            req.setAttribute("erroSenha2", true);
+        }
+        
+        if (validacaoServidor){
+            Usuario usuario = new Usuario(login, senha, dtCadastro, status, idFuncionario);
+
+            retorno = UsuarioDAO.salvar(usuario);
+            if (retorno > 0){
+                HttpSession sessao = req.getSession();
+                UsuarioFuncionario u = (UsuarioFuncionario)sessao.getAttribute("usuario");
+                String acao = "cadastro de Usuario";
+                GeraLog registro = new GeraLog();
+                registro.escreverLog(usuario, acao, u);
+                resp.sendRedirect("sucesso.html");
+            }
         }
         return "";
     }

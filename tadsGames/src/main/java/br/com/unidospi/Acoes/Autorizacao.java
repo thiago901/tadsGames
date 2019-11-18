@@ -25,7 +25,8 @@ import javax.servlet.http.HttpSession;
  */
 
 @WebFilter(filterName = "Autorizacao",
-        servletNames = { "HomeServlet", "FuncionarioController" },
+        servletNames = { "HomeServlet", "FuncionarioController",
+                        "ClienteController", "ProdutoController"},
         urlPatterns = { "/tads/*" })
 public class Autorizacao implements Filter {
 
@@ -59,6 +60,27 @@ public class Autorizacao implements Filter {
             return true;
         } else if (urlAcessada.endsWith("/tads/inputFuncionario") 
                 && usuario.getCargo().equals("Diretor")) {
+            return true;
+        } else if (urlAcessada.endsWith("/tads/inputCliente")
+                && usuario.getCargo().equals("Diretor")) {
+            return true;
+        }else if (urlAcessada.endsWith("/tads/inputEmpresa")
+                && usuario.getCargo().equals("Diretor")) {
+            return true;
+        }else if (urlAcessada.endsWith("/tads/inputProduto")
+                && usuario.getDepartamento().equals("Retaguarda")) {
+            return true;
+        }else if (urlAcessada.endsWith("/tads/inputUsuario")
+                && usuario.getCargo().equals("Diretor")) {
+            return true;
+        }else if (urlAcessada.endsWith("/tads/inputCompra")
+                && usuario.getCargo().equals("Diretor")) {
+            return true;
+        }else if (urlAcessada.endsWith("/tads/inputRelatorios")
+                && usuario.getCargo().equals("Diretor")) {
+            return true;
+        }else if (urlAcessada.endsWith("/tads/inputVenda")
+                && usuario.getDepartamento().equals("Vendas")) {
             return true;
         }
         return false;

@@ -63,7 +63,17 @@ public class CadastrarProduto implements Executavel{
                 GeraLog registro = new GeraLog();
                 registro.escreverLog(usuario, acao, p);
                 
-                resp.sendRedirect("sucesso.html");
+                
+                
+                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                
+//                
+//                RequestDispatcher dispatcher
+//                    = req.getRequestDispatcher("sucesso");
+//                dispatcher.forward(req, resp);
+//                
+                
+//                resp.sendRedirect("sucesso.html");
             }
             } catch (SQLException ex) {
                 ex.getMessage();
