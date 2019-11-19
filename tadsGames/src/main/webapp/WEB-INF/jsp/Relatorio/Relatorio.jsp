@@ -11,40 +11,36 @@
 
 <head>
 	<title>Relatorio</title>
-
+	<link rel="stylesheet" type="text/css" href="css/relatorio.css">
 	<style>
 
-		#box1 {
-		
-			position:relative;
-			width: 200px;
-			height: 200px;
-			float: left;
-		
-		
-		}
 
-		#box2 {
-		
-		position:relative;
-		width: 200px;
-		height: 200px;
-		float: left;
-	}
-
-	#box3 {
-		
-		position:relative;
-		width: 200px;
-		height: 200px;
-		float: left;
+		.box{
+		display: inline-block;
 	}
 
 		#container {
-   		 width: 100%;
-		height: 100%;	
-			
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%,-50%);
 	}
+
+	body{
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100vh;
+		background: #00d0ff;
+		background-image: url("../img/controle.jpg");
+		background-size: cover;
+		
+		background-repeat: no-repeat;
+		background-position: center;
+
+}
 	
 			
 		</style>
