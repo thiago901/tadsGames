@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author henrique.abastos
  */
-@WebServlet(name = "UsuarioController", urlPatterns = {"/inputUsuario"})
+@WebServlet(name = "UsuarioController", urlPatterns = {"/tads/inputUsuario"})
 public class UsuarioController extends HttpServlet {
     
     @Override

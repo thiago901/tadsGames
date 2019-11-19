@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author henrique.abastos
  */
-@WebServlet(name = "CompraConatroller", urlPatterns = {"/inputCompra"})
+@WebServlet(name = "CompraConatroller", urlPatterns = {"/tads/inputCompra"})
 public class CompraController extends HttpServlet {
     
     @Override

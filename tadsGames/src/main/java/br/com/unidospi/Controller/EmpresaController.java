@@ -34,7 +34,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author thiago.srocha4
  */
-@WebServlet(name = "EmpresaServelet", urlPatterns = {"/input"})
+@WebServlet(name = "EmpresaServelet", urlPatterns = {"/tads/input"})
 public class EmpresaController extends HttpServlet {
     
     // Recebe uma lista de Estados

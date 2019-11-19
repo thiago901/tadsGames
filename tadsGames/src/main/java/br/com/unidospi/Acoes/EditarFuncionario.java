@@ -115,7 +115,8 @@ public class EditarFuncionario implements Executavel {
             String acao = "edição de Funcionario";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, funcionario);
-            resp.sendRedirect("sucesso.html");
+            
+            resp.sendRedirect(req.getContextPath() + "/sucesso.html");
             
 
         }

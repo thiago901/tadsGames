@@ -53,7 +53,8 @@ public class CadastrarCompra implements Executavel{
             String acao = "Compra";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, compra);
-            resp.sendRedirect("sucesso.html");
+            
+            resp.sendRedirect(req.getContextPath() + "/sucesso.html");
         }
        return "";
     }

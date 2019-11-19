@@ -100,7 +100,7 @@ public class EditarCliente implements Executavel {
                 GeraLog registro = new GeraLog();
                 registro.escreverLog(usuario, acao, p);
                 
-                resp.sendRedirect("sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
             }
         }
         return "";

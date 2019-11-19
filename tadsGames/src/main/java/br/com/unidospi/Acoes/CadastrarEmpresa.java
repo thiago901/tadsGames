@@ -107,7 +107,7 @@ public class CadastrarEmpresa implements Executavel {
                 GeraLog registro = new GeraLog();
                 registro.escreverLog(usuario, acao, empr);
                 
-                resp.sendRedirect("sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
             }
         }
 

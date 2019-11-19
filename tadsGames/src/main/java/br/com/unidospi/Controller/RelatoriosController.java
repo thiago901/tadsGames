@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-@WebServlet(name = "RelatoriosController", urlPatterns = {"/inputRelatorios"})
+@WebServlet(name = "RelatoriosController", urlPatterns = {"/tads/inputRelatorios"})
 public class RelatoriosController extends HttpServlet {
     
     public static ArrayList<RelatorioFaturaDia> rel_fatura_dia(){

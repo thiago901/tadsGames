@@ -49,7 +49,7 @@ public class EstoqueController {
                 int idEmpresa = c.getIdEmpresa();
                 int qtdEstoque =qtdEstoqueAtual - v.getQtdVenda();
                 float vlrUnitario = v.getVlrUnitario();
-
+                
                 Estoque estoca = new Estoque(idProduto, idEmpresa, qtdEstoque,vlrUnitario);
                 estoca.alterar();
             }else{

@@ -58,29 +58,26 @@ public class Autorizacao implements Filter {
         String urlAcessada = httpRequest.getRequestURI();
         if (urlAcessada.endsWith("/home")) {
             return true;
-        } else if (urlAcessada.endsWith("/tads/inputFuncionario") 
-                && usuario.getCargo().equals("Diretor")) {
+        }///////// ACESSO RETAGUARDA ///////
+        else if ((urlAcessada.endsWith("/tads/inputProduto")||(urlAcessada.endsWith("/tads/inputCompra"))) 
+                && (usuario.getCargo().equals("Diretor")|| usuario.getDepartamento().equals("Retaguarda")) ) {
             return true;
-        } else if (urlAcessada.endsWith("/tads/inputCliente")
-                && usuario.getCargo().equals("Diretor")) {
+        //////////ACESSO VENDA///////////////
+        }else if ((urlAcessada.endsWith("/tads/inputVenda")||urlAcessada.endsWith("/tads/inputCliente"))
+                && (usuario.getCargo().equals("Diretor")||usuario.getDepartamento().equals("Vendas"))) {
             return true;
-        }else if (urlAcessada.endsWith("/tads/inputEmpresa")
-                && usuario.getCargo().equals("Diretor")) {
-            return true;
-        }else if (urlAcessada.endsWith("/tads/inputProduto")
-                && usuario.getDepartamento().equals("Retaguarda")) {
-            return true;
+        /////////ACESSO TI///////////////
         }else if (urlAcessada.endsWith("/tads/inputUsuario")
-                && usuario.getCargo().equals("Diretor")) {
+                && (usuario.getCargo().equals("Diretor")||usuario.getDepartamento().equals("TI"))) {
             return true;
-        }else if (urlAcessada.endsWith("/tads/inputCompra")
-                && usuario.getCargo().equals("Diretor")) {
+        /////////ACESSO ADMINISTRATIVO//////////
+        }else if ((urlAcessada.endsWith("/tads/inputFuncionario")||urlAcessada.endsWith("/tads/input")) 
+                && (usuario.getCargo().equals("Diretor")||usuario.getDepartamento().equals("Administrativo"))) {
             return true;
-        }else if (urlAcessada.endsWith("/tads/inputRelatorios")
-                && usuario.getCargo().equals("Diretor")) {
-            return true;
-        }else if (urlAcessada.endsWith("/tads/inputVenda")
-                && usuario.getDepartamento().equals("Vendas")) {
+        //////////ACESSO A RELATÓRIOS/////////////
+        } else if (urlAcessada.endsWith("/tads/inputRelatorios")
+                && (usuario.getCargo().equals("Diretor")||usuario.getCargo().equals("Gerente Global")||
+                usuario.getCargo().equals("Gerente Regional"))) {
             return true;
         }
         return false;

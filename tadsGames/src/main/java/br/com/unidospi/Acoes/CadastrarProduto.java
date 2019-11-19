@@ -66,14 +66,7 @@ public class CadastrarProduto implements Executavel{
                 
                 
                 resp.sendRedirect(req.getContextPath() + "/sucesso.html");
-                
-//                
-//                RequestDispatcher dispatcher
-//                    = req.getRequestDispatcher("sucesso");
-//                dispatcher.forward(req, resp);
-//                
-                
-//                resp.sendRedirect("sucesso.html");
+
             }
             } catch (SQLException ex) {
                 ex.getMessage();

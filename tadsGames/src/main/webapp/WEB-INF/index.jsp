@@ -22,8 +22,8 @@
                     <div class="face face1">
                         <div class="content">
 
-                            <a href="input?action=FormCadastrarEmpresa">Nova Empresa</a>
-                            <a href="input?action=ListarEmpresas">Listar Empresas</a>
+                            <a href="${pageContext.request.contextPath}/tads/input?action=FormCadastrarEmpresa">Nova Empresa</a>
+                            <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas">Listar Empresas</a>
                         </div>
                     </div>
                     <div class="face face2">
@@ -37,7 +37,7 @@
                             <div class="content">
 
                                 <a href="${pageContext.request.contextPath}/tads/inputProduto?action=FormCadastrarProduto">Novo Produto</a>
-                                <a href="inputProduto?action=ListarProduto">Listar Produtos</a>
+                                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto">Listar Produtos</a>
                             </div>
                         </div>
                         <div class="face face2">
@@ -52,7 +52,7 @@
                             <div class="content">
 
                                 <a href="${pageContext.request.contextPath}/tads/inputCliente?action=FormCadastrarCliente">Novo Cliente</a>
-                                <a href="inputCliente?action=ListarCliente">Listar Clientes</a>
+                                <a href="${pageContext.request.contextPath}/tads/inputCliente?action=ListarCliente">Listar Clientes</a>
                             </div>
                         </div>
                         <div class="face face2">
@@ -79,7 +79,7 @@
                        <div class="face face1">
                            <div class="content">
 
-                               <a href="inputVenda?action=FormVenda">Nova Venda</a>
+                               <a href="${pageContext.request.contextPath}/tads/inputVenda?action=FormVenda">Nova Venda</a>
 
                            </div>
                        </div>
@@ -93,8 +93,8 @@
                     <div class="card">
                         <div class="face face1">
                             <div class="content">
-                                <a href="inputUsuario?action=ListarFuncionariosUsuarioCadastravel">Novo Usuário</a>    
-                                <a href="inputUsuario?action=ListarUsuarios">Manutenção de Usuários</a>
+                                <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarFuncionariosUsuarioCadastravel">Novo Usuário</a>    
+                                <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarUsuarios">Manutenção de Usuários</a>
                             </div>
                         </div>
                         <div class="face face2">
@@ -105,11 +105,15 @@
             </div>
     </body>
 </html>
+
+
+<%-- VERIFICAR O QUE É ISSO
+
 <%-- 
     Document   : index
     Created on : 11/11/2019, 18:50:45
     Author     : thiago.srocha4
---%>
+--% >
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -226,3 +230,6 @@
             </div>
     </body>
 </html>
+
+
+--%>

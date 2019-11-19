@@ -59,7 +59,8 @@ public class EditarProduto implements Executavel {
             String acao = "edição de Produto";
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, p);
-            resp.sendRedirect("sucesso.html");
+            
+            resp.sendRedirect(req.getContextPath() + "/sucesso.html");
         }
         
         return "";
