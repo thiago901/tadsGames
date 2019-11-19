@@ -43,9 +43,14 @@ public class UsuarioFuncionario {
         this.idEmpresa=idEmpresa;
         this.idFuncionario = idFuncionario;
     }
-    
-    
 
+    public UsuarioFuncionario(int idUsuario, String nomeUsuario, String nomeFuncionario, String sobrenome) {
+        this.idUsuario = idUsuario;
+        this.nomeUsuario = nomeUsuario;
+        this.nomeFuncionario = nomeFuncionario;
+        this.sobrenome = sobrenome;
+    }
+        
     public int getIdUsuario() {
         return idUsuario;
     }
