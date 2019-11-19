@@ -5,15 +5,14 @@
 
 }
 
-#opcoesCidades{
-    position: absolute;
-    
-    
-}
+
 a {
    text-decoration:none; 
    color: #fff;
     
+}
+.botoes{
+    z-index: -1;
 }
 body{
 	margin: 0;

@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="css/tabelasListagem.css">
+        <link rel="stylesheet" type="text/css" href="../css/tabelasListagem.css">
         <title>Listar Produto</title>
-        <link rel="icon" href="img/icon-controle-pequeno.png">
+        <link rel="icon" href="../img/icon-controle-pequeno.png">
     </head>
 
     <body>

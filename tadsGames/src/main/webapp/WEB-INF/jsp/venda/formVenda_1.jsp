@@ -13,7 +13,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 <html>
     <head>
         <title>Vendas</title>        
-        <link rel="stylesheet" type="text/css" href="css/venda.css">
+        <link rel="stylesheet" type="text/css" href="../css/venda.css">
     </head>
     <body>
 <div class="container">
@@ -28,7 +28,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                 <div  class="divClienteConteudo">
                     
                     <input value="${nomeCliente2}" id="resumoCliente" name="nomeCliente" class="" placeholder="Insira um nome ou CPF" disabled="">
-                    <img class="imgAltera" src="img/alterar.png">
+                    <img class="imgAltera" src="../img/alterar.png">
                     <input value="${idCliente}" id="idCliente" name="idCliente" hidden="">
                         
                         

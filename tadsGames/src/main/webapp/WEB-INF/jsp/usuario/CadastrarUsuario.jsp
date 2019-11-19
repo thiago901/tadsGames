@@ -11,8 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <title>Cadastro de Usuário</title>
-        <link rel="icon" href="img/icon-controle-pequeno.png">
-        <link rel="stylesheet" type="text/css" href="css/formularios.css"
+        <link rel="icon" href="../img/icon-controle-pequeno.png">
+        <link rel="stylesheet" type="text/css" href="../css/formularios.css"
     </head>
     <body>
         <div class="container">

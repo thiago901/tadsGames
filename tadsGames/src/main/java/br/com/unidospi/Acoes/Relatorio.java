@@ -32,7 +32,7 @@ public class Relatorio implements Executavel{
         req.setAttribute("faturaDia", rel_fatura_dia);
         req.setAttribute("totalEmpresa", rel_total_empresa_porcentagem);
         
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/jsp/Relatorio/Relatorio.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("tads/WEB-INF/jsp/Relatorio/Relatorio.jsp");
         rd.forward(req, resp);
         return "";
     }

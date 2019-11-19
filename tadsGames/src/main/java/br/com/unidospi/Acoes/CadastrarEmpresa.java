@@ -83,11 +83,11 @@ public class CadastrarEmpresa implements Executavel {
         } else {
             idEstado = Integer.parseInt(req.getParameter("estado"));
         }
-        if (req.getParameter("cidade") == null) {
+        if (req.getParameter("idCidade") == null) {
             validacaoServidor = true;
             req.setAttribute("erroCidade", true);
         } else {
-            idCidade = Integer.parseInt(req.getParameter("cidade"));
+            idCidade = Integer.parseInt(req.getParameter("idCidade"));
         }
         //--------------------------------------------------------------------------
         if (validacaoServidor) {

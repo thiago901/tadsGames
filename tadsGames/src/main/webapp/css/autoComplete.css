@@ -1,0 +1,22 @@
+
+
+#opcoesCidades{
+    position: absolute;
+    border-collapse: collapse;
+    background: rgba(255,255,255,.8);
+    
+    z-index: 1;
+    width: 50%;
+    
+}
+
+#opcoesCidades tr:hover{
+    background: #4CAF50;
+    
+}
+#inputCidade{
+    margin-bottom: 0;
+}
+#divStatus{
+    margin-top: 5px;
+}

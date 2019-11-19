@@ -11,8 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <title>Listar Usuários</title>
-        <link rel="stylesheet" type="text/css" href="css/tabelasListagem.css">
-        <link rel="icon" href="img/icon-controle-pequeno.png">
+        <link rel="stylesheet" type="text/css" href="../css/tabelasListagem.css">
+        <link rel="icon" href="../img/icon-controle-pequeno.png">
     </head>
     <body>
         <div class="container">

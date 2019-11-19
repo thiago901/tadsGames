@@ -9,8 +9,8 @@
 <html>
 <head>
     <title>Listar Empresa</title>	
-    <link rel="stylesheet" type="text/css" href="css/tabelasListagem.css">
-    <link rel="icon" href="img/icon-controle-pequeno.png">
+    <link rel="stylesheet" type="text/css" href="../css/tabelasListagem.css">
+    <link rel="icon" href="../img/icon-controle-pequeno.png">
 </head>
 	<body>
 		<div class="container">

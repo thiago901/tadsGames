@@ -13,13 +13,14 @@
     <head>
         <meta charset = "utf-8">
         <title>Cadastro de Empresa</title>
-        <link rel="stylesheet" type="text/css" href="css/formularios.css">
-        <link rel="icon" href="img/icon-controle-pequeno.png">
+        <link rel="stylesheet" type="text/css" href="../css/formularios.css">
+        <link rel="stylesheet" type="text/css" href="../css/autoComplete.css">
+        <link rel="icon" href="../img/icon-controle-pequeno.png">
     </head>
     <body>
         <div class="container">
             <h2 class="titulo">Cadastre a Empresa</h2>
-            <form action="\TadsGames\input?action=CadastrarEmpresa" method="post">
+            <form autocomplete="off" action="\TadsGames\tads\input?action=CadastrarEmpresa" method="post">
                 <div>
                     <label>Nome Empresa</label>
                     <input  type="text" name="nome">
@@ -68,39 +69,38 @@
                     </c:if>
                 </div>
                 <div id="divCidade" >
-                    <input id="inputCidade" hidde type="text" placeholder="Digite o nome da Cidade">
+                    <input id="inputCidade"  type="text" placeholder="Digite o nome da Cidade">
+                    <input id="idCidade" hidden="" type="text" name="idCidade">
                     <table hidden id="opcoesCidades">
                     </table>
 
                 </div>
-                        <%--<c:forEach var="cid" items="${cids}">
-                            <option value="${cid.getIdCidade()}"><c:out value="${cid.getNomeCidade()}"/></option>
-                        </c:forEach>--%>
-                    
-                    <c:if test="${erroCidade}">
-                        <div class="erro-input com-erro">
-                            Selecione uma cidade
-                        </div>
-                    </c:if>
-                    <div>
-                        <label> Status da Empresa:</label>
-                        <input type="radio" name="status" value="true" checked="">
-                        <label>Ativa</label>
-                        <input type="radio" name="status" value="false">
-                        <label>Inativa</label>
+               
 
+                <c:if test="${erroCidade}">
+                    <div class="erro-input com-erro">
+                        Selecione uma cidade
                     </div>
-                    <div class="teste">
-                        <button type="submit">Cadastrar</button>
-                        <button type="reset">Resetar dados</button>
-                        <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
-                        <!--<a href="#" role="button">Cancelar</a>-->
-                    </div>
+                </c:if>
+                <div class="divStatus">
+                    <label> Status da Empresa:</label>
+                    <input type="radio" name="status" value="true" checked="">
+                    <label>Ativa</label>
+                    <input type="radio" name="status" value="false">
+                    <label>Inativa</label>
+
                 </div>
+                <div class="botoes">
+                    <button type="submit">Cadastrar</button>
+                    <button type="reset">Resetar dados</button>
+                    <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
+                    <!--<a href="#" role="button">Cancelar</a>-->
+                </div>
+        
 
-            </form>
-        </div>
-        <script src="javaScript/filtrarCidades.js"></script>
+    </form>
+</div>
+<script src="../javaScript/filtrarCidades.js"></script>
 
-    </body>
+</body>
 </html>

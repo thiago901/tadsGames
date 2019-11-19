@@ -16,6 +16,7 @@ import br.com.unidospi.DAO.EstadoRegiaoDao;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.EmpresaLista;
 import br.com.unidospi.model.EstadoRegiao;
+import Reflexao.Classe;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -65,34 +66,42 @@ public class EmpresaController extends HttpServlet {
         String paramAction = req.getParameter("action");
         
         HttpSession sessao = req.getSession();
+       
+        
         
         
         if (sessao.getAttribute("usuario") != null) {
-            if(paramAction.equals("ListarEmpresas")){
-                ListarEmpresas action = new ListarEmpresas();
-                action.executa(req,resp);
-
-            }else if(paramAction.equals("FormEditarEmpresa")){
-                FormEditarEmpresa action = new FormEditarEmpresa();
-                action.executa(req,resp);
-
-
-            }else if(paramAction.equals("EditarEmpresa")){
-            EditarEmpresa action =new EditarEmpresa();
-                action.executa(req,resp);
-
-            }else if(paramAction.equals("FormCadastrarEmpresa")){
-            FormCadastrarEmpresa action =new FormCadastrarEmpresa();
-                action.executa(req,resp);
-            }
-            else if(paramAction.equals("CadastrarEmpresa")){
-                CadastrarEmpresa action = new CadastrarEmpresa();
-                action.executa(req,resp);
-            }        
-            else if(paramAction.equals("ListarCidades")){
-                ListarCidades action = new ListarCidades();
-                action.executa(req,resp);
-            }
+            
+            Classe r = new Classe();
+            r.criarClasse("br.com.unidospi.Acoes.",paramAction);
+            r.instanciarConstrutor(r.getClasse());
+            r.recuperarMetodo("executa");
+            r.invocaMetodo(req, resp);
+//            if(paramAction.equals("ListarEmpresas")){
+//                ListarEmpresas action = new ListarEmpresas();
+//                action.executa(req,resp);
+//
+//            }else if(paramAction.equals("FormEditarEmpresa")){
+//                FormEditarEmpresa action = new FormEditarEmpresa();
+//                action.executa(req,resp);
+//
+//
+//            }else if(paramAction.equals("EditarEmpresa")){
+//            EditarEmpresa action =new EditarEmpresa();
+//                action.executa(req,resp);
+//
+//            }else if(paramAction.equals("FormCadastrarEmpresa")){
+//            FormCadastrarEmpresa action =new FormCadastrarEmpresa();
+//                action.executa(req,resp);
+//            }
+//            else if(paramAction.equals("CadastrarEmpresa")){
+//                CadastrarEmpresa action = new CadastrarEmpresa();
+//                action.executa(req,resp);
+//            }        
+//            else if(paramAction.equals("ListarCidades")){
+//                ListarCidades action = new ListarCidades();
+//                action.executa(req,resp);
+//            }
         } else {
             resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
         }

@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Compra</title>
-        <link rel="stylesheet" href="css/formularios.css">
+        <link rel="stylesheet" href="../css/formularios.css">
     </head>
     <body>
         <div class="container">
