@@ -17,7 +17,12 @@ import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.EmpresaLista;
 import br.com.unidospi.model.EstadoRegiao;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -60,6 +65,7 @@ public class EmpresaController extends HttpServlet {
         String paramAction = req.getParameter("action");
         
         HttpSession sessao = req.getSession();
+        
         
         if (sessao.getAttribute("usuario") != null) {
             if(paramAction.equals("ListarEmpresas")){

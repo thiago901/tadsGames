@@ -12,6 +12,7 @@ import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,17 +31,13 @@ public class CadastrarCompra implements Executavel{
        int idProduto = Integer.parseInt(req.getParameter("produto"));
        int qtdCompra = Integer.parseInt(req.getParameter("qtdComprada"));
        float valorCompra = Float.parseFloat(req.getParameter("vlrUnitario"));
-       String StringDtCompra = req.getParameter("dtEntrada");
+       //String StringDtCompra = req.getParameter("dtEntrada");
        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+       
         
         
-        Date dataCriacao = null;
-        try {
-            dataCriacao = sdf.parse(StringDtCompra);
-        } catch (ParseException ex) {
-            ex.getMessage();
-        }
+        Date dataCriacao =new Date();
+       
         
         Compra compra = new Compra(idEmpresa, idProduto, qtdCompra, dataCriacao, valorCompra);
         boolean salvou=compra.salvar();

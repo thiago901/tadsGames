@@ -1,5 +1,37 @@
 
 var estado = document.querySelector("#selEstado");
+var tableCidades = document.querySelector("#opcoesCidades");
+var inputCidade = document.querySelector("#inputCidade");
+
+
+
+
+inputCidade.addEventListener("input", function(){
+    console.log(this.value);
+    var cidades = document.querySelectorAll(".cidade");
+    tableCidades.removeAttribute("hidden")
+    for (var i = 0; i < cidades.length; i++) {
+        var cidade = cidades[i];
+        var tdNome = cidade.querySelector(".nomeCidade");
+        var nome = tdNome.textContent;
+        var expressao = new RegExp(this.value, "i"); 
+        if (expressao.test(nome)) {
+            console.log(nome+" = "+this.value);
+            cidade.removeAttribute("hidden");
+        } else {
+            cidade.setAttribute("hidden","");
+        }
+    }
+});
+
+
+
+function ocultarTabela(tabela){
+    tabela.setAttribute("hidden","");
+}
+function mostrarTabela(tabela){
+    tabela.removeAttribute("hidden");
+}
 
 estado.addEventListener("input",function(){
     var valueItemSelecionado = estado.options[estado.selectedIndex].value;
@@ -17,7 +49,7 @@ function buscarCidades(idUf){
         
         cidades.forEach(function(cidade){
             adicionarNoSelect(cidade);
-            console.log(cidade);
+            
             
         });
         
@@ -42,6 +74,7 @@ function adicionarNoSelect(cidade){
 
 function montarTrBuscaCidade(cidade){
     var linha = document.createElement("tr");
+    linha.classList.add("cidade");
     
     var tdIdCidade = montarTdBusca(cidade.idCidade,"idCidade");
     var tdNomeCidade = montarTdBusca(cidade.nomeCidade,"nomeCidade");

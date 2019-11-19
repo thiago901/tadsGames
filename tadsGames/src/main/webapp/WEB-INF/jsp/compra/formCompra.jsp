@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Compra</title>
+        <link rel="stylesheet" href="css/formularios.css">
     </head>
     <body>
         <div class="container">
@@ -33,8 +34,7 @@
                 <input  id="qtdComprada" name="qtdComprada" required="">
                 <label for="vlrUnitario">Valor Unitario</label>
                 <input  id="vlrUnitario" name="vlrUnitario" required="">
-                <label for="dtEntrada">Data de Entrada</label>
-                <input type="date" id="dtEntrada" name="dtEntrada" required="">
+                
                 <button>Salvar</button>
                 
             </form>

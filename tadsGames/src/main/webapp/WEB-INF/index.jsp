@@ -88,20 +88,34 @@
                        </div>
                    </div>
                 </c:if> 
+                            <c:if test="${sessionScope.usuario.departamento == 'Vendas'}">
+                    <div class="card">
+                       <div class="face face1">
+                           <div class="content">
+
+                               <a href="inputVenda?action=FormVenda">Nova Venda</a>
+
+                           </div>
+                       </div>
+                       <div class="face face2">
+                           <h2>Venda</h2>
+                       </div>
+                   </div>
+                </c:if> 
                     
-                 <c:if test="${sessionScope.usuario.departamento == 'TI'}">
+                
                     <div class="card">
                         <div class="face face1">
                             <div class="content">
 
-                                <a href="inputUsuario?action=ListarFuncionariosUsuarioCadastravel">Novo Usuário</a>                        
+                                <a href="inputCompra?action=FormComprar">Nova Compra</a>                        
                             </div>
                         </div>
                         <div class="face face2">
-                            <h2>Usuários</h2>
+                            <h2>Compra</h2>
                         </div>
                     </div>
-                </c:if>    
+                
             </div>
     </body>
 </html>

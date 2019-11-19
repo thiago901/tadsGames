@@ -67,12 +67,9 @@
                         </div>
                     </c:if>
                 </div>
-                <div>
-                    
-                        
-                    <input hidde type="text" placeholder="Digite o nome da Cidade">
-                    <table  id="opcoesCidades">
-
+                <div id="divCidade" >
+                    <input id="inputCidade" hidde type="text" placeholder="Digite o nome da Cidade">
+                    <table hidden id="opcoesCidades">
                     </table>
 
                 </div>
