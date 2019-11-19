@@ -66,7 +66,7 @@
                         <div class="content">
 
                             <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=FormCadastrarFuncionario">Novo Funcionario</a>
-                            <a href="inputFuncionario?action=ListarFuncionarios">Manutenção de Funcionario</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=ListarFuncionarios">Manutenção de Funcionario</a>
                         </div>
                     </div>
                     <div class="face face2">
@@ -93,8 +93,8 @@
                     <div class="card">
                         <div class="face face1">
                             <div class="content">
-
-                                <a href="inputUsuario?action=ListarFuncionariosUsuarioCadastravel">Novo Usuário</a>                        
+                                <a href="inputUsuario?action=ListarFuncionariosUsuarioCadastravel">Novo Usuário</a>    
+                                <a href="inputUsuario?action=ListarUsuarios">Manutenção de Usuários</a>
                             </div>
                         </div>
                         <div class="face face2">

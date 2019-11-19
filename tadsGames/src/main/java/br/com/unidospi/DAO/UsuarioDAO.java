@@ -187,4 +187,41 @@ public class UsuarioDAO {
                 
         return usuarioFuncionario;
     }
+    
+    public static ArrayList<UsuarioFuncionario> obterUsuarios() {
+        ArrayList<UsuarioFuncionario> listaUsuarios = new ArrayList<>();
+        
+        String query = "SELECT u.idUsuario,\n"
+                     + " f.nomeFuncionario,\n "
+                     + " f.sobrenome,\n"
+                     + " u.nomeUsuario\n"
+                     + " FROM Usuario u\n"
+                     + " INNER JOIN Funcionario f\n"
+                     + " ON u.idFuncionario = f.idFuncionario";
+        
+        try {
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                UsuarioFuncionario usuarioFuncionario = new UsuarioFuncionario(
+                        rs.getInt("idUsuario"),
+                        rs.getString("nomeUsuario"),
+                        rs.getString("nomeFuncionario"),
+                        rs.getString("sobrenome")
+                );
+                
+                listaUsuarios.add(usuarioFuncionario);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listaUsuarios;
+    }
 }
