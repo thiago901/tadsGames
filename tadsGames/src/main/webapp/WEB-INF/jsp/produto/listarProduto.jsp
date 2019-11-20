@@ -44,7 +44,7 @@
                             <td class="ativo">
                                 <c:if test="${p.getAtivo()==true}">Sim</td></c:if>
                                 <c:if test="${p.getAtivo()==false}">Não</td></c:if>
-                            <td class="altera"><a href="inputProduto?action=FormEditarProduto&idProduto=${p.getIdProduto()}"><img src="img/alterar.png"></a></td>
+                            <td class="altera"><a href="inputProduto?action=FormEditarProduto&idProduto=${p.getIdProduto()}"><img src="../img/alterar.png"></a></td>
 
                         </tr>
                     </c:forEach>

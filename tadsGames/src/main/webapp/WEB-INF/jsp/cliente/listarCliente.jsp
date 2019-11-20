@@ -44,7 +44,7 @@
                                 <c:if test="${a.getAtivo()==false}">Não</td></c:if>
                         <td class="idEmpresa" ><c:out value="${a.getNomeEmpresa()}" /></td>
                         
-                        <td class="altera" value="${a.getIdCliente()}"><a href="inputCliente?action=FormEditarCliente&idCliente=${a.getIdCliente()}"><img src="img/alterar.png"></a></td>
+                        <td class="altera" value="${a.getIdCliente()}"><a href="inputCliente?action=FormEditarCliente&idCliente=${a.getIdCliente()}"><img src="../img/alterar.png"></a></td>
                     </tr>
                 </c:forEach>
                     

@@ -48,7 +48,7 @@
             <c:if test="${funcionario.status == true}">Sim</td></c:if>
             <c:if test="${funcionario.status == false}">Não</td></c:if>
          <td class="altera" value="${funcionario.id}">
-             <a href="inputFuncionario?action=FormEditarFuncionario&id=${funcionario.id}"><img src="img/alterar.png"></a>
+             <a href="inputFuncionario?action=FormEditarFuncionario&id=${funcionario.id}"><img src="../img/alterar.png"></a>
          </td>
        </tr>
      </c:forEach>

@@ -155,6 +155,6 @@
     <button type="submit">Enviar</button>        
   </form>
 </div>
-<script type="text/javascript" src="javaScript/filtraCargo.js"></script>
+<script type="text/javascript" src="../javaScript/filtraCargo.js"></script>
 </body>
 </html>

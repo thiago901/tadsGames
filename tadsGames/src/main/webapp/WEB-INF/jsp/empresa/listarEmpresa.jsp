@@ -49,7 +49,7 @@
                                              <c:if test="${e.getAtivo()==true}">Sim</td></c:if>
                                              <c:if test="${e.getAtivo()==false}">Não</td></c:if>
                                     <td class="matiz" hidden=""><c:out value="${e.getMatriz()}"/></td>
-                                    <td class="altera" value="${e.getIdEmpresa()}"><a href="input?action=FormEditarEmpresa&id=${e.getIdEmpresa()}"><img src="img/alterar.png"></a></td>
+                                    <td class="altera" value="${e.getIdEmpresa()}"><a href="input?action=FormEditarEmpresa&id=${e.getIdEmpresa()}"><img src="../img/alterar.png"></a></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

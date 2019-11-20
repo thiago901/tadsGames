@@ -33,7 +33,7 @@
                             <td class="nome"><c:out value="${u.nomeFuncionario}" /></td>
                             <td class="sobrenome"><c:out value="${u.sobrenome}" /></td>
                             <td class="departamento"><c:out value="${u.nomeUsuario}" /></td>   
-                            <td class="altera"><a href="inputUsuario?action=FormAlterarUsuario&idUsuario=${u.idUsuario}"><img src="img/alterar.png"></a></td>
+                            <td class="altera"><a href="inputUsuario?action=FormAlterarUsuario&idUsuario=${u.idUsuario}"><img src="../img/alterar.png"></a></td>
                         </tr>
                     </c:forEach>
 

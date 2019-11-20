@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <form action="\TadsGames\inputCompra?action=CadastrarCompra" method="post">
+            <form action="\TadsGames\tads\inputCompra?action=CadastrarCompra" method="post">
                 <select name="empresa" required="">
                     <option disabled="" selected="" >Escolha um empresa</option>
                     <c:forEach items="${empresas}" var="e">
@@ -30,11 +30,19 @@
                 </select>
                 
                 <label for="qtdComprada">Quantidade</label>
-                
-                <input  id="qtdComprada" name="qtdComprada" required="">
+                <input  id="qtdComprada" name="qtdComprada">
+                <c:if test="${qtdComprada}">
+                    <div class="erro-input com-erro">
+                        Defina uma quantidade
+                    </div>
+                </c:if>
                 <label for="vlrUnitario">Valor Unitario</label>
-                <input  id="vlrUnitario" name="vlrUnitario" required="">
-                
+                <input  id="vlrUnitario" name="vlrUnitario" >
+                <c:if test="${vlrUnitario}">
+                    <div class="erro-input com-erro">
+                        Defina um valor unitário
+                    </div>
+                </c:if>
                 <button>Salvar</button>
                 
             </form>

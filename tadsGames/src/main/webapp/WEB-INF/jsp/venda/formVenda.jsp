@@ -13,19 +13,19 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 <html>
     <head>
         <title>Vendas</title>
-        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../css/reset.css">
         
-        <link rel="stylesheet" type="text/css" href="css/telaVendas.css">
+        <link rel="stylesheet" type="text/css" href="../css/telaVendas.css">
         
         
     </head>
     <body>
 
-        <form action="\TadsGames\inputVenda?action=CadastrarVenda" method="post">
+        <form action="\TadsGames\tads\inputVenda?action=CadastrarVenda" method="post">
             <div id="divNomeCLiente" >  
-                <img src="img/cliente.png">
+                <img src="../img/cliente.png">
                         <h1 id="h1NomeCLiente"> Cliente: </h1>
-                        <img id="alterarCliente" src="img/alterar.png">
+                        <img id="alterarCliente" src="../img/alterar.png">
                 
             </div>
             <div id="divCliente" class="divCliente">
@@ -105,10 +105,10 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
            
         </form>
-        <script src="javaScript/autoCompleteProduto.js"></script>
-        <script src="javaScript/autoCompleteCliente.js"></script>
-        <script src="javaScript/addDetalheVenda.js"></script>
-        <script src="javaScript/alterarCliente.js"></script>
+        <script src="../javaScript/autoCompleteProduto.js"></script>
+        <script src="../javaScript/autoCompleteCliente.js"></script>
+        <script src="../javaScript/addDetalheVenda.js"></script>
+        <script src="../javaScript/alterarCliente.js"></script>
 
     </body>
 </html>

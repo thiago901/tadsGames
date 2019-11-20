@@ -31,7 +31,7 @@
                     </div>
                 </div>
                     
-                <c:if test="${sessionScope.usuario.departamento == 'Retaguarda'}">
+                <c:if test="${sessionScope.usuario.departamento == 'Retaguarda' || sessionScope.usuario.cargo == 'Diretor'}">
                     <div class="card">
                         <div class="face face1">
                             <div class="content">
@@ -46,7 +46,7 @@
                     </div>
                 </c:if>
                 
-                <c:if test="${sessionScope.usuario.departamento == 'Vendas'}">
+                <c:if test="${sessionScope.usuario.departamento == 'Vendas' || sessionScope.usuario.cargo == 'Diretor'}">
                     <div class="card">
                         <div class="face face1">
                             <div class="content">
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                     
-                <c:if test="${sessionScope.usuario.departamento == 'Vendas'}">
+                <c:if test="${sessionScope.usuario.departamento == 'Vendas' || sessionScope.usuario.cargo == 'Diretor'}">
                     <div class="card">
                        <div class="face face1">
                            <div class="content">
@@ -89,7 +89,7 @@
                    </div>
                 </c:if> 
                     
-                 <c:if test="${sessionScope.usuario.departamento == 'TI'}">
+                 <c:if test="${sessionScope.usuario.departamento == 'TI' || sessionScope.usuario.cargo == 'Diretor'}">
                     <div class="card">
                         <div class="face face1">
                             <div class="content">
@@ -101,7 +101,20 @@
                             <h2>Usuários</h2>
                         </div>
                     </div>
-                </c:if>    
+                </c:if>
+                        
+                <c:if test="${sessionScope.usuario.cargo == 'Diretor'}">
+                    <div class="card">
+                        <div class="face face1">
+                            <div class="content">
+                                <a href="${pageContext.request.contextPath}/tads/inputCompra?action=FormComprar">Nova Compra</a>
+                            </div>
+                        </div>
+                        <div class="face face2">
+                            <h2>Compra</h2>
+                        </div>
+                    </div>
+                </c:if>
             </div>
     </body>
 </html>

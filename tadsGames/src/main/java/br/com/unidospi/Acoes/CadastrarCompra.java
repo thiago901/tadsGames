@@ -10,9 +10,6 @@ import br.com.unidospi.model.Compra;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,11 +30,14 @@ public class CadastrarCompra implements Executavel{
        float valorCompra = Float.parseFloat(req.getParameter("vlrUnitario"));
        //String StringDtCompra = req.getParameter("dtEntrada");
        
-       
+       boolean validacaoServidor = false;
         
         
         Date dataCriacao =new Date();
        
+       
+        
+        
         
         Compra compra = new Compra(idEmpresa, idProduto, qtdCompra, dataCriacao, valorCompra);
         boolean salvou=compra.salvar();
