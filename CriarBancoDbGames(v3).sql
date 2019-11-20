@@ -65,6 +65,8 @@ CREATE TABLE Estoque (
     qtdEstoque INTEGER,
     valorVendaUnitario float,
     idProduto INTEGER,
+    idEmpresa INTEGER,
+    FOREIGN KEY (idEmpresa) REFERENCES Empresa (idEmpresa),
     FOREIGN KEY (idProduto) REFERENCES Produto (idProduto)    
 );
 
