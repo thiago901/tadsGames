@@ -119,7 +119,7 @@
                     <div class="card">
                         <div class="face face1">
                             <div class="content">
-                                <a href="${pageContext.request.contextPath}/tads/inputRelatorio?action=FormRelatorio">Relatorio</a>    
+                                <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=FormRelatorio">Relatorio</a>    
                                 
                             </div>
                         </div>
