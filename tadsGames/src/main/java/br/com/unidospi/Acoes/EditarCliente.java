@@ -37,7 +37,7 @@ public class EditarCliente implements Executavel {
         String idEmpresaStr = req.getParameter("tpEmpresa");
         String nome = req.getParameter("nome");
         String sobrenome = req.getParameter("sobrenome");
-        String cpf = req.getParameter("cpf");
+        //String cpf = req.getParameter("cpf");
         String dtNascm = req.getParameter("dtNasc");
         String sexo = req.getParameter("sexo");
         boolean ativo = Boolean.valueOf(req.getParameter("status"));
@@ -45,8 +45,8 @@ public class EditarCliente implements Executavel {
         Date dtNasc = null;
 
         boolean validacaoServidor = false;
-        boolean testeCPF;
-        testeCPF = isCPF(cpf);
+        //boolean testeCPF;
+        //testeCPF = isCPF(cpf);
 
         try {
             dtNasc = formatter.parse(dtNascm);
@@ -69,10 +69,10 @@ public class EditarCliente implements Executavel {
             req.setAttribute("validacaoSobrenome2", true);
         }
 
-        if (testeCPF == false) {
-            validacaoServidor = true;
-            req.setAttribute("validacaoCPF", true);
-        }
+//        if (testeCPF == false) {
+//            validacaoServidor = true;
+//            req.setAttribute("validacaoCPF", true);
+//        }
         if (dtNascm.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoDtNasc", true);
@@ -91,7 +91,7 @@ public class EditarCliente implements Executavel {
                             Integer.parseInt(req.getParameter("idCliente")));
             dispatcher.forward(req, resp);
         } else {
-            Cliente p = new Cliente(idCliente, idEmpresa, nome, sobrenome, sexo, cpf, dtNasc, ativo);
+            Cliente p = new Cliente(idCliente, idEmpresa, nome, sobrenome, sexo, dtNasc, ativo);
             retorno = ClienteDAO.alterar(p);
             if (retorno > 0) {
                 HttpSession sessao = req.getSession();

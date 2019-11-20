@@ -36,6 +36,15 @@ public class Empresa {
         this.status = status;
         this.matriz = matriz;
     }
+    public Empresa(int cod, String nome, Date dataCriacao, int estado, int cidade, boolean status, boolean matriz) {
+        this.cod = cod;
+        this.nome = nome;
+        this.dataCriacao = dataCriacao;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.status = status;
+        this.matriz = matriz;
+    }
 
     public Empresa(String nome, String cnpj, Date dataCriacao, int estado, int cidade, boolean status, boolean matriz) {
         this.nome = nome;

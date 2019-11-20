@@ -250,7 +250,6 @@ public class FuncionarioDAO {
                      + "nomeFuncionario = ?," 
                      + "sobrenome = ?,"
                      + "sexo = ?,"
-                     + "cpf = ?,"
                      + "dtNasc = ?,"
                      + "ativo = ?,"
                      + "salario = ?,"
@@ -268,13 +267,12 @@ public class FuncionarioDAO {
             ps.setString(2, funcionario.getNome());
             ps.setString(3, funcionario.getSobrenome());
             ps.setString(4, funcionario.getSexo());
-            ps.setString(5, funcionario.getCpf());
-            ps.setDate(6, dataSql);
-            ps.setBoolean(7, funcionario.isAtivo());
-            ps.setFloat(8, (float) funcionario.getSalario());
-            ps.setString(9, funcionario.getCargo());
-            ps.setString(10, funcionario.getDepartamento());
-            ps.setInt(11, funcionario.getId());
+            ps.setDate(5, dataSql);
+            ps.setBoolean(6, funcionario.isAtivo());
+            ps.setFloat(7, (float) funcionario.getSalario());
+            ps.setString(8, funcionario.getCargo());
+            ps.setString(9, funcionario.getDepartamento());
+            ps.setInt(10, funcionario.getId());
             
             
             int linhasAfetadas = ps.executeUpdate();

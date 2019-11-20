@@ -71,7 +71,6 @@ public class EmpresaDao {
             Class.forName(DRIVER);
             String sql = "UPDATE empresa "
                         + "SET nome=?, "
-                        + "cnpj=?, "
                         + "dataCriacao=?, "
                         + "idEstado=?, "
                         + "idCidade=?, "
@@ -86,13 +85,12 @@ public class EmpresaDao {
             java.sql.Date dataSql = new java.sql.Date(empr.getDataCriacao().getTime());
             
             ps.setString(1, empr.getNome());
-            ps.setString(2, empr.getCnpj());
-            ps.setDate(3, dataSql);
-            ps.setInt(4, empr.getEstado());
-            ps.setInt(5, empr.getCidade());
-            ps.setBoolean(6, empr.getMatriz());
-            ps.setBoolean(7, empr.getStatus());
-            ps.setInt(8, empr.getCod());
+            ps.setDate(2, dataSql);
+            ps.setInt(3, empr.getEstado());
+            ps.setInt(4, empr.getCidade());
+            ps.setBoolean(5, empr.getMatriz());
+            ps.setBoolean(6, empr.getStatus());
+            ps.setInt(7, empr.getCod());
             
             ps.execute();
             return true;

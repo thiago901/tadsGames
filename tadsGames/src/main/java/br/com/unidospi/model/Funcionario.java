@@ -23,6 +23,12 @@ public class Funcionario extends PessoaCadastravel {
         this.departamento = departamento;
         this.cargo = cargo;
     }
+    public Funcionario(double salario, String departamento, String cargo, int id, int idEmpresa, String nome, String sobrenome, String sexo, Date dataNasc, boolean ativo) {
+        super(id, idEmpresa, nome, sobrenome, sexo, dataNasc, ativo);        
+        this.salario = salario;
+        this.departamento = departamento;
+        this.cargo = cargo;
+    }
 
     public Funcionario(double salario, String departamento, String cargo, 
             int idEmpresa, String nome, 

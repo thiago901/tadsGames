@@ -18,7 +18,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
     <body>
 <div class="container">
     
-    <form autocomplete="off" id="form" action="inputVenda?action=CadastrarItemVenda" method="post">
+    <form autocomplete="off" id="form" action="${pageContext.request.contextPath}/tads/inputVenda?action=CadastrarItemVenda" method="post">
             
             <div id="divNomeCLiente" >  
                         
@@ -121,7 +121,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                                     <td class="qtd"><c:out value="${i.getQtdVenda()}"/></td>
                                     <td class="vlrUnitario"><c:out value="${i.getVlrUnitario()}"/></td>
                                     <td class="vlrTotal"><c:out value="${i.getVlrTotal()}"/></td>
-                                    <td><a href="inputVenda?action=ExcluirItemVenda&&itemVenda=${i.getItem()}"><img class="imgAltera" src="img/alterar.png"></a></td>
+                                    <td><a href="inputVenda?action=ExcluirItemVenda&&itemVenda=${i.getItem()}"><img class="imgAltera" src="../img/alterar.png"></a></td>
                                     <input name="idProdutos[]" value="${i.getIdProduto()}" hidden="">
                                     <input name="qtds[]" value="${i.getQtdVenda()}" hidden="">
                                     <input name="vlrUnitarios[]" value="${i.getVlrUnitario()}" hidden="">
@@ -145,9 +145,9 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
           
         </form>
          </div>
-        <script src="javaScript/autoCompleteProduto.js"></script>
-        <script src="javaScript/autoCompleteCliente.js"></script>
-        <script src="javaScript/alteraAcaoForm.js"></script>
+        <script src="../javaScript/autoCompleteProduto.js"></script>
+        <script src="../javaScript/autoCompleteCliente.js"></script>
+        <script src="../javaScript/alteraAcaoForm.js"></script>
         
         
 

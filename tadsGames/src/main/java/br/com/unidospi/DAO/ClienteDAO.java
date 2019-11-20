@@ -119,7 +119,7 @@ public class ClienteDAO {
             
             ResultSet rs = ps.executeQuery();
             while (rs.next())
-                if (rs.getString("nomeFuncionario") != null)
+                if (rs.getString("nome") != null)
                     return false;
             } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -227,7 +227,6 @@ public class ClienteDAO {
         String query = "update cliente\n" +
                         "SET nome=?,	\n" +
                         "	sobrenome=?,\n" +
-                        "	CPF=?,\n" +
                         "	dtNasc=?,\n" +
                         "	sexo=?,\n" +
                         "	idempresa=?,\n" +
@@ -244,12 +243,11 @@ public class ClienteDAO {
             
             ps.setString(1, cliente.getNome());
             ps.setString(2, cliente.getSobrenome());
-            ps.setString(3, cliente.getCpf());
-            ps.setDate(4, dtSQL);
-            ps.setString(5, cliente.getSexo());
-            ps.setInt(6,cliente.getIdEmpresa());       
-            ps.setBoolean(7, cliente.isAtivo());
-            ps.setInt(8,cliente.getId());
+            ps.setDate(3, dtSQL);
+            ps.setString(4, cliente.getSexo());
+            ps.setInt(5,cliente.getIdEmpresa());       
+            ps.setBoolean(6, cliente.isAtivo());
+            ps.setInt(7, cliente.getId());
             
             ps.executeUpdate();
             return 1;

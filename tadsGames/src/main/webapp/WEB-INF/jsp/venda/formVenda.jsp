@@ -21,7 +21,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
     </head>
     <body>
 
-        <form action="\TadsGames\tads\inputVenda?action=CadastrarVenda" method="post">
+        <form action="${pageContext.request.contextPath}/tads/inputVenda?action=CadastrarVenda" method="post">
             <div id="divNomeCLiente" >  
                 <img src="../img/cliente.png">
                         <h1 id="h1NomeCLiente"> Cliente: </h1>
@@ -70,7 +70,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                     </div>
                     
                     <div class="valorUnitario">
-                        <span>Valor Unit?rio</span>
+                        <span>Valor Unitario</span>
                         <span  id="SpanvlrUnitario">0,00</span>
                     </div>
 
@@ -96,7 +96,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                         </tbody>
                     </table>
 
-                    <button type="subimit" id="salvar" class="salvar" >Salvar</button>
+                    <button type="submit" id="salvar" class="salvar" >Salvar</button>
 
                 </div>
             </div>

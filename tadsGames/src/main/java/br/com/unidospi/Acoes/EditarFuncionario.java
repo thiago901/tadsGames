@@ -37,7 +37,7 @@ public class EditarFuncionario implements Executavel {
         int id = Integer.parseInt(req.getParameter("idFuncionario"));
         String nome = req.getParameter("nome");
         String sobrenome = req.getParameter("sobrenome");
-        String cpfStr = req.getParameter("cpf");
+        //String cpfStr = req.getParameter("cpf");
         String dtNascStr = req.getParameter("dtNasc");
         String salarioStr = req.getParameter("salario");
         boolean status = Boolean.parseBoolean(req.getParameter("status"));
@@ -60,8 +60,8 @@ public class EditarFuncionario implements Executavel {
         boolean validacaoServidor = false;
         boolean testeCPF;
         boolean cpfDisponivel;
-        testeCPF = isCPF(cpfStr);
-        cpfDisponivel = validaNovoCPF(cpfStr);
+//        testeCPF = isCPF(cpfStr);
+//        cpfDisponivel = validaNovoCPF(cpfStr);
 
         if (nome.length() > 50 || nome.equals("")) {
             validacaoServidor = true;
@@ -71,10 +71,10 @@ public class EditarFuncionario implements Executavel {
             validacaoServidor = true;
             req.setAttribute("validacaoSobrenome", true);
         }
-        if (testeCPF == false || cpfDisponivel==false) {
-            validacaoServidor = true;
-            req.setAttribute("validacaoCPF", true);
-        }
+//        if (testeCPF == false || cpfDisponivel==false) {
+//            validacaoServidor = true;
+//            req.setAttribute("validacaoCPF", true);
+//        }
         if (dtNascStr.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoDtNasc", true);
@@ -106,7 +106,7 @@ public class EditarFuncionario implements Executavel {
         } else {
             Funcionario funcionario = new Funcionario(
                     Double.parseDouble(salarioStr), deptoStr, cargo,
-                    id, empresaSelecionada, nome, sobrenome, sexo, cpfStr,
+                    id, empresaSelecionada, nome, sobrenome, sexo, 
                     dtNasc, status);
             FuncionarioDAO.alterar(funcionario);
             

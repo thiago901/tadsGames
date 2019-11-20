@@ -22,25 +22,35 @@
                         <option value="${e.getIdEmpresa()}"><c:out value="${e.getNome()}"/></option>
                     </c:forEach>
                 </select>
+                <c:if test="${validacaoEmpresa}">
+                    <div class="erro-input com-erro">
+                        Selecione a empresa que está comprando o produto
+                    </div>
+                </c:if>
                 <select name="produto" required="">
                     <option disabled="" selected="" >Escolha um produto</option>
                     <c:forEach items="${produtos}" var="p">
                         <option value="${p.getIdProduto()}"><c:out value="${p.getNome()}"/></option>
                     </c:forEach>
                 </select>
+                <c:if test="${validacaoProduto}">
+                    <div class="erro-input com-erro">
+                        Selecione o produto a ser comprado
+                    </div>
+                </c:if>
                 
                 <label for="qtdComprada">Quantidade</label>
                 <input  id="qtdComprada" name="qtdComprada">
                 <c:if test="${qtdComprada}">
                     <div class="erro-input com-erro">
-                        Defina uma quantidade
+                        Defina uma quantidade numérica válida
                     </div>
                 </c:if>
                 <label for="vlrUnitario">Valor Unitario</label>
                 <input  id="vlrUnitario" name="vlrUnitario" >
                 <c:if test="${vlrUnitario}">
                     <div class="erro-input com-erro">
-                        Defina um valor unitário
+                        Defina um valor unitário válido
                     </div>
                 </c:if>
                 <button>Salvar</button>

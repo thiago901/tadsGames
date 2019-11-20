@@ -92,7 +92,7 @@ public class CadastrarFuncionario implements Executavel {
         if (salarioStr.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoSalario", true);
-        } else if (salarioStr.matches("[0-9]*") == false) {
+        } else if (salarioStr.matches("[0-9.]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoSalario2", true);
         }

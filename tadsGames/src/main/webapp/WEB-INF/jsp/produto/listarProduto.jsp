@@ -55,6 +55,6 @@
                 <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
             </div>
         </div>
-        <script type="text/javascript" src="javaScript/filtraProduto.js"></script>
+        <script type="text/javascript" src="../javaScript/filtraProduto.js"></script>
     </body>
 </html> 

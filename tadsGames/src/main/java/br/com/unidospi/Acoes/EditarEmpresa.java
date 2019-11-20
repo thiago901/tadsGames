@@ -32,7 +32,7 @@ public class EditarEmpresa implements Executavel{
         
         int idEmpresa=Integer.parseInt(req.getParameter("idEmpresa"));
         String nome=req.getParameter("nome");
-        String cnpj=req.getParameter("cnpj");
+        //String cnpj=req.getParameter("cnpj");
         String strDataCriacao =req.getParameter("dataCriacao");
         int idEstado =Integer.parseInt(req.getParameter("estado"));
         int idCidade =Integer.parseInt(req.getParameter("cidade"));
@@ -50,15 +50,15 @@ public class EditarEmpresa implements Executavel{
         }
         //VALIDAÇÃO PROVISÓRIA------------------------------------------------
         boolean validacaoServidor = false;
-        boolean validarCNPJ = isCNPJ(cnpj);
-        if (nome.length() < 1 || nome.length() > 70) {
-            validacaoServidor = true;
-            req.setAttribute("erroNome", true);
-        }
-        if (cnpj.length() < 1 || cnpj.length() > 14 || validarCNPJ == false){
-            validacaoServidor = true;
-            req.setAttribute("erroCNPJ", true);
-        }
+//        boolean validarCNPJ = isCNPJ(cnpj);
+//        if (nome.length() < 1 || nome.length() > 70) {
+//            validacaoServidor = true;
+//            req.setAttribute("erroNome", true);
+//        }
+//        if (cnpj.length() < 1 || cnpj.length() > 14 || validarCNPJ == false){
+//            validacaoServidor = true;
+//            req.setAttribute("erroCNPJ", true);
+//        }
         if (dataCriacao == null){
             validacaoServidor = true;
             req.setAttribute("erroData", true);
@@ -85,7 +85,7 @@ public class EditarEmpresa implements Executavel{
         }
         else{
 
-        Empresa empr = new Empresa(idEmpresa, nome, cnpj, dataCriacao, idEstado, idCidade, status, matriz);
+        Empresa empr = new Empresa(idEmpresa, nome, dataCriacao, idEstado, idCidade, status, matriz);
         retorno=empr.alterar();
             if(retorno){
                 HttpSession sessao = req.getSession();

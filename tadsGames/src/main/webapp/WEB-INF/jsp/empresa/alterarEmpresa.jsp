@@ -28,15 +28,7 @@
                                             </div>
                                          </c:if> 
 				</div>
-				<div>
-                                        <label>CNPJ</label>
-					<input type="text" name="cnpj"  value="${e.getCnpj()}">
-					<c:if test="${erroCNPJ}">
-                                            <div class="erro-input com-erro">
-                                                Digite um CNPJ válido
-                                            </div>
-                                        </c:if>
-				</div>
+				
 				<div>
                                         <label>Data de Criação</label>
 					<input type="date" name="dataCriacao"  value="${e.getDataCriacao()}">

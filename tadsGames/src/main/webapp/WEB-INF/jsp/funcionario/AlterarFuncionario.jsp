@@ -37,13 +37,7 @@
             É permitido somente caracteres alfabeticos sem acentuação
         </div>
     </c:if>
-    <label for="cpf">CPF</label>
-    <input type="text" id="cpf" name="cpf" value="${funcionario.cpf}">
-    <c:if test="${validacaoCPF}">
-        <div class="erro-input com-erro">
-            O cpf digitado é inválido
-        </div>
-    </c:if>
+    
     <label for="dtNasc">Data de Nascimento</label>
     <input type="date" id="dtNasc" name="dtNasc" value="${funcionario.dtNasc}">    
     <c:if test="${validacaoDtNasc}">

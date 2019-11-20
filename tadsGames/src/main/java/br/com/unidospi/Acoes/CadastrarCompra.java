@@ -11,6 +11,7 @@ import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,10 +25,10 @@ public class CadastrarCompra implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-       int idEmpresa = Integer.parseInt(req.getParameter("empresa"));
-       int idProduto = Integer.parseInt(req.getParameter("produto"));
-       int qtdCompra = Integer.parseInt(req.getParameter("qtdComprada"));
-       float valorCompra = Float.parseFloat(req.getParameter("vlrUnitario"));
+       String idEmpresaStr = req.getParameter("empresa");
+       String idProdutoStr = req.getParameter("produto");
+       String qtdCompraStr = req.getParameter("qtdComprada");
+       String valorCompraStr = req.getParameter("vlrUnitario");
        //String StringDtCompra = req.getParameter("dtEntrada");
        
        boolean validacaoServidor = false;
@@ -35,26 +36,59 @@ public class CadastrarCompra implements Executavel{
         
         Date dataCriacao =new Date();
        
-       
         
+        if (idEmpresaStr == null) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoEmpresa", true);
+        }
+        if (idProdutoStr == null) {
+            validacaoServidor = true;
+            req.setAttribute("validacaoProduto", true);
+        }
         
-        
-        Compra compra = new Compra(idEmpresa, idProduto, qtdCompra, dataCriacao, valorCompra);
-        boolean salvou=compra.salvar();
-        
-        //verifica se a compra foi salva no banco
-        if(salvou){
-            //funcao estocar ira acrescentar produto ou add quantidade
+        if (qtdCompraStr.equals("")) {
+            validacaoServidor = true;
+            req.setAttribute("qtdComprada", true);
+        } else if (qtdCompraStr.matches("[0-9]*") == false) {
+            validacaoServidor = true;
+            req.setAttribute("qtdComprada", true);
+        }
+        if (valorCompraStr.equals("")) {
+            validacaoServidor = true;
+            req.setAttribute("vlrUnitario", true);
+        } else if (valorCompraStr.matches("[0-9.]*") == false) {
+            validacaoServidor = true;
+            req.setAttribute("vlrUnitario", true);
+        }
+        if (validacaoServidor){
+            RequestDispatcher dispatcher
+                    = req.getRequestDispatcher("inputCompra?action=FormComprar");
+            dispatcher.forward(req, resp);
+        }
+        else {
+            int qtdCompra = Integer.parseInt(qtdCompraStr);
+            float valorCompra = Float.parseFloat(valorCompraStr);
+            int idEmpresa = Integer.parseInt(idEmpresaStr);
+            int idProduto = Integer.parseInt(idProdutoStr);
             
-            EstoqueController.estocar(compra);
             
-            HttpSession sessao = req.getSession();
-            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
-            String acao = "Compra";
-            GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario, acao, compra);
-            
-            resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+            Compra compra = new Compra(idEmpresa, idProduto, qtdCompra, dataCriacao, valorCompra);
+            boolean salvou=compra.salvar();
+        
+            //verifica se a compra foi salva no banco
+            if(salvou){
+                //funcao estocar ira acrescentar produto ou add quantidade
+
+                EstoqueController.estocar(compra);
+
+                HttpSession sessao = req.getSession();
+                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+                String acao = "Compra";
+                GeraLog registro = new GeraLog();
+                registro.escreverLog(usuario, acao, compra);
+
+                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+            }
         }
        return "";
     }
