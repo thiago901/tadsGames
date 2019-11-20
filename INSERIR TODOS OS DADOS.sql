@@ -5629,10 +5629,10 @@ INSERT INTO Funcionario (idEmpresa, nomeFuncionario, sobrenome, sexo, cpf, dtNas
 (3, 'Alessandra', 'Santana', 'Feminino', '70943793849', '1980-07-20', true, '6000', 'Gerente Regional', 'TI'),
 (2, 'Jandira', 'Santos', 'Feminino', '19437938491', '1980-07-22', true, '15500', 'Diretor', 'TI'), 
 (2, 'Bebezinha', 'Ya', 'Feminino', '95847382910', '1988-07-22', true, '15500', 'Diretor', 'TI'),
-(8, 1, 'Venda Acre', 'Venda Acre', 'Masculino', 54222125091, 2019-11-17, true, 3600, 'Vendedor regional', Vendas),
-(9, 4, 'Venda GO', 'Venda', 'Masculino', 22723111059, 2019-11-05, true, 3600, 'Vendedor regional','Vendas'),
-(10, 3,' Venda RJ', 'Venda, Masculino', 04904147022, 2019-11-06, true, 3600, 'Vendedor regional', 'Vendas'),
-(11, 2, 'Venda SP', 'Venda, Masculino', 92579846050, 2019-10-29, true, 3600, 'Vendedor regional', 'Vendas');
+(1, 'Venda Acre', 'Venda Acre', 'Masculino', 54222125091, '2019-11-17', true, '3600', 'Vendedor regional', 'Vendas'),
+(4, 'Venda GO', 'Venda', 'Masculino', '22723111059', '2019-11-05', true, '3600', 'Vendedor regional','Vendas'),
+(3,' Venda RJ', 'Venda', 'Masculino', '04904147022', '2019-11-06', true, '3600', 'Vendedor regional', 'Vendas'),
+(2, 'Venda SP', 'Venda', 'Masculino', '92579846050', '2019-10-29', true, '3600', 'Vendedor regional', 'Vendas');
 
 /*INSERIR USUARIOS*/
 INSERT INTO Usuario (nomeUsuario, senha, dataCadastro, ativo, idFuncionario) 
@@ -5640,11 +5640,11 @@ VALUES ('mazinhacardoso', '948571', curdate(), TRUE, 1),
 ('mmarinho', '395678', curdate(), TRUE, 3),
 ('araujovitor', '908070', curdate(), TRUE, 2),
 ('valeriaAlves', '905941', curdate(), FALSE, 4),
-('bebezinha', '12345', curdate(), TRUE, 7),
-(6, 'Venda GO', 12345,  curdate(), TRUE, 9),
-(7, 'Venda Acre', 12345,  curdate(), TRUE, 8),
-(8, 'Venda RJ', 12345,  curdate(), TRUE, 10),
-(9, 'Venda SP', 12345,  curdate(), TRUE, 11);
+('dono', '12345', curdate(), TRUE, 7),
+('Venda GO', 12345,  curdate(), TRUE, 9),
+('Venda Acre', 12345,  curdate(), TRUE, 8),
+('Venda RJ', 12345,  curdate(), TRUE, 10),
+('Venda SP', 12345,  curdate(), TRUE, 11);
 
 
 /*INSERIR PRODUTOS*/
@@ -5656,15 +5656,15 @@ insert into produto (nome, descricao, tipo, ativo) values
 ('Fifa','Game de Esporte','Jogo',1),
 ('PS4','Aparelho de Video Game','Console',1);
 
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
 (10,5,1,1);
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
 (10,80,2,2);
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
 (10,55,3,3);
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
 (10,50,4,4);
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto) values
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
 (0,100,5,1);
 
 insert into venda (idFuncionario,idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
