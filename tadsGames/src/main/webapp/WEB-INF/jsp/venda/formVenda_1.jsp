@@ -145,9 +145,9 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
           
         </form>
          </div>
-        <script src="javaScript/autoCompleteProduto.js"></script>
-        <script src="javaScript/autoCompleteCliente.js"></script>
-        <script src="javaScript/alteraAcaoForm.js"></script>
+        <script src="../javaScript/autoCompleteProduto.js"></script>
+        <script src="../javaScript/autoCompleteCliente.js"></script>
+        <script src="../javaScript/alteraAcaoForm.js"></script>
         
         
 

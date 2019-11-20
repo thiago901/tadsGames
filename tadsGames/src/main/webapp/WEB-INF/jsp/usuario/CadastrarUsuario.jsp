@@ -17,7 +17,7 @@
     <body>
         <div class="container">
             <h2 class="titulo">Cadastro de Usuário</h2>
-            <form method="post" action="${pageContext.request.contextPath}/inputUsuario?action=CadastrarUsuario">
+            <form method="post" action="${pageContext.request.contextPath}/tads/inputUsuario?action=CadastrarUsuario">
                 <input type="hidden" name="idFuncionario" value="${f.idFuncionario}">
                 <label for="nome">Login</label>                
                 <input type="text" maxlength="50" id="nome" name="login" placeholder="Digite um nome de usuario..." >                

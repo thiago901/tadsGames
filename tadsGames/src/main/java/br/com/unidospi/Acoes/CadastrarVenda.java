@@ -64,7 +64,7 @@ public class CadastrarVenda implements Executavel{
             registro.escreverLog(usuario, acao, venda);
         }
         
-        resp.sendRedirect(req.getContextPath() + "/inputVenda?action=FormVenda");
+        resp.sendRedirect(req.getContextPath() + "/tads/inputVenda?action=FormVenda");
         
         return "";
     }

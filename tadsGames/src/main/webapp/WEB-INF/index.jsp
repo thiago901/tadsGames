@@ -115,6 +115,19 @@
                         </div>
                     </div>
                 </c:if>
+               <c:if test="${sessionScope.usuario.departamento == 'TI' || sessionScope.usuario.cargo == 'Diretor'}">
+                    <div class="card">
+                        <div class="face face1">
+                            <div class="content">
+                                <a href="${pageContext.request.contextPath}/tads/inputRelatorio?action=FormRelatorio">Relatorio</a>    
+                                
+                            </div>
+                        </div>
+                        <div class="face face2">
+                            <h2>Relatorio</h2>
+                        </div>
+                    </div>
+                </c:if>
             </div>
     </body>
 </html>

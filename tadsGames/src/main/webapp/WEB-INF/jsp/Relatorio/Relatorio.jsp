@@ -8,136 +8,143 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>Relatorio</title>
-	<link rel="stylesheet" type="text/css" href="css/relatorio.css">
-	<style>
-
-
-		.box{
-		display: inline-block;
-	}
-
-		#container {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-right: -50%;
-			transform: translate(-50%,-50%);
-	}
-
-	body{
-
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
-		background: #00d0ff;
-		background-image: url("../img/controle.jpg");
-		background-size: cover;
-		
-		background-repeat: no-repeat;
-		background-position: center;
-
-}
-	
-			
-		</style>
+	<link rel="stylesheet" type="text/css" href="../css/relatorio.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
 </head>
-
 <body>
-	<f:setLocale value="pt-BR" />
-
-	<div id="container">
-
-		<div id="box1" class="box">
-			<table id="faturaDiaria">
-				<thead>
-					<th>DATA_VENDA</th>
-					<th>EMPRESA</th>
-					<th>TOTAL</th>
-
-				</thead>
-				<tbody>
-					<c:forEach items="${faturaDia}" var="v">
-						<tr>
-
-							<td>
-								<f:formatDate pattern="dd-MM-yyyy" value="${v.getDATA_VENDA()}" />
-							</td>
-							<td>
-								<c:out value="${v.getEMPRESA()}" />
-							</td>
-							<td>
-								<f:formatNumber value="${v.getTOTAL()}" type="currency" />
-							</td>
-
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+	<div class="fundo"></div>
+	
+	<div class="cards">
+		
+		<div  class="card">
+			<h3 class="title1">Faturamento Total do Dia</h3>
+			<h3 class="value">R$ 3.000,00</h3>
 		</div>
-
-
-		<div id="box2" class="box">
-			<table id="top10">
-				<thead>
-					<th>DATA_VENDA</th>
-					<th>PRODUTO</th>
-					<th>EMPRESA</th>
-					<th>QUANTIDADE</th>
-
-				</thead>
-				<tbody>
-					<c:forEach items="${top10}" var="t">
-						<tr>
-
-							<td>
-								<f:formatDate pattern="dd-MM-yyyy" value="${t.getDATA_VENDA()}" />
-							</td>
-							<td>
-								<c:out value="${t.getPRODUTO()}" />
-							</td>
-							<td>
-								<c:out value="${t.getEMPRESA()}" />
-							</td>
-							<td>
-								<c:out value="${t.getQUANTIDADE()}" />
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+		<div  class="card">
+			<h3 class="title1">Produto + Vendido do Dia</h3>
+			<h3 class="title2">Jogo God Of War</h3>
+			<h3 class="value">93 Unidades</h3>
 		</div>
-
-		<div id="box3" class="box">
-			<table id="totalEmpresa">
-				<thead>
-					<th>EMPRESA</th>
-					<th>TOTAL_FATURADO</th>
-					<th>PORCENTAGEM</th>
-
-				</thead>
-				<tbody>
-					<c:forEach items="${totalEmpresa}" var="t">
-						<tr>
-							<td>
-								<c:out value="${t.getEMPRESA()}" />
-							</td>
-							<td>
-								<f:formatNumber value="${t.getTOTAL_FATURADO()}" type="currency" />
-							</td>
-							<td>
-								<f:formatNumber type="number" pattern="#.##%" value="${t.getPORCENTAGEM()}" />
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+		<div  class="card card5">
+			<h3 class="title1">Produto + Vendido do Dia</h3>
+			<h3 class="title2">Jogo God Of War</h3>
+			<h3 class="value">93 Unidades</h3>
 		</div>
+		<div class="card card6">
+			<h3 class="title1">Produto + Vendido do Dia</h3>
+			<h3 class="title2">Jogo God Of War</h3>
+			<h3 class="value">93 Unidades</h3>
+		</div>
+		<div  class="card cardRelatorio">
+		<table class="relatorio">
+			<thead>
+				<tr class="titleTable">
+					<td>Empresa</td>
+					<td>Valor Faturado (A)*</td>
+					<td>Valor Faturado (B)**</td>
+					<td>Variação</td>
+					<td>Participação**</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="contentTable">
+					<td class="empresa">Tads GO</td>
+					<td class="valor">R$ 7.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">17%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads SP</td>
+					<td class="valor">R$ 27.500,00</td>
+					<td class="valor">R$ 89.500,00</td>
+					<td class="percentual">194%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads RJ</td>
+					<td class="valor">R$ 2.500,00</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="percentual">-7%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				<tr class="contentTable">
+					<td class="empresa">Tads MG</td>
+					<td class="valor">R$ 1.500,00</td>
+					<td class="valor">R$ 8.500,00</td>
+					<td class="percentual">47%</td>
+					<td class="percentual">17%</td>
+				</tr>
+				
+			</tbody>
+			
+		</table>
+		<p>* (A) Referencia mês anterior</p>
+		<p>**(B) Referencia mês corrente</p>
+		</div>
+	</div>	
 
 	</div>
+
+
 </body>
 
 </html>

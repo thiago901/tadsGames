@@ -63,7 +63,7 @@ public class Autorizacao implements Filter {
                 && (usuario.getCargo().equals("Diretor")|| usuario.getDepartamento().equals("Retaguarda")) ) {
             return true;
         //////////ACESSO VENDA///////////////
-        }else if ((urlAcessada.endsWith("/tads/inputVenda")||urlAcessada.endsWith("/tads/inputCliente"))
+        }else if ((urlAcessada.endsWith("/tads/inputVenda")||urlAcessada.endsWith("/tads/inputCliente")||urlAcessada.endsWith("/tads/inputProduto"))
                 && (usuario.getCargo().equals("Diretor")||usuario.getDepartamento().equals("Vendas"))) {
             return true;
         /////////ACESSO TI///////////////

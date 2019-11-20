@@ -9,14 +9,11 @@ import br.com.unidospi.Acoes.CadastrarItemVenda;
 import br.com.unidospi.Acoes.CadastrarVenda;
 import br.com.unidospi.Acoes.ExcluirItemVenda;
 import br.com.unidospi.Acoes.FormVenda;
-import br.com.unidospi.model.VendaDetalhe;
 
 
 
 //import com.google.gson.Gson;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,7 +53,7 @@ public class VendaController extends HttpServlet {
                 action.executa(req, resp);
             } 
         } else {
-            resp.sendRedirect(req.getContextPath() + "/inputLogin?action=FormLogin");
+            resp.sendRedirect(req.getContextPath() + "/tads/inputLogin?action=FormLogin");
         } 
     }    
 }

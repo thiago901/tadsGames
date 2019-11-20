@@ -43,7 +43,7 @@ public class EstoqueController {
         List<VendaDetalhe> vd = c.getVendaDetalhe();
         for(VendaDetalhe v : vd){
             
-                int qtdEstoqueAtual = estoqueAtual(v.getIdProduto(),c.getIdEmpresa());
+            int qtdEstoqueAtual = estoqueAtual(v.getIdProduto(),c.getIdEmpresa());
             if(qtdEstoqueAtual>=v.getQtdVenda()){
                 int idProduto = v.getIdProduto();
                 int idEmpresa = c.getIdEmpresa();
