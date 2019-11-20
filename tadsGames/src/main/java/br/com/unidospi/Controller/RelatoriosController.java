@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.Acoes.FormRelatorio;
 import br.com.unidospi.Acoes.Relatorio;
 import br.com.unidospi.DAO.RelatorioDao;
 import br.com.unidospi.model.RelatorioFaturaDia;
@@ -41,6 +42,10 @@ public class RelatoriosController extends HttpServlet {
         String paramAction = req.getParameter("action");
         if (paramAction.equals("Relatorio")) {
             Relatorio action = new Relatorio();
+            action.executa(req, resp);
+        }
+        else if (paramAction.equals("FormRelatorio")) {
+            FormRelatorio action = new FormRelatorio();
             action.executa(req, resp);
         }
 

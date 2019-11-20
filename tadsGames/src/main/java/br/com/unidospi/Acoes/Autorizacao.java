@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 
 @WebFilter(filterName = "Autorizacao",
         servletNames = { "HomeServlet", "FuncionarioController",
-                        "ClienteController", "ProdutoController"},
+                        "ClienteController", "ProdutoController", "RelatoriosController"},
         urlPatterns = { "/tads/*" })
 public class Autorizacao implements Filter {
 
