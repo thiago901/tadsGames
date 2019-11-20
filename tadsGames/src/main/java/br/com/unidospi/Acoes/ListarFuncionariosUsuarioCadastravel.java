@@ -27,7 +27,7 @@ public class ListarFuncionariosUsuarioCadastravel implements Executavel {
         ArrayList<UsuarioFuncionario> listaUsuarios = UsuarioDAO.obterFuncionariosSemUsuario();
         req.setAttribute("lista", listaUsuarios);
         RequestDispatcher dispatcher = 
-                req.getRequestDispatcher("WEB-INF/jsp/usuario/ListarFuncionariosUsuarioCadastravel.jsp");
+                req.getRequestDispatcher("/WEB-INF/jsp/usuario/ListarFuncionariosUsuarioCadastravel.jsp");
         dispatcher.forward(req, resp);
         return "";
     }

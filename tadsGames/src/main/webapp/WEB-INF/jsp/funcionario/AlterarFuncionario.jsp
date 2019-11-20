@@ -14,7 +14,7 @@
 <body>
 
 <div class="container">
-  <form method="post" action="${pageContext.request.contextPath}/inputFuncionario?action=EditarFuncionario">
+  <form method="post" action="${pageContext.request.contextPath}/tads/inputFuncionario?action=EditarFuncionario">
       <h1>Cadastro de Funcionários</h1> 
       <input type="hidden" name="idFuncionario" value="${funcionario.id}">
     <label for="nome">Nome</label>

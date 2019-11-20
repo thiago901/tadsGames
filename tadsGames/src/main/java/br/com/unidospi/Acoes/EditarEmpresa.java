@@ -79,7 +79,7 @@ public class EditarEmpresa implements Executavel{
         if (validacaoServidor) {
 
             RequestDispatcher dispatcher
-                    = req.getRequestDispatcher("input?action=FormEditarEmpresa&id=" + 
+                    = req.getRequestDispatcher("/tads/input?action=FormEditarEmpresa&id=" + 
                             Integer.parseInt(req.getParameter("idEmpresa")));
             dispatcher.forward(req, resp);
         }

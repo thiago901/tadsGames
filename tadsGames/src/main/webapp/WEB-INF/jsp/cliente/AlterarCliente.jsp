@@ -19,7 +19,7 @@
 
         <div class="container">
             <h2 class="titulo">Alterar de Clientes</h2>
-            <form method="post" action="${pageContext.request.contextPath}/inputCliente?action=EditarCliente" novalidate >
+            <form method="post" action="${pageContext.request.contextPath}/tads/inputCliente?action=EditarCliente" novalidate >
 
                 <label for="nome">Nome</label>
                 <input type="text" id="idCliente" hidden="" name="idCliente" value="${c.getIdCliente()}">

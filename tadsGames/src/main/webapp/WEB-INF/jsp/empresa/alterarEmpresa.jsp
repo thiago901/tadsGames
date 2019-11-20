@@ -17,7 +17,7 @@
 	<body>
 		<div class="container">
                     <h2 class="titulo">Alterar Dados da Empresa</h2>
-			<form action="\TadsGames\input?action=EditarEmpresa" method="post">
+			<form action="\TadsGames\tads\input?action=EditarEmpresa" method="post">
 				<div>
                                     <input type="hidden" name="idEmpresa" value="${e.getIdEmpresa()}">
                                         <label>Nome Empresa</label>

@@ -26,7 +26,7 @@ public class ListarUsuarios implements Executavel {
         
         ArrayList<UsuarioFuncionario> listaUsuarios = UsuarioDAO.obterUsuarios();
         req.setAttribute("usuarios", listaUsuarios);
-        RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/jsp/usuario/listarUsuarios.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/usuario/listarUsuarios.jsp");
         rd.forward(req, resp);
         return "";
     }
