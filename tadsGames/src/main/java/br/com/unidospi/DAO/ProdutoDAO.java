@@ -131,14 +131,14 @@ public class ProdutoDAO {
         return lista;
     }
    
-    public static ArrayList<ProdutoLista> listarProduto(String nomePesquisado) {
+    public static ArrayList<ProdutoLista> listarProduto(String nomePesquisado,int idEmpresa) {
         ArrayList<ProdutoLista> lista = new ArrayList<>();
         
         
         String query = "select p.idProduto,p.nome, e.qtdEstoque, e.valorVendaUnitario from produto p\n" +
                     "inner join Estoque e on\n" +
                     "p.idProduto = e.idProduto"
-                + " where p.nome LIKE ? or p.idProduto LIKE ?;";
+                + " where (p.nome LIKE ? or p.idProduto LIKE ?) and e.idEmpresa=?;";
         
         try {                        
             Class.forName(DRIVER);
@@ -146,6 +146,7 @@ public class ProdutoDAO {
             PreparedStatement ps = conexao.prepareStatement(query);
             ps.setString(1, "%"+ nomePesquisado +"%");
             ps.setString(2, "%"+ nomePesquisado +"%");
+            ps.setInt(3,idEmpresa);
             ResultSet rs = ps.executeQuery();
             
             

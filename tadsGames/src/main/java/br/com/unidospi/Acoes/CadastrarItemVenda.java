@@ -53,7 +53,7 @@ public class CadastrarItemVenda implements Executavel{
             vd.setNomeProduto(ProdutoController.listarProduto(idProduto).getNome());
             itensVenda.add(vd);
 
-        resp.sendRedirect(req.getContextPath() + "/inputVenda?action=FormVenda");
+        resp.sendRedirect(req.getContextPath() + "/tads/inputVenda?action=FormVenda");
         return "";
     }
     

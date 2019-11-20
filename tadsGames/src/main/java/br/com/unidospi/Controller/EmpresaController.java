@@ -16,7 +16,7 @@ import br.com.unidospi.DAO.EstadoRegiaoDao;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.EmpresaLista;
 import br.com.unidospi.model.EstadoRegiao;
-import Reflexao.Classe;
+import br.com.unidospi.Reflexao.Classe;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

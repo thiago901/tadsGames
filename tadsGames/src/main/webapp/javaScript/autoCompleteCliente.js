@@ -58,7 +58,7 @@ cliente.addEventListener("input", function (){
 
 function buscarClientes(nomeProcurado){
     var xhl  = new XMLHttpRequest();
-    xhl.open("GET","/TadsGames/inputCliente?action=ListarCliente2&&nomeCliente="+nomeProcurado);
+    xhl.open("GET","/TadsGames/tads/inputCliente?action=ListarCliente2&&nomeCliente="+nomeProcurado);
     xhl.addEventListener("load",function(){
         var text =xhl.responseText;
         var clientes = JSON.parse(text);
