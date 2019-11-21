@@ -231,11 +231,12 @@ public class RelatorioDao {
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
-                Date dataVenda= rs.getDate("DATA_VENDA");
+                
                 String produto= rs.getString("PRODUTO");
                 String empresa= rs.getString("EMPRESA");
                 int qtd= rs.getInt("QUANTIDADE");
-                le.add(new RelatorioTop10(dataVenda, produto, empresa, qtd));
+                float valor= rs.getFloat("Valor");
+                le.add(new RelatorioTop10(produto, empresa, qtd,valor));
             }
             return le;
         }catch(SQLException | ClassNotFoundException e ){

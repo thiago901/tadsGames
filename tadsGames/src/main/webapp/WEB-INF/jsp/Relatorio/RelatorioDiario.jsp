@@ -10,7 +10,7 @@
 <html>
 <head>
 	<title>Relatorio</title>
-	<link rel="stylesheet" type="text/css" href="../css/relatorio.css">
+	<link rel="stylesheet" type="text/css" href="../css/relatorioDiario.css">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
 </head>
 <body>
@@ -38,7 +38,9 @@
 			<h3 class="value">93 Unidades</h3>
 		</div>
 		<div  class="card cardRelatorio">
+                    <h3>Faturamento Diario</h3>
 		<table class="relatorio">
+                    
 			<thead>
 				<tr class="titleTable">
 					<td>Empresa</td>
@@ -52,6 +54,32 @@
                                     <td class="empresa"><c:out value="${r.getNome()}"/> </td>
                                     <td class="valor"><f:formatNumber value="${r.getValorFaturaB()}" type="currency" /></td>
                                     <td class="percentual"><f:formatNumber type="number" pattern="#.##%" value="${r.getValorFaturaB()/totalDiario}" /></td>
+				</tr>
+                            </c:forEach>
+				
+			</tbody>
+			
+		</table>
+		</div>
+                <div  class="card cardRelatorio1">
+                    <h3>Top 10 Produtos Vendidos Hoje</h3>
+		<table class="relatorio">
+			<thead>
+				<tr class="titleTable">
+					<td>Empresa</td>
+					<td>Produto</td>
+					<td>Quantidade</td>
+                                        <td>Valor</td>
+				</tr>
+			</thead>
+			<tbody>
+                            <c:forEach items="${top10}" var="r">
+				<tr class="contentTable">
+                                    <td class="empresa"><c:out value="${r.getEMPRESA()}"/> </td>
+                                    <td class="empresa"><c:out value="${r.getPRODUTO()}"/> </td>
+                                    <td class="valor"><c:out value="${r.getQUANTIDADE()}"/> </td>
+                                    <td class="valor"><f:formatNumber value="${r.getVALOR()}" type="currency" /></td>
+                                    
 				</tr>
                             </c:forEach>
 				
