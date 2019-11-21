@@ -113,3 +113,51 @@ CREATE VIEW Rel_Top10_vendas_dia AS
    INNER JOIN empresa c
 		on c.idempresa = a.idempresa
         group by c.nome;
+
+
+CREATE VIEW TotalFaturadoMes as
+SELECT sum(a.valorTotal) AS TOTAL
+    FROM venda a
+	where month(a.dataVenda) = month(curdate()) AND
+			YEAR(a.dataVenda) = YEAR(curdate());
+
+
+create view  Relatorio as
+SELECT
+    r0.idEmpresa, 
+    r0.nome, 
+    r1.TOTAL AS "Valor Faturado (A)",
+    r2.TOTAL AS "Valor Faturado (B)",
+    (r2.TOTAL-r1.TOTAL)/r1.TOTAL as "Variação"
+ 
+FROM
+    (SELECT DISTINCT 
+        a.idEmpresa,
+        c.nome
+     FROM venda a
+     INNER JOIN empresa c on 
+		c.idempresa = a.idEmpresa) r0
+    left JOIN (SELECT 
+				a.idEmpresa,
+				concat(year(a.datavenda),month(a.datavenda)) AS AnoMes,
+				
+				sum(b.vlrTotalItem) AS TOTAL
+			FROM venda a
+			INNER JOIN detalheVenda b
+				ON b.idVenda = a.idVenda
+
+			where (month((LAST_DAY(curdate() - INTERVAL 1 MONTH))) =month(a.datavenda) and 
+			 year((LAST_DAY(curdate() - INTERVAL 1 MONTH))) = year(a.datavenda)) 
+			group by a.idEmpresa) r1
+            
+        ON r1.idEmpresa = r0.idEmpresa
+    left JOIN (SELECT a.idEmpresa,
+				sum(b.vlrTotalItem) AS TOTAL
+				FROM venda a
+				INNER JOIN detalheVenda b ON 
+				b.idVenda = a.idVenda
+				where 	month(dataVenda) = month(curdate()) AND
+						YEAR(dataVenda) = YEAR(curdate())
+				group by a.idEmpresa) r2
+        ON r2.idEmpresa = r0.idEmpresa
+ORDER BY  r0.idEmpresa ;
