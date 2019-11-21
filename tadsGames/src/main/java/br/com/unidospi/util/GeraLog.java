@@ -88,7 +88,7 @@ public class GeraLog {
                 try {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Empresa empr = (Empresa)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -128,7 +128,7 @@ public class GeraLog {
                 try {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Cliente c = (Cliente)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -169,7 +169,7 @@ public class GeraLog {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Compra cmp = (Compra)objeto;
                     Produto produto = listarProduto(cmp.getIdProduto());
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -210,7 +210,7 @@ public class GeraLog {
                 try {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Funcionario f = (Funcionario)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -250,7 +250,7 @@ public class GeraLog {
                 try {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Produto p = (Produto)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -290,7 +290,7 @@ public class GeraLog {
                 try {
                     Usuario usuario = (Usuario)user;
                     UsuarioFuncionario u = (UsuarioFuncionario)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -333,7 +333,7 @@ public class GeraLog {
                     Venda v = (Venda)objeto;
                     
                     ClienteLista c = listarClientes(v.getIdCliente());
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -375,7 +375,7 @@ public class GeraLog {
                 try {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Cliente c = (Cliente)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -415,7 +415,7 @@ public class GeraLog {
                 try {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Empresa empr = (Empresa)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -455,7 +455,7 @@ public class GeraLog {
                 try {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Funcionario f = (Funcionario)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
@@ -495,7 +495,7 @@ public class GeraLog {
                 try {
                     UsuarioFuncionario usuario = (UsuarioFuncionario)user;
                     Produto p = (Produto)objeto;
-                    arquivo = new File("Teste.txt");
+                    arquivo = new File("C:\\Users\\lucas.sfaria5\\Documents\\RegistrosTadsGames\\Registro.txt");
                     LocalDateTime hora = LocalDateTime.now();
 
                     fileReader = new FileReader(arquivo);
