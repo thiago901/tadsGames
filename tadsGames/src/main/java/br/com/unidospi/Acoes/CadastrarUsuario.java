@@ -40,26 +40,27 @@ public class CadastrarUsuario implements Executavel {
         
         boolean validacaoServidor = false;
         
-        if (login.length() > 50 || login.equals("")) {
+        if (login.length() > 50 || login.length()< 2 || login.equals("")) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome", true);
-        }else if (login.substring(0, 2).matches("[A-z 0-9]*") == false) {
+        }else if (login.substring(0, 1).matches("[A-z 0-9.]*") == false) {
             validacaoServidor = true;
             req.setAttribute("validacaoNome2", true);
         }
-        if (senha.length() > 16 || login.equals("") || senha.length() < 6 ) {
+        if (senha.length() > 16 || senha.trim().equals("") || senha.length() < 6 ) {
             validacaoServidor = true;
             req.setAttribute("erroSenha", true);
-        }else if (login.substring(0, 2).matches("[A-z 0-9]*") == false) {
+        }else if (login.substring(0, 1).matches("[A-z 0-9]*") == false) {
             validacaoServidor = true;
             req.setAttribute("erroSenha2", true);
         }
         
-        if (validacaoServidor) {
-            RequestDispatcher dispatcher
-                    = req.getRequestDispatcher("inputUsuario?action=FormCadastrarUsuario");
+        if (validacaoServidor){
+            RequestDispatcher dispatcher = 
+                    req.getRequestDispatcher("inputUsuario?action=FormCadastrarUsuario");
             dispatcher.forward(req, resp);
-        } else {
+        }
+        else {
             Usuario usuario = new Usuario(login, senha, dtCadastro, status, idFuncionario);
 
             retorno = UsuarioDAO.salvar(usuario);

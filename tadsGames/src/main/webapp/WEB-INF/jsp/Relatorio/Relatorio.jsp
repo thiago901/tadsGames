@@ -49,90 +49,15 @@
 				</tr>
 			</thead>
 			<tbody>
+                            <c:forEach items="${relatorioGeral}" var="r">
 				<tr class="contentTable">
-					<td class="empresa">Tads GO</td>
-					<td class="valor">R$ 7.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">17%</td>
-					<td class="percentual">17%</td>
+                                    <td class="empresa"><c:out value="${r.getNome()}"/> </td>
+                                    <td class="valor"><f:formatNumber value="${r.getValorFaturaA()}" type="currency" /></td>
+					<td class="valor"><f:formatNumber value="${r.getValorFaturaB()}" type="currency" /></td>
+					<td class="percentual"><f:formatNumber type="number" pattern="#.##%" value="${r.getVariacao()}" /></td>
+					<td class="percentual"><f:formatNumber type="number" pattern="#.##%" value="${r.getValorFaturaB()/totalMensal}" /></td>
 				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads SP</td>
-					<td class="valor">R$ 27.500,00</td>
-					<td class="valor">R$ 89.500,00</td>
-					<td class="percentual">194%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads RJ</td>
-					<td class="valor">R$ 2.500,00</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="percentual">-7%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
-				<tr class="contentTable">
-					<td class="empresa">Tads MG</td>
-					<td class="valor">R$ 1.500,00</td>
-					<td class="valor">R$ 8.500,00</td>
-					<td class="percentual">47%</td>
-					<td class="percentual">17%</td>
-				</tr>
+                            </c:forEach>
 				
 			</tbody>
 			

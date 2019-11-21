@@ -69,7 +69,7 @@ public class EditarEmpresa implements Executavel{
         }
         else
             idEstado = Integer.parseInt(req.getParameter("estado"));
-        if (req.getParameter("cidade") == null){
+        if (req.getParameter("cidade").equals("")){
             validacaoServidor = true;
             req.setAttribute("erroCidade", true);
         }

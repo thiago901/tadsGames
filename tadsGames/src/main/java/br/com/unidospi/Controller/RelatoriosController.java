@@ -9,6 +9,7 @@ import br.com.unidospi.Acoes.FormRelatorio;
 import br.com.unidospi.Acoes.Relatorio;
 import br.com.unidospi.DAO.RelatorioDao;
 import br.com.unidospi.model.RelatorioFaturaDia;
+import br.com.unidospi.model.RelatorioGeral;
 import br.com.unidospi.model.RelatorioPercentagem;
 import br.com.unidospi.model.RelatorioTop10;
 import java.io.IOException;
@@ -28,6 +29,13 @@ public class RelatoriosController extends HttpServlet {
     
     public static ArrayList<RelatorioFaturaDia> rel_fatura_dia(){
         return RelatorioDao.rel_fatura_dia();
+    }
+    
+    public static ArrayList<RelatorioGeral> relatorioGeral(){
+        return RelatorioDao.relatorioGeral();
+    }
+    public static float totalMes(){
+        return RelatorioDao.totalMes();
     }
     
     public static ArrayList<RelatorioTop10> rel_top10_vendas_dia(){
