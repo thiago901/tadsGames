@@ -1,3 +1,5 @@
+
+  
 use dbgames;
 
 /*INSERIR ESTADOS*/
@@ -29,10 +31,7 @@ insert into EstadoRegiao (uf, estado, capital, regiao, pais) values('SC','Santa 
 insert into EstadoRegiao (uf, estado, capital, regiao, pais) values('SE','Sergipe','Aracaju','Nordeste','BR');
 insert into EstadoRegiao (uf, estado, capital, regiao, pais) values('SP','São Paulo','São Paulo','Sudeste','BR');
 insert into EstadoRegiao (uf, estado, capital, regiao, pais) values('TO','Tocantins','Palmas','Norte','BR');
-SELECT 
-    *
-FROM
-    EstadoRegiao;
+
 
 /*INSERIR CIDADES*/
 
@@ -5605,10 +5604,10 @@ insert into cidade (nomeCidade, idEstado) values ('Afonso Cláudio', 8),
 /*INSERIR EMPRESAS*/
 
 insert into empresa (nome, cnpj, dataCriacao, idEstado, idCidade, matriz, ativo) values 
-('Tads Acre', 43213562000126,'1999-08-28',1,1,1,1),
-('Tads SP', 91155193000105,'1999-08-28',26,1,1,1),
-('Tads RJ', 82531823000108,'1999-08-28',19,1,1,1),
-('Tads GO', 46342520000183,'1999-08-28',9,1,1,1);
+('Tads São Paulo Matriz', 43213562000126,'1990-08-28',1,1,1,1),
+('Tads Brasilia', 91155193000105,'1999-08-28',26,1,1,1),
+('Tads Campina Grande', 82531823000108,'1999-08-28',19,1,1,1),
+('Tads Joinville', 46342520000183,'1999-08-28',9,1,1,1);
 
 
 /*INSERIR CLIENTES*/
@@ -5654,43 +5653,78 @@ insert into produto (nome, descricao, tipo, ativo) values
 ('Batman','Game de Aventura','Jogo',1),
 ('God of War','Game de Aventura','Jogo',1),
 ('Fifa','Game de Esporte','Jogo',1),
-('PS4','Aparelho de Video Game','Console',1);
-
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
-(10,5,1,1);
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
-(10,80,2,2);
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
-(10,55,3,3);
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
-(10,50,4,4);
-insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
-(0,100,5,1);
-
-insert into venda (idFuncionario,idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
-(1,1,1,150,'2019-10-12','Finalizada');
-insert into venda (idFuncionario,idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
-(2,2,2,10,'2019-08-10','Finalizada');
-insert into venda (idFuncionario,idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
-(3,3,3,15,'2019-05-15','Finalizada');
-insert into venda (idFuncionario,idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
-(4,4,4,50,'2019-11-20','Finalizada');
-
-insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
-(1,1,1,5,5);
-insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
-(2,2,2,80,160);
-insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
-(3,3,1,55,55);
-insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
-(4,4,3,50,150);
+('Ace Combat','FPS','Game',1),
+('Spider Man','Aventura','Jogo',1),
+('Call of Duty','FPS','Jogo',1),
+('Fortinite','FPS','Jogo',1),
+('GTA 5','Mundo Aberto','Jogo',1),
+('Counter-Strike','FPS','Jogo',1),
+('Slay the Spire','Aventura','Jogo',1),
+('Hollow Knight','Plataforma','Jogo',1),
+('Stardew Valley','Simulação','Jogo',1),
+('Assassin’s','Aventura','Jogo',1),
+('Resident Evil 2','Zumbi','Jogo',1),
+('PS4',' ','Console',1),
+('Xbox 360','Aparelho de Video Game','Console',1),
+('Nintendo Switch','Aparelho de Video Game','Console',1),
+('PC Gamer','Computador','Console',1),
+('Xbox One','Aparelho de Video Game','Console',1),
+('Ps3','Aparelho de Video Game','Console',1),
+('Nintendo 3DS','Aparelho de Video Game','Console',1);
 
 /*INSERIR DADOS COMPRAS*/
-insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) 
-values (1,1,10,'2019-05-10',85);
-insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) 
-values (2,2,5,'2019-02-09',120);
-insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) 
-values (3,3,15,'2019-01-11',150);
-insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) 
-values (4,4,90,'2019-04-07',60);
+insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraUnitario) values 
+(1,1,10,'2019-05-10',100),
+(1,1,11,'2019-05-10',100),
+(1,1,12,'2019-05-10',100),
+(1,1,13,'2019-05-10',100),
+(2,1,14,'2019-05-10',100),
+(3,1,15,'2019-05-10',100),
+(4,1,16,'2019-05-10',100),
+(2,1,17,'2019-05-10',100),
+(3,1,18,'2019-05-10',100),
+(4,1,19,'2019-05-10',100),
+(1,1,20,'2019-05-10',100);
+
+insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
+(10,5 ,1,1),
+(10,80,2,2),
+(10,55,3,3),
+(10,50,4,4),
+(10,100,5,1),
+(10,100,6,2),
+(10,100,7,3),
+(10,100,8,4),
+(10,100,9,1),
+(10,100,10,2),
+(10,100,11,3),
+(10,100,12,4),
+(10,100,13,1),
+(10,100,14,2),
+(10,100,15,3),
+(10,100,16,4),
+(10,100,17,1),
+(10,100,18,2),
+(10,100,19,3),
+(10,100,20,4),
+(10,100,21,1),
+(10,100,22,1);
+
+insert into venda (idFuncionario,idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
+(8,1, 1,800, '2019-11-21', 'Finalizado'),
+(9,2, 2,800, curdate, 'Finalizado'),
+(10,3, 3,800, curdate, 'Finalizado'),
+(11,4, 4,800, '2019-11-10', 'Finalizado'),
+(8, 1, 1,800, '2019-11-09', 'Finalizado'),
+(8, 1, 1,800, '2019-11-08', 'Finalizado');
+
+insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
+(1,10,1,100,100),
+(2,11,2,100,200),
+(3,12,3,100,300),
+(4,13,4,100,400),
+(5,14,5,100,500),
+(6,15,6,100,600);
+
+
+
