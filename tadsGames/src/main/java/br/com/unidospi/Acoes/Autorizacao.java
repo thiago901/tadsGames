@@ -42,7 +42,7 @@ public class Autorizacao implements Filter {
         
         HttpSession sessao = httpRequest.getSession();
         if (sessao.getAttribute("usuario") == null) {
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");//PROFESSOR
+            httpResponse.sendRedirect(httpRequest.getContextPath() + "/inputLogin?action=FormLogin");//PROFESSOR
             return;
         }
         // Verificar se usuario tem permissao de acesso na pagina

@@ -5,8 +5,8 @@
  */
 package br.com.unidospi.Acoes;
 
-import br.com.unidospi.DAO.ProdutoDAO;
-import br.com.unidospi.model.Produto;
+import br.com.unidospi.DAO.UsuarioDAO;
+import br.com.unidospi.model.Usuario;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,17 +15,17 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author thiago.srocha4
+ * @author gabri
  */
-public class FormEditarProduto implements Executavel{
+public class FormEditarUsuario implements Executavel {
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        int id = Integer.parseInt(req.getParameter("idProduto"));
-        Produto p = ProdutoDAO.listarProduto(id);
-        req.setAttribute("p", p);
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/produto/alterarProduto.jsp");
-        rd.forward(req, resp);
+        int id = Integer.parseInt(req.getParameter("idUsuario"));
+        Usuario usuario = UsuarioDAO.obterUsuarioPorId(id);
+        req.setAttribute("u", usuario);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/usuario/EditarUsuario.jsp");
+        dispatcher.forward(req, resp);
         return "";
     }
     

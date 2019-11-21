@@ -128,6 +128,17 @@
                         </div>
                     </div>
                 </c:if>
+                
+                <div class="card">
+                        <div class="face face1">
+                            <div class="content">
+                                <a href="${pageContext.request.contextPath}/logout">Sair</a>                                
+                            </div>
+                        </div>
+                        <div class="face face2">
+                            <h2>Sair</h2>
+                        </div>
+                </div>                
             </div>
     </body>
 </html>

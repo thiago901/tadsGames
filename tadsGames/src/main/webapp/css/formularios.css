@@ -33,7 +33,7 @@ h2{
 
 
 /* ENTRADAS ONDE O TIPO SEJA TEXTO, COMBO E TEXTAREA */
-input[type=text], select, textarea,input[type=date] {
+input[type=text], select, textarea,input[type=date], input[type=password] {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;

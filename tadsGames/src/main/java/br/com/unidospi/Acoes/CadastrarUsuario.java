@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,7 +55,11 @@ public class CadastrarUsuario implements Executavel {
             req.setAttribute("erroSenha2", true);
         }
         
-        if (validacaoServidor){
+        if (validacaoServidor) {
+            RequestDispatcher dispatcher
+                    = req.getRequestDispatcher("inputUsuario?action=FormCadastrarUsuario");
+            dispatcher.forward(req, resp);
+        } else {
             Usuario usuario = new Usuario(login, senha, dtCadastro, status, idFuncionario);
 
             retorno = UsuarioDAO.salvar(usuario);

@@ -6,7 +6,9 @@
 package br.com.unidospi.Controller;
 
 import br.com.unidospi.Acoes.CadastrarUsuario;
+import br.com.unidospi.Acoes.EditarUsuario;
 import br.com.unidospi.Acoes.FormCadastrarUsuario;
+import br.com.unidospi.Acoes.FormEditarUsuario;
 import br.com.unidospi.Acoes.ListarFuncionariosUsuarioCadastravel;
 import br.com.unidospi.Acoes.ListarUsuarios;
 import java.io.IOException;
@@ -45,6 +47,12 @@ public class UsuarioController extends HttpServlet {
                 action.executa(req, resp);
             } else if (parametroAcao.equals("ListarUsuarios")) {
                 ListarUsuarios action = new ListarUsuarios();
+                action.executa(req, resp);
+            } else if (parametroAcao.equals("FormEditarUsuario")) {
+                FormEditarUsuario action = new FormEditarUsuario();
+                action.executa(req, resp);
+            } else if (parametroAcao.equals("EditarUsuario")) {
+                EditarUsuario action = new EditarUsuario();
                 action.executa(req, resp);
             }
         } else {

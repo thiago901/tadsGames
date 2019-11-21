@@ -20,23 +20,25 @@
         <table border="1" id="tabela">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Sobrenome</th>
                         <th>Usuário</th>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>                        
+                        <th>Status</th>
                         <th>Alterar</th>
                     </tr>
                 </thead>
                 <tbody>
-
                     <c:forEach var="u" items="${usuarios}">
                         <tr class="funcionario">
+                            <td class="nomeUsuario"><c:out value="${u.nomeUsuario}" /></td>
                             <td class="nome"><c:out value="${u.nomeFuncionario}" /></td>
-                            <td class="sobrenome"><c:out value="${u.sobrenome}" /></td>
-                            <td class="departamento"><c:out value="${u.nomeUsuario}" /></td>   
-                            <td class="altera"><a href="inputUsuario?action=FormAlterarUsuario&idUsuario=${u.idUsuario}"><img src="../img/alterar.png"></a></td>
+                            <td class="sobrenome"><c:out value="${u.sobrenome}" /></td>  
+                            <td class="ativo">
+                                <c:if test="${u.statusUsuario==true}">Sim</td></c:if>
+                                <c:if test="${u.statusUsuario==false}">Não</td></c:if>
+                            <td class="altera"><a href="inputUsuario?action=FormEditarUsuario&idUsuario=${u.idUsuario}"><img src="../img/alterar.png"></a></td>
                         </tr>
                     </c:forEach>
-
                 </tbody>
                 </div>
             </table>

@@ -194,7 +194,8 @@ public class UsuarioDAO {
         String query = "SELECT u.idUsuario,\n"
                      + " f.nomeFuncionario,\n "
                      + " f.sobrenome,\n"
-                     + " u.nomeUsuario\n"
+                     + " u.nomeUsuario,\n"
+                     + " u.ativo\n"
                      + " FROM Usuario u\n"
                      + " INNER JOIN Funcionario f\n"
                      + " ON u.idFuncionario = f.idFuncionario";
@@ -210,7 +211,8 @@ public class UsuarioDAO {
                         rs.getInt("idUsuario"),
                         rs.getString("nomeUsuario"),
                         rs.getString("nomeFuncionario"),
-                        rs.getString("sobrenome")
+                        rs.getString("sobrenome"),
+                        rs.getBoolean("ativo")
                 );
                 
                 listaUsuarios.add(usuarioFuncionario);
@@ -223,5 +225,69 @@ public class UsuarioDAO {
         }
         
         return listaUsuarios;
+    }
+    
+    public static Usuario obterUsuarioPorId(int id) {
+        Usuario usuario = null;
+        
+        String query = "SELECT u.idUsuario,\n"
+                     + " u.nomeUsuario,\n"
+                     + " u.senha,\n"
+                     + " u.ativo\n"
+                     + " FROM Usuario u"
+                     + " WHERE u.idUsuario = ?;";
+        
+        try {
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next())  {
+                usuario = new Usuario(
+                    rs.getInt("idUsuario"),
+                    rs.getString("nomeUsuario"),
+                    rs.getString("senha"),
+                    rs.getBoolean("ativo")
+                );
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return usuario;
+    }
+    
+    public static boolean editar(Usuario usuario) {
+        String query = "UPDATE Usuario SET nomeUsuario = ?,\n"
+                                        + "senha = ?,\n"
+                                        + "ativo = ?\n"
+                                        + "WHERE idUsuario = ?;";
+        
+        try {
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            
+            ps.setString(1, usuario.getNomeUsuario());
+            ps.setString(2, usuario.getSenha());
+            ps.setBoolean(3, usuario.getStatus());
+            ps.setInt(4, usuario.getIdUsuario());
+            
+            ps.execute();
+            return true;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 }

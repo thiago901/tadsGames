@@ -38,6 +38,13 @@ public class Usuario {
         this.dtCadastro = dtCadastro;
         this.status = status;
         this.idFuncionario = idFuncionario;
+    }
+
+    public Usuario(int idUsuario, String nomeUsuario, String senha, boolean status) {
+        this.idUsuario = idUsuario;
+        this.nomeUsuario = nomeUsuario;
+        this.senha = senha;
+        this.status = status;
     }        
 
     public int getIdUsuario() {
