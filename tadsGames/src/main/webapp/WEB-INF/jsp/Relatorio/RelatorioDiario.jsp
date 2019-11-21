@@ -20,7 +20,7 @@
 		
 		<div  class="card">
 			<h3 class="title1">Faturamento Total do Dia</h3>
-			<h3 class="valor"><f:formatNumber value="${totalMensal}" type="currency" /></h3>
+			<h3 class="valor"><f:formatNumber value="${totalDiario}" type="currency" /></h3>
 		</div>
 		<div  class="card">
 			<h3 class="title1">Produto + Vendido do Dia</h3>
@@ -42,28 +42,22 @@
 			<thead>
 				<tr class="titleTable">
 					<td>Empresa</td>
-					<td>Valor Faturado (A)*</td>
-					<td>Valor Faturado (B)**</td>
-					<td>Variação</td>
-					<td>Participação**</td>
+					<td>Valor Faturado</td>
+					<td>Participação</td>
 				</tr>
 			</thead>
 			<tbody>
-                            <c:forEach items="${relatorioGeral}" var="r">
+                            <c:forEach items="${relatorioDiario}" var="r">
 				<tr class="contentTable">
                                     <td class="empresa"><c:out value="${r.getNome()}"/> </td>
-                                    <td class="valor"><f:formatNumber value="${r.getValorFaturaA()}" type="currency" /></td>
-					<td class="valor"><f:formatNumber value="${r.getValorFaturaB()}" type="currency" /></td>
-					<td class="percentual"><f:formatNumber type="number" pattern="#.##%" value="${r.getVariacao()}" /></td>
-					<td class="percentual"><f:formatNumber type="number" pattern="#.##%" value="${r.getValorFaturaB()/totalMensal}" /></td>
+                                    <td class="valor"><f:formatNumber value="${r.getValorFaturaB()}" type="currency" /></td>
+                                    <td class="percentual"><f:formatNumber type="number" pattern="#.##%" value="${r.getValorFaturaB()/totalDiario}" /></td>
 				</tr>
                             </c:forEach>
 				
 			</tbody>
 			
 		</table>
-		<p>* (A) Referencia mês anterior</p>
-		<p>**(B) Referencia mês corrente</p>
 		</div>
 	</div>	
 

@@ -25,6 +25,12 @@ public class RelatorioGeral {
         this.variacao = variacao;
     }
 
+    public RelatorioGeral(int idEmpresa, String nome, float total) {
+        this.idEmpresa = idEmpresa;
+        this.nome = nome;
+        this.valorFaturaB = total;
+    }
+
     public int getIdEmpresa() {
         return idEmpresa;
     }

@@ -30,13 +30,12 @@ public class CadastrarItemVenda implements Executavel{
         
          if(sessao.getAttribute("idLinhaItemVenda")==null){
             sessao.setAttribute("idLinhaItemVenda", 0);
+            sessao.setAttribute("idCliente", req.getParameter("idCliente"));
+            sessao.setAttribute("nomeCliente2", req.getParameter("nomeCliente"));
          }else{
             sessao.setAttribute("idLinhaItemVenda", (int) sessao.getAttribute("idLinhaItemVenda")+1); 
          }
-        sessao.setAttribute("idCliente", req.getParameter("idCliente"));
         
-
-        sessao.setAttribute("nomeCliente2", req.getParameter("nomeCliente"));
         
         List<VendaDetalhe> itensVenda = (List<VendaDetalhe>)sessao.getAttribute("itemVenda");
            

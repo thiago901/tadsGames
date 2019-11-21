@@ -7,6 +7,7 @@ package br.com.unidospi.Controller;
 
 import br.com.unidospi.Acoes.FormRelatorio;
 import br.com.unidospi.Acoes.Relatorio;
+import br.com.unidospi.Acoes.RelatorioDiario;
 import br.com.unidospi.DAO.RelatorioDao;
 import br.com.unidospi.model.RelatorioFaturaDia;
 import br.com.unidospi.model.RelatorioGeral;
@@ -34,8 +35,14 @@ public class RelatoriosController extends HttpServlet {
     public static ArrayList<RelatorioGeral> relatorioGeral(){
         return RelatorioDao.relatorioGeral();
     }
+    public static ArrayList<RelatorioGeral> relatorioDiario(){
+        return RelatorioDao.relatorioDiario();
+    }
     public static float totalMes(){
         return RelatorioDao.totalMes();
+    }
+    public static float totalDia(){
+        return RelatorioDao.totalDia();
     }
     
     public static ArrayList<RelatorioTop10> rel_top10_vendas_dia(){
@@ -54,6 +61,9 @@ public class RelatoriosController extends HttpServlet {
         }
         else if (paramAction.equals("FormRelatorio")) {
             FormRelatorio action = new FormRelatorio();
+            action.executa(req, resp);
+        }else if (paramAction.equals("RelatorioDiario")) {
+            RelatorioDiario action = new RelatorioDiario();
             action.executa(req, resp);
         }
 

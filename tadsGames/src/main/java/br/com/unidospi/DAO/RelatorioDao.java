@@ -70,7 +70,43 @@ public class RelatorioDao {
        
        public static ArrayList<RelatorioGeral> relatorioGeral() {
         try{
-            String sql = "select * from relatorio;";
+            String sql = "SELECT\n" +
+                        "    r0.idEmpresa, \n" +
+                        "    r0.nome, \n" +
+                        "    r1.TOTAL AS \"Valor Faturado (A)\",\n" +
+                        "    r2.TOTAL AS \"Valor Faturado (B)\",\n" +
+                        "    (r2.TOTAL-r1.TOTAL)/r1.TOTAL as \"Variação\"\n" +
+                        " \n" +
+                        "FROM\n" +
+                        "    (SELECT DISTINCT \n" +
+                        "        a.idEmpresa,\n" +
+                        "        c.nome\n" +
+                        "     FROM venda a\n" +
+                        "     INNER JOIN empresa c on \n" +
+                        "		c.idempresa = a.idEmpresa) r0\n" +
+                        "    left JOIN (SELECT \n" +
+                        "				a.idEmpresa,\n" +
+                        "				concat(year(a.datavenda),month(a.datavenda)) AS AnoMes,\n" +
+                        "				sum(b.vlrTotalItem) AS TOTAL\n" +
+                        "			FROM venda a\n" +
+                        "			INNER JOIN detalheVenda b\n" +
+                        "				ON b.idVenda = a.idVenda\n" +
+                        "			where (month((LAST_DAY(curdate() - INTERVAL 1 MONTH))) =month(a.datavenda) and \n" +
+                        "			year((LAST_DAY(curdate() - INTERVAL 1 MONTH))) = year(a.datavenda)) \n" +
+                        "			group by a.idEmpresa) r1\n" +
+                        "        ON r1.idEmpresa = r0.idEmpresa\n" +
+                        "    left JOIN (SELECT a.idEmpresa,\n" +
+                        "				sum(b.vlrTotalItem) AS TOTAL\n" +
+                        "				FROM venda a\n" +
+                        "				INNER JOIN detalheVenda b ON \n" +
+                        "				b.idVenda = a.idVenda\n" +
+                        "				where 	month(dataVenda) = month(curdate()) AND\n" +
+                        "						YEAR(dataVenda) = YEAR(curdate())\n" +
+                        "				group by a.idEmpresa) r2\n" +
+                        "        ON r2.idEmpresa = r0.idEmpresa\n" +
+                        "ORDER BY  r0.idEmpresa;";
+            
+            
             
             ArrayList <RelatorioGeral> le = new ArrayList<>();
             Class.forName(DRIVER);
@@ -99,9 +135,66 @@ public class RelatorioDao {
         }
         return null;
     } 
+       public static ArrayList<RelatorioGeral> relatorioDiario() {
+        try{
+            String sql = "SELECT * from rel_fatura_dia;";
+            
+            
+            
+            ArrayList <RelatorioGeral> le = new ArrayList<>();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int idEmpresa =rs.getInt("idEmpresa");
+                String nome=rs.getString("NomeEmpresa");
+                float total=rs.getFloat("TOTAL");
+                le.add(new RelatorioGeral(idEmpresa, nome, total));
+                
+            }
+            return le;
+        }catch(SQLException | ClassNotFoundException e ){
+            e.getMessage();
+        }finally{
+            try{
+                conexao.close();
+            }catch(SQLException e){
+                e.getMessage();
+            }
+        }
+        return null;
+    } 
        public static float totalMes() {
         try{
             String sql = "select * from TotalFaturadoMes;";
+            
+            ArrayList <RelatorioGeral> le = new ArrayList<>();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                float total=rs.getFloat("TOTAL");
+                return total;
+            }
+            
+        }catch(SQLException | ClassNotFoundException e ){
+            e.getMessage();
+        }finally{
+            try{
+                conexao.close();
+            }catch(SQLException e){
+                e.getMessage();
+            }
+        }
+        return 0;
+    } 
+       public static float totalDia() {
+        try{
+            String sql = "select * from TotalFaturadoDia;";
             
             ArrayList <RelatorioGeral> le = new ArrayList<>();
             Class.forName(DRIVER);
