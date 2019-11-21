@@ -20,7 +20,7 @@
 		
 		<div  class="card">
 			<h3 class="title1">Faturamento Total do Dia</h3>
-			<h3 class="valor"><f:formatNumber value="${totalMensal}" type="currency" /></h3>
+			<h3 class="value">R$ 3.000,00</h3>
 		</div>
 		<div  class="card">
 			<h3 class="title1">Produto + Vendido do Dia</h3>

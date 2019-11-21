@@ -6,11 +6,7 @@
 package br.com.unidospi.Acoes;
 
 import br.com.unidospi.Controller.RelatoriosController;
-import br.com.unidospi.DAO.RelatorioDao;
-import br.com.unidospi.model.RelatorioFaturaDia;
 import br.com.unidospi.model.RelatorioGeral;
-import br.com.unidospi.model.RelatorioPercentagem;
-import br.com.unidospi.model.RelatorioTop10;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -22,23 +18,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class Relatorio implements Executavel{
+public class RelatorioDiario implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         //ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
         //ArrayList<RelatorioFaturaDia> rel_fatura_dia =RelatoriosController.rel_fatura_dia();
         //ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem = RelatoriosController.rel_total_empresa_porcentagem();
-        ArrayList<RelatorioGeral> relatorioGeral = RelatoriosController.relatorioGeral();
+        ArrayList<RelatorioGeral> relatorioDiario = RelatoriosController.relatorioDiario();
         
-        float totalMensal = RelatoriosController.totalMes();
+        float totalDiario = RelatoriosController.totalDia();
         //req.setAttribute("top10", rel_top10_vendas_dia);
         //req.setAttribute("faturaDia", rel_fatura_dia);
         //req.setAttribute("totalEmpresa", rel_total_empresa_porcentagem);
-        req.setAttribute("relatorioGeral", relatorioGeral);
-        req.setAttribute("totalMensal", totalMensal);
+        req.setAttribute("relatorioDiario", relatorioDiario);
+        req.setAttribute("totalDiario", totalDiario);
         
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/Relatorio/Relatorio.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/Relatorio/RelatorioDiario.jsp");
         rd.forward(req, resp);
         return "";
     }
