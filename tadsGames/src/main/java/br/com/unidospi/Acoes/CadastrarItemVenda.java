@@ -34,7 +34,7 @@ public class CadastrarItemVenda implements Executavel{
             sessao.setAttribute("idLinhaItemVenda", (int) sessao.getAttribute("idLinhaItemVenda")+1); 
          }
         sessao.setAttribute("idCliente", req.getParameter("idCliente"));
-        sessao.setAttribute("idCliente", req.getParameter("idCliente"));
+        
 
         sessao.setAttribute("nomeCliente2", req.getParameter("nomeCliente"));
         

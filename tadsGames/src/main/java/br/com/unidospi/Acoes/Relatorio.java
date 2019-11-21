@@ -8,6 +8,7 @@ package br.com.unidospi.Acoes;
 import br.com.unidospi.Controller.RelatoriosController;
 import br.com.unidospi.DAO.RelatorioDao;
 import br.com.unidospi.model.RelatorioFaturaDia;
+import br.com.unidospi.model.RelatorioGeral;
 import br.com.unidospi.model.RelatorioPercentagem;
 import br.com.unidospi.model.RelatorioTop10;
 import java.io.IOException;
@@ -25,12 +26,16 @@ public class Relatorio implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
-        ArrayList<RelatorioFaturaDia> rel_fatura_dia =RelatoriosController.rel_fatura_dia();
-        ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem = RelatoriosController.rel_total_empresa_porcentagem();
-        req.setAttribute("top10", rel_top10_vendas_dia);
-        req.setAttribute("faturaDia", rel_fatura_dia);
-        req.setAttribute("totalEmpresa", rel_total_empresa_porcentagem);
+        //ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
+        //ArrayList<RelatorioFaturaDia> rel_fatura_dia =RelatoriosController.rel_fatura_dia();
+        //ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem = RelatoriosController.rel_total_empresa_porcentagem();
+        ArrayList<RelatorioGeral> relatorioGeral = RelatoriosController.relatorioGeral();
+        float totalMensal = RelatoriosController.totalMes();
+        //req.setAttribute("top10", rel_top10_vendas_dia);
+        //req.setAttribute("faturaDia", rel_fatura_dia);
+        //req.setAttribute("totalEmpresa", rel_total_empresa_porcentagem);
+        req.setAttribute("relatorioGeral", relatorioGeral);
+        req.setAttribute("totalMensal", totalMensal);
         
         RequestDispatcher rd = req.getRequestDispatcher("inputRelatorios?action=FormRelatorio");
         rd.forward(req, resp);

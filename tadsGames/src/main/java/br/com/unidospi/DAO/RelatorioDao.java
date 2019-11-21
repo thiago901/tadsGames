@@ -8,6 +8,7 @@ package br.com.unidospi.DAO;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.EmpresaLista;
 import br.com.unidospi.model.RelatorioFaturaDia;
+import br.com.unidospi.model.RelatorioGeral;
 import br.com.unidospi.model.RelatorioPercentagem;
 import br.com.unidospi.model.RelatorioTop10;
 import java.sql.Connection;
@@ -65,6 +66,64 @@ public class RelatorioDao {
             }
         }
         return null;
+    } 
+       
+       public static ArrayList<RelatorioGeral> relatorioGeral() {
+        try{
+            String sql = "select * from relatorio;";
+            
+            ArrayList <RelatorioGeral> le = new ArrayList<>();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int idEmpresa =rs.getInt("idEmpresa");
+                String nome=rs.getString("nome");
+                float valorFaturaA=rs.getFloat("Valor Faturado (A)");
+                float valorFaturaB=rs.getFloat("Valor Faturado (B)");
+                double variacao=rs.getDouble("Variação");
+                le.add(new RelatorioGeral(idEmpresa, nome, valorFaturaA, valorFaturaB, variacao));
+                
+            }
+            return le;
+        }catch(SQLException | ClassNotFoundException e ){
+            e.getMessage();
+        }finally{
+            try{
+                conexao.close();
+            }catch(SQLException e){
+                e.getMessage();
+            }
+        }
+        return null;
+    } 
+       public static float totalMes() {
+        try{
+            String sql = "select * from TotalFaturadoMes;";
+            
+            ArrayList <RelatorioGeral> le = new ArrayList<>();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                float total=rs.getFloat("TOTAL");
+                return total;
+            }
+            
+        }catch(SQLException | ClassNotFoundException e ){
+            e.getMessage();
+        }finally{
+            try{
+                conexao.close();
+            }catch(SQLException e){
+                e.getMessage();
+            }
+        }
+        return 0;
     } 
     
     /* Retorna uma lista de empresas */
