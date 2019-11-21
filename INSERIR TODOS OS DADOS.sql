@@ -5686,6 +5686,7 @@ insert into compra (idEmpresa, idProduto, qtdComprada, dataEntrada, valorCompraU
 (4,1,19,'2019-05-10',100),
 (1,1,20,'2019-05-10',100);
 
+/*INSERIR ESTOQUE*/
 insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
 (10,5 ,1,1),
 (10,80,2,2),
@@ -5710,14 +5711,16 @@ insert into estoque (qtdEstoque,valorVendaUnitario,idProduto, idEmpresa) values
 (10,100,21,1),
 (10,100,22,1);
 
+/*INSERIR VENDAS*/
 insert into venda (idFuncionario,idCliente, idEmpresa, valorTotal, dataVenda, statusPedido) values 
 (8,1, 1,800, '2019-11-21', 'Finalizado'),
-(9,2, 2,800, curdate, 'Finalizado'),
-(10,3, 3,800, curdate, 'Finalizado'),
+(9,2, 2,800, curdate(), 'Finalizado'),
+(10,3, 3,800, curdate(), 'Finalizado'),
 (11,4, 4,800, '2019-11-10', 'Finalizado'),
 (8, 1, 1,800, '2019-11-09', 'Finalizado'),
 (8, 1, 1,800, '2019-11-08', 'Finalizado');
 
+/*INSERIR DETALHE VENDA*/
 insert into detalhevenda (idVenda, idProduto, qtdVenda, vlrVenda, vlrTotalItem) values 
 (1,10,1,100,100),
 (2,11,2,100,200),
