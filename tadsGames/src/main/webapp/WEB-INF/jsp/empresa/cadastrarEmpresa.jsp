@@ -79,7 +79,7 @@
 
                 <c:if test="${erroCidade}">
                     <div class="erro-input com-erro">
-                        Selecione uma cidade
+                        Selecione uma UF, digite 3 caracteres para exibir uma lista de cidades e selecione a desejada
                     </div>
                 </c:if>
                 <div class="divStatus">
