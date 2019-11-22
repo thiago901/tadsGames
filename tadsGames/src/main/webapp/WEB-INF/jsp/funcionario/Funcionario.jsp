@@ -117,7 +117,7 @@
     </div>
     <button type="submit">Cadastrar</button> 
     <button type="reset">Resetar dados</button>
-    <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+    <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
   </form>
 </div>
 <script type="text/javascript" src="../javaScript/filtraCargo.js"></script>

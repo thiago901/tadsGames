@@ -151,7 +151,7 @@
 </script>--%>
     <button type="submit" id="btnSalvar">Salvar</button>
     <button type="reset">Reset</button>
-    <button type=""><a href="${pageContext.request.contextPath}/indexHome">Sair</a></button>
+    <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
   </form>
 </div>
 <script type="text/javascript" src="../javaScript/filtraCargo.js"></script>

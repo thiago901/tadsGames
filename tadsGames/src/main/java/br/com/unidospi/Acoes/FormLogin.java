@@ -22,12 +22,14 @@ public class FormLogin implements Executavel {
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         HttpSession sessao = req.getSession();
         if (sessao.getAttribute("usuario") != null) {
-            resp.sendRedirect(req.getContextPath() + "/inputHome");
-            return "";
+            sessao.removeAttribute("usuario");
+            //resp.sendRedirect(req.getContextPath() + "/inputHome");
+            
         }
         RequestDispatcher dispatcher = 
                 req.getRequestDispatcher("WEB-INF/jsp/login/Login.jsp");//NECESSARIO?
         dispatcher.forward(req, resp);
+        
         return "";
     }
     

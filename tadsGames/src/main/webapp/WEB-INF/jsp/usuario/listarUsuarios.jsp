@@ -15,8 +15,10 @@
         <link rel="icon" href="../img/icon-controle-pequeno.png">
     </head>
     <body>
+        <div class="fundo"></div>
         <div class="container">
         <h1 class="titulo">Listar Usuários</h1>
+        <input type="text" id="pesquisaUsuario" placeholder="Digite um Usuário">
         <table border="1" id="tabela">
                 <thead>
                     <tr>
@@ -29,7 +31,7 @@
                 </thead>
                 <tbody>
                     <c:forEach var="u" items="${usuarios}">
-                        <tr class="funcionario">
+                        <tr class="users">
                             <td class="nomeUsuario"><c:out value="${u.nomeUsuario}" /></td>
                             <td class="nome"><c:out value="${u.nomeFuncionario}" /></td>
                             <td class="sobrenome"><c:out value="${u.sobrenome}" /></td>  
@@ -42,6 +44,8 @@
                 </tbody>
                 </div>
             </table>
-        <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>        
+        
+        <script type="text/javascript" src="../javaScript/filtraUsuario.js"></script>
+        <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>       
     </body>
 </html>

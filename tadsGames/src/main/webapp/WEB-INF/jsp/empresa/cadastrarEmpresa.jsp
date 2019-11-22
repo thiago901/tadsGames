@@ -93,7 +93,7 @@
                 <div class="botoes">
                     <button type="submit">Cadastrar</button>
                     <button type="reset">Resetar dados</button>
-                    <button ><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+                    <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
                     <!--<a href="#" role="button">Cancelar</a>-->
                 </div>
         
