@@ -26,7 +26,7 @@ public class ExcluirItemVenda implements Executavel{
         int itemVenda =Integer.parseInt(req.getParameter("itemVenda"));
         List<VendaDetalhe> l = (List<VendaDetalhe>) sessao.getAttribute("itemVenda");
         l.remove(itemVenda);
-        resp.sendRedirect(req.getContextPath() + "/inputVenda?action=FormVenda");
+        resp.sendRedirect(req.getContextPath() + "/tads/inputVenda?action=FormVenda");
         
         return "";
     }

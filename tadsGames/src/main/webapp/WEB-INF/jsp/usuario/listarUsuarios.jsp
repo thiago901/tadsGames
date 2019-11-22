@@ -17,6 +17,7 @@
     <body>
         <div class="container">
         <h1 class="titulo">Listar Usuários</h1>
+        <input type="text" id="pesquisaUsuario" placeholder="Digite um Usuário">
         <table border="1" id="tabela">
                 <thead>
                     <tr>
@@ -29,7 +30,7 @@
                 </thead>
                 <tbody>
                     <c:forEach var="u" items="${usuarios}">
-                        <tr class="funcionario">
+                        <tr class="users">
                             <td class="nomeUsuario"><c:out value="${u.nomeUsuario}" /></td>
                             <td class="nome"><c:out value="${u.nomeFuncionario}" /></td>
                             <td class="sobrenome"><c:out value="${u.sobrenome}" /></td>  
@@ -42,6 +43,8 @@
                 </tbody>
                 </div>
             </table>
+        
+        <script type="text/javascript" src="../javaScript/filtraUsuario.js"></script>
         <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>        
     </body>
 </html>

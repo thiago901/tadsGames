@@ -1,0 +1,3 @@
+21/11/2019 - 20h33m59s - O usuario: dono realizou um Login no sistema.
+21/11/2019 - 20h39m27s - O usuario: dono realizou um Login no sistema.
+21/11/2019 - 20h39m47s - O usuario: dono registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Thiago Santos, no valor de: 900.0.

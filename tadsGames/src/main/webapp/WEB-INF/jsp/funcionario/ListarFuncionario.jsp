@@ -14,7 +14,7 @@
     <body>
         <div class="container">
             <h1 class="titulo">Consulta de Funcionários</h1>
-            <input type="text" id="nomePesquisa" placeholder="Digite um Nome">
+            <input type="text" id="pesquisaFuncionario" placeholder="Digite um Nome">
         <form method="post" action="${pageContext.request.contextPath}/listarFuncionario" novalidate>
         <table border="1">            
   <thead>
@@ -34,8 +34,8 @@
   </thead>
   <tbody>
      <c:forEach items="${funcionarios}" var="funcionario">
-       <tr>
-         <td>${funcionario.nome}</td>
+       <tr class="funcionario">
+         <td class="nome">${funcionario.nome}</td>
          <td>${funcionario.sobrenome}</td>
          <td>${funcionario.cpf}</td>         
          <td>${funcionario.dtNasc}</td>
@@ -59,5 +59,6 @@
        
                 <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
             
+        <script type="text/javascript" src="../javaScript/filtraFuncionario.js"></script>
     </body>
 </html>

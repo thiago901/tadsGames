@@ -17,6 +17,7 @@
     <body>
         <div class="container">
         <h1 class="titulo">Solicitações do RH</h1>
+        <input type="text" id="pesquisaUsuario" placeholder="Digite o nome de um funcionário">
         <table border="1" id="tabela">
                 <thead>
                     <tr>
@@ -30,7 +31,7 @@
                 <tbody>
 
                     <c:forEach var="f" items="${lista}">
-                        <tr class="funcionario">
+                        <tr class="users">
                             <td class="nome"><c:out value="${f.nomeFuncionario}" /></td>
                             <td class="sobrenome"><c:out value="${f.sobrenome}" /></td>
                             <td class="departamento"><c:out value="${f.departamento}" /></td>
@@ -43,5 +44,6 @@
                 </div>
             </table>
         <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+        <script type="text/javascript" src="../javaScript/filtraFuncionarioSemUsuario.js"></script>
     </body>
 </html>
