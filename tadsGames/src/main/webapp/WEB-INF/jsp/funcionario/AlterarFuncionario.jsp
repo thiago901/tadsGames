@@ -15,7 +15,7 @@
 
 <div class="container">
   <form method="post" action="${pageContext.request.contextPath}/tads/inputFuncionario?action=EditarFuncionario">
-      <h1>Cadastro de Funcionários</h1> 
+      <h1>Alterar Funcionários</h1> 
       <input type="hidden" name="idFuncionario" value="${funcionario.id}">
     <label for="nome">Nome</label>
     <input type="text" id="nome" name="nome" value="${funcionario.nome}">
@@ -146,7 +146,12 @@
         </c:if>                                
     </div>
     <br>
-    <button type="submit">Enviar</button>        
+    <%--<script>
+   <button type="submit">Enviar</button>  
+</script>--%>
+    <button type="submit" id="btnSalvar">Salvar</button>
+    <button type="reset">Reset</button>
+    <button type=""><a href="${pageContext.request.contextPath}/indexHome">Sair</a></button>
   </form>
 </div>
 <script type="text/javascript" src="../javaScript/filtraCargo.js"></script>

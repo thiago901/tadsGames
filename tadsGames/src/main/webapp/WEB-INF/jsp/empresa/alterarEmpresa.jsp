@@ -90,7 +90,9 @@
                                     <input type="radio" name="matriz" value="false" id="matrizNao" checked="">
                                     <label for="matrizNao">Não</label>
                                 </div>
-                            <button type="submit">Cadastrar</button>
+                        <button type="submit">Salvar</button>
+                        <button type="reset">Resetar dados</button>
+                        <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
 			</form>
 		</div>
 	</body>

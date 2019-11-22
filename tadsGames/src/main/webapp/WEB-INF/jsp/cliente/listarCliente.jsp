@@ -51,7 +51,7 @@
                 </tbody>
             </table>
             <div class="teste">
-                <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
+                <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
             </div>
         </div>
         <script type="text/javascript" src="javaScript/filtraCliente.js"></script>

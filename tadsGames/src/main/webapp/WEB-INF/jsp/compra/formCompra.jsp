@@ -54,6 +54,7 @@
                     </div>
                 </c:if>
                 <button>Salvar</button>
+                <button type=""><a href="${pageContext.request.contextPath}/home">Sair</a></button>
                 
             </form>
             

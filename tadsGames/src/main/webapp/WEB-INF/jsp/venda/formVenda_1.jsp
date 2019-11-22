@@ -131,8 +131,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                     </table>
                     <div class="divBotoes">
                         
-                        
-                        <a href="#">Voltar ao Menu</a>
+                        <button><a href="${pageContext.request.contextPath}/home">Voltar ao Menu</a></button>
                         <button type="reset" id="reset" class="reset" >Limpar</button>
                         <button type="subimit" id="salvar" class="salvar" >Salvar</button>
                     </div>

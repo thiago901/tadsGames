@@ -42,5 +42,6 @@
                 </tbody>
                 </div>
             </table>
+        <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>        
     </body>
 </html>

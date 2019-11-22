@@ -115,7 +115,9 @@
         <input type="radio" name="status" value="false">
         <label>Inativo</label>                                   
     </div>
-    <button type="submit">Cadastrar</button>        
+    <button type="submit">Cadastrar</button> 
+    <button type="reset">Resetar dados</button>
+    <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
   </form>
 </div>
 <script type="text/javascript" src="../javaScript/filtraCargo.js"></script>

@@ -65,6 +65,7 @@
                 </c:if>
                 <button type="submit" id="btnSalvar">Salvar</button>
                 <button type="reset">Reset</button>
+                <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
                 
                 
 

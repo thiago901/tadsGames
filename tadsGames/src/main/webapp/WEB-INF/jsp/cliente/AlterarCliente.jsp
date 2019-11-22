@@ -101,11 +101,14 @@
                 <div class="teste">
                     <button type="submit">Enviar</button>
                     <button type="reset">Resetar dados</button>
-                    <button type="submit" value="">Cancelar</button>
-                    <!--<a href="#" role="button">Cancelar</a>-->
+                    <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+                    <!--<a href="#" role="button">Cancelar</a>-->   
                 </div>
 
             </form>
+                    
+
+
         </div>
 
     </body>

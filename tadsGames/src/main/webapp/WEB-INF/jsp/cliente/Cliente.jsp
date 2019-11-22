@@ -98,7 +98,7 @@
                     <div class="teste">
                         <button type="submit">Cadastrar</button>
                         <button type="reset">Resetar dados</button>
-                        <button type="submit" ><a href="${pageContext.request.contextPath}">Sair</a></button>
+                        <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
                         <!--<a href="#" role="button">Cancelar</a>-->
                     </div>
                 
