@@ -208,3 +208,10 @@ input::placeholder{
 .idProduto{
     display: none;
 }
+.erro-input {
+    display: none;
+    color: #e74c3c;
+}
+.com-erro {
+    display: block;
+}

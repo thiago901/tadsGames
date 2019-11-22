@@ -59,6 +59,11 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
                     <div class="insere-nome-produto">
                         <input value=""  id="nomeProduto" type="text" name="nomeProduto" class="procuraNomeProduto" placeholder="Digite o Codigo ou nome do Item">
+                        <c:if test="${validacaoNome}">
+                            <div class="erro-input com-erro">
+                                 Digite o nome do produto
+                            </div>
+                        </c:if>
                         <div class="divAutocomplete">
                             <table id="tbSource" hidden="">
 
@@ -81,7 +86,16 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                         
                         <input value="0" id="qtd" type="number"  min="0" name="qtd" class="dadosQtd" placeholder="Informe a quantidade">
                     </div>
-                    
+                    <c:if test="${validacaoQtd}">
+                        <div class="erro-input com-erro">
+                             Digite uma quantidade válida
+                        </div>
+                    </c:if>
+                    <c:if test="${validacaoQtd2}">
+                        <div class="erro-input com-erro">
+                             Quantidade indisponivel
+                        </div>
+                    </c:if>
                     <div class="valorUnitario">
                         <span>Valor Unitario</span>
                         <span  id="SpanvlrUnitario">0,00</span>
