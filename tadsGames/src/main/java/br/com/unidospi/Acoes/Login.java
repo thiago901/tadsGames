@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,15 +37,16 @@ public class Login implements Executavel {
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, usuario);
 
-            
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
-            dispatcher.forward(req, resp);
+            resp.sendRedirect(req.getContextPath()+"/indexHome");
+//            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
+//            dispatcher.forward(req, resp);
             //resp.sendRedirect(req.getContextPath() + "/inputLogin?action=Login");
 
         } else {
             req.setAttribute("msgErro", "Usuario inexistente ou senha inválida");
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/login/Login.jsp");
-            dispatcher.forward(req, resp);
+//            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/login/Login.jsp");
+//            dispatcher.forward(req, resp);
+            resp.sendRedirect(req.getContextPath()+"/inputLogin?action=FormLogin");
         }
         return "";
     }

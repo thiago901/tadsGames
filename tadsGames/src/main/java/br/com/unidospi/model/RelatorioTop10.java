@@ -12,20 +12,20 @@ import java.util.Date;
  * @author thiago.srocha4
  */
 public class RelatorioTop10 {
-    private Date DATA_VENDA;
+    private float VALOR;
     private String PRODUTO; 
     private String EMPRESA; 
     private int QUANTIDADE;
 
-    public RelatorioTop10(Date DATA_VENDA, String PRODUTO, String EMPRESA, int QUANTIDADE) {
-        this.DATA_VENDA = DATA_VENDA;
+    public RelatorioTop10(String PRODUTO, String EMPRESA, int QUANTIDADE,float VALOR) {
+        this.VALOR = VALOR;
         this.PRODUTO = PRODUTO;
         this.EMPRESA = EMPRESA;
         this.QUANTIDADE = QUANTIDADE;
     }
 
-    public Date getDATA_VENDA() {
-        return DATA_VENDA;
+    public float getVALOR() {
+        return  VALOR ;
     }
 
     public String getPRODUTO() {

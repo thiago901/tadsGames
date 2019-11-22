@@ -7,6 +7,7 @@ package br.com.unidospi.Acoes;
 
 import br.com.unidospi.Controller.RelatoriosController;
 import br.com.unidospi.model.RelatorioGeral;
+import br.com.unidospi.model.RelatorioTop10;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -22,13 +23,13 @@ public class RelatorioDiario implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        //ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
+        ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
         //ArrayList<RelatorioFaturaDia> rel_fatura_dia =RelatoriosController.rel_fatura_dia();
         //ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem = RelatoriosController.rel_total_empresa_porcentagem();
         ArrayList<RelatorioGeral> relatorioDiario = RelatoriosController.relatorioDiario();
         
         float totalDiario = RelatoriosController.totalDia();
-        //req.setAttribute("top10", rel_top10_vendas_dia);
+        req.setAttribute("top10", rel_top10_vendas_dia);
         //req.setAttribute("faturaDia", rel_fatura_dia);
         //req.setAttribute("totalEmpresa", rel_total_empresa_porcentagem);
         req.setAttribute("relatorioDiario", relatorioDiario);
