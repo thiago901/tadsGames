@@ -1,0 +1,217 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11/11/2019, 17:26:39
+    Author     : thiago.srocha4
+*/
+
+.imgAltera{
+    width: 30px;
+    height: 30px;
+    display: inline;
+    transition: .5s;
+    
+}
+.imgAltera:hover{
+    width: 35px;
+    height: 35px;
+}
+.divClienteConteudo{
+    width: 50%;
+}
+#tabelaClientes{
+    background: rgba(255,255,255,.5);
+    width: 30%;
+    text-align: left;
+    position: absolute
+        
+}
+#tabelaClientes tr:hover{
+    background: #4CAF50;
+    width: 90%;
+}
+#tbSource{
+        
+    background: rgba(255,255,255,.5);
+    width: 30%;
+    position: absolute;
+    text-align: left;
+}
+#tbSource tr:hover{
+    background: #4CAF50;
+}
+
+body{
+	position: absolute;
+	background: #34495e;
+	font-family: 'Poppins',sans-serif;
+
+}
+
+
+input{
+	background: none;
+	height: 40px;
+	border:none;
+        padding-left: 5px;
+
+}
+.insere-produto2{
+	display: flex;
+	width: 100%;
+
+}
+.insere-produto{
+	width: 900px;
+	border: #95a5a6 solid 2px
+
+}
+
+#nomeProduto{
+        color: #fff;
+	width: 100%;
+        
+}
+span{
+	display: block;
+	color: #fff;
+}
+#qtd{
+	color: #fff;
+	flex-grow: 4;
+	border-top: #95a5a6 solid 2px;
+	text-align: center;
+}
+
+
+.valorUnitario{
+	text-align: center;
+	flex-grow: 4;
+	border-left: #95a5a6 solid 2px;
+	border-top: #95a5a6 solid 2px;
+}
+.valorTotal{
+	text-align: center;
+	flex-grow: 4;
+	border-left: #95a5a6 solid 2px;
+	border-top: #95a5a6 solid 2px;
+	
+}
+button{
+	background: #95a5a6;
+	color: #000;
+	border:none;
+	
+	width: 130px;
+
+}
+.botao{
+
+
+
+}
+.botao .add{
+	height: 50%;
+	margin-left: 10px; 
+	transition: 0.5s;
+	
+}
+.botao .add:hover{
+	background: #4CAF50;
+	height: 100%;
+
+}
+.divBotoes{
+	float: right;
+	margin-top: 10px;
+	height:80px;
+
+	
+}
+.divBotoes button{
+	height: 50%;
+	align-items: center;
+	transition: 0.5s;
+}
+.divBotoes button:hover{
+	background: #4CAF50;
+	
+}
+
+
+.insere-produto-botao{
+	display: flex;
+	
+
+}
+#tabela-detalhe-venda{
+	width: 100%;
+	margin-top: 30px;
+	border: #95a5a6 solid 2px;
+	border-collapse: collapse;
+	text-align: center;
+}
+#tabela-detalhe-venda td{
+	border-top: #95a5a6 solid 2px;
+}
+#tabela-detalhe-venda .itemVenda{
+	border-bottom: #95a5a6 solid 2px;
+}
+
+#tabela-detalhe-venda .itemVenda:nth-child(2n+2){
+	background: #95a5a6;
+	color: #fff;
+}
+#tabela-detalhe-venda .itemVenda:hover{
+    background: #4CAF50;
+    
+    
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+.container{
+	margin-top: 20px;
+	padding: 50px;
+	position: absolute;
+	transform: translateX(20%);
+	background-color: rgba(255,255,255,.2);
+	border-radius: 5px;
+
+
+
+
+}
+
+input::placeholder{
+	color: #FFF;
+	font-family: 'Poppins',sans-serif;
+	padding: 5px;
+	transition: 1s linear;
+}
+
+#resumoCliente{
+        display: inline;
+        color: #fff;
+	width: 90%;
+	border-top: #95a5a6 solid 2px;
+	border-left: #95a5a6 solid 2px;
+	border-right: #95a5a6 solid 2px;
+}
+.idProduto{
+    display: none;
+}
+.erro-input {
+    display: none;
+    color: #e74c3c;
+}
+.com-erro {
+    display: block;
+}
