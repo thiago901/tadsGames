@@ -5,7 +5,7 @@
     <groupId>com.unidospi</groupId>
     <artifactId>tadsGames</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>tadsGames</name>
     <developers>
@@ -99,7 +99,7 @@
                 <configuration>
                     <archive>
  
-                        <!-- DEFINE QUAL É A CLASSE MAIN DA APLICAÇÃO  -->
+                        <!-- DEFINE QUAL É A CLASSE MAIN DA APLICAÇÃO-->
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <mainClass>br.com.unidospi.util.main</mainClass>
@@ -107,7 +107,7 @@
                     </archive>
  
                     <!-- ADICIONO AO NOME DO JAR FINAL UM COMPLEMENTO DIZENDO
-                    QUE ELE CONTÉM AS DEPENDÊNCIAS  -->
+                    QUE ELE CONTÉM AS DEPENDÊNCIAS-->
  
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -116,7 +116,7 @@
                 <executions>
                     <execution>
  
-                        <!-- DETERMINO QUE O JAR GERADO INCLUIRÁ AS DEPENDÊNCIAS E ELAS 
+                       <!-- COMENTARIO DETERMINO QUE O JAR GERADO INCLUIRÁ AS DEPENDÊNCIAS E ELAS 
                         SERÃO EMPACOTADAS JUNTO COM O PROJETO EM UM ÚNICO JAR  -->
  
                         <id>make-my-jar-with-dependencies</id>
