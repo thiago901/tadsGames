@@ -15,7 +15,7 @@
     </head>
 
     <body>
-
+<div class="fundo"></div>
         <div class="container">
             <h1 class="titulo">Listar Produtos</h1>
             <input type="text" id="pesquisaProduto" placeholder="Digite um nome..."</input>
@@ -52,8 +52,7 @@
                 </tbody>
             </table>
             <div class="teste">
-                <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
-                <button type="submit" ><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+                <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             </div>
         </div>
         <script type="text/javascript" src="../javaScript/filtraProduto.js"></script>

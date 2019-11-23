@@ -1,6 +1,9 @@
 21/11/2019 - 20h33m59s - O usuario: dono realizou um Login no sistema.
 21/11/2019 - 20h39m27s - O usuario: dono realizou um Login no sistema.
 21/11/2019 - 20h39m47s - O usuario: dono registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Thiago Santos, no valor de: 900.0.
-22/11/2019 - 20h27m4s - O usuario: dono realizou um Login no sistema.
-22/11/2019 - 20h35m12s - O usuario: dono realizou um Login no sistema.
-22/11/2019 - 20h47m10s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 20h6m12s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 20h16m52s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 20h21m29s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 20h22m19s - O usuario: dono realizou uma Compra no sistema, referente a: 3 unidade(s) do produto: Homem Aranha, totalizando o valor de: 9.0.
+22/11/2019 - 20h22m30s - O usuario: dono realizou uma Compra no sistema, referente a: 7 unidade(s) do produto: Batman, totalizando o valor de: 49.0.
+22/11/2019 - 20h38m34s - O usuario: dono realizou um Login no sistema.

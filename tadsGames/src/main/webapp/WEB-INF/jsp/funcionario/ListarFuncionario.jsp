@@ -12,6 +12,7 @@
        <link rel="stylesheet" type="text/css" href="../css/tabelasListagem.css">
     </head>
     <body>
+        <div class="fundo"></div>
         <div class="container">
             <h1 class="titulo">Consulta de Funcionários</h1>
             <input type="text" id="pesquisaFuncionario" placeholder="Digite um Nome">
@@ -57,7 +58,7 @@
   </tbody>
 </table>
        
-                <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+                <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             
         <script type="text/javascript" src="../javaScript/filtraFuncionario.js"></script>
     </body>

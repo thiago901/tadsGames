@@ -54,7 +54,7 @@
                     </div>
                 </c:if>
                 <button>Salvar</button>
-                <button type=""><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+                <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
                 
             </form>
             
