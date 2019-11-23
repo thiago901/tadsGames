@@ -10,6 +10,12 @@ import static br.com.unidospi.DAO.EmpresaDao.validaNovoCnpj;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
+import br.com.unidospi.util.GeraLogI;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +30,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author gisidorio
  */
-public class CadastrarEmpresa implements Executavel {
+public class CadastrarEmpresa implements Executavel, GeraLogI {
 
     /**
      *
@@ -112,6 +118,21 @@ public class CadastrarEmpresa implements Executavel {
         }
 
         return "";
+    }
+
+    @Override
+    public void gerarLog(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        File arquivo = null;
+        FileReader fileReader;
+        BufferedReader bufferedReader;
+        FileWriter fileWriter;
+        BufferedWriter bufferedWriter;
+        String home = System.getProperty("user.home")+"\\Documents\\NetBeansProjects\\tadsGames\\tadsGames\\Log\\Registro2.txt";
+        HttpSession sessao = req.getSession();
+        UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+        
+        String acao = "cadastro de empresa";
+        //CONTINUAR EM CASA
     }
 
 }

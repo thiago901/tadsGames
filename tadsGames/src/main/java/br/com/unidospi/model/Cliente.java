@@ -24,7 +24,11 @@ public class Cliente extends PessoaCadastravel {
     public Cliente(int idEmpresa, String nome, String sobrenome, String sexo, String cpf, Date dataNasc, boolean ativo) {
         super(idEmpresa, nome, sobrenome, sexo, cpf, dataNasc, ativo);
     }
-    
+
+    public Cliente(int id, String nome, String sobrenome) {
+        super(id, nome, sobrenome);
+    }
+   
     
 
     

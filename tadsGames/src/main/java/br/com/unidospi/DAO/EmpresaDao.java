@@ -63,6 +63,54 @@ public class EmpresaDao {
         }
         return false;
     }
+    // Retorna a ultima empresa cadastrada no sistema
+    public static Empresa ultEmpresa() {
+        String query = "Select idEmpresa, nome,cnpj from Empresa where (select max(idCliente) from Empresa)=idEmpresa;";
+        Empresa e = null;
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                int idEmpresa=rs.getInt("idEmpresa");
+                String nome=rs.getString("nome"); 
+                String cnpj=rs.getString("cnpj");
+                
+                e = new Empresa(idEmpresa, nome, cnpj);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return e;
+    }
+    
+    
+    
+    public static boolean validaNovoCPF(String cpf){
+        String query = "Select c.nome from CLIENTE c where c.cpf LIKE ?;";
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1,  cpf);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+                if (rs.getString("nome") != null)
+                    return false;
+            } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
+    
     
     /* Recebe uma empresa e retorna verdaidero caso o(s) dado(s) do registro 
        sejam alterados ou falso caso não sejam alterados */

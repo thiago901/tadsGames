@@ -35,6 +35,13 @@ public abstract class PessoaCadastravel {
         this.dataNasc = dataNasc;
         this.ativo = ativo;
     }
+
+    public PessoaCadastravel(int id, String nome, String sobrenome) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+    }
+    
     
     public PessoaCadastravel(int id, int idEmpresa, String nome, String sobrenome, String sexo, Date dataNasc, boolean ativo) {
         this.id = id;

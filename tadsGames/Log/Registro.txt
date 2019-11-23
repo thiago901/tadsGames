@@ -1,3 +1,13 @@
 21/11/2019 - 20h33m59s - O usuario: dono realizou um Login no sistema.
 21/11/2019 - 20h39m27s - O usuario: dono realizou um Login no sistema.
 21/11/2019 - 20h39m47s - O usuario: dono registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Thiago Santos, no valor de: 900.0.
+22/11/2019 - 20h13m34s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 20h24m57s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 20h44m48s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 21h25m36s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 21h26m43s - O usuario: dono realizou um cadastro de Cliente no sistema, cadastrando o Cliente: Eduardo Marquito.
+22/11/2019 - 21h28m5s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 21h29m7s - O usuario: dono realizou um cadastro de Cliente no sistema, cadastrando o Cliente: Matheus Macedo.
+22/11/2019 - 21h54m47s - O usuario: dono realizou um Login no sistema.
+22/11/2019 - 21h55m26s - O usuario: dono realizou um cadastro de Cliente no sistema, cadastrando o Cliente: Igor Lima dos Santos.
+22/11/2019 - 21h56m13s - O usuario: dono realizou um Login no sistema.

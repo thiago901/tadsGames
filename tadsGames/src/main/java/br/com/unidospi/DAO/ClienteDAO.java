@@ -108,6 +108,34 @@ public class ClienteDAO {
         
         return listaClientes;
     }
+    //Retorna o id, nome e sobrenome do ultimo cliente cadastrado no sistema
+    public static Cliente ultCliente() {
+        String query = "Select idCliente, nome,sobrenome from Cliente where (select max(idCliente) from Cliente)=idCliente;";
+        Cliente cliente = null;
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                int idCliente=rs.getInt("idCliente");
+                String nome=rs.getString("nome"); 
+                String sobrenome=rs.getString("sobrenome");
+                
+                cliente = new Cliente(idCliente, nome, sobrenome);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return cliente;
+    }
+    
+    
     
     public static boolean validaNovoCPF(String cpf){
         String query = "Select c.nome from CLIENTE c where c.cpf LIKE ?;";

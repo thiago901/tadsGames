@@ -56,6 +56,14 @@ public class Empresa {
         this.matriz = matriz;
     }
 
+    public Empresa(int cod, String nome, String cnpj) {
+        this.cod = cod;
+        this.nome = nome;
+        this.cnpj = cnpj;
+    }
+
+
+
     
     
     public int getCod() {
