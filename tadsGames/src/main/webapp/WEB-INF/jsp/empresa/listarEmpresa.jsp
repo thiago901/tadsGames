@@ -13,6 +13,7 @@
     <link rel="icon" href="../img/icon-controle-pequeno.png">
 </head>
 	<body>
+            <div class="fundo"></div>
 		<div class="container">
                     <h1 class="titulo">Lista de Empresas</h1>
                     
@@ -55,7 +56,7 @@
                         </tbody>
                     </table>
                          <div class="teste">
-                <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+                <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             </div>
 		</div>
             <script type="text/javascript" src="javaScript/filtraEmpresa.js"></script>

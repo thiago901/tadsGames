@@ -15,6 +15,7 @@
         <link rel="icon" href="../img/icon-controle-pequeno.png">
     </head>
     <body>
+        <div class="fundo"></div>
         <div class="container">
         <h1 class="titulo">Solicitações do RH</h1>
         <input type="text" id="pesquisaUsuario" placeholder="Digite o nome de um funcionário">
@@ -43,7 +44,7 @@
                 </tbody>
                 </div>
             </table>
-        <button><a href="${pageContext.request.contextPath}/home">Sair</a></button>
+        <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
         <script type="text/javascript" src="../javaScript/filtraFuncionarioSemUsuario.js"></script>
     </body>
 </html>
