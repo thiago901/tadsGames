@@ -120,7 +120,7 @@ function montarTd(dado, classe) {
     };
     
     var xml = new XMLHttpRequest();
-    xml.open("POST","http://localhost:8084/TadsGames/inputVenda?action=CadastrarItem",true);
+    xml.open("POST","http://localhost:8084/tadsGames/inputVenda?action=CadastrarItem",true);
    
     xml.setRequestHeader("itemVenda", JSON.stringify(arrayDetalheVenda));
     

@@ -90,7 +90,7 @@ inputNomeCliente.addEventListener("input", function () {
 function buscarClientes(nomePesquisado) {
     var ajax = new XMLHttpRequest();
 
-    ajax.open("GET", "/TadsGames/tads/inputCliente?action=ListarCliente2&&nomeCliente=" + nomePesquisado);
+    ajax.open("GET", "/tadsGames/tads/inputCliente?action=ListarCliente2&&nomeCliente=" + nomePesquisado);
     ajax.addEventListener("load", function () {
 
         var textJason = ajax.responseText;

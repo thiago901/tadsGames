@@ -72,7 +72,7 @@ estado.addEventListener("input", function () {
 
 function buscarCidades(idUf) {
     var xhl = new XMLHttpRequest();
-    xhl.open("GET", "/TadsGames/tads/input?action=ListarCidades&nome=" + idUf);
+    xhl.open("GET", "/tadsGames/tads/input?action=ListarCidades&nome=" + idUf);
     xhl.addEventListener("load", function () {
         var text = xhl.responseText;
 
