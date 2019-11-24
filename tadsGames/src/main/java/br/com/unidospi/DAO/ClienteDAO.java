@@ -25,9 +25,9 @@ import java.util.logging.Logger;
 public class ClienteDAO {
     
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
+    static final String URL = "jdbc:mysql://dbgames.czyozk3ol6md.us-east-1.rds.amazonaws.com:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     static final String USUARIO = "root";
-    static final String SENHA = "adminadmin";
+    static final String SENHA = "!zxcASD50";
     static Connection conexao;
     
     /* recebe um objeto cliente e retorna 1 caso obtenha sucesso em salvar cliente
@@ -76,8 +76,8 @@ public class ClienteDAO {
                "        b.nome as nomeEmpresa,\n" +
                "        a.ativo\n" +
         "\n" +
-                    "FROM cliente a \n" +
-                    "left join empresa b on \n" +
+                    "FROM Cliente a \n" +
+                    "left join Empresa b on \n" +
                     "a.idempresa = b.idempresa;";
         
         try {                        
@@ -138,7 +138,7 @@ public class ClienteDAO {
     
     
     public static boolean validaNovoCPF(String cpf){
-        String query = "Select c.nome from CLIENTE c where c.cpf LIKE ?;";
+        String query = "Select c.nome from Cliente c where c.cpf LIKE ?;";
         try {                        
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
@@ -160,7 +160,7 @@ public class ClienteDAO {
         ArrayList<Cliente> lista = new ArrayList<>();
         
         
-        String query = "select * from cliente where nome LIKE ? or cpf like ? order by nome;";
+        String query = "select * from Cliente where nome LIKE ? or cpf like ? order by nome;";
         
         try {                        
             Class.forName(DRIVER);
@@ -213,8 +213,8 @@ public class ClienteDAO {
                "        b.nome as nomeEmpresa,\n" +
                "        a.ativo\n" +
                         "\n" +
-                    "FROM cliente a \n" +
-                    "left join empresa b on \n" +
+                    "FROM Cliente a \n" +
+                    "left join Empresa b on \n" +
                     "a.idempresa = b.idempresa "
                 + "where a.idCliente = ?;";
         
@@ -252,7 +252,7 @@ public class ClienteDAO {
      * ou zero caso não seja salvo */
     public static int alterar(Cliente cliente) {
         
-        String query = "update cliente\n" +
+        String query = "update Cliente\n" +
                         "SET nome=?,	\n" +
                         "	sobrenome=?,\n" +
                         "	dtNasc=?,\n" +

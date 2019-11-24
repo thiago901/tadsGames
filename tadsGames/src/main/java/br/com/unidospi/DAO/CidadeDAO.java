@@ -21,15 +21,15 @@ import java.util.ArrayList;
 public class CidadeDAO {
     private static final String DRIVER="com.mysql.cj.jdbc.Driver";
     private static final String USUARIO="root";
-    private static final String SENHA = "adminadmin";
-    private static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
+    private static final String SENHA = "!zxcASD50";
+    private static final String URL = "jdbc:mysql://dbgames.czyozk3ol6md.us-east-1.rds.amazonaws.com:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     private static Connection conexao;
     
     // retorna uma lista de cidades
     public static ArrayList listaCidade() {
         try{
             ArrayList <Cidade> cid = new ArrayList();
-            String sql ="select * from Cidade";
+            String sql ="select * from cidade";
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -59,7 +59,7 @@ public class CidadeDAO {
     public static ArrayList listaCidade(int uf) {
         try{
             ArrayList <Cidade> cid = new ArrayList();
-            String sql ="select * from Cidade where idEstado = ?";
+            String sql ="select * from cidade where idEstado = ?";
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);

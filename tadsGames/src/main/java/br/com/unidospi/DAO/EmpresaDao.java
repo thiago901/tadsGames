@@ -24,9 +24,9 @@ import java.util.logging.Logger;
 public class EmpresaDao {
 
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
+    static final String URL = "jdbc:mysql://dbgames.czyozk3ol6md.us-east-1.rds.amazonaws.com:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     static final String USUARIO = "root";
-    static final String SENHA = "adminadmin";
+    static final String SENHA = "!zxcASD50";
     static Connection conexao;
 
     
@@ -93,7 +93,7 @@ public class EmpresaDao {
     
     
     public static boolean validaNovoCPF(String cpf){
-        String query = "Select c.nome from CLIENTE c where c.cpf LIKE ?;";
+        String query = "Select c.nome from Cliente c where c.cpf LIKE ?;";
         try {                        
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
@@ -117,7 +117,7 @@ public class EmpresaDao {
     public static boolean alterar(Empresa empr){
         try{
             Class.forName(DRIVER);
-            String sql = "UPDATE empresa "
+            String sql = "UPDATE Empresa "
                         + "SET nome=?, "
                         + "dataCriacao=?, "
                         + "idEstado=?, "
@@ -158,7 +158,7 @@ public class EmpresaDao {
     }
 
         public static boolean validaNovoCnpj(String cnpj){
-        String query = "Select e.nome from EMPRESA e where e.cnpj LIKE ?;";
+        String query = "Select e.nome from Empresa e where e.cnpj LIKE ?;";
         try {                        
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
@@ -190,8 +190,8 @@ public class EmpresaDao {
                         "        c.nomeCidade,\n" +
                         "        a.ativo,\n" +
                         "        a.matriz\n" +
-                        " from empresa a\n" +
-                        "left join estadoregiao b on \n" +
+                        " from Empresa a\n" +
+                        "left join EstadoRegiao b on \n" +
                         "a.idEstado = b.idEstado\n" +
                         "left join cidade c on\n" +
                         "c.idCidade = a.idCidade "
@@ -247,8 +247,8 @@ public class EmpresaDao {
                         "        c.nomeCidade,\n" +
                         "        a.ativo,\n" +
                         "        a.matriz\n" +
-                        " from empresa a\n" +
-                        "left join estadoregiao b on \n" +
+                        " from Empresa a\n" +
+                        "left join EstadoRegiao b on \n" +
                         "a.idEstado = b.idEstado\n" +
                         "left join cidade c on\n" +
                         "c.idCidade = a.idCidade \n"
