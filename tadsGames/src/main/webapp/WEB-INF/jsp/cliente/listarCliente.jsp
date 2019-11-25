@@ -55,6 +55,6 @@
                 <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             </div>
         </div>
-        <script type="text/javascript" src="javaScript/filtraCliente.js"></script>
+        <script type="text/javascript" src="../javaScript/filtraCliente.js"></script>
     </body>
 </html>

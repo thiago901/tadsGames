@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="container">
-            <form action="\TadsGames\tads\inputCompra?action=CadastrarCompra" method="post">
+            <form action="${pageContext.request.contextPath}/tads/inputCompra?action=CadastrarCompra" method="post">
                 <select name="empresa" required="">
                     <option disabled="" selected="" >Escolha um empresa</option>
                     <c:forEach items="${empresas}" var="e">
