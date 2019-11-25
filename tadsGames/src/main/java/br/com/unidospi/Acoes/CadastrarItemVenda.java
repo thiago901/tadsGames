@@ -31,6 +31,7 @@ public class CadastrarItemVenda implements Executavel {
         String idProdutoStr = req.getParameter("inputIdProduto");
         String cliente = req.getParameter("nomeCpf");
         String id = req.getParameter("idCliente");
+        String cpfCliente = req.getParameter("cpfCliente");
         int qtd = Integer.parseInt(req.getParameter("quantideComprada"));
         UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
         String vlrUnitarioStr = req.getParameter("inputVlrUnitario");
@@ -89,6 +90,7 @@ public class CadastrarItemVenda implements Executavel {
             if (sessao.getAttribute("idLinhaItemVenda") == null) {
                 sessao.setAttribute("idLinhaItemVenda", 0);
                 sessao.setAttribute("idCliente", req.getParameter("idCliente"));
+                sessao.setAttribute("cpfCliente", req.getParameter("cpfCliente"));
                 sessao.setAttribute("nomeCliente2", req.getParameter("nomeCpf"));
             } else {
                 sessao.setAttribute("idLinhaItemVenda", (int) sessao.getAttribute("idLinhaItemVenda") + 1);

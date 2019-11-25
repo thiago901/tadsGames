@@ -8,9 +8,11 @@
 
 var inputNomeCliente = document.querySelector("#inputNomeCliente");
 var inputIdCliente = document.querySelector("#inputIdCliente");
+var inputCpfCliente = document.querySelector("#inputCpfCliente");
 var listaPesquisa = document.querySelector("#tblListaClientes");
 var tbodyPesquisa = listaPesquisa.querySelector("tbody");
 var tblResumoCliente = document.querySelector("#tblResumoCliente");
+var dadosClientes = document.querySelector("#dadosClientes");
 
 var telaCliente = document.querySelector("#telaCliente");
 var telaProduto = document.querySelector("#container");
@@ -20,10 +22,13 @@ var btnAlterarCliente = document.querySelector("#btnAlterarCliente");
 
 
 
+
 btnAlterarCliente.addEventListener("click",function (){
     
     visibilidade(telaProduto);
     visibilidade(telaCliente);
+    visibilidade(dadosClientes);
+    
 });
 
 btnSelecionarCliente.addEventListener("click",function (){
@@ -31,6 +36,7 @@ btnSelecionarCliente.addEventListener("click",function (){
         visibilidade(document.querySelector(".erro"));
         return;
     }
+    
     visibilidade(telaProduto);
     visibilidade(telaCliente);
     
@@ -39,6 +45,7 @@ btnEditarCliente.addEventListener("click",function (){
     editavel(inputNomeCliente);
     inputNomeCliente.value="";
     inputIdCliente.value="";
+    inputCpfCliente.value="";
     inputNomeCliente.focus();
     var tbody = tblResumoCliente.querySelector("tbody");
     
@@ -58,6 +65,7 @@ listaPesquisa.addEventListener("click",function (e){
     
     inputIdCliente.value = id.textContent;
     inputNomeCliente.value = nome.textContent;
+    inputCpfCliente.value = cpf.textContent;
     
     var tbody = tblResumoCliente.querySelector("tbody");
     

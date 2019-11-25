@@ -26,8 +26,9 @@ public class ClienteDAO {
     
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String URL = "jdbc:mysql://dbgames.czyozk3ol6md.us-east-1.rds.amazonaws.com:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
-    static final String USUARIO = "root";
     static final String SENHA = "!zxcASD50";
+
+    static final String USUARIO = "root";
     static Connection conexao;
     
     /* recebe um objeto cliente e retorna 1 caso obtenha sucesso em salvar cliente

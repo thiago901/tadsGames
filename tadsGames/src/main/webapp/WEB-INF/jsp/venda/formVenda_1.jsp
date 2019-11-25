@@ -21,13 +21,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
             <div class="fundo"></div>
 
-
-
-
             <div class="procuraCliente <c:if test="${idCliente!=null}"> oculta</c:if>"   id="telaCliente">
-
-
-
                 <div  class="fundo2">
                     <h3 class="erro oculta">Um cliente deve ser Selecionado</h3>
 
@@ -36,6 +30,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
                         <input type="text" id="inputNomeCliente" name="nomeCpf" class="inputNomeCliente" placeholder="Digite o nome ou CPF do Cliente">
                         <input hidden type="text" readonly="" name="idCliente" id="inputIdCliente">
+                        <input hidden type="text" readonly="" name="cpfCliente" id="inputCpfCliente">
 
                         <table  class="tblProcuraClientes oculta" id="tblListaClientes">
                             <thead>
@@ -49,13 +44,14 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                             </tbody>
                         </table>
                         <div class="divAddCliente">
+                            <a href="${pageContext.request.contextPath}/home"><button class="btnCadastrarVenda voltaMenu" type="button">Voltar ao Menu</button></a>
                             <button type="button" class="btnDivCliente" id="btnEditarCliente">Editar</button>
                             <button type="button" class="btnDivCliente" id="btnSelecionarCliente">Confirmar</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="dadosClientes">
+            <div id="dadosClientes" >
                 <div class="dadosClientesContent">
                     <table id="tblResumoCliente">
                         <tr>
@@ -65,7 +61,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                         </tr>
                         <tr>
                             <td>CPF:</td>
-                            <td class="tdCpf"></td>
+                            <td class="tdCpf"><c:out value="${cpfCliente}"/></td>
 
                         </tr>
                         <tr>
@@ -77,13 +73,13 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                     <button type="button" id="btnAlterarCliente">Alterar Cliente</button>
                 </div>
             </div>
-            <div class="container <c:if test="${idCliente==null}"> oculta</c:if>"" id="container">
+            <div  class="container <c:if test="${idCliente==null}"> oculta</c:if>" id="container">
 
                 <div class="procuraProduto">
                     <h3>Selecione o Produto: </h3>
                     <input id="inputNomeProduto" name="nomeProduto" class="inputNomeProduto" placeholder="Digite o nome do Produto">
 
-                    <input value="0" type="number" min="1" id="inputQuantidade" name="quantideComprada" class="inputQuantidade" placeholder="Informe a quantidade">
+                    <input value="0" type="number" min="0" id="inputQuantidade" name="quantideComprada" class="inputQuantidade" placeholder="Informe a quantidade">
 
                     <input id="inputVlrTotal" class="inputVlrTotal" disabled="" value="0,00">
 
@@ -134,13 +130,20 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                         </tbody>
                         <input hidden="" id="inputIdProduto" name="inputIdProduto">
                         <input hidden="" id="inputVlrUnitario" name="inputVlrUnitario">
+                        
                     </table>
+                    <div id="divBtnCadastrarVenda">
+                            <a href="${pageContext.request.contextPath}/home"><button class="btnCadastrarVenda voltaMenu" type="button">Voltar ao Menu</button></a>
+                            <button id="btnCadastrarVenda" class="btnCadastrarVenda">Cadastrar Venda</button>
+                        </div>
+                    
                 </div>
             </div>
 
         </form>
         <script src="../javaScript/autoCompleteProdutoNovo.js"></script>
         <script src="../javaScript/autoCompleteClienteNovo.js"></script>
+        <script src="../javaScript/alteraAcaoForm.js"></script>
 
     </body>
 </html>
