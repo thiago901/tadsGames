@@ -112,7 +112,7 @@ public class CadastrarCompra implements Executavel, GeraLogI{
         
         
         String acao = "compra";
-        Compra c = CompraDAO.ultCliente();
+        //Compra c = CompraDAO.ultCliente();
     }
     
 }
