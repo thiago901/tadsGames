@@ -13,10 +13,12 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/geral.css">
         <link rel="icon" type="image/png" href="img/icon-controle-pequeno.png"/>                
         <meta charset="UTF-8">
     </head>
     <body>
+        <c:import url="jsp/logout/logout.jsp"/>
         <div class="container">
             <div class="card">
                 <div class="face face1">
@@ -120,7 +122,9 @@
                     <div class="face face1">
                         <div class="content">
                             <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=Relatorio">Relatorio</a>    
-                            <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=RelatorioDiario">Relatorio Diario</a>    
+                            <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=RelatorioDiario">Relatorio Diario</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=RelatorioRegionalDiario">Diario Regional</a>    
+                            <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=RelatorioEmpresa">Relatorio só da empresa</a>    
                         </div>
                     </div>
                     <div class="face face2">
@@ -140,7 +144,7 @@
                 </div>
             </div>                
         </div>
-        <div class="integrantes">
+                    <div hidden="" class="integrantes">
             <h3>Desenvolvedores</h3>
             <ul class="listaDevs">
                 <li>Henrique Bastos</li>
