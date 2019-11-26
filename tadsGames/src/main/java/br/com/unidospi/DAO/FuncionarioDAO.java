@@ -8,7 +8,6 @@ package br.com.unidospi.DAO;
 import br.com.unidospi.model.Funcionario;
 import br.com.unidospi.model.FuncionarioEmpresa;
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -121,7 +120,32 @@ public class FuncionarioDAO {
         
         return listaFuncionarioEmpresas;
     }
-    
+    //Retorna o id, nome e sobrenome do ultimo funcionario cadastrado no sistema
+    public static Funcionario ultFuncionario() {
+        String query = "Select idFuncionario, nomeFuncionario, sobrenome from Funcionario where (select max(idFuncionario) from Funcionario)=idFuncionario;";
+        Funcionario f = null;
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                int idFuncionario=rs.getInt("idFuncionario");
+                String nomeFuncionario=rs.getString("nomeFuncionario"); 
+                String sobrenome=rs.getString("sobrenome");
+                
+                f = new Funcionario(idFuncionario, nomeFuncionario, sobrenome);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return f;
+    }
 //    /* Recebe um identificador de um funcionário 
 //       e retorna o funcionário identificado */
 //    public static Funcionario obterFuncionarioPorId(int id) {

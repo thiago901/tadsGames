@@ -103,6 +103,30 @@ public class UsuarioDAO {
         return listaUsuarios;        
     }
     
+    //Retorna o id do ultimo Usuario cadastrado no sistema
+    public static int ultUsuario() {
+        String query = "Select idFuncionario from Funcionario where (select max(idFuncionario) from Funcionario)=idFuncionario;";
+        int idFuncionario = 0;
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                idFuncionario=rs.getInt("idFuncionario");
+                
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return idFuncionario;
+    }
+    
     public static UsuarioFuncionario obterUsuarioFuncionarioPorId(int id) {
         UsuarioFuncionario usuarioFuncionario = null;
         

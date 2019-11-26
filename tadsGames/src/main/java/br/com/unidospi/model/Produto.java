@@ -31,6 +31,11 @@ public class Produto {
         this.ativo = ativo;
     }
 
+    public Produto(int idProduto, String nome) {
+        this.idProduto = idProduto;
+        this.nome = nome;
+    }
+    
     public int getIdProduto() {
         return idProduto;
     }

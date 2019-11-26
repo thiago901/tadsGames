@@ -9,7 +9,6 @@ package br.com.unidospi.Acoes;
 import br.com.unidospi.DAO.UsuarioDAO;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
-import br.com.unidospi.util.GeraLogI;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,12 +25,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import br.com.unidospi.util.Registravel;
 
 /**
  *
  * @author gabriel.gisidorio
  */
-public class Login implements Executavel, GeraLogI {
+public class Login implements Executavel, Registravel {
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -107,12 +107,12 @@ public class Login implements Executavel, GeraLogI {
                     try {
                         arquivo.createNewFile();
                         gerarLog(req, resp);
-                        Logger.getLogger(GeraLogI.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
-                        Logger.getLogger(GeraLogI.class.getName()).log(Level.SEVERE, null, ex1);
+                        Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, ex1);
                     }
                 } catch (IOException e) {
-                    Logger.getLogger(GeraLogI.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, e);
                 }
     }
     

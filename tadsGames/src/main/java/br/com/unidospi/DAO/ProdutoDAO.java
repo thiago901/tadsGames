@@ -5,6 +5,8 @@
  */
 package br.com.unidospi.DAO;
 
+import static br.com.unidospi.DAO.ClienteDAO.DRIVER;
+import br.com.unidospi.model.Cliente;
 import br.com.unidospi.model.Produto;
 import br.com.unidospi.model.ProdutoLista;
 import java.sql.Connection;
@@ -96,7 +98,31 @@ public class ProdutoDAO {
         
         return true;
     }
-
+    //Retorna o id, nome do ultimo produto cadastrado no sistema
+    public static Produto ultProduto() {
+        String query = "Select idProduto, nome from Produto where (select max(idProduto) from Produto)=idProduto;";
+        Produto p = null;
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                int idProduto=rs.getInt("idProduto");
+                String nome=rs.getString("nome"); 
+                
+                p = new Produto(idProduto, nome);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return p;
+    }
     // Retorna uma lista de produtos
     public static ArrayList<Produto> listarProduto() {
         ArrayList<Produto> lista = new ArrayList<>();

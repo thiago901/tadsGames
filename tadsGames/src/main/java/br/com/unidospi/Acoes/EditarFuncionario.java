@@ -5,15 +5,22 @@
  */
 package br.com.unidospi.Acoes;
 
-import static br.com.unidospi.Acoes.ValidaCPF.isCPF;
 import br.com.unidospi.DAO.FuncionarioDAO;
-import static br.com.unidospi.DAO.FuncionarioDAO.validaNovoCPF;
+import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.Funcionario;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,12 +29,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import br.com.unidospi.util.Registravel;
 
 /**
  *
  * @author gabri
  */
-public class EditarFuncionario implements Executavel {
+public class EditarFuncionario implements Executavel, Registravel {
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp)
@@ -116,11 +124,66 @@ public class EditarFuncionario implements Executavel {
             GeraLog registro = new GeraLog();
             registro.escreverLog(usuario, acao, funcionario);
             
+            sessao.setAttribute("funcionario", funcionario);
+            EditarFuncionario registra = new EditarFuncionario();
+            registra.gerarLog(req, resp);
+            
             resp.sendRedirect(req.getContextPath() + "/sucesso.html");
             
 
         }
         return "";
+    }
+
+    @Override
+    public void gerarLog(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        File arquivo = null;
+        FileReader fileReader;
+        BufferedReader bufferedReader;
+        FileWriter fileWriter;
+        BufferedWriter bufferedWriter;
+        String home = System.getProperty("user.home")+"\\Documents\\NetBeansProjects\\tadsGames\\tadsGames\\Log\\Registro2.txt";
+        HttpSession sessao = req.getSession();
+        UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+        
+        String acao = "edição de funcionario";
+        Funcionario f = (Funcionario)sessao.getAttribute("funcionario");
+        
+        try {
+                    arquivo = new File(home);
+                    LocalDateTime hora = LocalDateTime.now();
+
+                    fileReader = new FileReader(arquivo);
+                    bufferedReader = new BufferedReader(fileReader);
+                    ArrayList<String> texto = new ArrayList();
+                    while (bufferedReader.ready()) {
+                        texto.add(bufferedReader.readLine());
+                    }
+                    fileWriter = new FileWriter(arquivo);
+                    bufferedWriter = new BufferedWriter(fileWriter);
+
+                    for (int i = 0; i < texto.size(); i++) {
+                        bufferedWriter.write(texto.get(i));
+                        bufferedWriter.newLine();
+                    }
+                    bufferedWriter.write(hora.getDayOfMonth() + "/" + hora.getMonthValue() + "/" + hora.getYear() + " - "
+                            + hora.getHour() + "h" + hora.getMinute() + "m" + hora.getSecond() + "s - O usuario: "
+                            + usuario.getNomeUsuario() + " realizou uma " + acao + " no sistema, editando o Funcionario: "
+                            + f.getNome() + " " + f.getSobrenome() + ".");
+                    bufferedReader.close();
+                    bufferedWriter.close();
+
+                } catch (FileNotFoundException ex) {
+                    try {
+                        arquivo.createNewFile();
+                        gerarLog(req, resp);
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex1) {
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                } catch (IOException e) {
+                    Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+                }
     }
 
 }

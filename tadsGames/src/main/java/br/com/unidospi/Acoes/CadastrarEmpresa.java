@@ -11,7 +11,6 @@ import static br.com.unidospi.DAO.EmpresaDao.validaNovoCnpj;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
-import br.com.unidospi.util.GeraLogI;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -31,12 +30,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import br.com.unidospi.util.Registravel;
 
 /**
  *
  * @author gisidorio
  */
-public class CadastrarEmpresa implements Executavel, GeraLogI {
+public class CadastrarEmpresa implements Executavel, Registravel {
 
     /**
      *
@@ -119,6 +119,9 @@ public class CadastrarEmpresa implements Executavel, GeraLogI {
                 GeraLog registro = new GeraLog();
                 registro.escreverLog(usuario, acao, empr);
                 
+                CadastrarEmpresa registra = new CadastrarEmpresa();
+                registra.gerarLog(req, resp);
+                
                 resp.sendRedirect(req.getContextPath() + "/sucesso.html");
             }
         }
@@ -142,7 +145,6 @@ public class CadastrarEmpresa implements Executavel, GeraLogI {
         
         
         try {
-            //Empresa empr = (Empresa) objeto;
             arquivo = new File(home);
             LocalDateTime hora = LocalDateTime.now();
 

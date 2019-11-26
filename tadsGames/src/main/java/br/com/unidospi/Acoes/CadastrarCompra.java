@@ -6,28 +6,36 @@
 package br.com.unidospi.Acoes;
 
 import br.com.unidospi.Controller.EstoqueController;
+import br.com.unidospi.DAO.CompraDAO;
+import static br.com.unidospi.DAO.ProdutoDAO.listarProduto;
 import br.com.unidospi.model.Compra;
+import br.com.unidospi.model.Produto;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
-import br.com.unidospi.util.GeraLogI;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import br.com.unidospi.util.Registravel;
 
 /**
  *
  * @author henrique.abastos
  */
-public class CadastrarCompra implements Executavel, GeraLogI{
+public class CadastrarCompra implements Executavel, Registravel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -92,6 +100,9 @@ public class CadastrarCompra implements Executavel, GeraLogI{
                 String acao = "Compra";
                 GeraLog registro = new GeraLog();
                 registro.escreverLog(usuario, acao, compra);
+                
+                CadastrarCompra registra = new CadastrarCompra();
+                registra.gerarLog(req, resp);
 
                 resp.sendRedirect(req.getContextPath() + "/sucesso.html");
             }
@@ -112,7 +123,47 @@ public class CadastrarCompra implements Executavel, GeraLogI{
         
         
         String acao = "compra";
-        //Compra c = CompraDAO.ultCliente();
+        
+        Compra c = CompraDAO.ultCompra();
+        Produto produto = listarProduto(c.getIdProduto());
+        
+        try {
+                    
+                    arquivo = new File(home);
+                    LocalDateTime hora = LocalDateTime.now();
+
+                    fileReader = new FileReader(arquivo);
+                    bufferedReader = new BufferedReader(fileReader);
+                    ArrayList<String> texto = new ArrayList();
+                    while (bufferedReader.ready()) {
+                        texto.add(bufferedReader.readLine());
+                    }
+                    fileWriter = new FileWriter(arquivo);
+                    bufferedWriter = new BufferedWriter(fileWriter);
+
+                    for (int i = 0; i < texto.size(); i++) {
+                        bufferedWriter.write(texto.get(i));
+                        bufferedWriter.newLine();
+                    }
+                    bufferedWriter.write(hora.getDayOfMonth() + "/" + hora.getMonthValue() + "/" + hora.getYear() + " - "
+                            + hora.getHour() + "h" + hora.getMinute() + "m" + hora.getSecond() + "s - O usuario: "
+                            + usuario.getNomeUsuario() + " realizou uma " + acao + " no sistema, referente a: "
+                            + c.getQtdCompra() + " unidade(s) do produto: " + produto.getNome() + ", totalizando o valor de: "
+                            + c.getValorCompra() * c.getQtdCompra() + ".");
+                    bufferedReader.close();
+                    bufferedWriter.close();
+
+                } catch (FileNotFoundException ex) {
+                    try {
+                        arquivo.createNewFile();
+                        gerarLog(req, resp);
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex1) {
+                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+                    }
+                } catch (IOException e) {
+                    Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+                }
     }
     
 }

@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -65,7 +67,38 @@ public class VendaDAO {
         }
         return 0;
     }
-
+    
+    //Retorna todos os dados da ultima venda cadastrada no sistema
+    public static Venda ultVenda() {
+        String query = "Select * Venda from Cliente where (select max(idVenda) from Venda)=idVenda;";
+        Venda v = null;
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                int idVenda=rs.getInt("idVenda");
+                int idFuncionario=rs.getInt("idFuncionario");
+                int idCliente=rs.getInt("idCliente");
+                int idEmpresa=rs.getInt("idEmpresa");
+                float valorTotal=rs.getFloat("valorTotal");
+                Date dtVenda=rs.getDate("dataVenda");
+                String status=rs.getString("statusPedido"); 
+                
+                v = new Venda(idVenda, idCliente, idEmpresa, idFuncionario, valorTotal, dtVenda, status);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return v;
+    }
+    
     public static int salvar(Venda venda) {
 
         String sql = "INSERT INTO Venda(idCliente,idEmpresa,valorTotal, dataVenda, statusPedido,idFuncionario ) "

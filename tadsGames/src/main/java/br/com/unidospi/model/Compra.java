@@ -38,7 +38,8 @@ public class Compra {
         this.valorCompra = valorCompra;
     }
 
-    public Compra(int qtdCompra, float valorCompra) {
+    public Compra(int idProduto, int qtdCompra, float valorCompra) {
+        this.idProduto = idProduto;
         this.qtdCompra = qtdCompra;
         this.valorCompra = valorCompra;
     }

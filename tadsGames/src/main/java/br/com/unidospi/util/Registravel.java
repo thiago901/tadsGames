@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author lucas.sfaria5
  */
-public interface GeraLogI {
+public interface Registravel {
     public void gerarLog(HttpServletRequest req, HttpServletResponse resp) 
             throws IOException, ServletException;
     

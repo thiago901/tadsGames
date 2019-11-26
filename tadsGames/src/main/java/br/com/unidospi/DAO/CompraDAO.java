@@ -58,7 +58,7 @@ public class CompraDAO {
     }
     //Retorna a quantidade, valor da ultima compra feita no sistema
     public static Compra ultCompra() {
-        String query = "Select qtdComprada, valorCompraUnitario from Compra where (select max(idCCompra) from Compra)=idCompra;";
+        String query = "Select idProduto, qtdComprada, valorCompraUnitario from Compra where (select max(idCCompra) from Compra)=idCompra;";
         Compra c = null;
         try {                        
             Class.forName(DRIVER);
@@ -67,10 +67,11 @@ public class CompraDAO {
             ResultSet rs = ps.executeQuery(query);
             
             while (rs.next()) {
+                int idProduto=rs.getInt("idProduto");
                 int qtdComprada=rs.getInt("qtdComprada"); 
                 float vlrCompraUnitario=rs.getFloat("valorCompraUnitario");
                 
-                c = new Compra(qtdComprada, vlrCompraUnitario);
+                c = new Compra(idProduto, qtdComprada, vlrCompraUnitario);
             }
             
         } catch (ClassNotFoundException ex) {
