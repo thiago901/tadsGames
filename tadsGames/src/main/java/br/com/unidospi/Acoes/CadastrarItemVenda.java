@@ -60,16 +60,7 @@ public class CadastrarItemVenda implements Executavel {
             req.setAttribute("validacaoUnt", true);
         }else
             vlrUnitario = Float.parseFloat(vlrUnitarioStr);
-//        if (idProdutoStr.length() > 50 || idProdutoStr.equals("")) {
-//            validacaoServidor = true;
-//            req.setAttribute("validacaoNome", true);
-//        }else
-//            idProduto = Integer.parseInt(idProdutoStr);
-//        if (idProdutoStr.length() > 50 || idProdutoStr.equals("")) {
-//            validacaoServidor = true;
-//            req.setAttribute("validacaoNome", true);
-//        }else
-//            idProduto = Integer.parseInt(idProdutoStr);
+
         
         
         if (validacaoServidor){
@@ -94,8 +85,15 @@ public class CadastrarItemVenda implements Executavel {
                 sessao.setAttribute("nomeCliente2", req.getParameter("nomeCpf"));
             } else {
                 sessao.setAttribute("idLinhaItemVenda", (int) sessao.getAttribute("idLinhaItemVenda") + 1);
+                
             }
-            
+            if(sessao.getAttribute("vlrTotal") == null){
+                sessao.setAttribute("vlrTotal", Float.parseFloat(req.getParameter("inputVlrTotal")));
+            }else{
+                float vlr = (float) sessao.getAttribute("vlrTotal");
+                float vlrAnterior = Float.parseFloat(req.getParameter("inputVlrTotal"));
+                sessao.setAttribute("vlrTotal", vlrAnterior+vlr);
+            }
             
             List<VendaDetalhe> itensVenda = (List<VendaDetalhe>) sessao.getAttribute("itemVenda");
 

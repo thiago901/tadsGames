@@ -5,8 +5,6 @@
  */
 package br.com.unidospi.DAO;
 
-import br.com.unidospi.model.Empresa;
-import br.com.unidospi.model.EmpresaLista;
 import br.com.unidospi.model.RelatorioFaturaDia;
 import br.com.unidospi.model.RelatorioGeral;
 import br.com.unidospi.model.RelatorioPercentagem;
@@ -17,10 +15,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -40,7 +35,7 @@ public class RelatorioDao {
 
        public static ArrayList<RelatorioFaturaDia> rel_fatura_dia() {
         try{
-            String sql = "select * from rel_fatura_dia;";
+            String sql = "select * from Rel_Fatura_Dia;";
             
             ArrayList <RelatorioFaturaDia> le = new ArrayList<>();
             Class.forName(DRIVER);
