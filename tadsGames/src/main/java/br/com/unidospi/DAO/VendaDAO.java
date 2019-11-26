@@ -8,7 +8,7 @@ package br.com.unidospi.DAO;
 import br.com.unidospi.model.Venda;
 import br.com.unidospi.model.VendaDetalhe;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,7 +75,9 @@ public class VendaDAO {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            Date dataSql = new Date(venda.getDtVenda().getTime());
+            
+            
+            java.sql.Date dataSql = new java.sql.Date(venda.getDtVenda().getTime());
 
             ps.setInt(1, venda.getIdCliente());
             ps.setInt(2, venda.getIdEmpresa());

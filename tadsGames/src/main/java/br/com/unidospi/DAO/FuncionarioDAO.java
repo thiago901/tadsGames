@@ -5,18 +5,16 @@
  */
 package br.com.unidospi.DAO;
 
-import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.Funcionario;
 import br.com.unidospi.model.FuncionarioEmpresa;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,7 +40,7 @@ public class FuncionarioDAO {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            Date dataSql = new Date(funcionario.getDataNasc().getTime());
+            java.sql.Date dataSql = new java.sql.Date(funcionario.getDataNasc().getTime());
             
             ps.setInt(1, funcionario.getIdEmpresa());
             ps.setString(2, funcionario.getNome());
@@ -261,7 +259,7 @@ public class FuncionarioDAO {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
             PreparedStatement ps = conexao.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            Date dataSql = new Date(funcionario.getDataNasc().getTime());
+            java.sql.Date dataSql = new java.sql.Date(funcionario.getDataNasc().getTime());
             
             ps.setInt(1, funcionario.getIdEmpresa());
             ps.setString(2, funcionario.getNome());

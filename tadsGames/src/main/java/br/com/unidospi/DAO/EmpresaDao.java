@@ -8,7 +8,7 @@ package br.com.unidospi.DAO;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.EmpresaLista;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

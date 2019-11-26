@@ -9,12 +9,13 @@ package br.com.unidospi.DAO;
 import br.com.unidospi.model.Cliente;
 import br.com.unidospi.model.ClienteLista;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,9 +24,9 @@ import java.util.logging.Logger;
  * @author henrique.abastos
  */
 public class ClienteDAO {
-    
+    // &useTimezone=true&serverTimezone=UTC
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
+    static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8";
     static final String USUARIO = "root";
     static final String SENHA = "adminadmin";
     static Connection conexao;
@@ -40,6 +41,8 @@ public class ClienteDAO {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);
+            
+            
             
             java.sql.Date dtSQL = new java.sql.Date(cliente.getDataNasc().getTime());
             
@@ -80,7 +83,8 @@ public class ClienteDAO {
                     "left join empresa b on \n" +
                     "a.idempresa = b.idempresa;";
         
-        try {                        
+        try {
+            Calendar c = Calendar.getInstance();
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);

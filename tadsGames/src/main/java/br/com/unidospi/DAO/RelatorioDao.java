@@ -5,22 +5,17 @@
  */
 package br.com.unidospi.DAO;
 
-import br.com.unidospi.model.Empresa;
-import br.com.unidospi.model.EmpresaLista;
 import br.com.unidospi.model.RelatorioFaturaDia;
 import br.com.unidospi.model.RelatorioGeral;
 import br.com.unidospi.model.RelatorioPercentagem;
 import br.com.unidospi.model.RelatorioTop10;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

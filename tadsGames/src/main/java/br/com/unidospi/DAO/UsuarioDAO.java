@@ -8,7 +8,7 @@ package br.com.unidospi.DAO;
 import br.com.unidospi.model.Usuario;
 import br.com.unidospi.model.UsuarioFuncionario;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,7 +40,8 @@ public class UsuarioDAO {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
-            Date dataSql = Date.valueOf(usuario.getDtCadastro());
+            
+            java.sql.Date dataSql = new java.sql.Date(usuario.getDtCadastro().getTime());
             
             ps.setString(1, usuario.getNomeUsuario());
             ps.setString(2, usuario.getSenha());
