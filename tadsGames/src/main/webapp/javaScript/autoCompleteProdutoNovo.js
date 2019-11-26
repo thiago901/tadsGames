@@ -47,18 +47,19 @@ inputNomeProduto.addEventListener("input", function () {
     limparLista(tr);
     
     if (this.value.length == 0) {
-        visibilidade(listaPesquisa);
+        oculta(listaPesquisa);
     } else {
-        visibilidade(listaPesquisa);
+        
         var nomePesquisado = inputNomeProduto.value;
         buscarProdutos(nomePesquisado);
+        mostra(listaPesquisa);
     }
 });
 
 function buscarProdutos(nomePesquisado) {
     
     var ajax = new XMLHttpRequest();
-    ajax.open("GET", "/tadsGames/tads/inputProduto?action=ListarProduto2&&nome=" + nomePesquisado);
+    ajax.open("GET", "/TadsGames/tads/inputProduto?action=ListarProduto2&&nome=" + nomePesquisado);
     ajax.addEventListener("load", function () {
 
         var textJason = ajax.responseText;
@@ -119,3 +120,9 @@ function editavel(elemento){
     elemento.toggleAttribute("readonly");
 }
 
+function oculta(elemento) {
+    elemento.setAttribute("Hidden","");
+}
+function mostra(elemento) {
+    elemento.removeAttribute("Hidden");
+}

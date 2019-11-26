@@ -39,6 +39,7 @@ btnSelecionarCliente.addEventListener("click",function (){
     
     visibilidade(telaProduto);
     visibilidade(telaCliente);
+    visibilidade(dadosClientes);
     
 });
 btnEditarCliente.addEventListener("click",function (){
@@ -86,10 +87,12 @@ inputNomeCliente.addEventListener("input", function () {
     var tr = document.querySelectorAll(".trCliente");
     limparLista(tr);
     if (this.value.length == 0) {
-        visibilidade(listaPesquisa);
+        oculta(listaPesquisa);
     } else {
         buscarClientes(nomePesquisado);
-        visibilidade(listaPesquisa);
+        mostra(listaPesquisa);
+        
+        
     }
 
 
@@ -98,7 +101,7 @@ inputNomeCliente.addEventListener("input", function () {
 function buscarClientes(nomePesquisado) {
     var ajax = new XMLHttpRequest();
 
-    ajax.open("GET", "/tadsGames/tads/inputCliente?action=ListarCliente2&&nomeCliente=" + nomePesquisado);
+    ajax.open("GET", "/TadsGames/tads/inputCliente?action=ListarCliente2&&nomeCliente=" + nomePesquisado);
     ajax.addEventListener("load", function () {
 
         var textJason = ajax.responseText;
@@ -152,3 +155,9 @@ function editavel(elemento){
     elemento.toggleAttribute("readonly");
 }
 
+function oculta(elemento) {
+    elemento.setAttribute("Hidden","");
+}
+function mostra(elemento) {
+    elemento.removeAttribute("Hidden");
+}

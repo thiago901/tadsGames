@@ -35,7 +35,7 @@ public class RelatorioDao {
 
        public static ArrayList<RelatorioFaturaDia> rel_fatura_dia() {
         try{
-            String sql = "select * from rel_fatura_dia;";
+            String sql = "select * from Rel_Fatura_Dia;";
             
             ArrayList <RelatorioFaturaDia> le = new ArrayList<>();
             Class.forName(DRIVER);
