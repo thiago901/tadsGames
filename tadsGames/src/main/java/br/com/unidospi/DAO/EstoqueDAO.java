@@ -5,7 +5,6 @@
  */
 package br.com.unidospi.DAO;
 
-import static br.com.unidospi.DAO.EmpresaDao.DRIVER;
 import br.com.unidospi.model.Estoque;
 import java.sql.Connection;
 import java.sql.DriverManager;

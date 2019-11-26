@@ -10,7 +10,7 @@ import br.com.unidospi.model.RelatorioGeral;
 import br.com.unidospi.model.RelatorioPercentagem;
 import br.com.unidospi.model.RelatorioTop10;
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

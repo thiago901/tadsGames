@@ -12,7 +12,9 @@ import br.com.unidospi.util.GeraLog;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +63,10 @@ public class CadastrarUsuario implements Executavel {
             dispatcher.forward(req, resp);
         }
         else {
-            Usuario usuario = new Usuario(login, senha, dtCadastro, status, idFuncionario);
+            Date dDtCadastro = Date.from(dtCadastro.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            
+            
+            Usuario usuario = new Usuario(login, senha, dDtCadastro, status, idFuncionario);
 
             retorno = UsuarioDAO.salvar(usuario);
             if (retorno > 0){

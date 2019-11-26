@@ -6,6 +6,7 @@
 package br.com.unidospi.Acoes;
 
 import static br.com.unidospi.Acoes.ValidaCNPJ.isCNPJ;
+import br.com.unidospi.DAO.EmpresaDao;
 import static br.com.unidospi.DAO.EmpresaDao.validaNovoCnpj;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.UsuarioFuncionario;
@@ -14,12 +15,17 @@ import br.com.unidospi.util.GeraLogI;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -132,7 +138,45 @@ public class CadastrarEmpresa implements Executavel, GeraLogI {
         UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
         
         String acao = "cadastro de empresa";
-        //CONTINUAR EM CASA
+        Empresa e = EmpresaDao.ultEmpresa();
+        
+        
+        try {
+            //Empresa empr = (Empresa) objeto;
+            arquivo = new File(home);
+            LocalDateTime hora = LocalDateTime.now();
+
+            fileReader = new FileReader(arquivo);
+            bufferedReader = new BufferedReader(fileReader);
+            ArrayList<String> texto = new ArrayList();
+            while (bufferedReader.ready()) {
+                texto.add(bufferedReader.readLine());
+            }
+            fileWriter = new FileWriter(arquivo);
+            bufferedWriter = new BufferedWriter(fileWriter);
+
+            for (int i = 0; i < texto.size(); i++) {
+                bufferedWriter.write(texto.get(i));
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.write(hora.getDayOfMonth() + "/" + hora.getMonthValue() + "/" + hora.getYear() + " - "
+                    + hora.getHour() + "h" + hora.getMinute() + "m" + hora.getSecond() + "s - O usuario: "
+                    + usuario.getNomeUsuario() + " realizou um " + acao + " no sistema, cadastrando a Empresa: "
+                    + e.getNome() + ".");
+            bufferedReader.close();
+            bufferedWriter.close();
+
+        } catch (FileNotFoundException ex) {
+            try {
+                arquivo.createNewFile();
+                gerarLog(req, resp);
+                Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex1) {
+                Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
 }
