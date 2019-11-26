@@ -100,7 +100,7 @@ inputNomeProduto.addEventListener("input", function (){
 
 function buscarProdutos(vlrInputNomeProduto){
     var xhl  = new XMLHttpRequest();
-    xhl.open("GET","/TadsGames/tads/inputProduto?action=ListarProduto2&&nome="+vlrInputNomeProduto);
+    xhl.open("GET","/tadsGames/tads/inputProduto?action=ListarProduto2&&nome="+vlrInputNomeProduto);
     xhl.addEventListener("load",function(){
         var text =xhl.responseText;
         var produtos = JSON.parse(text);

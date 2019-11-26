@@ -24,9 +24,9 @@ import java.util.ArrayList;
 public class RelatorioDao {
 
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
+    static final String URL = "jdbc:mysql://dbgames.czyozk3ol6md.us-east-1.rds.amazonaws.com:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     static final String USUARIO = "root";
-    static final String SENHA = "adminadmin";
+    static final String SENHA = "!zxcASD50";
     static Connection conexao;
 
    
@@ -76,15 +76,15 @@ public class RelatorioDao {
                         "    (SELECT DISTINCT \n" +
                         "        a.idEmpresa,\n" +
                         "        c.nome\n" +
-                        "     FROM venda a\n" +
-                        "     INNER JOIN empresa c on \n" +
+                        "     FROM Venda a\n" +
+                        "     INNER JOIN Empresa c on \n" +
                         "		c.idempresa = a.idEmpresa) r0\n" +
                         "    left JOIN (SELECT \n" +
                         "				a.idEmpresa,\n" +
                         "				concat(year(a.datavenda),month(a.datavenda)) AS AnoMes,\n" +
                         "				sum(b.vlrTotalItem) AS TOTAL\n" +
-                        "			FROM venda a\n" +
-                        "			INNER JOIN detalheVenda b\n" +
+                        "			FROM Venda a\n" +
+                        "			INNER JOIN DetalheVenda b\n" +
                         "				ON b.idVenda = a.idVenda\n" +
                         "			where (month((LAST_DAY(curdate() - INTERVAL 1 MONTH))) =month(a.datavenda) and \n" +
                         "			year((LAST_DAY(curdate() - INTERVAL 1 MONTH))) = year(a.datavenda)) \n" +
@@ -92,8 +92,8 @@ public class RelatorioDao {
                         "        ON r1.idEmpresa = r0.idEmpresa\n" +
                         "    left JOIN (SELECT a.idEmpresa,\n" +
                         "				sum(b.vlrTotalItem) AS TOTAL\n" +
-                        "				FROM venda a\n" +
-                        "				INNER JOIN detalheVenda b ON \n" +
+                        "				FROM Venda a\n" +
+                        "				INNER JOIN DetalheVenda b ON \n" +
                         "				b.idVenda = a.idVenda\n" +
                         "				where 	month(dataVenda) = month(curdate()) AND\n" +
                         "						YEAR(dataVenda) = YEAR(curdate())\n" +
@@ -132,7 +132,7 @@ public class RelatorioDao {
     } 
        public static ArrayList<RelatorioGeral> relatorioDiario() {
         try{
-            String sql = "SELECT * from rel_fatura_dia;";
+            String sql = "SELECT * from Rel_Fatura_Dia;";
             
             
             
@@ -217,7 +217,7 @@ public class RelatorioDao {
     /* Retorna uma lista de empresas */
     public static ArrayList<RelatorioTop10> rel_top10_vendas_dia() {
         try{
-            String sql = "select * from rel_top10_vendas_dia;";
+            String sql = "select * from Rel_Top10_Vendas_dia;";
             
             ArrayList <RelatorioTop10> le = new ArrayList<>();
             Class.forName(DRIVER);
@@ -250,7 +250,7 @@ public class RelatorioDao {
     
     public static ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem() {
         try{
-            String sql = "select * from rel_total_empresa_porcentagem;";
+            String sql = "select * from Rel_Total_Empresa_Porcentagem;";
             
             ArrayList <RelatorioPercentagem> le = new ArrayList<>();
             Class.forName(DRIVER);

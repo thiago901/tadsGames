@@ -25,8 +25,9 @@ import java.util.logging.Logger;
 public class ProdutoDAO {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";    //Driver do MySQL 8.0 em diante - Se mudar o SGBD mude o Driver
     private static final String LOGIN = "root";                         //nome de um usuário do banco de dados
-    private static final String SENHA = "adminadmin";                             //sua senha de acesso
-    static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
+    static final String URL = "jdbc:mysql://dbgames.czyozk3ol6md.us-east-1.rds.amazonaws.com:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
+    static final String SENHA = "!zxcASD50";
+
     private static Connection conexao;
     
     
@@ -64,7 +65,7 @@ public class ProdutoDAO {
     /* Recebe um produto e retorna 1 caso o(s) dado(s) do registro do produto
        seja(m) alterado(s) ou 0 caso não seja(s) alterado(s) */
     public static boolean editar(Produto produto) {
-        String query = "update produto set nome=?,descricao=?, tipo=?, ativo=? where idProduto=?";
+        String query = "update Produto set nome=?,descricao=?, tipo=?, ativo=? where idProduto=?";
         
         
         try {                        
@@ -135,7 +136,7 @@ public class ProdutoDAO {
         ArrayList<ProdutoLista> lista = new ArrayList<>();
         
         
-        String query = "select p.idProduto,p.nome, e.qtdEstoque, e.valorVendaUnitario from produto p\n" +
+        String query = "select p.idProduto,p.nome, e.qtdEstoque, e.valorVendaUnitario from Produto p\n" +
                     "inner join Estoque e on\n" +
                     "p.idProduto = e.idProduto"
                 + " where (p.nome LIKE ? or p.idProduto LIKE ?) and e.idEmpresa=?;";

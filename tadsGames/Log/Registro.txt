@@ -11,32 +11,70 @@
 22/11/2019 - 21h54m47s - O usuario: dono realizou um Login no sistema.
 22/11/2019 - 21h55m26s - O usuario: dono realizou um cadastro de Cliente no sistema, cadastrando o Cliente: Igor Lima dos Santos.
 22/11/2019 - 21h56m13s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 12h24m8s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 12h32m13s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 13h4m43s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 13h6m56s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 14h5m25s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 15h34m11s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 16h17m15s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 16h19m4s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 16h30m36s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 16h57m5s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 16h59m44s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 17h12m47s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 17h17m56s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 17h24m1s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 17h31m1s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 17h41m26s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 17h42m39s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 17h43m52s - O usuario: dono realizou um Login no sistema.
+23/11/2019 - 17h51m38s - O usuario: dono realizou um Login no sistema.
+24/11/2019 - 17h41m39s - O usuario: dono realizou um Login no sistema.
+24/11/2019 - 18h29m1s - O usuario: dono realizou um Login no sistema.
+24/11/2019 - 18h33m47s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 17h29m28s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 17h29m42s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 17h36m20s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 17h40m54s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 17h48m15s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 17h59m31s - O usuario: dono registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Gabriel Isidorio, no valor de: 180.0.
+25/11/2019 - 18h2m40s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 18h8m56s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 18h13m40s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 18h38m46s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 18h43m34s - O usuario: dono registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Marco Aurelio, no valor de: 1920.0.
+25/11/2019 - 18h49m50s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 18h53m14s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 19h0m23s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 19h32m56s - O usuario: dono realizou um Login no sistema.
+25/11/2019 - 19h36m8s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 19h35m34s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 19h54m28s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 19h55m28s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 19h55m52s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 19h59m45s - O usuario: dono realizou um Login no sistema.
-25/11/2019 - 19h59m57s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 19h59m57s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
 25/11/2019 - 20h4m10s - O usuario: dono realizou um Login no sistema.
-25/11/2019 - 20h4m16s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 20h4m16s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
 25/11/2019 - 20h6m16s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 20h7m54s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 20h10m59s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 20h16m43s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 20h17m18s - O usuario: dono realizou um Login no sistema.
-25/11/2019 - 20h18m21s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 20h18m21s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
 25/11/2019 - 20h19m53s - O usuario: dono realizou um Login no sistema.
-25/11/2019 - 20h20m6s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
-25/11/2019 - 20h29m37s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 20h20m6s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 20h29m37s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
 25/11/2019 - 20h31m41s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 21h11m44s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 21h12m30s - O usuario: dono realizou um Login no sistema.
-25/11/2019 - 21h12m39s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 21h12m39s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
 25/11/2019 - 21h14m7s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 21h15m15s - O usuario: dono realizou um Login no sistema.
-25/11/2019 - 21h15m38s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
-25/11/2019 - 21h16m6s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
-25/11/2019 - 21h16m36s - O usuario: dono realizou uma edição de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 21h15m38s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 21h16m6s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
+25/11/2019 - 21h16m36s - O usuario: dono realizou uma ediï¿½ï¿½o de Cliente no sistema, editando o Cliente: Thiago Santos.
 25/11/2019 - 21h17m10s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 21h21m18s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 21h28m49s - O usuario: dono realizou um Login no sistema.
@@ -47,3 +85,4 @@
 25/11/2019 - 22h9m45s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 22h10m9s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 22h10m44s - O usuario: alesandras realizou um cadastro de Usuario no sistema, cadastrando o Usuario: dono e atribuindo ao Funcionario: null null.
+25/11/2019 - 22h16m19s - O usuario: dono realizou um Login no sistema.

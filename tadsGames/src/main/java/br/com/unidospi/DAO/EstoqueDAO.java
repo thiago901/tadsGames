@@ -19,9 +19,9 @@ import java.sql.SQLException;
 public class EstoqueDAO {
 
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String URL = "jdbc:mysql://localhost:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
+    static final String URL = "jdbc:mysql://dbgames.czyozk3ol6md.us-east-1.rds.amazonaws.com:3306/dbGames?useUnicode=yes&characterEncoding=UTF-8&useTimezone=true&serverTimezone=UTC";
     static final String USUARIO = "root";
-    static final String SENHA = "adminadmin";
+    static final String SENHA = "!zxcASD50";
     static Connection conexao;
     
     

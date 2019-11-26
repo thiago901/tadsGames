@@ -108,3 +108,42 @@ body{
 	color: #013d4a;
 	font-size: 1.2em;
 }
+
+.oculta{
+    display: none;
+    
+}
+.integrantes{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(255,255,255,.5);
+    padding: 10px;
+}
+
+
+.integrantes h3{
+    font-size: 15px;
+}
+.listaDevs{
+    list-style: none;
+    display: none;
+    
+
+}
+.listaDevs li{
+    margin-top: 5px;
+    padding: 3px;
+}
+
+.listaDevs li:hover{
+    background: green;
+    color: #fff;
+}
+.integrantes:hover ul{
+     
+    display: block;
+    transition: .5s ease-in-out;
+    
+    
+}

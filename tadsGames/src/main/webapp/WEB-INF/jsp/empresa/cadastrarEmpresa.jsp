@@ -20,7 +20,7 @@
     <body>
         <div class="container">
             <h2 class="titulo">Cadastre a Empresa</h2>
-            <form autocomplete="off" action="\TadsGames\tads\input?action=CadastrarEmpresa" method="post">
+            <form autocomplete="off" action="${pageContext.request.contextPath}/tads/input?action=CadastrarEmpresa" method="post">
                 <div>
                     <label>Nome Empresa</label>
                     <input  type="text" name="nome">

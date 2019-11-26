@@ -17,129 +17,139 @@
         <meta charset="UTF-8">
     </head>
     <body>
-                <div class="container">
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
+        <div class="container">
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
 
-                            <a href="${pageContext.request.contextPath}/tads/input?action=FormCadastrarEmpresa">Nova Empresa</a>
-                            <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas">Listar Empresas</a>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <h2>Empresas</h2>
+                        <a href="${pageContext.request.contextPath}/tads/input?action=FormCadastrarEmpresa">Nova Empresa</a>
+                        <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas">Listar Empresas</a>
                     </div>
                 </div>
-                    
-                <c:if test="${sessionScope.usuario.departamento == 'Retaguarda' || sessionScope.usuario.cargo == 'Diretor'}">
-                    <div class="card">
-                        <div class="face face1">
-                            <div class="content">
-
-                                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=FormCadastrarProduto">Novo Produto</a>
-                                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto">Listar Produtos</a>
-                            </div>
-                        </div>
-                        <div class="face face2">
-                            <h2>Produto</h2>
-                        </div>
-                    </div>
-                </c:if>
-                
-                <c:if test="${sessionScope.usuario.departamento == 'Vendas' || sessionScope.usuario.cargo == 'Diretor'}">
-                    <div class="card">
-                        <div class="face face1">
-                            <div class="content">
-
-                                <a href="${pageContext.request.contextPath}/tads/inputCliente?action=FormCadastrarCliente">Novo Cliente</a>
-                                <a href="${pageContext.request.contextPath}/tads/inputCliente?action=ListarCliente">Listar Clientes</a>
-                            </div>
-                        </div>
-                        <div class="face face2">
-                            <h2>Cliente</h2>
-                        </div>
-                    </div>
-                </c:if>
-                    
-                <div class="card">
-                    <div class="face face1">
-                        <div class="content">
-
-                            <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=FormCadastrarFuncionario">Novo Funcionario</a>
-                            <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=ListarFuncionarios">Manutenção de Funcionario</a>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <h2>Funcionario</h2>
-                    </div>
+                <div class="face face2">
+                    <h2>Empresas</h2>
                 </div>
-                    
-                <c:if test="${sessionScope.usuario.departamento == 'Vendas' || sessionScope.usuario.cargo == 'Diretor'}">
-                    <div class="card">
-                       <div class="face face1">
-                           <div class="content">
-
-                               <a href="${pageContext.request.contextPath}/tads/inputVenda?action=FormVenda">Nova Venda</a>
-
-                           </div>
-                       </div>
-                       <div class="face face2">
-                           <h2>Venda</h2>
-                       </div>
-                   </div>
-                </c:if> 
-                    
-                 <c:if test="${sessionScope.usuario.departamento == 'TI' || sessionScope.usuario.cargo == 'Diretor'}">
-                    <div class="card">
-                        <div class="face face1">
-                            <div class="content">
-                                <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarFuncionariosUsuarioCadastravel">Novo Usuário</a>    
-                                <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarUsuarios">Manutenção de Usuários</a>
-                            </div>
-                        </div>
-                        <div class="face face2">
-                            <h2>Usuários</h2>
-                        </div>
-                    </div>
-                </c:if>
-                        
-                <c:if test="${sessionScope.usuario.cargo == 'Diretor'}">
-                    <div class="card">
-                        <div class="face face1">
-                            <div class="content">
-                                <a href="${pageContext.request.contextPath}/tads/inputCompra?action=FormComprar">Nova Compra</a>
-                            </div>
-                        </div>
-                        <div class="face face2">
-                            <h2>Compra</h2>
-                        </div>
-                    </div>
-                </c:if>
-               <c:if test="${sessionScope.usuario.departamento == 'TI' || sessionScope.usuario.cargo == 'Diretor'}">
-                    <div class="card">
-                        <div class="face face1">
-                            <div class="content">
-                                <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=Relatorio">Relatorio</a>    
-                                <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=RelatorioDiario">Relatorio Diario</a>    
-                            </div>
-                        </div>
-                        <div class="face face2">
-                            <h2>Relatorio</h2>
-                        </div>
-                    </div>
-                </c:if>
-                
-                <div class="card">
-                        <div class="face face1">
-                            <div class="content">
-                                <a href="${pageContext.request.contextPath}/logout">Sair</a>                                
-                            </div>
-                        </div>
-                        <div class="face face2">
-                            <h2>Sair</h2>
-                        </div>
-                </div>                
             </div>
+
+            <c:if test="${sessionScope.usuario.departamento == 'Retaguarda' || sessionScope.usuario.cargo == 'Diretor'}">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+
+                            <a href="${pageContext.request.contextPath}/tads/inputProduto?action=FormCadastrarProduto">Novo Produto</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto">Listar Produtos</a>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <h2>Produto</h2>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${sessionScope.usuario.departamento == 'Vendas' || sessionScope.usuario.cargo == 'Diretor'}">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+
+                            <a href="${pageContext.request.contextPath}/tads/inputCliente?action=FormCadastrarCliente">Novo Cliente</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputCliente?action=ListarCliente">Listar Clientes</a>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <h2>Cliente</h2>
+                    </div>
+                </div>
+            </c:if>
+
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+
+                        <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=FormCadastrarFuncionario">Novo Funcionario</a>
+                        <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=ListarFuncionarios">Manutenção de Funcionario</a>
+                    </div>
+                </div>
+                <div class="face face2">
+                    <h2>Funcionario</h2>
+                </div>
+            </div>
+
+            <c:if test="${sessionScope.usuario.departamento == 'Vendas' || sessionScope.usuario.cargo == 'Diretor'}">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+
+                            <a href="${pageContext.request.contextPath}/tads/inputVenda?action=FormVenda">Nova Venda</a>
+
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <h2>Venda</h2>
+                    </div>
+                </div>
+            </c:if> 
+
+            <c:if test="${sessionScope.usuario.departamento == 'TI' || sessionScope.usuario.cargo == 'Diretor'}">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarFuncionariosUsuarioCadastravel">Novo Usuário</a>    
+                            <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarUsuarios">Manutenção de Usuários</a>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <h2>Usuários</h2>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${sessionScope.usuario.cargo == 'Diretor'}">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <a href="${pageContext.request.contextPath}/tads/inputCompra?action=FormComprar">Nova Compra</a>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <h2>Compra</h2>
+                    </div>
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.usuario.departamento == 'TI' || sessionScope.usuario.cargo == 'Diretor'}">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=Relatorio">Relatorio</a>    
+                            <a href="${pageContext.request.contextPath}/tads/inputRelatorios?action=RelatorioDiario">Relatorio Diario</a>    
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <h2>Relatorio</h2>
+                    </div>
+                </div>
+            </c:if>
+
+            <div class="card">
+                <div class="face face1">
+                    <div class="content">
+                        <a href="${pageContext.request.contextPath}/logout">Sair</a>                                
+                    </div>
+                </div>
+                <div class="face face2">
+                    <h2>Sair</h2>
+                </div>
+            </div>                
+        </div>
+        <div class="integrantes">
+            <h3>Desenvolvedores</h3>
+            <ul class="listaDevs">
+                <li>Henrique Bastos</li>
+                <li>Gabriel Isidorio</li>
+                <li>Marco Aurelio</li>
+                <li>Lucas Souza</li>
+                <li>Thiago Santos</li>            
+            </ul>
+        </div>
     </body>
 </html>
 

@@ -7,7 +7,7 @@
 
 
    
-    var botaoSalvarVenda = document.querySelector("#salvar");
+    var botaoSalvarVenda = document.querySelector("#btnCadastrarVenda");
     botaoSalvarVenda.addEventListener("click",function(){
         var f = document.querySelector("#form");
         f.action = "inputVenda?action=CadastrarVenda";

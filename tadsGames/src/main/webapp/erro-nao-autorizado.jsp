@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Exemplo-auth</title>
+        <title>Requer Autorização</title>
     </head>
     <body>
         <h1>ERRO: Usuário não tem permissão para acessar esta tela</h1>

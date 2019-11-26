@@ -28,10 +28,13 @@ public class CadastrarItemVenda implements Executavel {
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         HttpSession sessao = req.getSession();
         boolean validacaoServidor = false;
-        String idProdutoStr = req.getParameter("idProduto");
-        int qtd = Integer.parseInt(req.getParameter("qtd"));
+        String idProdutoStr = req.getParameter("inputIdProduto");
+        String cliente = req.getParameter("nomeCpf");
+        String id = req.getParameter("idCliente");
+        String cpfCliente = req.getParameter("cpfCliente");
+        int qtd = Integer.parseInt(req.getParameter("quantideComprada"));
         UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
-        String vlrUnitarioStr = req.getParameter("vlrUnitario");
+        String vlrUnitarioStr = req.getParameter("inputVlrUnitario");
         int idProduto = -1;
         
         float vlrUnitario = 0;
@@ -72,7 +75,7 @@ public class CadastrarItemVenda implements Executavel {
         if (validacaoServidor){
             if (sessao.getAttribute("idCliente")== null){
                 sessao.setAttribute("idCliente", req.getParameter("idCliente"));
-                sessao.setAttribute("nomeCliente2", req.getParameter("nomeCliente"));
+                sessao.setAttribute("nomeCliente2", req.getParameter("nomeCpf"));
             }
             RequestDispatcher dispatcher
                     = req.getRequestDispatcher("inputVenda?action=FormVenda");
@@ -87,7 +90,8 @@ public class CadastrarItemVenda implements Executavel {
             if (sessao.getAttribute("idLinhaItemVenda") == null) {
                 sessao.setAttribute("idLinhaItemVenda", 0);
                 sessao.setAttribute("idCliente", req.getParameter("idCliente"));
-                sessao.setAttribute("nomeCliente2", req.getParameter("nomeCliente"));
+                sessao.setAttribute("cpfCliente", req.getParameter("cpfCliente"));
+                sessao.setAttribute("nomeCliente2", req.getParameter("nomeCpf"));
             } else {
                 sessao.setAttribute("idLinhaItemVenda", (int) sessao.getAttribute("idLinhaItemVenda") + 1);
             }
