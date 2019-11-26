@@ -38,6 +38,11 @@ public class Compra {
         this.valorCompra = valorCompra;
     }
 
+    public Compra(int qtdCompra, float valorCompra) {
+        this.qtdCompra = qtdCompra;
+        this.valorCompra = valorCompra;
+    }
+
     public int getIdCompra() {
         return idCompra;
     }

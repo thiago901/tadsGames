@@ -9,6 +9,7 @@ import br.com.unidospi.model.Compra;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,6 +55,31 @@ public class CompraDAO {
         }
         
         return false;
+    }
+    //Retorna a quantidade, valor da ultima compra feita no sistema
+    public static Compra ultCompra() {
+        String query = "Select qtdComprada, valorCompraUnitario from Compra where (select max(idCCompra) from Compra)=idCompra;";
+        Compra c = null;
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                int qtdComprada=rs.getInt("qtdComprada"); 
+                float vlrCompraUnitario=rs.getFloat("valorCompraUnitario");
+                
+                c = new Compra(qtdComprada, vlrCompraUnitario);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return c;
     }
     
        

@@ -9,6 +9,12 @@ import br.com.unidospi.Controller.EstoqueController;
 import br.com.unidospi.model.Compra;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
+import br.com.unidospi.util.GeraLogI;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
@@ -21,7 +27,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author henrique.abastos
  */
-public class CadastrarCompra implements Executavel{
+public class CadastrarCompra implements Executavel, GeraLogI{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -91,6 +97,22 @@ public class CadastrarCompra implements Executavel{
             }
         }
        return "";
+    }
+
+    @Override
+    public void gerarLog(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        File arquivo = null;
+        FileReader fileReader;
+        BufferedReader bufferedReader;
+        FileWriter fileWriter;
+        BufferedWriter bufferedWriter;
+        String home = System.getProperty("user.home")+"\\Documents\\NetBeansProjects\\tadsGames\\tadsGames\\Log\\Registro2.txt";
+        HttpSession sessao = req.getSession();
+        UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+        
+        
+        String acao = "compra";
+        Compra c = CompraDAO.ultCliente();
     }
     
 }

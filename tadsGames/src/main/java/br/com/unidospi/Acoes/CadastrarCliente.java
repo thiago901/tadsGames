@@ -9,7 +9,6 @@ import static br.com.unidospi.Acoes.ValidaCPF.isCPF;
 import br.com.unidospi.Controller.ClienteController;
 import br.com.unidospi.DAO.ClienteDAO;
 import static br.com.unidospi.DAO.ClienteDAO.validaNovoCPF;
-import br.com.unidospi.DAO.UsuarioDAO;
 import br.com.unidospi.model.Cliente;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.util.GeraLog;
