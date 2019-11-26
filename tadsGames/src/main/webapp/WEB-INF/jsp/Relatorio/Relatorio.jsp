@@ -65,7 +65,8 @@
 		<p>* (A) Referencia mês anterior</p>
 		<p>**(B) Referencia mês corrente</p>
 		</div>
-	</div>	
+	</div>
+                <a href="${pageContext.request.contextPath}/home"><button class="btnCadastrarVenda voltaMenu" type="button">Voltar ao Menu</button></a>
 
 	</div>
 

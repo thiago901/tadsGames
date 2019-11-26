@@ -8,6 +8,7 @@ package br.com.unidospi.Acoes;
 import br.com.unidospi.Controller.RelatoriosController;
 import br.com.unidospi.model.RelatorioGeral;
 import br.com.unidospi.model.RelatorioTop10;
+import br.com.unidospi.model.UsuarioFuncionario;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -20,23 +21,31 @@ import javax.servlet.http.HttpSession;
  *
  * @author thiago.srocha4
  */
-public class RelatorioDiario implements Executavel{
+public class RelatorioEmpresa implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
-        ArrayList<RelatorioGeral> relatorioDiario = RelatoriosController.relatorioDiario();
-        
-        float totalDiario = RelatoriosController.totalDia();
-        req.setAttribute("top10", rel_top10_vendas_dia);
-        req.setAttribute("relatorioDiario", relatorioDiario);
-        req.setAttribute("totalDiario", totalDiario);
         HttpSession sessao = req.getSession();
+        UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
         
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/Relatorio/RelatorioDiario.jsp");
+        int idEmpresa =usuario.getIdEmpresa();
+        float valorTotal=0;
+        
+        ArrayList<RelatorioTop10>  RelTopProdutoRegiao = RelatoriosController.rel_top10_vendas_dia(idEmpresa);
+        
+        for(RelatorioTop10 v:RelTopProdutoRegiao){
+            valorTotal +=v.getVALOR();
+        }
+        
+        
+        req.setAttribute("valorTotal", valorTotal);
+        req.setAttribute("ListaRegiao", RelTopProdutoRegiao);
+        
+        
+        
+        
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/Relatorio/RelatorioEmpresaDiario.jsp");
         rd.forward(req, resp);
-        sessao.removeAttribute("top10DetalheEmpresa");
-        sessao.removeAttribute("top10Empresa");
         return "";
     }
     

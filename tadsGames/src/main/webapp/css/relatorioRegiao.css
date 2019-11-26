@@ -1,0 +1,144 @@
+*{
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+}
+
+.cards{
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 40px;
+}
+
+.card{
+	border:2px solid #000;
+	padding: 5px;
+	margin-top: 10px;
+	flex-basis: 25%;
+	text-align: center;
+	
+}
+
+.empresa{
+	width: 20em;
+	text-align: center;
+}
+.relatorio .empresa{
+        width: 150em;
+	text-align: center;
+}
+.relatorio .valor{
+	width: 100em;
+	text-align: center;
+}
+.fundo{
+	position: absolute;
+	background-image: url("../img/controle.jpg");
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	opacity: .5;
+}
+.cardRelatorio{
+	flex-basis: 40%;
+        margin-right: 10%;
+}
+.cardRelatorio1{
+	flex-basis: 50%;
+        
+}
+
+.relatorio{
+        text-align: center;
+	border-collapse: collapse;
+	width: 100%;
+
+}
+
+
+.relatorio td{
+	padding: 5px;
+}
+.card p{
+	text-align: left;
+
+}
+.relatorio tbody tr{
+	background:  #dfe6e9;
+	border-top: 1px solid #b2bec3;
+        border-bottom: 1px solid #b2bec3;
+
+	background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%);
+}
+.relatorio .titleTable{
+	background: #013d4a;
+	color: #fff;
+	background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+ 	background-blend-mode: multiply,multiply;
+
+
+}
+.relatorio tbody tr:nth-child(-n+10){
+	background: #81ecec;
+	background-image: linear-gradient(to bottom,#c1dfc4,#deecdd)
+            
+}
+
+
+.detalhePorEmpresa{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+}
+
+.fundo2{
+    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,.8);
+}
+.icon{
+    width: 24px;
+    height:  24px;
+}
+.container h2{
+    text-align: right;
+}
+
+.container{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+}
+
+
+
+.btnCadastrarVenda:hover{
+    box-sizing: border-box;
+    border: 1px solid #1abc9c;
+    transition: .2s;
+    
+}
+.btnCadastrarVenda{
+    position: relative;
+        border-style: none;
+	padding: 10px;
+	width: 20%;
+	background: #4CAF50;
+	color: #fff;
+	font-size: 15px;
+        left: 100%;
+        transform: translateX(-100%);
+}
+.voltaMenu{
+    margin-top: 10px;
+    background:#e74c3c ;
+    width: 30%;
+}

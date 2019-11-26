@@ -6,8 +6,12 @@
 package br.com.unidospi.Controller;
 
 import br.com.unidospi.Acoes.FormRelatorio;
+import br.com.unidospi.Acoes.RelDiarioTopEmpresa;
 import br.com.unidospi.Acoes.Relatorio;
 import br.com.unidospi.Acoes.RelatorioDiario;
+import br.com.unidospi.Acoes.RelatorioEmpresa;
+import br.com.unidospi.Acoes.RelatorioRegionalDiario;
+
 import br.com.unidospi.DAO.RelatorioDao;
 import br.com.unidospi.model.RelatorioFaturaDia;
 import br.com.unidospi.model.RelatorioGeral;
@@ -31,6 +35,9 @@ public class RelatoriosController extends HttpServlet {
     public static ArrayList<RelatorioFaturaDia> rel_fatura_dia(){
         return RelatorioDao.rel_fatura_dia();
     }
+    public static String regiao(int empresa){
+        return RelatorioDao.regiao(empresa);
+    }
     
     public static ArrayList<RelatorioGeral> relatorioGeral(){
         return RelatorioDao.relatorioGeral();
@@ -48,9 +55,19 @@ public class RelatoriosController extends HttpServlet {
     public static ArrayList<RelatorioTop10> rel_top10_vendas_dia(){
         return RelatorioDao.rel_top10_vendas_dia();
     }
+    public static ArrayList<RelatorioTop10> rel_top10_vendas_dia(int idEmpresa){
+        return RelatorioDao.rel_top10_vendas_dia(idEmpresa);
+    }
     
     public static ArrayList<RelatorioPercentagem> rel_total_empresa_porcentagem(){
         return RelatorioDao.rel_total_empresa_porcentagem();
+    }
+
+    public static float relTotalRegiaoDiario(String nomeRegiao) {
+        return RelatorioDao.relTotalRegiaoDiario(nomeRegiao);
+    }
+    public static ArrayList<RelatorioTop10>  RelTopProdutoRegiao(String nomeRegiao) {
+        return RelatorioDao.RelTopProdutoRegiao(nomeRegiao);
     }
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -66,6 +83,19 @@ public class RelatoriosController extends HttpServlet {
             RelatorioDiario action = new RelatorioDiario();
             action.executa(req, resp);
         }
+        else if (paramAction.equals("RelDiarioTopEmpresa")) {
+            RelDiarioTopEmpresa action = new RelDiarioTopEmpresa();
+            action.executa(req, resp);
+        }else if (paramAction.equals("RelatorioRegionalDiario")) {
+            RelatorioRegionalDiario action = new RelatorioRegionalDiario();
+            action.executa(req, resp);
+        }else if (paramAction.equals("RelatorioEmpresa")) {
+            RelatorioEmpresa action = new RelatorioEmpresa();
+            action.executa(req, resp);
+        }
+        
+        
+        
 
     }
 }

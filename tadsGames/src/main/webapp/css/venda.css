@@ -260,12 +260,15 @@ h3{
     margin: 5px;
 }
 .btnCadastrarVenda{
+    
         border-style: none;
 	padding: 10px;
 	width: 20%;
 	background: #4CAF50;
 	color: #fff;
 	font-size: 15px;
+        
+        
 }
 #divBtnCadastrarVenda{
     position: relative;
@@ -311,3 +314,4 @@ button:hover{
     background:#e74c3c ;
     width: 30%;
 }
+

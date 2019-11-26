@@ -20,23 +20,23 @@ import javax.servlet.http.HttpSession;
  *
  * @author thiago.srocha4
  */
-public class RelatorioDiario implements Executavel{
+public class RelDiarioTopEmpresa implements Executavel{
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia();
-        ArrayList<RelatorioGeral> relatorioDiario = RelatoriosController.relatorioDiario();
         
-        float totalDiario = RelatoriosController.totalDia();
-        req.setAttribute("top10", rel_top10_vendas_dia);
-        req.setAttribute("relatorioDiario", relatorioDiario);
-        req.setAttribute("totalDiario", totalDiario);
         HttpSession sessao = req.getSession();
         
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/Relatorio/RelatorioDiario.jsp");
-        rd.forward(req, resp);
-        sessao.removeAttribute("top10DetalheEmpresa");
-        sessao.removeAttribute("top10Empresa");
+        int idEmpresa = Integer.parseInt(req.getParameter("top10DetalheEmpresa"));
+        sessao.setAttribute("top10DetalheEmpresa", idEmpresa);
+        ArrayList<RelatorioTop10> rel_top10_vendas_dia = RelatoriosController.rel_top10_vendas_dia(idEmpresa);
+        sessao.setAttribute("top10Empresa", rel_top10_vendas_dia);
+
+       
+        
+        
+        resp.sendRedirect(req.getContextPath()+ "/tads/inputRelatorios?action=RelatorioDiario");
+        
         return "";
     }
     

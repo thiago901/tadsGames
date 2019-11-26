@@ -69,32 +69,31 @@ CREATE VIEW Rel_Compra AS
         
 /*RELATORIO DE FATURA DIARIA*/
 CREATE VIEW Rel_Fatura_Dia AS
-	SELECT c.idempresa,
-			c.nome as NomeEmpresa,
-        sum(b.vlrTotalItem) AS TOTAL
-    FROM venda a
-	INNER JOIN detalheVenda b
-		ON b.idVenda = a.idVenda
-    INNER JOIN empresa c
-		on c.idempresa = a.idEmpresa    
-	where a.datavenda = CURDATE();
+	select c.idEmpresa,
+		c.nome as NomeEmpresa,
+		sum(a.valorTotal) as TOTAL
+        from Venda a 
+INNER JOIN Empresa c on
+	c.idEmpresa = a.idEmpresa
+where dataVenda =curdate()
+group by c.nome,c.idEmpresa;
 
 
 
 /*RELATORIO DOS 10 PRODUTOS MAIS VENDIDOS NO DIA ATUAL*/
 CREATE VIEW Rel_Top10_vendas_dia AS
 	SELECT distinct
-    
+		d.idempresa as idEmpresa,
         c.nome AS PRODUTO,
         d.nome as EMPRESA,
-        SUM(B.qtdVenda) as Quantidade,
-        sum(B.vlrVenda) as Valor
-	FROM venda a
-    INNER JOIN detalheVenda b 
+        SUM(b.qtdVenda) as Quantidade,
+        sum(b.vlrTotalItem) as Valor
+	FROM Venda a
+    INNER JOIN DetalheVenda b 
 		ON b.idVenda = a.idVenda
-    INNER JOIN produto c 
+    INNER JOIN Produto c 
         ON c.idProduto = b.idProduto
-	INNER JOIN empresa d
+	INNER JOIN Empresa d
 		on d.idempresa = a.idEmpresa
 	where a.datavenda = CURDATE()
     
@@ -127,4 +126,51 @@ CREATE VIEW TotalFaturadoDia as
 SELECT sum(a.valorTotal) AS TOTAL
     FROM venda a
 	where a.dataVenda = curdate();
-
+						 
+//Regiao
+CREATE VIEW RelTotalRegiaoDiario AS
+select 	c.regiao,
+        sum(e.qtdVenda) as Quantidade,
+        sum(e.vlrTotalItem) as Valor
+from Venda a
+	inner join DetalheVenda e on
+			e.idVenda = a.idVenda
+	inner join Empresa b on
+		b.idEmpresa =a.idEmpresa
+    inner join EstadoRegiao c on
+		c.idEstado = b.idEstado 
+	inner join Produto d on
+		d.idProduto = e.idProduto
+where dataVenda =curdate()
+group by c.regiao ;
+//Regiao
+						 
+CREATE VIEW RelTopProdutoRegiao AS
+select 	c.regiao,
+		d.nome,
+        sum(e.qtdVenda) as Quantidade,
+        sum(e.vlrTotalItem) as Valor
+from Venda a
+	inner join DetalheVenda e on
+			e.idVenda = a.idVenda
+	inner join Empresa b on
+		b.idEmpresa =a.idEmpresa
+    inner join EstadoRegiao c on
+		c.idEstado = b.idEstado 
+	inner join Produto d on
+		d.idProduto = e.idProduto
+where dataVenda =curdate()
+group by c.regiao,d.nome 
+limit 10;
+						 
+//TotalFaturadoDiaEmpresa
+CREATE VIEW TotalFaturadoDiaEmpresa as
+SELECT 	b.idEmpresa,
+		b.nome,
+        count(a.idVenda) AS TOTAL,
+		sum(a.valorTotal) AS TOTAL
+    FROM Venda a
+    inner join Empresa b on	
+    a.idEmpresa = b.idEmpresa
+	where a.dataVenda = curdate()
+    group by idEmpresa;

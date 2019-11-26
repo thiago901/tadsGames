@@ -46,6 +46,7 @@ public class CadastrarVenda implements Executavel, Registravel{
         List<VendaDetalhe> vd = (ArrayList<VendaDetalhe> ) sessao.getAttribute("itemVenda");
         
         UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
+        
         int idEmpresa = usuario.getIdEmpresa();
         int idCliente= Integer.parseInt(sessao.getAttribute("idCliente").toString());
         float vlrVenda=0;

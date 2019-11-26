@@ -23,6 +23,12 @@ public class RelatorioTop10 {
         this.EMPRESA = EMPRESA;
         this.QUANTIDADE = QUANTIDADE;
     }
+    public RelatorioTop10(String PRODUTO, int QUANTIDADE,float VALOR) {
+        this.VALOR = VALOR;
+        this.PRODUTO = PRODUTO;
+        
+        this.QUANTIDADE = QUANTIDADE;
+    }
 
     public float getVALOR() {
         return  VALOR ;

@@ -10,9 +10,11 @@
         <title>Lista de Clientes</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../css/tabelasListagem.css">
+        <link rel="stylesheet" type="text/css" href="../css/geral.css">
         <link rel="icon" href="../img/icon-controle-pequeno.png">
     </head>
     <body>
+        
         <div class="fundo"></div>
         <div class="container">
             <h1 class="titulo">Listar Clientes</h1>

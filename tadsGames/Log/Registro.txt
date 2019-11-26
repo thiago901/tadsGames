@@ -109,3 +109,36 @@
 25/11/2019 - 22h2m11s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 22h2m36s - O usuario: dono realizou um Login no sistema.
 25/11/2019 - 22h7m37s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 13h39m34s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 13h42m23s - O usuario: dono registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Lucas Souza, no valor de: 1400.0.
+26/11/2019 - 14h13m19s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h15m30s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h18m4s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h22m39s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h27m52s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h32m58s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h34m54s - O usuario: Venda SP realizou um Login no sistema.
+26/11/2019 - 14h35m40s - O usuario: Venda SP registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Marco Aurelio, no valor de: 100.0.
+26/11/2019 - 14h35m53s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h38m16s - O usuario: Venda SP realizou um Login no sistema.
+26/11/2019 - 14h38m44s - O usuario: Venda GO realizou um Login no sistema.
+26/11/2019 - 14h39m26s - O usuario: Venda GO registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Thiago Santos, no valor de: 50.0.
+26/11/2019 - 14h39m54s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h43m35s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 14h46m54s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 15h2m12s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 15h3m10s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 15h5m21s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 15h10m9s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 16h36m11s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 16h38m41s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 16h40m47s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 16h41m45s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 16h43m54s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 16h57m34s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 17h15m33s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 17h18m58s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 17h44m19s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 17h49m27s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 18h19m3s - O usuario: dono realizou um Login no sistema.
+26/11/2019 - 18h53m45s - O usuario: dono realizou um Login no sistema.
