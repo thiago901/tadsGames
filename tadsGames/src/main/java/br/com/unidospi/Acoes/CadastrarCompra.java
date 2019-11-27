@@ -157,12 +157,12 @@ public class CadastrarCompra implements Executavel, Registravel{
                     try {
                         arquivo.createNewFile();
                         gerarLog(req, resp);
-                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
-                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+                        Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, ex1);
                     }
                 } catch (IOException e) {
-                    Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, e);
                 }
     }
     

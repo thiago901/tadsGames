@@ -7,7 +7,6 @@ package br.com.unidospi.Acoes;
 
 import br.com.unidospi.Controller.EstoqueController;
 import br.com.unidospi.DAO.ClienteDAO;
-import static br.com.unidospi.DAO.ClienteDAO.listarClientes;
 import br.com.unidospi.DAO.VendaDAO;
 import br.com.unidospi.model.ClienteLista;
 import br.com.unidospi.model.UsuarioFuncionario;
@@ -131,12 +130,12 @@ public class CadastrarVenda implements Executavel, Registravel{
                     try {
                         arquivo.createNewFile();
                         gerarLog(req, resp);
-                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (IOException ex1) {
-                        Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, ex1);
+                        Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, ex1);
                     }
                 } catch (IOException e) {
-                    Logger.getLogger(GeraLog.class.getName()).log(Level.SEVERE, null, e);
+                    Logger.getLogger(Registravel.class.getName()).log(Level.SEVERE, null, e);
                 }
     }
     

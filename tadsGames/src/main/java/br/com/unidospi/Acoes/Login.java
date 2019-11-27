@@ -76,7 +76,7 @@ public class Login implements Executavel, Registravel {
         UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
         
         
-        String acao = "Login";
+        String acao = "login";
         
 
         try {
