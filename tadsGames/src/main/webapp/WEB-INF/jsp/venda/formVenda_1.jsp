@@ -53,11 +53,11 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                 </div>
             </div>
             <div id="dadosClientes" class="<c:if test="${idCliente==null}"> oculta</c:if>" >
-                <div class="dadosClientesContent">
-                    <table id="tblResumoCliente">
-                        <tr>
-                            <td>Cliente:</td>
-                            <td class="tdNome"><c:out value="${nomeCliente2}"/></td>
+                    <div class="dadosClientesContent">
+                        <table id="tblResumoCliente">
+                            <tr>
+                                <td>Cliente:</td>
+                                <td class="tdNome"><c:out value="${nomeCliente2}"/></td>
 
                         </tr>
                         <tr>
@@ -79,45 +79,50 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                     <div class="procuraProduto">
                         <h3>Selecione o Produto: </h3>
                         <input id="inputNomeProduto" name="nomeProduto" class="inputNomeProduto" placeholder="Digite o nome do Produto">
-
-                        <input value="0" type="number" min="0" id="inputQuantidade" name="quantideComprada" class="inputQuantidade" placeholder="Informe a quantidade">
-
-                        <input id="inputVlrTotal" class="inputVlrTotal" name="inputVlrTotal" readonly="" value="0,00">
-
-                        <table id="listaPesquisaProduto" class="" hidden="">
-                            <thead>
-                                <tr>
-                                    <th hidden="">idProduto</th>
-                                    <th>Produto</th>
-                                    <th>Estoque</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbodyListaProdutos">
-                            </tbody>
-
-                        </table>
-
-                        <input type="text" disabled="" hidden="" name="idCliente" id="a">
-                        <div class="divBtnProduto">
-                            <button type="button" class="btnAddProduto" id="btnEditarItem">Editar Item</button>
-                            <button class="btnAddProduto">Adicionar Item</button>
+                    <c:if test="${erroCampos}">
+                        <div class="erro-input com-erro">
+                            É necessário adicionar itens ao carrinho.
                         </div>
+                    </c:if>
+
+                    <input value="0" type="number" min="0" id="inputQuantidade" name="quantideComprada" class="inputQuantidade" placeholder="Informe a quantidade">
+
+                    <input id="inputVlrTotal" class="inputVlrTotal" name="inputVlrTotal" readonly="" value="0,00">
+
+                    <table id="listaPesquisaProduto" class="" hidden="">
+                        <thead>
+                            <tr>
+                                <th hidden="">idProduto</th>
+                                <th>Produto</th>
+                                <th>Estoque</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyListaProdutos">
+                        </tbody>
+
+                    </table>
+
+                    <input type="text" disabled="" hidden="" name="idCliente" id="a">
+                    <div class="divBtnProduto">
+                        <button type="button" class="btnAddProduto" id="btnEditarItem">Editar Item</button>
+                        <button class="btnAddProduto">Adicionar Item</button>
                     </div>
+                </div>
 
-                    <div class="divTabelaItensVenda">
+                <div class="divTabelaItensVenda">
 
-                        <table class="tblItensVenda" id="tblItensVenda">
-                            <thead>
-                                <tr>
-                                    <th>idProduto</th>
-                                    <th>Produto</th>
-                                    <th>Valor Unitario</th>
-                                    <th>Quantidade</th>
-                                    <th>Valor Total</th>
-                                    <th>Remover</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbodyItensVenda">
+                    <table class="tblItensVenda" id="tblItensVenda">
+                        <thead>
+                            <tr>
+                                <th>idProduto</th>
+                                <th>Produto</th>
+                                <th>Valor Unitario</th>
+                                <th>Quantidade</th>
+                                <th>Valor Total</th>
+                                <th>Remover</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyItensVenda">
                             <c:forEach items="${itemVenda}" var="v">
                                 <tr>
                                     <td class="tdIdProduto"><c:out value="${v.getIdProduto()}"/></td>

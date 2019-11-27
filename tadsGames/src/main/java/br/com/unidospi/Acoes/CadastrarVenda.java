@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import br.com.unidospi.util.Registravel;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
@@ -45,44 +46,58 @@ public class CadastrarVenda implements Executavel, Registravel{
         List<VendaDetalhe> vd = (ArrayList<VendaDetalhe> ) sessao.getAttribute("itemVenda");
         
         UsuarioFuncionario usuario = (UsuarioFuncionario) sessao.getAttribute("usuario");
+        //String idProdutoStr = ()
+        
         
         int idEmpresa = usuario.getIdEmpresa();
-        int idCliente= Integer.parseInt(sessao.getAttribute("idCliente").toString());
-        float vlrVenda=0;
-        int idFuncionario= usuario.getIdFuncionario();
+        boolean validacaoServidor = false;
+        
+        if (vd == null){
+            validacaoServidor = true;
+            req.setAttribute("erroCarrinho", true);  
+        }
+        if (validacaoServidor){
+            RequestDispatcher dispatcher = 
+                    req.getRequestDispatcher("inputVenda?action=FormVenda");
+            dispatcher.forward(req, resp);
+        }
+        else {
+            int idCliente = Integer.parseInt(sessao.getAttribute("idCliente").toString());
+            float vlrVenda=0;
+            int idFuncionario= usuario.getIdFuncionario();
 
-          for(VendaDetalhe item:vd){
-            vlrVenda += item.getVlrTotal();
+            for(VendaDetalhe item:vd){
+                vlrVenda += item.getVlrTotal();
+            }
+        
+            Date dtVenda = new Date();
+            Venda venda = new Venda(idCliente, idEmpresa,idFuncionario, vlrVenda, dtVenda, "Finalizado");
+
+            for(VendaDetalhe item:vd){
+                int idProduto =item.getIdProduto();
+                int qtd = item.getQtdVenda();
+                float vlrUnitario = item.getVlrUnitario();
+                float vlrUnitarioTotal = item.getVlrTotal();
+                venda.adiciona(new VendaDetalhe(idProduto, qtd, vlrUnitario, vlrUnitarioTotal));
+            }
+            EstoqueController.atualizarEstoque(venda);
+            retorno = venda.salvar();
+
+            if (retorno > 0){
+                sessao.removeAttribute("itemVenda");
+                sessao.removeAttribute("idLinhaItemVenda");
+                sessao.removeAttribute("idCliente");
+                sessao.removeAttribute("nomeCliente2");
+                String acao = "Venda";
+                GeraLog registro = new GeraLog();
+                registro.escreverLog(usuario, acao, venda);
+
+                CadastrarVenda registra = new CadastrarVenda();
+                registra.gerarLog(req, resp);
+            }
+
+            resp.sendRedirect(req.getContextPath() + "/tads/inputVenda?action=FormVenda");
         }
-        
-        Date dtVenda = new Date();
-        Venda venda = new Venda(idCliente, idEmpresa,idFuncionario, vlrVenda, dtVenda, "Finalizado");
-        
-        for(VendaDetalhe item:vd){
-            int idProduto =item.getIdProduto();
-            int qtd = item.getQtdVenda();
-            float vlrUnitario = item.getVlrUnitario();
-            float vlrUnitarioTotal = item.getVlrTotal();
-            venda.adiciona(new VendaDetalhe(idProduto, qtd, vlrUnitario, vlrUnitarioTotal));
-        }
-        EstoqueController.atualizarEstoque(venda);
-        retorno = venda.salvar();
-        
-        if (retorno > 0){
-            sessao.removeAttribute("itemVenda");
-            sessao.removeAttribute("idLinhaItemVenda");
-            sessao.removeAttribute("idCliente");
-            sessao.removeAttribute("nomeCliente2");
-            String acao = "Venda";
-            GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario, acao, venda);
-            
-            CadastrarVenda registra = new CadastrarVenda();
-            registra.gerarLog(req, resp);
-        }
-        
-        resp.sendRedirect(req.getContextPath() + "/tads/inputVenda?action=FormVenda");
-        
         return "";
     }
 
