@@ -59,7 +59,7 @@ inputNomeProduto.addEventListener("input", function () {
 function buscarProdutos(nomePesquisado) {
     
     var ajax = new XMLHttpRequest();
-    ajax.open("GET", "/TadsGames/tads/inputProduto?action=ListarProduto2&&nome=" + nomePesquisado);
+    ajax.open("GET", "/tadsGames/tads/inputProduto?action=ListarProduto2&&nome=" + nomePesquisado);
     ajax.addEventListener("load", function () {
 
         var textJason = ajax.responseText;
