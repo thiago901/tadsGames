@@ -113,7 +113,7 @@ public class EditarCliente implements Executavel, Registravel {
                 EditarCliente registra = new EditarCliente();
                 registra.gerarLog(req, resp);
                 
-                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             }
         }
         return "";

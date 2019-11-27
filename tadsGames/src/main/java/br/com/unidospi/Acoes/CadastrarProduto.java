@@ -77,7 +77,7 @@ public class CadastrarProduto implements Executavel, Registravel{
                 CadastrarProduto registra = new CadastrarProduto();
                 registra.gerarLog(req, resp);
                 
-                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
 
             }
             } catch (SQLException ex) {

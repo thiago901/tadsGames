@@ -74,7 +74,7 @@ public class EditarProduto implements Executavel, Registravel {
             EditarProduto registra = new EditarProduto();
             registra.gerarLog(req, resp);
             
-            resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+            resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
         }
         
         return "";

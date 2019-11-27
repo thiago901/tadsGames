@@ -117,7 +117,7 @@ public class CadastrarCliente implements Executavel, Registravel{
                 CadastrarCliente registra = new CadastrarCliente();
                 registra.gerarLog(req, resp);
                 
-                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             }
         }
         

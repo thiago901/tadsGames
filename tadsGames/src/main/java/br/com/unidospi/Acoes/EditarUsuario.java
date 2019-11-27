@@ -70,7 +70,7 @@ public class EditarUsuario implements Executavel, Registravel {
                 EditarUsuario registra = new EditarUsuario();
                 registra.gerarLog(req, resp);
 
-                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             }
         }
 

@@ -122,7 +122,7 @@ public class CadastrarEmpresa implements Executavel, Registravel {
                 CadastrarEmpresa registra = new CadastrarEmpresa();
                 registra.gerarLog(req, resp);
                 
-                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             }
         }
 

@@ -108,7 +108,7 @@ public class EditarEmpresa implements Executavel, Registravel{
                 EditarEmpresa registra = new EditarEmpresa();
                 registra.gerarLog(req, resp);
                 
-                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             }
         }
         

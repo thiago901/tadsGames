@@ -88,7 +88,7 @@ public class CadastrarUsuario implements Executavel, Registravel {
                 CadastrarUsuario registra = new CadastrarUsuario();
                 registra.gerarLog(req, resp);
                 
-                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             }
         }
         return "";

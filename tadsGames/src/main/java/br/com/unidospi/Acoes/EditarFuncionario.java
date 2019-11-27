@@ -128,7 +128,7 @@ public class EditarFuncionario implements Executavel, Registravel {
             EditarFuncionario registra = new EditarFuncionario();
             registra.gerarLog(req, resp);
             
-            resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+            resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             
 
         }

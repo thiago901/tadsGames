@@ -133,7 +133,7 @@ public class CadastrarFuncionario implements Executavel, Registravel {
             CadastrarFuncionario registra = new CadastrarFuncionario();
             registra.gerarLog(req, resp);
             
-            resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+            resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             
         }
 

@@ -104,7 +104,7 @@ public class CadastrarCompra implements Executavel, Registravel{
                 CadastrarCompra registra = new CadastrarCompra();
                 registra.gerarLog(req, resp);
 
-                resp.sendRedirect(req.getContextPath() + "/sucesso.html");
+                resp.sendRedirect(req.getContextPath() + "/sucesso.jsp");
             }
         }
        return "";
