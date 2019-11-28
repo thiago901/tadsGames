@@ -39,7 +39,7 @@
                         <div class="content">
 
                             <a href="${pageContext.request.contextPath}/tads/inputProduto?action=FormCadastrarProduto">Novo Produto</a>
-                            <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto">Listar Produtos</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&pagina=1">Listar Produtos</a>
                         </div>
                     </div>
                     <div class="face face2">

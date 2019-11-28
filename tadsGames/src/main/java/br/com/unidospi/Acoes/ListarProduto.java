@@ -22,21 +22,15 @@ public class ListarProduto implements Executavel {
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String n = req.getParameter("offset");
-        int offset = 0;
-        if (n == null) {
-            req.setAttribute("offset", 0);
-        } else {
-            int aux =Integer.parseInt(n);
-            if(aux>=0){
-                offset = aux;
-            }else{
-                offset=0;
-            }
-            req.setAttribute("offset", offset);
-        }
-
-        ArrayList<Produto> lista = ProdutoController.listarProdutoPaginado(offset);
+        int quantidadeRegistro = ProdutoController.qtdRegitro();
+        int qtdRegistoPorPagina = 10;
+        int qtdPagina = quantidadeRegistro>0?(quantidadeRegistro /qtdRegistoPorPagina)-qtdRegistoPorPagina:1;
+        
+        String numPaginaStr = req.getParameter("pagina");
+        
+        int numPagina = Integer.parseInt(numPaginaStr);
+        req.setAttribute("pagina", numPaginaStr);
+        ArrayList<Produto> lista = ProdutoController.listarProdutoPaginado((numPagina*qtdRegistoPorPagina)-qtdRegistoPorPagina);
         req.setAttribute("lista", lista);
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/produto/listarProduto.jsp");
         rd.forward(req, resp);

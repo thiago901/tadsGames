@@ -123,6 +123,28 @@ public class ProdutoDAO {
         
         return p;
     }
+    
+    public static int qtdRegitro() {
+        String query = "Select count(idProduto) as qtd from Produto;";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                return rs.getInt("qtd");
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return 0;
+    }
     // Retorna uma lista de produtos
     public static ArrayList<Produto> listarProduto() {
         ArrayList<Produto> lista = new ArrayList<>();
