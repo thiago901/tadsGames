@@ -4,9 +4,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Requer Autorização</title>
+        <link rel="stylesheet" type="text/css" href="css/formularios.css">
     </head>
     <body>
-        <h1>ERRO: Usuário não tem permissão para acessar esta tela</h1>
-        <a href="${pageContext.request.contextPath}/home">Voltar</a>
+        <div class="container">
+            <h2>Usuário não tem permissão para acessar esta tela</h2>
+            <a href="${pageContext.request.contextPath}/home"><button type="button">Voltar</button></a>
+        </div>
     </body>
 </html>
