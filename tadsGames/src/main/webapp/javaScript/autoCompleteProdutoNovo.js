@@ -29,7 +29,12 @@ listaPesquisa.addEventListener("click",function (e){
     var tdIdProduto = tr.querySelector(".tdIdProduto").textContent;
     var tdVlrUnitario = tr.querySelector(".tdVlrUnitario").textContent;
     var tdNomeProduto = tr.querySelector(".tdNomeProduto").textContent;
+    var tdQtdEstoque = tr.querySelector(".tdQtdEstoque").textContent;
     
+    var estoque = document.querySelector("#qtdEstoque");
+    estoque.value =tdQtdEstoque;
+    console.log(estoque);
+    console.log(tdQtdEstoque);
     
     
     inputIdProduto.value = tdIdProduto;

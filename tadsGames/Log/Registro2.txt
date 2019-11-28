@@ -1,5 +1,13 @@
-28/11/2019 - 1h9m46s - O usuario: dono realizou um login no sistema.
-28/11/2019 - 1h10m25s - O usuario: dono realizou um login no sistema.
-28/11/2019 - 1h13m15s - O usuario: dono realizou um login no sistema.
-28/11/2019 - 1h16m45s - O usuario: dono realizou um login no sistema.
-28/11/2019 - 1h17m58s - O usuario: dono realizou um login no sistema.
+28/11/2019 - 18h24m58s - O usuario: Venda SP realizou um login no sistema.
+28/11/2019 - 18h25m2s - O usuario: Venda SP realizou um logout no sistema.
+28/11/2019 - 18h25m9s - O usuario: Venda SP realizou um login no sistema.
+28/11/2019 - 18h25m11s - O usuario: Venda SP realizou um logout no sistema.
+28/11/2019 - 18h28m40s - O usuario: Venda SP realizou um login no sistema.
+28/11/2019 - 18h42m1s - O usuario: Venda SP realizou um login no sistema.
+28/11/2019 - 18h43m39s - O usuario: Venda SP realizou um login no sistema.
+28/11/2019 - 18h45m36s - O usuario: Venda SP realizou um logout no sistema.
+28/11/2019 - 18h45m42s - O usuario: Venda SP realizou um login no sistema.
+28/11/2019 - 19h12m35s - O usuario: dono realizou um login no sistema.
+28/11/2019 - 19h20m46s - O usuario: dono realizou um login no sistema.
+28/11/2019 - 19h26m12s - O usuario: dono realizou um login no sistema.
+28/11/2019 - 19h27m13s - O usuario: dono realizou um login no sistema.

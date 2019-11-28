@@ -103,6 +103,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
                     </table>
 
+                    <input type="text" hidden="" name="qtdEstoque" id="qtdEstoque">
                     <input type="text" disabled="" hidden="" name="idCliente" id="a">
                     <div class="divBtnProduto">
                         <button type="button" class="btnAddProduto" id="btnEditarItem">Editar Item</button>

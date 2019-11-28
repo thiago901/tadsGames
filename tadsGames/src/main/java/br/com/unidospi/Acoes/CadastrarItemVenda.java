@@ -29,12 +29,12 @@ public class CadastrarItemVenda implements Executavel {
         HttpSession sessao = req.getSession();
         boolean validacaoServidor = false;
         String idProdutoStr = req.getParameter("inputIdProduto");
-        
+        int qtdEstoque = Integer.parseInt(req.getParameter("qtdEstoque"));
         int qtd = Integer.parseInt(req.getParameter("quantideComprada"));
         UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
         String vlrUnitarioStr = req.getParameter("inputVlrUnitario");
         int idProduto = -1;
-        
+        int auxTotal = 0;
         float vlrUnitario = 0;
         
         
@@ -44,6 +44,7 @@ public class CadastrarItemVenda implements Executavel {
             req.setAttribute("validacaoNome", true);
         }else{
             idProduto = Integer.parseInt(idProdutoStr);
+            req.setAttribute("idProduto", idProduto);
         }
         if (qtd <= 0) {
             validacaoServidor = true;
@@ -70,6 +71,22 @@ public class CadastrarItemVenda implements Executavel {
             if (sessao.getAttribute("itemVenda") == null) {
                 sessao.setAttribute("itemVenda", new ArrayList<VendaDetalhe>());
             }
+//            else {
+//                ArrayList<VendaDetalhe> aux = new ArrayList<>();
+//                for (int i = 0; i < aux.size(); i++) {
+//                    if (i == Integer.parseInt(req.getAttribute("idProduto").toString())){
+//                        for (int j = 0; j < aux.size(); j++){
+//                            auxTotal = auxTotal + aux.get(j).getQtdVenda();
+//                            if (auxTotal > qtdEstoque){
+//                                validacaoServidor = true;
+//                            }
+//                        }
+//                        auxTotal = 0;
+//                    }
+//                }
+//                
+//            }
+                
 
             if (sessao.getAttribute("idLinhaItemVenda") == null) {
                 sessao.setAttribute("idLinhaItemVenda", 0);

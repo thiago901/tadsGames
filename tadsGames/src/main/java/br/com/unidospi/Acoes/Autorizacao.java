@@ -27,7 +27,7 @@ import javax.servlet.http.HttpSession;
 @WebFilter(filterName = "Autorizacao",
         servletNames = { "HomeServlet", "FuncionarioController", "EmpresaController", "CompraController", 
                         "ClienteController", "ProdutoController", "RelatoriosController", "UsuarioController",
-                        "VendaController"},
+                        "VendaController", "RelatoriosEmpresaController"},
         urlPatterns = { "/tads/*" })
 public class Autorizacao implements Filter {
 
@@ -57,7 +57,7 @@ public class Autorizacao implements Filter {
     private boolean verificarPermissaoAcesso(
             HttpServletRequest httpRequest, UsuarioFuncionario usuario) {
         String urlAcessada = httpRequest.getRequestURI();
-        if (urlAcessada.endsWith("/home")) {
+        if (urlAcessada.endsWith("/home") || urlAcessada.endsWith("/tads/inputRelatoriosEmpresa")) {
             return true;
         }///////// ACESSO RETAGUARDA ///////
         else if ((urlAcessada.endsWith("/tads/inputProduto")||(urlAcessada.endsWith("/tads/inputCompra"))) 
