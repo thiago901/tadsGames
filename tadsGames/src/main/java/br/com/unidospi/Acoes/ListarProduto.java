@@ -5,7 +5,6 @@
  */
 package br.com.unidospi.Acoes;
 
-
 import br.com.unidospi.Controller.ProdutoController;
 import br.com.unidospi.model.Produto;
 import java.io.IOException;
@@ -19,16 +18,29 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author thiago.srocha4
  */
-public class ListarProduto implements Executavel{
-    
+public class ListarProduto implements Executavel {
+
     @Override
-    public String executa(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
-       ArrayList<Produto> lista = ProdutoController.listarProduto();
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String n = req.getParameter("offset");
+        int offset = 0;
+        if (n == null) {
+            req.setAttribute("offset", 0);
+        } else {
+            int aux =Integer.parseInt(n);
+            if(aux>=0){
+                offset = aux;
+            }else{
+                offset=0;
+            }
+            req.setAttribute("offset", offset);
+        }
+
+        ArrayList<Produto> lista = ProdutoController.listarProdutoPaginado(offset);
         req.setAttribute("lista", lista);
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/produto/listarProduto.jsp");
         rd.forward(req, resp);
         return "";
     }
-        
-    
+
 }

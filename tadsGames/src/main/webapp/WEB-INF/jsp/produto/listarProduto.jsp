@@ -52,6 +52,9 @@
                 </tbody>
             </table>
             <div class="teste">
+                
+                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&offset=${offset-10}"><button type="button">Anterior</button></a>
+                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&offset=${offset+10}"><button type="button">Proximo</button></a>
                 <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             </div>
         </div>

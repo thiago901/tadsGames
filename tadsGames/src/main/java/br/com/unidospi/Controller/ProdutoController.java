@@ -34,6 +34,9 @@ public class ProdutoController extends HttpServlet {
     public static ArrayList<Produto> listarProduto (){
         return ProdutoDAO.listarProduto();
     }
+    public static ArrayList<Produto> listarProdutoPaginado (int offset){
+        return ProdutoDAO.listarProdutoPaginado(offset);
+    }
     public static ArrayList<ProdutoLista> listarProduto (String nomePesquisado,int idEmpresa){
         return ProdutoDAO.listarProduto(nomePesquisado,idEmpresa);
     }

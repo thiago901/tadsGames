@@ -24,27 +24,27 @@ public class ListarEmpresas implements Executavel {
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int offset =0;
-        HttpSession sessao = req.getSession();
-        if(sessao.getAttribute("offset")==null){
-            sessao.setAttribute("offset", 0);
-        }else{
-            String mv = req.getParameter("page");
-            offset = (int) sessao.getAttribute("offset");
-            if (!(mv == null)) {
-                if (mv.equals("next")) {
-                    offset += 10;
-                } else {
-                    offset -= 10;
-                }
-                sessao.setAttribute("offset", offset);
+        
+        
+        
+        String n = req.getParameter("offset");
+        int offset = 0;
+        if (n == null) {
+            req.setAttribute("offset", 0);
+        } else {
+            int aux =Integer.parseInt(n);
+            if(aux>=0){
+                offset = aux;
+            }else{
+                offset=0;
             }
+            req.setAttribute("offset", offset);
         }
         
         
 
         ArrayList<EmpresaLista> le = EmpresaController.listarEmpresasPaginada(offset);
-        req.setAttribute("pagina", String.valueOf(offset));
+        
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/empresa/listarEmpresa.jsp");
         req.setAttribute("lista", le);
         rd.forward(req, resp);

@@ -157,6 +157,42 @@ public class ProdutoDAO {
         
         return lista;
     }
+    
+    public static ArrayList<Produto> listarProdutoPaginado(int offset) {
+        ArrayList<Produto> lista = new ArrayList<>();
+        String query = "SELECT * FROM Produto LIMIT 10 offset ?;";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setInt(1, offset);
+            ResultSet rs = ps.executeQuery();
+            
+            
+            while (rs.next()) {
+                int idProduto = rs.getInt("idProduto");
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                String tipo = rs.getString("tipo");
+                Boolean ativo = rs.getBoolean("ativo");
+                
+                Produto p = new Produto(idProduto, nome, descricao, tipo, ativo);
+                lista.add(p);
+                
+            }
+            for (int i = 0; i > lista.size(); i++) {
+                System.out.println(lista.get(i));
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return lista;
+    }
    
     public static ArrayList<ProdutoLista> listarProduto(String nomePesquisado,int idEmpresa) {
         ArrayList<ProdutoLista> lista = new ArrayList<>();
