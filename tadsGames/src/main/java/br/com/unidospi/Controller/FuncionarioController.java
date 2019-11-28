@@ -11,7 +11,7 @@ import br.com.unidospi.Acoes.FormCadastrarFuncionario;
 import br.com.unidospi.Acoes.FormEditarFuncionario;
 import br.com.unidospi.Acoes.ListarFuncionarios;
 import br.com.unidospi.DAO.FuncionarioDAO;
-import br.com.unidospi.model.Empresa;
+import br.com.unidospi.model.Empresa; 
 import br.com.unidospi.model.FuncionarioEmpresa;
 import java.io.IOException;
 import java.util.ArrayList;

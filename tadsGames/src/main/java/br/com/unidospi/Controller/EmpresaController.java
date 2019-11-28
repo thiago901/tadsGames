@@ -56,6 +56,15 @@ public class EmpresaController extends HttpServlet {
     public static ArrayList listarEmpresasPaginada(int numPagina) {
         return EmpresaDao.listarEmpresasPaginada(numPagina);
     }
+    public static ArrayList listarEmpresasPaginada(int numPagina,String nomeProcurado) {
+        return EmpresaDao.listarEmpresasPaginada(numPagina,nomeProcurado);
+    }
+    public static double qtdRegitro() {
+        return EmpresaDao.qtdRegitro();
+    }
+    public static double qtdRegitro(String nomeProcurado) {
+        return EmpresaDao.qtdRegitro(nomeProcurado);
+    }
 
     // Recebe um identificador e retorna a empresa identificada pelo mesmo
     public static EmpresaLista listarEmpresas(int id) {

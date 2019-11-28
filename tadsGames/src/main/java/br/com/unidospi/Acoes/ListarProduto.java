@@ -29,13 +29,22 @@ public class ListarProduto implements Executavel {
         double qtdRegistoPorPagina = 10;
         double qtdPagina = 1;
         int offset=0;
+        ArrayList<Produto> lista;
         
         String numPaginaStr = req.getParameter("pagina");
+        String nome = req.getParameter("nome");
         int numPagina=1;
         
         if(!(numPaginaStr==null)){
             numPagina = Integer.parseInt(numPaginaStr);
-            ListaPaginada lp = new ListaPaginada(ProdutoController.qtdRegitro(), qtdRegistoPorPagina, numPagina);
+            double qtdRegitro=1;
+            if(nome==null){
+                qtdRegitro=ProdutoController.qtdRegitro();
+            }else{
+                qtdRegitro=ProdutoController.qtdRegitro(nome);
+                req.setAttribute("nome", nome);
+            }
+            ListaPaginada lp = new ListaPaginada(qtdRegitro, qtdRegistoPorPagina, numPagina);
             qtdPagina = lp.getQtdPaginas();
             numPagina= lp.getNumPagina();
             offset = lp.offset();
@@ -44,7 +53,12 @@ public class ListarProduto implements Executavel {
         req.setAttribute("pagina", String.valueOf(numPagina));
         req.setAttribute("qtdPagina", (int)qtdPagina);
         
-        ArrayList<Produto> lista = ProdutoController.listarProdutoPaginado(offset);
+        if(nome==null){
+            lista = ProdutoController.listarProdutoPaginado(offset);
+        }else{
+            lista = ProdutoController.listarProdutoPaginado(offset,nome);
+        }
+        
         req.setAttribute("lista", lista);
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/produto/listarProduto.jsp");
         rd.forward(req, resp);

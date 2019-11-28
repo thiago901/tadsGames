@@ -131,7 +131,29 @@ public class ProdutoDAO {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                return rs.getInt("qtd");
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return 0;
+    }
+    public static double qtdRegitro(String nomeProcurado) {
+        String query = "Select count(idProduto) as qtd from Produto where nome LIKE ?;";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1, "%"+nomeProcurado+"%");
+            ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
                 return rs.getInt("qtd");
@@ -189,6 +211,42 @@ public class ProdutoDAO {
             conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
             ps.setInt(1, offset);
+            ResultSet rs = ps.executeQuery();
+            
+            
+            while (rs.next()) {
+                int idProduto = rs.getInt("idProduto");
+                String nome = rs.getString("nome");
+                String descricao = rs.getString("descricao");
+                String tipo = rs.getString("tipo");
+                Boolean ativo = rs.getBoolean("ativo");
+                
+                Produto p = new Produto(idProduto, nome, descricao, tipo, ativo);
+                lista.add(p);
+                
+            }
+            for (int i = 0; i > lista.size(); i++) {
+                System.out.println(lista.get(i));
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return lista;
+    }
+    public static ArrayList<Produto> listarProdutoPaginado(int offset,String nomeProcurado) {
+        ArrayList<Produto> lista = new ArrayList<>();
+        String query = "SELECT * FROM Produto where nome LIKE  ? LIMIT 10 offset ?;";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1, "%"+nomeProcurado+"%");
+            ps.setInt(2, offset);
             ResultSet rs = ps.executeQuery();
             
             

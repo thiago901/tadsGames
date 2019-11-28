@@ -38,8 +38,14 @@ public class ClienteController extends HttpServlet {
     public static ArrayList<ClienteLista> listarClientesPaginado(int offset) {
         return ClienteDAO.listarClientesPaginado(offset);
     }
-    public static int qtdRegitro() {
+    public static ArrayList<ClienteLista> listarClientesPaginado(int offset,String nomeProcurado) {
+        return ClienteDAO.listarClientesPaginado(offset,nomeProcurado);
+    }
+    public static double qtdRegitro() {
         return ClienteDAO.qtdRegitro();
+    }
+    public static double qtdRegitro(String nomeProcurado) {
+        return ClienteDAO.qtdRegitro(nomeProcurado);
     }
     public static ArrayList<Cliente> listarClientes(String nomePesquisado) {
         return ClienteDAO.listarClientes(nomePesquisado);

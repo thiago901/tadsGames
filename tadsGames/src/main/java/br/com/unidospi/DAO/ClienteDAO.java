@@ -159,6 +159,54 @@ public class ClienteDAO {
         
         return listaClientes;
     }
+    public static ArrayList<ClienteLista> listarClientesPaginado(int offset,String nomeProcurado) {
+        ArrayList<ClienteLista> listaClientes = new ArrayList<>();
+        String query = "SELECT 	a.idCliente, " +
+                      "a.nome,	\n" +
+        "		a.sobrenome,\n" +
+        "		a.CPF,\n" +
+               "        a.dtNasc,\n" +
+               "        a.sexo,\n" +
+               "        a.idempresa,\n" +
+               "        b.nome as nomeEmpresa,\n" +
+               "        a.ativo\n" +
+        "\n" +
+                    "FROM Cliente a \n" +
+                    "left join Empresa b on \n" +
+                    "a.idempresa = b.idempresa where a.nome like ? LIMIT 10 offset ?;";
+        
+        try {
+            Calendar c = Calendar.getInstance();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1, "%"+nomeProcurado+"%");
+            ps.setInt(2, offset);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                int idCliente=rs.getInt("idCliente");
+                String nome=rs.getString("nome"); 
+                String sobrenome=rs.getString("sobrenome");
+                String cpf = rs.getString("cpf");
+                Date dtNasc=rs.getDate("dtNasc");
+                String sexo=rs.getString("sexo");
+                int idempresa =rs.getInt("idEmpresa");
+                String nomeEmpresa=rs.getString("nomeEmpresa");; 
+                boolean ativo=rs.getBoolean("ativo") ;
+                ClienteLista cliente = new ClienteLista(idCliente, nome, sobrenome, cpf, dtNasc, sexo, idempresa, nomeEmpresa, ativo);
+                listaClientes.add(cliente);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return listaClientes;
+    }
+    
     public static int qtdRegitro() {
         
         String query = "SELECT count(idCliente) as qtd FROM Cliente;";
@@ -168,6 +216,31 @@ public class ClienteDAO {
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+               return rs.getInt("qtd");
+       
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        
+        return 0;
+    }
+    public static int qtdRegitro(String nomeProcurado) {
+        
+        String query = "SELECT count(idCliente) as qtd where nome LIKE ? FROM Cliente;";
+        
+        try {
+            Calendar c = Calendar.getInstance();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,USUARIO,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1, "%"+nomeProcurado+"%");
             ResultSet rs = ps.executeQuery(query);
             
             while (rs.next()) {

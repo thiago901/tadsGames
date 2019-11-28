@@ -291,6 +291,47 @@ public class UsuarioDAO {
 
         return listaUsuarios;
     }
+    
+    public static ArrayList<UsuarioFuncionario> obterUsuarios(int offset,String nomeProcurado) {
+        ArrayList<UsuarioFuncionario> listaUsuarios = new ArrayList<>();
+
+        String query = "SELECT u.idUsuario,\n"
+                + " f.nomeFuncionario,\n "
+                + " f.sobrenome,\n"
+                + " u.nomeUsuario,\n"
+                + " u.ativo\n"
+                + " FROM Usuario u\n"
+                + " INNER JOIN Funcionario f\n"
+                + " ON u.idFuncionario = f.idFuncionario where f.nomeFuncionario  LIKE ? limit 10 offset ?";
+
+        try {
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1, "%"+nomeProcurado+"%");
+            ps.setInt(2, offset);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                UsuarioFuncionario usuarioFuncionario = new UsuarioFuncionario(
+                        rs.getInt("idUsuario"),
+                        rs.getString("nomeUsuario"),
+                        rs.getString("nomeFuncionario"),
+                        rs.getString("sobrenome"),
+                        rs.getBoolean("ativo")
+                );
+
+                listaUsuarios.add(usuarioFuncionario);
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listaUsuarios;
+    }
 
     public static int qtdRegitro() {
 
@@ -301,6 +342,30 @@ public class UsuarioDAO {
             conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
 
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                return rs.getInt("qtd");
+
+            }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return 0;
+    }
+    public static int qtdRegitro(String nomeProcurado) {
+
+        String query = "SELECT count(idUsuario) as qtd FROM Usuario where nomeUsuario ?";
+
+        try {
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, LOGIN, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setString(1, "%"+nomeProcurado+"%");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

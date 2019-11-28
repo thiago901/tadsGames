@@ -37,8 +37,14 @@ public class ProdutoController extends HttpServlet {
     public static ArrayList<Produto> listarProdutoPaginado (int offset){
         return ProdutoDAO.listarProdutoPaginado(offset);
     }
+    public static ArrayList<Produto> listarProdutoPaginado (int offset,String nomeProcurado){
+        return ProdutoDAO.listarProdutoPaginado(offset,nomeProcurado);
+    }
     public static double qtdRegitro(){
         return ProdutoDAO.qtdRegitro();
+    }
+    public static double qtdRegitro(String nomeProcurado){
+        return ProdutoDAO.qtdRegitro(nomeProcurado);
     }
     public static ArrayList<ProdutoLista> listarProduto (String nomePesquisado,int idEmpresa){
         return ProdutoDAO.listarProduto(nomePesquisado,idEmpresa);
