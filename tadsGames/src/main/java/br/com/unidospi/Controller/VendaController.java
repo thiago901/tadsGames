@@ -5,6 +5,7 @@
  */
 package br.com.unidospi.Controller;
 
+import br.com.unidospi.Acoes.AdiconarCliente;
 import br.com.unidospi.Acoes.CadastrarItemVenda;
 import br.com.unidospi.Acoes.CadastrarVenda;
 import br.com.unidospi.Acoes.ExcluirItemVenda;
@@ -50,6 +51,9 @@ public class VendaController extends HttpServlet {
 
             } else if(paramAction.equals("ExcluirItemVenda")){
                 ExcluirItemVenda action = new ExcluirItemVenda();
+                action.executa(req, resp);
+            } else if(paramAction.equals("AdiconarCliente")){
+                AdiconarCliente action = new AdiconarCliente();
                 action.executa(req, resp);
             } 
         } else {

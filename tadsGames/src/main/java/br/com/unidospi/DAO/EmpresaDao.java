@@ -232,6 +232,63 @@ public class EmpresaDao {
         }
         return null;
     }
+    /* Retorna uma lista de empresas */
+    public static ArrayList listarEmpresasPaginada(int numPagina) {
+        try{
+            String sql = "select a.idEmpresa,\n" +
+                        "        a.nome,\n" +
+                        "        a.cnpj,\n" +
+                        "        a.dataCriacao,\n" +
+                        "        a.idEstado,\n" +
+                        "        b.uf,\n" +
+                        "        b.regiao,\n" +
+                        "        a.idCidade,\n" +
+                        "        c.nomeCidade,\n" +
+                        "        a.ativo,\n" +
+                        "        a.matriz\n" +
+                        " from Empresa a\n" +
+                        "left join EstadoRegiao b on \n" +
+                        "a.idEstado = b.idEstado\n" +
+                        "left join cidade c on\n" +
+                        "c.idCidade = a.idCidade "
+                    + "order by a.nome limit 10 offset ?;";
+            ArrayList <EmpresaLista> le = new ArrayList<>();
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, numPagina);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                int idEmpresa= rs.getInt("idEmpresa");
+                String nome= rs.getString("nome");
+                String cnpj= rs.getString("cnpj");
+                Date dataCriacao= rs.getDate("dataCriacao");
+                int idEstado= rs.getInt("idEstado");
+                String uf= rs.getString("uf");
+                String regiao= rs.getString("regiao");
+                int idCidade= rs.getInt("idCidade");
+                String nomeCidade= rs.getString("nomeCidade");
+                Boolean ativo= rs.getBoolean("ativo");
+                Boolean matriz= rs.getBoolean("matriz");
+                EmpresaLista listaEmpresa = new EmpresaLista
+                                        (idEmpresa, nome, cnpj, dataCriacao, idEstado, uf, regiao, idCidade, nomeCidade, ativo,matriz);
+                
+                le.add(listaEmpresa);
+                
+            }
+            return le;
+        }catch(SQLException | ClassNotFoundException e ){
+            e.getMessage();
+        }finally{
+            try{
+                conexao.close();
+            }catch(SQLException e){
+                e.getMessage();
+            }
+        }
+        return null;
+    }
     
     // Recebe o identificador de uma empresa e retorna a empresa
     public static EmpresaLista listarEmpresas(int id) {

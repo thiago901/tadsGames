@@ -148,3 +148,25 @@
 27/11/2019 - 18h6m48s - O usuario: dono realizou um Login no sistema.
 27/11/2019 - 18h40m6s - O usuario: dono realizou um Login no sistema.
 27/11/2019 - 18h41m40s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 20h55m30s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 20h56m23s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h11m20s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h12m29s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h15m50s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h19m0s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h19m26s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h20m28s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h25m50s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h28m22s - O usuario: dono registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Marco Aurelio, no valor de: 500.0.
+27/11/2019 - 21h32m50s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 21h37m42s - O usuario: dono registrou uma Venda no sistema, efetuada pelo Funcionario: null destinada ao Cliente: Marco Aurelio, no valor de: 870.0.
+27/11/2019 - 22h36m49s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 22h42m26s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 22h43m57s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 22h45m9s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 22h48m21s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 22h54m55s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 23h23m28s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 23h25m39s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 23h29m7s - O usuario: dono realizou um Login no sistema.
+27/11/2019 - 23h37m30s - O usuario: dono realizou um Login no sistema.

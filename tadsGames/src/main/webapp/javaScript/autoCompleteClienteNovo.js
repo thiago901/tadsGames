@@ -37,9 +37,9 @@ btnSelecionarCliente.addEventListener("click",function (){
         return;
     }
     
-    visibilidade(telaProduto);
+    /*visibilidade(telaProduto);
     visibilidade(telaCliente);
-    visibilidade(dadosClientes);
+    visibilidade(dadosClientes)*/;
     
 });
 btnEditarCliente.addEventListener("click",function (){
@@ -78,7 +78,7 @@ listaPesquisa.addEventListener("click",function (e){
     
     
     editavel(inputNomeCliente);
-    visibilidade(listaPesquisa);
+    oculta(listaPesquisa);
     
     
 });

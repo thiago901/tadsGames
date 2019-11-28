@@ -53,6 +53,9 @@ public class EmpresaController extends HttpServlet {
     public static ArrayList listarEmpresas() {
         return EmpresaDao.listarEmpresas();
     }
+    public static ArrayList listarEmpresasPaginada(int numPagina) {
+        return EmpresaDao.listarEmpresasPaginada(numPagina);
+    }
 
     // Recebe um identificador e retorna a empresa identificada pelo mesmo
     public static EmpresaLista listarEmpresas(int id) {

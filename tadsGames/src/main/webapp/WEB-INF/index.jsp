@@ -25,7 +25,7 @@
                     <div class="content">
 
                         <a href="${pageContext.request.contextPath}/tads/input?action=FormCadastrarEmpresa">Nova Empresa</a>
-                        <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas">Listar Empresas</a>
+                        <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas&pagina=0">Listar Empresas</a>
                     </div>
                 </div>
                 <div class="face face2">

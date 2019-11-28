@@ -35,7 +35,7 @@ listaPesquisa.addEventListener("click",function (e){
     inputIdProduto.value = tdIdProduto;
     inputVlrUnitario.value =tdVlrUnitario; 
     inputNomeProduto.value =tdNomeProduto;
-    visibilidade(this);
+    oculta(this);
     editavel(inputNomeProduto);
     
 });

@@ -18,7 +18,8 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
 
     </head>
     <body>
-        <form autocomplete="off" method="POST" id="form" action="${pageContext.request.contextPath}/tads/inputVenda?action=CadastrarItemVenda" > 
+        <form autocomplete="off" method="POST" id="form" 
+              action="${pageContext.request.contextPath}/tads/inputVenda?action=<c:if test="${idCliente!=null}">CadastrarItemVenda</c:if><c:if test="${idCliente==null}">AdiconarCliente</c:if>"> 
 
             <div class="fundo"></div>
 
@@ -47,7 +48,7 @@ action="\TadsGames\inputVenda?action=CadastrarVenda"
                             <div class="divAddCliente">
                                 <a href="${pageContext.request.contextPath}/home"><button class="btnCadastrarVenda voltaMenu" type="button">Voltar ao Menu</button></a>
                             <button type="button" class="btnDivCliente" id="btnEditarCliente">Editar</button>
-                            <button type="button" class="btnDivCliente" id="btnSelecionarCliente">Confirmar</button>
+                            <button type="submit" class="btnDivCliente" id="btnSelecionarCliente">Confirmar</button>
                         </div>
                     </div>
                 </div>
