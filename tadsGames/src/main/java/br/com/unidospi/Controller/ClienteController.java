@@ -35,6 +35,12 @@ public class ClienteController extends HttpServlet {
     public static ArrayList<ClienteLista> listarClientes() {
         return ClienteDAO.listarClientes();
     }
+    public static ArrayList<ClienteLista> listarClientesPaginado(int offset) {
+        return ClienteDAO.listarClientesPaginado(offset);
+    }
+    public static int qtdRegitro() {
+        return ClienteDAO.qtdRegitro();
+    }
     public static ArrayList<Cliente> listarClientes(String nomePesquisado) {
         return ClienteDAO.listarClientes(nomePesquisado);
     }

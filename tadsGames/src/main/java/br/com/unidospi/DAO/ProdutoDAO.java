@@ -124,7 +124,7 @@ public class ProdutoDAO {
         return p;
     }
     
-    public static int qtdRegitro() {
+    public static double qtdRegitro() {
         String query = "Select count(idProduto) as qtd from Produto;";
         
         try {                        

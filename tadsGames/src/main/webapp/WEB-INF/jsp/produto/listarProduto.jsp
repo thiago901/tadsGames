@@ -19,6 +19,7 @@
         <div class="container">
             <h1 class="titulo">Listar Produtos</h1>
             <input type="text" id="pesquisaProduto" placeholder="Digite um nome..."</input>
+            <button>Buscar</button>
 
 
             <table border="1" id="tabela">
@@ -54,6 +55,7 @@
             <div class="teste">
                 
                 <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&pagina=${pagina-1}"><button type="button">Anterior</button></a>
+                <h6><c:out value="${pagina}"/> de <c:out value="${qtdPagina}"/></h6>
                 <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&pagina=${pagina+1}"><button type="button">Proximo</button></a>
                 <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             </div>

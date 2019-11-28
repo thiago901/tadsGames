@@ -54,6 +54,9 @@
                 </tbody>
             </table>
             <div class="teste">
+                <a href="${pageContext.request.contextPath}/tads/inputCliente?action=ListarCliente&pagina=${pagina-1}"><button type="button">Anterior</button></a>
+                <h6><c:out value="${pagina}"/> de <c:out value="${qtdPagina}"/></h6>
+                <a href="${pageContext.request.contextPath}/tads/inputCliente?action=ListarCliente&pagina=${pagina+1}"><button type="button">Proximo</button></a>
                 <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             </div>
         </div>
