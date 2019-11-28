@@ -17,9 +17,9 @@
     <body>
         <div class="fundo"></div>
         <div class="container">
-        <h1 class="titulo">Listar Usuários</h1>
-        <input type="text" id="pesquisaUsuario" placeholder="Digite um Usuário">
-        <table border="1" id="tabela">
+            <h1 class="titulo">Listar Usuários</h1>
+            <input type="text" id="pesquisaUsuario" placeholder="Digite um Usuário">
+            <table border="1" id="tabela">
                 <thead>
                     <tr>
                         <th>Usuário</th>
@@ -37,15 +37,18 @@
                             <td class="sobrenome"><c:out value="${u.sobrenome}" /></td>  
                             <td class="ativo">
                                 <c:if test="${u.statusUsuario==true}">Sim</td></c:if>
-                                <c:if test="${u.statusUsuario==false}">Não</td></c:if>
+                            <c:if test="${u.statusUsuario==false}">Não</td></c:if>
                             <td class="altera"><a href="inputUsuario?action=FormEditarUsuario&idUsuario=${u.idUsuario}"><img src="../img/alterar.png"></a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
-                </div>
-            </table>
-        
-        <script type="text/javascript" src="../javaScript/filtraUsuario.js"></script>
-        <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>       
-    </body>
+        </div>
+    </table>
+
+    <script type="text/javascript" src="../javaScript/filtraUsuario.js"></script>
+    
+    <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarUsuarios&pagina=${pagina-1}"><button type="button">Anterior</button></a>
+    <h6><c:out value="${pagina}"/> de <c:out value="${qtdPagina}"/></h6>
+    <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarUsuarios&pagina=${pagina+1}"><button type="button">Proximo</button></a>    
+</body>
 </html>

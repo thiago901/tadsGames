@@ -11,27 +11,42 @@ inputCidade.addEventListener("input", function () {
     var cidades = document.querySelectorAll(".cidade");
 
 //    limparAutoComplete(cidades);
-    
 
     
-    if(inputCidade.value.length>2){
-        tableCidades.removeAttribute("hidden")
+    if (this.value.length > 1) {
+        var mostrar = 0;
         for (var i = 0; i < cidades.length; i++) {
-        var cidade = cidades[i];
-        var tdNome = cidade.querySelector(".nomeCidade");
-        var nome = tdNome.textContent;
-        var expressao = new RegExp(this.value, "i");
+
+            var cidade = cidades[i];
+            var tdNome = cidade.querySelector(".nomeCidade");
+            var nome = tdNome.textContent;
+
+            var expressao = new RegExp(this.value, "i");
+
             if (expressao.test(nome)) {
-                cidade.removeAttribute("hidden");
+                if (mostrar < 10) {
+                    cidade.removeAttribute("hidden");
+                    mostrar++;
+                    console.log(mostrar);
+                } else {
+                    cidade.setAttribute("hidden", "");
+                }
+
             } else {
                 cidade.setAttribute("hidden", "");
             }
+
         }
+        tableCidades.removeAttribute("hidden");
     }else{
-        
         tableCidades.setAttribute("hidden", "");
     }
-    
+
+
+
+
+
+
 
 
 });
@@ -72,13 +87,15 @@ estado.addEventListener("input", function () {
 
 function buscarCidades(idUf) {
     var xhl = new XMLHttpRequest();
-    xhl.open("GET", "/tadsGames/tads/input?action=ListarCidades&nome=" + idUf);
+    xhl.open("GET", "/TadsGames/tads/input?action=ListarCidades&nome=" + idUf);
     xhl.addEventListener("load", function () {
         var text = xhl.responseText;
 
         var cidades = JSON.parse(text);
 
+
         cidades.forEach(function (cidade) {
+
             adicionarNoSelect(cidade);
 
 
@@ -104,9 +121,9 @@ function adicionarNoSelect(cidade) {
 }
 
 function montarTrBuscaCidade(cidade) {
+
     var linha = document.createElement("tr");
     linha.classList.add("cidade");
-
     var tdIdCidade = montarTdBusca(cidade.idCidade, "idCidade");
     var tdNomeCidade = montarTdBusca(cidade.nomeCidade, "nomeCidade");
     tdIdCidade.setAttribute("Hidden", "");

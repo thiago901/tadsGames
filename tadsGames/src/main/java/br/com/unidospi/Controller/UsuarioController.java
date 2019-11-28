@@ -28,7 +28,7 @@ public class UsuarioController extends HttpServlet {
     
     @Override
     public void service(HttpServletRequest req, HttpServletResponse resp) 
-            throws IOException, ServletException {
+            throws IOException, ServletException  {
         
         String parametroAcao = req.getParameter("action");
         

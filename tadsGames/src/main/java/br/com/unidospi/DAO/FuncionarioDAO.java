@@ -120,6 +120,84 @@ public class FuncionarioDAO {
         
         return listaFuncionarioEmpresas;
     }
+    public static ArrayList<FuncionarioEmpresa> obterFuncionarios(int offset) {
+        ArrayList<FuncionarioEmpresa> listaFuncionarioEmpresas = 
+                new ArrayList<>();
+        
+        String query = "SELECT f.idFuncionario,\n"
+                    + "f.nomeFuncionario,\n" +
+                     " f.sobrenome,\n" +
+                     " f.cpf,\n" +
+                     " f.sexo,\n" +
+                     " f.dtNasc,\n" +
+                     " f.ativo,\n" +
+                     " f.salario,\n" +
+                     " f.cargo,\n" +
+                     " f.departamento,\n" +
+                     " e.idEmpresa,\n" +
+                     " e.nome\n" +
+                     " FROM Funcionario f\n"
+                   + "LEFT JOIN Empresa e\n"
+                   + "ON f.idEmpresa = e.idEmpresa limit 10 offset ?;";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ps.setInt(1, offset);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                FuncionarioEmpresa funcionarioEmpresa = new FuncionarioEmpresa(
+                    rs.getInt("idFuncionario"),
+                    rs.getString("nomeFuncionario"),
+                    rs.getString("sobrenome"),
+                    rs.getString("sexo"),
+                    rs.getString("cpf"),
+                    rs.getDate("dtNasc"),
+                    rs.getBoolean("ativo"),
+                    rs.getFloat("salario"),
+                    rs.getString("cargo"),  
+                    rs.getString("departamento"),                                      
+                    rs.getInt("idEmpresa"),                        
+                    rs.getString("nome")
+                );
+                
+                listaFuncionarioEmpresas.add(funcionarioEmpresa);
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listaFuncionarioEmpresas;
+    }
+    public static int qtdRegitro() {
+        
+        
+        String query = "SELECT count(idFuncionario) as qtd FROM Funcionario ";
+        
+        try {                        
+            Class.forName(DRIVER);
+            conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
+            PreparedStatement ps = conexao.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+            
+            while (rs.next()) {
+                return rs.getInt("qtd");
+
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return 0;
+    }
     //Retorna o id, nome e sobrenome do ultimo funcionario cadastrado no sistema
     public static Funcionario ultFuncionario() {
         String query = "Select idFuncionario, nomeFuncionario, sobrenome from Funcionario where (select max(idFuncionario) from Funcionario)=idFuncionario;";

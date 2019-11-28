@@ -18,8 +18,19 @@
 <div class="fundo"></div>
         <div class="container">
             <h1 class="titulo">Listar Produtos</h1>
-            <input type="text" id="pesquisaProduto" placeholder="Digite um nome..."</input>
-
+            <form action="">
+                <input id="inputNome" name="nome" type="text" id="pesquisaProduto" placeholder="Digite um nome..." value="<c:out
+                           value="${nome}"/>" >
+            <a id="buscaComCliente" href=""><button type="button">Buscar</button></a>
+            <script>
+                var busca = document.querySelector("#buscaComCliente");
+                busca.addEventListener("click",function (){
+                    console.log(busca);
+                    var input = document.querySelector("#inputNome");
+                    busca.setAttribute("href","${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&pagina=${pagina}&nome="+input.value)
+                });
+            </script>
+            </form>
 
             <table border="1" id="tabela">
                 <thead>
@@ -53,8 +64,9 @@
             </table>
             <div class="teste">
                 
-                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&offset=${offset-10}"><button type="button">Anterior</button></a>
-                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&offset=${offset+10}"><button type="button">Proximo</button></a>
+                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&pagina=${pagina-1}"><button type="button">Anterior</button></a>
+                <h6><c:out value="${pagina}"/> de <c:out value="${qtdPagina}"/></h6>
+                <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&pagina=${pagina+1}"><button type="button">Proximo</button></a>
                 <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             </div>
         </div>

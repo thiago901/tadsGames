@@ -39,7 +39,7 @@
                         <div class="content">
 
                             <a href="${pageContext.request.contextPath}/tads/inputProduto?action=FormCadastrarProduto">Novo Produto</a>
-                            <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto">Listar Produtos</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputProduto?action=ListarProduto&pagina=1">Listar Produtos</a>
                         </div>
                     </div>
                     <div class="face face2">
@@ -54,7 +54,7 @@
                         <div class="content">
 
                             <a href="${pageContext.request.contextPath}/tads/inputCliente?action=FormCadastrarCliente">Novo Cliente</a>
-                            <a href="${pageContext.request.contextPath}/tads/inputCliente?action=ListarCliente">Listar Clientes</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputCliente?action=ListarCliente&pagina=1">Listar Clientes</a>
                         </div>
                     </div>
                     <div class="face face2">
@@ -68,7 +68,7 @@
                     <div class="content">
 
                         <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=FormCadastrarFuncionario">Novo Funcionario</a>
-                        <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=ListarFuncionarios">Manutenção de Funcionario</a>
+                        <a href="${pageContext.request.contextPath}/tads/inputFuncionario?action=ListarFuncionarios&pagina=1">Manutenção de Funcionario</a>
                     </div>
                 </div>
                 <div class="face face2">
@@ -96,7 +96,7 @@
                     <div class="face face1">
                         <div class="content">
                             <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarFuncionariosUsuarioCadastravel">Novo Usuário</a>    
-                            <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarUsuarios">Manutenção de Usuários</a>
+                            <a href="${pageContext.request.contextPath}/tads/inputUsuario?action=ListarUsuarios&pagina=1">Manutenção de Usuários</a>
                         </div>
                     </div>
                     <div class="face face2">

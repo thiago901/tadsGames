@@ -59,7 +59,7 @@ public class CidadeDAO {
     public static ArrayList listaCidade(int uf) {
         try{
             ArrayList <Cidade> cid = new ArrayList();
-            String sql ="select * from cidade where idEstado = ?";
+            String sql ="select * from cidade where idEstado = ? order by nomeCidade";
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
             PreparedStatement ps = conexao.prepareStatement(sql);

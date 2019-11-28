@@ -16,7 +16,7 @@
         <div class="fundo"></div>
         <div class="container">
             <h1 class="titulo">Lista de Empresas</h1>
-            <h1 class="titulo"><c:out value="${mmmmmm}"/></h1>
+            
             
             
             <input type="text" id="nomePesquisa" placeholder="Digite um Nome">
@@ -59,8 +59,9 @@
             </table>
             <div class="teste">
                 <input name="alteraPagina" hidden="">
-                <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas&offset=${offset-10}"><button type="button">Anterior</button></a>
-                <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas&offset=${offset+10}"><button type="button">Proximo</button></a>
+                <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas&pagina=${pagina-1}"><button type="button">Anterior</button></a>
+                <h6><c:out value="${pagina}"/> de <c:out value="${qtdPagina}"/></h6>
+                <a href="${pageContext.request.contextPath}/tads/input?action=ListarEmpresas&pagina=${pagina+1}"><button type="button">Proximo</button></a>
                 <a href="${pageContext.request.contextPath}/home"><button type="button">Sair</button></a>
             </div>
         </div>
