@@ -65,7 +65,7 @@ public class EmpresaDao {
     }
     // Retorna a ultima empresa cadastrada no sistema
     public static Empresa ultEmpresa() {
-        String query = "Select idEmpresa, nome,cnpj from Empresa where (select max(idCliente) from Empresa)=idEmpresa;";
+        String query = "Select idEmpresa, nome,cnpj from Empresa where (select max(idEmpresa) from Empresa)=idEmpresa;";
         Empresa e = null;
         try {                        
             Class.forName(DRIVER);

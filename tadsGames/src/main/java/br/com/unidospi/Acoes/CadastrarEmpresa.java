@@ -10,7 +10,6 @@ import br.com.unidospi.DAO.EmpresaDao;
 import static br.com.unidospi.DAO.EmpresaDao.validaNovoCnpj;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.UsuarioFuncionario;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -113,11 +112,11 @@ public class CadastrarEmpresa implements Executavel, Registravel {
             
             retorno = empr.salvar();
             if (retorno) {
-                HttpSession sessao = req.getSession();
-                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
-                String acao = "cadastro de Empresa";
-                GeraLog registro = new GeraLog();
-                registro.escreverLog(usuario, acao, empr);
+//                HttpSession sessao = req.getSession();
+//                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+//                String acao = "cadastro de Empresa";
+//                GeraLog registro = new GeraLog();
+//                registro.escreverLog(usuario, acao, empr);
                 
                 CadastrarEmpresa registra = new CadastrarEmpresa();
                 registra.gerarLog(req, resp);

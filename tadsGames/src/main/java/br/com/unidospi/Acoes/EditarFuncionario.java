@@ -9,7 +9,6 @@ import br.com.unidospi.DAO.FuncionarioDAO;
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.Funcionario;
 import br.com.unidospi.model.UsuarioFuncionario;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -119,10 +118,10 @@ public class EditarFuncionario implements Executavel, Registravel {
             FuncionarioDAO.alterar(funcionario);
             
             HttpSession sessao = req.getSession();
-            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
-            String acao = "edição de Funcionario";
-            GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario, acao, funcionario);
+//            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+//            String acao = "edição de Funcionario";
+//            GeraLog registro = new GeraLog();
+//            registro.escreverLog(usuario, acao, funcionario);
             
             sessao.setAttribute("funcionario", funcionario);
             EditarFuncionario registra = new EditarFuncionario();

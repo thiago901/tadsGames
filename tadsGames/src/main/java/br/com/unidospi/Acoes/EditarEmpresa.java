@@ -7,7 +7,6 @@ package br.com.unidospi.Acoes;
 
 import br.com.unidospi.model.Empresa;
 import br.com.unidospi.model.UsuarioFuncionario;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -99,10 +98,10 @@ public class EditarEmpresa implements Executavel, Registravel{
         retorno=empr.alterar();
             if(retorno){
                 HttpSession sessao = req.getSession();
-                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
-                String acao = "edição de Empresa";
-                GeraLog registro = new GeraLog();
-                registro.escreverLog(usuario, acao, empr);
+//                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+//                String acao = "edição de Empresa";
+//                GeraLog registro = new GeraLog();
+//                registro.escreverLog(usuario, acao, empr);
                 
                 sessao.setAttribute("empresa", empr);
                 EditarEmpresa registra = new EditarEmpresa();

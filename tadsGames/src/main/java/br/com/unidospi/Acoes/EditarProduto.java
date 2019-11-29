@@ -8,7 +8,6 @@ package br.com.unidospi.Acoes;
 import br.com.unidospi.DAO.ProdutoDAO;
 import br.com.unidospi.model.Produto;
 import br.com.unidospi.model.UsuarioFuncionario;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -65,10 +64,10 @@ public class EditarProduto implements Executavel, Registravel {
 
         if (retorno) {
             HttpSession sessao = req.getSession();
-            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
-            String acao = "edição de Produto";
-            GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario, acao, p);
+//            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+//            String acao = "edição de Produto";
+//            GeraLog registro = new GeraLog();
+//            registro.escreverLog(usuario, acao, p);
             
             sessao.setAttribute("produto", p);
             EditarProduto registra = new EditarProduto();

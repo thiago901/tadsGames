@@ -70,13 +70,13 @@ public class VendaDAO {
     
     //Retorna todos os dados da ultima venda cadastrada no sistema
     public static Venda ultVenda() {
-        String query = "Select * Venda from Cliente where (select max(idVenda) from Venda)=idVenda;";
+        String query = "Select * from Venda where (select max(idVenda) from Venda)=idVenda;";
         Venda v = null;
         try {                        
             Class.forName(DRIVER);
             conexao = DriverManager.getConnection(URL,LOGIN,SENHA);
             PreparedStatement ps = conexao.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
+            ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
                 int idVenda=rs.getInt("idVenda");

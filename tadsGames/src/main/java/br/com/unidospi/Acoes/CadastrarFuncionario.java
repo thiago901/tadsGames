@@ -10,7 +10,6 @@ import br.com.unidospi.DAO.FuncionarioDAO;
 import static br.com.unidospi.DAO.FuncionarioDAO.validaNovoCPF;
 import br.com.unidospi.model.Funcionario;
 import br.com.unidospi.model.UsuarioFuncionario;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -124,11 +123,11 @@ public class CadastrarFuncionario implements Executavel, Registravel {
                     dtNasc, status);
             FuncionarioDAO.salvar(funcionario);
             
-            HttpSession sessao = req.getSession();
-            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
-            String acao = "cadastro de Funcionario";
-            GeraLog registro = new GeraLog();
-            registro.escreverLog(usuario, acao, funcionario);
+//            HttpSession sessao = req.getSession();
+//            UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+//            String acao = "cadastro de Funcionario";
+//            GeraLog registro = new GeraLog();
+//            registro.escreverLog(usuario, acao, funcionario);
             
             CadastrarFuncionario registra = new CadastrarFuncionario();
             registra.gerarLog(req, resp);

@@ -175,6 +175,7 @@ public class UsuarioDAO {
 
         String query = "SELECT u.idUsuario,\n "
                 + " u.nomeUsuario,\n"
+                + " f.nomeFuncionario, \n"
                 + " f.departamento,\n"
                 + " f.cargo,\n"
                 + "f.idEmpresa,\n"
@@ -198,6 +199,7 @@ public class UsuarioDAO {
             while (rs.next()) {
                 usuarioFuncionario = new UsuarioFuncionario(
                         rs.getInt("idUsuario"),
+                        rs.getString("nomeFuncionario"),
                         rs.getString("nomeUsuario"),
                         rs.getString("departamento"),
                         rs.getString("cargo"),

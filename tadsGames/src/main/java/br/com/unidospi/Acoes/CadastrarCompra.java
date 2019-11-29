@@ -11,7 +11,6 @@ import static br.com.unidospi.DAO.ProdutoDAO.listarProduto;
 import br.com.unidospi.model.Compra;
 import br.com.unidospi.model.Produto;
 import br.com.unidospi.model.UsuarioFuncionario;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -95,11 +94,11 @@ public class CadastrarCompra implements Executavel, Registravel{
 
                 EstoqueController.estocar(compra);
 
-                HttpSession sessao = req.getSession();
-                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
-                String acao = "Compra";
-                GeraLog registro = new GeraLog();
-                registro.escreverLog(usuario, acao, compra);
+//                HttpSession sessao = req.getSession();
+//                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");
+//                String acao = "Compra";
+//                GeraLog registro = new GeraLog();
+//                registro.escreverLog(usuario, acao, compra);
                 
                 CadastrarCompra registra = new CadastrarCompra();
                 registra.gerarLog(req, resp);

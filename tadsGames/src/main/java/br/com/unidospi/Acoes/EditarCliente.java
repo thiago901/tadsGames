@@ -9,7 +9,6 @@ import br.com.unidospi.Controller.ClienteController;
 import br.com.unidospi.DAO.ClienteDAO;
 import br.com.unidospi.model.Cliente;
 import br.com.unidospi.model.UsuarioFuncionario;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -103,11 +102,11 @@ public class EditarCliente implements Executavel, Registravel {
             retorno = ClienteDAO.alterar(c);
             if (retorno > 0) {
                 HttpSession sessao = req.getSession();//
-                
-                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");//
-                String acao = "edição de Cliente";//
-                GeraLog registro = new GeraLog();//
-                registro.escreverLog(usuario, acao, c);//
+//                
+//                UsuarioFuncionario usuario = (UsuarioFuncionario)sessao.getAttribute("usuario");//
+//                String acao = "edição de Cliente";//
+//                GeraLog registro = new GeraLog();//
+//                registro.escreverLog(usuario, acao, c);//
                 
                 sessao.setAttribute("cliente", c);
                 EditarCliente registra = new EditarCliente();

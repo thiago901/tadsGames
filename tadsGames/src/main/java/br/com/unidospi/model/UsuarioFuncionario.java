@@ -39,8 +39,9 @@ public class UsuarioFuncionario {
         this.idFuncionario = idFuncionario;
     }
     
-    public UsuarioFuncionario(int idUsuario, String nomeUsuario, String departamento, String cargo,int idEmpresa,int idFuncionario) {
+    public UsuarioFuncionario(int idUsuario, String nomeFuncionario, String nomeUsuario, String departamento, String cargo,int idEmpresa,int idFuncionario) {
         this.idUsuario = idUsuario;
+        this.nomeFuncionario = nomeFuncionario;
         this.nomeUsuario = nomeUsuario;
         this.departamento = departamento;
         this.cargo = cargo;

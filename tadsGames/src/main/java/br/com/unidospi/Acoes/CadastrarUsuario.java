@@ -8,7 +8,6 @@ package br.com.unidospi.Acoes;
 import br.com.unidospi.DAO.UsuarioDAO;
 import br.com.unidospi.model.Usuario;
 import br.com.unidospi.model.UsuarioFuncionario;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -79,11 +78,11 @@ public class CadastrarUsuario implements Executavel, Registravel {
 
             retorno = UsuarioDAO.salvar(usuario);
             if (retorno > 0){
-                HttpSession sessao = req.getSession();
-                UsuarioFuncionario u = (UsuarioFuncionario)sessao.getAttribute("usuario");
-                String acao = "cadastro de Usuario";
-                GeraLog registro = new GeraLog();
-                registro.escreverLog(usuario, acao, u);
+//                HttpSession sessao = req.getSession();
+//                UsuarioFuncionario u = (UsuarioFuncionario)sessao.getAttribute("usuario");
+//                String acao = "cadastro de Usuario";
+//                GeraLog registro = new GeraLog();
+//                registro.escreverLog(usuario, acao, u);
                 
                 CadastrarUsuario registra = new CadastrarUsuario();
                 registra.gerarLog(req, resp);

@@ -12,7 +12,6 @@ import br.com.unidospi.model.ClienteLista;
 import br.com.unidospi.model.UsuarioFuncionario;
 import br.com.unidospi.model.Venda;
 import br.com.unidospi.model.VendaDetalhe;
-import br.com.unidospi.util.GeraLog;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -88,9 +87,9 @@ public class CadastrarVenda implements Executavel, Registravel{
                 sessao.removeAttribute("idLinhaItemVenda");
                 sessao.removeAttribute("idCliente");
                 sessao.removeAttribute("nomeCliente2");
-                String acao = "Venda";
-                GeraLog registro = new GeraLog();
-                registro.escreverLog(usuario, acao, venda);
+//                String acao = "Venda";
+//                GeraLog registro = new GeraLog();
+//                registro.escreverLog(usuario, acao, venda);
 
                 CadastrarVenda registra = new CadastrarVenda();
                 registra.gerarLog(req, resp);
